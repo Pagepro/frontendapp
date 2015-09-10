@@ -12,7 +12,7 @@
             <script>window.html5 || document.write('<script src="static/js/vendor/html5shiv.js"><\/script>')</script>
         <![endif]-->
     </head>
-    <body ng-app="frontendApp" class="page--not-logged-in">
+    <body ng-app="frontendApp" ng-class="{'page--not-logged-in': showBodyBackground}">
         <header-section></header-section>
         <ui-view></ui-view>
 
@@ -28,6 +28,8 @@
         <script src="app/scripts/controllers/accountController.js?v=1437929479000"></script>
         <script src="app/scripts/controllers/loginController.js?v=1437929479000"></script>
         <script src="app/scripts/controllers/registrationController.js?v=1437929479000"></script>
+
+        <script src="app/scripts/controllers/myProjectsController.js?v=1437929479000"></script>
 
         <!-- Services -->
         <script src="app/scripts/services/values.js?v=1437929479000"></script>

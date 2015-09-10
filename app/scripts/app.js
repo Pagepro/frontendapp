@@ -37,6 +37,14 @@
         controller: 'RegistrationController',
         controllerAs: 'RC',
         pageName: 'Register'
+      })
+      // logged in
+      .state('myProjectsState', {
+        url: '/myProjects',
+        templateUrl: 'app/templates/myProjects.html',
+        controller: 'MyProjectsController',
+        controllerAs: 'MPC',
+        pageName: 'My Projects'
       });
   })
   .run(function ($state, $rootScope) {
@@ -51,6 +59,7 @@
     }
     $rootScope.$on('$stateChangeSuccess', function (event, data) {
       $rootScope.pageName = data.pageName;
+      $rootScope.showBodyBackground = (data.name.indexOf('accountState') > -1);
     });
     $rootScope.communicator = {};
   });
