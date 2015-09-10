@@ -1,0 +1,17 @@
+<main class="sec-content">
+    <div class="sec-content__inner">
+        <div class="forms">
+            <ul class="forms__tabs">
+                <li class="forms__tabs__item--login forms__tabs__item">
+                    <a ui-sref="accountState.login">Login</a>
+                </li>
+                <li class="forms__tabs__item--register forms__tabs__item">
+                    <a ui-sref="registerForm">Register</a>
+                </li>
+            </ul>
+            <div class="forms__content">
+                <form ui-view class="form-login forms__content__item"></form>
+            </div>
+        </div>
+    </div>
+</main>
