@@ -64,13 +64,15 @@ console.log('Express listening on port 8080');
       id: '{{index()}}',
       status: '{{random("finished", "in_progress", "new", "rejected", "qa")}}',
       about: '{{lorem(1, "paragraphs")}}',
-      dateAdded: '{{moment(this.date(new Date(2014, 0, 1), new Date())).format("LLLL")}}',
-      dateFinished: '{{moment(this.date(new Date(2014, 0, 1), new Date())).format("LLLL")}}',
+      projectProgress: '{{integer(0, 100)}}',
+      dateUpdated: '{{moment(this.date(new Date(2015, 2, 1), new Date())).valueOf()}}',
+      dateAdded: '{{moment(this.date(new Date(2014, 0, 1), new Date())).valueOf()}}',
+      dateFinished: '{{moment(this.date(new Date(2014, 0, 1), new Date())).valueOf()}}',
       templates: [
         {
-          'repeat:4': {
+          'repeat:5': {
             id: '{{index()}}',
-            picture: 'http://placehold.it/500x412',
+            image: 'https://placeimg.com/640/480/any',
             name: function () {
               return 'template' + '{{index()}}';
             }
@@ -87,220 +89,269 @@ console.log('Express listening on port 8080');
 */
 var projects = [
   {
-    "_id": "55f182bcac9e2b5d2c831d28",
+    "_id": "55f187d258de6a4b6f0083c5",
     "id": 0,
-    "status": "rejected",
-    "about": "Aliquip voluptate dolor nulla laborum cupidatat culpa labore veniam nostrud consectetur veniam aliquip do laborum. Eiusmod esse esse dolor elit commodo. Consequat ipsum sunt non exercitation ex ullamco cillum ea quis elit enim cillum quis cillum.",
-    "dateAdded": "Tuesday, March 31, 2015 1:13 PM",
-    "dateFinished": "Wednesday, May 21, 2014 11:26 AM",
+    "status": "in_progress",
+    "about": "Sunt pariatur eu ad veniam in eiusmod. Cupidatat aute sunt ipsum do ex duis cupidatat esse ex. Labore qui est cillum occaecat aliqua amet exercitation sit. Incididunt magna nostrud eu fugiat mollit Lorem aliquip irure et proident. Anim laboris amet sit anim adipisicing deserunt magna enim. Adipisicing pariatur consequat ex ipsum officia ex qui duis adipisicing.",
+    "projectProgress": 74,
+    "dateUpdated": 1433033487219,
+    "dateAdded": 1401215560047,
+    "dateFinished": 1405861460776,
     "templates": [
       {
         "id": 0,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template0"
       },
       {
         "id": 1,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template1"
       },
       {
         "id": 2,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template2"
       },
       {
         "id": 3,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template3"
+      },
+      {
+        "id": 4,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template4"
+      }
+    ],
+    "fileName": "SOK_{{index()}}"
+  },
+  {
+    "_id": "55f187d3341c845420cdcf0f",
+    "id": 1,
+    "status": "finished",
+    "about": "Voluptate reprehenderit culpa aute aliquip irure enim. Elit commodo magna tempor consectetur occaecat laboris eiusmod sit. Irure mollit esse eu ipsum ut in et. Minim elit non incididunt reprehenderit sint esse magna aliqua nostrud Lorem labore quis adipisicing nisi. Aute dolore ullamco nulla tempor sint id.",
+    "projectProgress": 69,
+    "dateUpdated": 1426102718781,
+    "dateAdded": 1440147186863,
+    "dateFinished": 1391152108329,
+    "templates": [
+      {
+        "id": 0,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template0"
+      },
+      {
+        "id": 1,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template1"
+      },
+      {
+        "id": 2,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template2"
+      },
+      {
+        "id": 3,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template3"
+      },
+      {
+        "id": 4,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template4"
       }
     ],
     "fileName": "KRD_{{index()}}"
   },
   {
-    "_id": "55f182bc39bc5b86c56f0541",
-    "id": 1,
-    "status": "qa",
-    "about": "Ea fugiat veniam laborum laboris quis dolore commodo. Laboris velit mollit labore mollit commodo enim. Cillum commodo officia fugiat proident dolor fugiat ea laboris magna fugiat ex.",
-    "dateAdded": "Sunday, March 22, 2015 6:40 PM",
-    "dateFinished": "Friday, March 27, 2015 7:22 PM",
-    "templates": [
-      {
-        "id": 0,
-        "picture": "http://placehold.it/500x412",
-        "name": "template0"
-      },
-      {
-        "id": 1,
-        "picture": "http://placehold.it/500x412",
-        "name": "template1"
-      },
-      {
-        "id": 2,
-        "picture": "http://placehold.it/500x412",
-        "name": "template2"
-      },
-      {
-        "id": 3,
-        "picture": "http://placehold.it/500x412",
-        "name": "template3"
-      }
-    ],
-    "fileName": "RZF_{{index()}}"
-  },
-  {
-    "_id": "55f182bc70152d0da9ec3573",
+    "_id": "55f187d345b92f403ba1a88e",
     "id": 2,
     "status": "finished",
-    "about": "Do pariatur minim minim laboris est ullamco Lorem sit officia. Eiusmod ad ut ad consectetur nostrud deserunt ea reprehenderit duis consectetur in. Labore commodo anim et voluptate et eiusmod sit.",
-    "dateAdded": "Sunday, July 5, 2015 5:20 AM",
-    "dateFinished": "Wednesday, August 26, 2015 4:31 PM",
+    "about": "Nostrud anim irure sunt laborum et amet. Incididunt nostrud amet dolore eiusmod id laborum ex labore ea quis reprehenderit sunt ipsum. Velit deserunt duis aute veniam nulla enim magna deserunt eu veniam. Ad veniam adipisicing esse sunt qui elit id. Consequat eu ex amet do. Dolor labore sint quis fugiat sint cillum minim magna sint sunt do ea consectetur nostrud. Dolore est non magna voluptate est exercitation magna sit non.",
+    "projectProgress": 91,
+    "dateUpdated": 1432774531277,
+    "dateAdded": 1418275147503,
+    "dateFinished": 1416741818098,
     "templates": [
       {
         "id": 0,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template0"
       },
       {
         "id": 1,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template1"
       },
       {
         "id": 2,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template2"
       },
       {
         "id": 3,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template3"
+      },
+      {
+        "id": 4,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template4"
       }
     ],
     "fileName": "SOK_2"
   },
   {
-    "_id": "55f182bcba0e80609814d1d6",
+    "_id": "55f187d30c120529540f6ee9",
     "id": 3,
-    "status": "rejected",
-    "about": "Ex elit qui irure ullamco sit commodo et laboris et nostrud occaecat. Commodo fugiat in nostrud officia. Ea cillum eiusmod cupidatat voluptate est excepteur nostrud esse exercitation amet. Anim Lorem labore esse mollit dolor qui eu eiusmod culpa mollit. Aliquip sunt nulla laborum ipsum.",
-    "dateAdded": "Sunday, October 5, 2014 10:03 AM",
-    "dateFinished": "Monday, July 20, 2015 10:30 AM",
-    "templates": [
-      {
-        "id": 0,
-        "picture": "http://placehold.it/500x412",
-        "name": "template0"
-      },
-      {
-        "id": 1,
-        "picture": "http://placehold.it/500x412",
-        "name": "template1"
-      },
-      {
-        "id": 2,
-        "picture": "http://placehold.it/500x412",
-        "name": "template2"
-      },
-      {
-        "id": 3,
-        "picture": "http://placehold.it/500x412",
-        "name": "template3"
-      }
-    ],
-    "fileName": "RZF_3"
-  },
-  {
-    "_id": "55f182bc98c4208c3f9f0d89",
-    "id": 4,
-    "status": "finished",
-    "about": "Enim tempor ad tempor et aliqua voluptate ullamco amet cupidatat eu veniam aliqua. In nulla esse non anim excepteur officia labore exercitation labore excepteur. Aute aliquip consequat ea voluptate. Magna est ex fugiat irure qui cillum pariatur qui veniam consectetur velit reprehenderit aliquip anim. Reprehenderit commodo excepteur sunt eiusmod incididunt labore eiusmod tempor do consectetur duis consectetur laborum. Aliqua dolor quis commodo quis officia velit anim. Adipisicing velit pariatur sunt culpa ea qui incididunt occaecat quis ipsum excepteur cillum irure deserunt.",
-    "dateAdded": "Saturday, July 12, 2014 3:52 PM",
-    "dateFinished": "Tuesday, April 8, 2014 4:48 AM",
-    "templates": [
-      {
-        "id": 0,
-        "picture": "http://placehold.it/500x412",
-        "name": "template0"
-      },
-      {
-        "id": 1,
-        "picture": "http://placehold.it/500x412",
-        "name": "template1"
-      },
-      {
-        "id": 2,
-        "picture": "http://placehold.it/500x412",
-        "name": "template2"
-      },
-      {
-        "id": 3,
-        "picture": "http://placehold.it/500x412",
-        "name": "template3"
-      }
-    ],
-    "fileName": "SOK_4"
-  },
-  {
-    "_id": "55f182bcb910d254daca5832",
-    "id": 5,
     "status": "qa",
-    "about": "Eiusmod tempor quis incididunt consectetur et voluptate exercitation ut et cupidatat adipisicing. Elit consequat commodo ex laboris aute ea esse dolore adipisicing. Eiusmod ea qui pariatur minim sint nulla ea anim anim tempor ut. Ullamco pariatur adipisicing magna exercitation officia.",
-    "dateAdded": "Sunday, April 20, 2014 7:56 PM",
-    "dateFinished": "Sunday, August 3, 2014 2:47 AM",
+    "about": "Enim laboris duis ullamco laborum aute quis aute elit laborum. Excepteur labore irure deserunt reprehenderit incididunt Lorem amet labore. Excepteur nostrud nulla quis enim esse sint eu mollit esse cillum elit voluptate anim. Non commodo irure minim fugiat id. Esse labore enim eiusmod quis Lorem elit consectetur excepteur commodo culpa.",
+    "projectProgress": 59,
+    "dateUpdated": 1435357112043,
+    "dateAdded": 1437400682031,
+    "dateFinished": 1394035094027,
     "templates": [
       {
         "id": 0,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template0"
       },
       {
         "id": 1,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template1"
       },
       {
         "id": 2,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template2"
       },
       {
         "id": 3,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template3"
+      },
+      {
+        "id": 4,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template4"
+      }
+    ],
+    "fileName": "KRD_3"
+  },
+  {
+    "_id": "55f187d306670ce1a265828e",
+    "id": 4,
+    "status": "qa",
+    "about": "Ad id do excepteur proident proident consectetur sint exercitation sint ullamco in. Pariatur voluptate cupidatat quis fugiat incididunt. Sint ut minim occaecat fugiat velit quis deserunt proident mollit occaecat.",
+    "projectProgress": 73,
+    "dateUpdated": 1438448695967,
+    "dateAdded": 1432292437398,
+    "dateFinished": 1431956426109,
+    "templates": [
+      {
+        "id": 0,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template0"
+      },
+      {
+        "id": 1,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template1"
+      },
+      {
+        "id": 2,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template2"
+      },
+      {
+        "id": 3,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template3"
+      },
+      {
+        "id": 4,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template4"
+      }
+    ],
+    "fileName": "RZF_4"
+  },
+  {
+    "_id": "55f187d3d033c468606131c3",
+    "id": 5,
+    "status": "finished",
+    "about": "Officia voluptate eu deserunt eiusmod incididunt reprehenderit laboris officia incididunt ad dolore irure anim ut. Cupidatat nulla do quis nostrud cillum ipsum elit. Dolor adipisicing dolor mollit pariatur anim elit qui eu. Aute laborum minim cupidatat culpa nisi consectetur. Minim eiusmod cupidatat exercitation quis anim voluptate fugiat commodo pariatur elit. Pariatur voluptate do culpa ex sit nisi minim in incididunt magna enim eu.",
+    "projectProgress": 23,
+    "dateUpdated": 1433976054243,
+    "dateAdded": 1432398750777,
+    "dateFinished": 1395245449924,
+    "templates": [
+      {
+        "id": 0,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template0"
+      },
+      {
+        "id": 1,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template1"
+      },
+      {
+        "id": 2,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template2"
+      },
+      {
+        "id": 3,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template3"
+      },
+      {
+        "id": 4,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template4"
       }
     ],
     "fileName": "RZF_5"
   },
   {
-    "_id": "55f182bc3a44bae1bad1b49c",
+    "_id": "55f187d3af4a8c0b583242da",
     "id": 6,
-    "status": "qa",
-    "about": "Consectetur mollit sint laborum elit aliqua consectetur officia occaecat non fugiat qui ipsum incididunt sit. Laboris reprehenderit fugiat reprehenderit irure. Anim deserunt ullamco laborum consectetur elit laborum exercitation nulla aliqua eu.",
-    "dateAdded": "Sunday, July 13, 2014 11:52 AM",
-    "dateFinished": "Wednesday, July 23, 2014 12:48 AM",
+    "status": "new",
+    "about": "Officia aliqua minim esse mollit ex laborum ad sit Lorem esse tempor ut. Ipsum occaecat ullamco officia aute labore magna qui cillum non occaecat. Sunt est ullamco minim amet laboris esse fugiat eu ipsum aliquip dolore. Non exercitation ut ex minim fugiat.",
+    "projectProgress": 35,
+    "dateUpdated": 1440706671371,
+    "dateAdded": 1408474572026,
+    "dateFinished": 1398999896966,
     "templates": [
       {
         "id": 0,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template0"
       },
       {
         "id": 1,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template1"
       },
       {
         "id": 2,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template2"
       },
       {
         "id": 3,
-        "picture": "http://placehold.it/500x412",
+        "image": "https://placeimg.com/640/480/any",
         "name": "template3"
+      },
+      {
+        "id": 4,
+        "image": "https://placeimg.com/640/480/any",
+        "name": "template4"
       }
     ],
-    "fileName": "KRD_6"
+    "fileName": "SOK_6"
   }
 ];
