@@ -14,7 +14,22 @@
                          </form>
                      </div>
                  </li>
-                 <li class="projects-list__projects__project project project__my-proj01">
+                 <li class="projects-list__projects__project project project__my-proj{{$index}}"
+                     ng-repeat="project in myProjects">
+                     <a ng-href="details/{{project.id}}">
+                        <div class="project__background"> <!-- how should I link backgroud for this? -->
+                        </div>
+                        <div class="project__details">
+                             <p class="project__details__time">Updated: {{project.updated}}</p>
+                             <span class="project__details__progress progress-bar">
+                                 <span class="project__details__progress__value progress-bar__value" data-progress-value="{{project.progress}}"></span>
+                             </span>
+                             <h2 class="project__details__name">{{project.name}}</h2>
+                             <p class="project__details__summary">{{project.templatesCount}} templates</p>
+                         </div>
+                     </a>
+                 </li>
+                 <!-- <li class="projects-list__projects__project project project__my-proj01">
                      <a href="details.html">
                          <div class="project__background">
                          </div>
@@ -56,7 +71,7 @@
                              <p class="project__details__summary">42 templates</p>
                          </div>
                      </a>
-                 </li>
+                 </li> -->
              </ul>
              <a class="projects-list__button" href="allprojects.html">All Projects</a>
          </div>
