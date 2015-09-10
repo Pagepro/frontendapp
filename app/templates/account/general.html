@@ -2,10 +2,10 @@
     <div class="sec-content__inner">
         <div class="forms">
             <ul class="forms__tabs">
-                <li class="forms__tabs__item--login forms__tabs__item">
+                <li class="forms__tabs__item--login forms__tabs__item" ng-class="{active: pageName === 'Login'}">
                     <a ui-sref="accountState.login">Login</a>
                 </li>
-                <li class="forms__tabs__item--register forms__tabs__item">
+                <li class="forms__tabs__item--register forms__tabs__item" ng-class="{active: pageName === 'Register'}">
                     <a ui-sref="accountState.register">Register</a>
                 </li>
             </ul>

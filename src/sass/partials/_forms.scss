@@ -189,9 +189,9 @@ input::-ms-clear {
                 }
             }
         }
-        // &.active {
+        &.active {
             background-color: $color_bg_field;
-        // }
+        }
     }
 }
 // .forms__content__item.form-active {

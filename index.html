@@ -13,12 +13,7 @@
         <![endif]-->
     </head>
     <body ng-app="frontendApp" class="page--not-logged-in">
-        <header class="sec-head">
-            <div class="sec-head__inner register-title">
-                <a class="head__title" href="index.html">Frontend<span class="head__title__highlight">App</span></a>
-                <span class="head__nav-path">{{ pageName }}</span>
-            </div>
-        </header>
+        <header-section></header-section>
         <ui-view></ui-view>
 
         <!--  -->
@@ -37,6 +32,8 @@
         <!-- Services -->
         <script src="app/scripts/services/values.js?v=1437929479000"></script>
 
+        <!-- Directives -->
+        <script src="app/scripts/directives/headerSectionDirective.js?v=1437929479000"></script>
 
     </body>
 </html>
