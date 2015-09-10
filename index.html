@@ -16,7 +16,7 @@
         <header class="sec-head">
             <div class="sec-head__inner register-title">
                 <a class="head__title" href="index.html">Frontend<span class="head__title__highlight">App</span></a>
-                <span class="head__nav-path">Register</span>
+                <span class="head__nav-path">{{ pageName }}</span>
             </div>
         </header>
         <ui-view></ui-view>
@@ -28,10 +28,14 @@
         <script src="app/scripts/app.js?v=1437929479000"></script>
 
         <!-- Controllers -->
+        <script src="app/scripts/controllers/pageController.js?v=1437929479000"></script>
         <script src="app/scripts/controllers/homeController.js?v=1437929479000"></script>
         <script src="app/scripts/controllers/accountController.js?v=1437929479000"></script>
         <script src="app/scripts/controllers/loginController.js?v=1437929479000"></script>
         <script src="app/scripts/controllers/registrationController.js?v=1437929479000"></script>
+
+        <!-- Services -->
+        <script src="app/scripts/services/values.js?v=1437929479000"></script>
 
 
     </body>

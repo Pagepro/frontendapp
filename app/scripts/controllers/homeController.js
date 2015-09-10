@@ -1,10 +1,8 @@
 (function() {
   'use strict';
-  var HomeController = function($scope) {
-    $scope.data = 'lol';
-  };
+  var HomeController = function() {};
 
-  HomeController.$inject = ['$scope'];
+  // HomeController.$inject = [];
   angular.module('frontendApp').controller('HomeController', HomeController);
 
 }());
