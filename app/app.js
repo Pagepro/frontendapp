@@ -4,7 +4,7 @@
   // var loginModule = angular.module('loginModule', ['ui.router']);
   // loginModule.config(function($stateProvider) {});
 
-  var frontendApp = angular.module('frontendApp', ['ui.router']);
+  var frontendApp = angular.module('frontendApp', ['ui.router', 'offClick']);
 
 
   frontendApp
@@ -14,31 +14,43 @@
       .state('accountState', {
         url: '/auth',
         templateUrl: 'partials/templates/auth/account.html',
-        controller: 'AccountController',
+        controller: 'AccountCtrl',
         controllerAs: 'AC',
-        pageName: 'Account'
+        pageName: 'Account',
+        module: 'auth'
       })
       .state('accountState.login', {
         url: '/login',
         templateUrl: 'partials/templates/auth/login.html',
-        controller: 'LoginController',
+        controller: 'LoginCtrl',
         controllerAs: 'LC',
-        pageName: 'Login'
+        pageName: 'Login',
+        module: 'auth'
       })
       .state('accountState.register', {
         url: '/register',
         templateUrl: 'partials/templates/auth/registration.html',
-        controller: 'RegistrationController',
+        controller: 'RegistrationCtrl',
         controllerAs: 'RC',
-        pageName: 'Register'
+        pageName: 'Register',
+        module: 'auth'
       })
-      // logged in
+      // dashboard
       .state('myProjectsState', {
-        url: '/myProjects',
+        url: '/my-projects',
         templateUrl: 'partials/templates/panel/myProjects.html',
-        controller: 'MyProjectsController',
+        controller: 'MyProjectsCtrl',
         controllerAs: 'MPC',
-        pageName: 'My Projects'
+        pageName: 'My Projects',
+        module: 'panel'
+      })
+      .state('projectState', {
+        url: '/project/:projectId',
+        templateUrl: 'partials/templates/panel/project.html',
+        controller: 'ProjectCtrl',
+        controllerAs: 'PC',
+        pageName: 'Project',
+        module: 'panel'
       });
   })
   .run(function ($state, $rootScope) {
@@ -53,7 +65,8 @@
     }
     $rootScope.$on('$stateChangeSuccess', function (event, data) {
       $rootScope.pageName = data.pageName;
-      $rootScope.showBodyBackground = (data.name.indexOf('accountState') > -1);
+      $rootScope.module = data.module;
+      $rootScope.showBodyBackground = (data.module === 'auth');
     });
     $rootScope.communicator = {};
   });

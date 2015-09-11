@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var MyProjectsController = function($scope, projectsFactory) {
+  var MyProjectsCtrl = function($scope, projectsFactory) {
     $scope.myProjects = null;
     function init() {
       projectsFactory.getProjects()
@@ -15,7 +15,7 @@
     init();
   };
 
-  MyProjectsController.$inject = ['$scope', 'projectsFactory'];
-  angular.module('frontendApp').controller('MyProjectsController', MyProjectsController);
+  MyProjectsCtrl.$inject = ['$scope', 'projectsFactory'];
+  angular.module('frontendApp').controller('MyProjectsCtrl', MyProjectsCtrl);
 
 }());

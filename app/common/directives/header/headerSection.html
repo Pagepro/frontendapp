@@ -2,5 +2,18 @@
     <div class="sec-head__inner register-title">
         <a class="head__title" href="#/">Frontend<span class="head__title__highlight">App</span></a>
         <span class="head__nav-path">{{ pageName }}</span>
+        <button ng-if="module === 'panel'" ng-click="toggleMenu()" ng-class="{active: menuVisible}" class="head__userpanel"><span class="head__userpanel__text">K</span></button>
     </div>
 </header>
+<div ng-if="module === 'panel'" class="menu" ng-class="{opened: menuVisible}" off-click="hideMenu()" off-click-if="menuVisible">
+    <button class="menu__close">x</button>
+    <ul class="menu__list">
+        <li><a class="menu__list__item" href="#">Logout</a></li>
+        <li><a class="menu__list__item" href="myprojects.html">My Projects</a></li>
+        <li><a class="menu__list__item" href="#">My profile</a></li>
+        <li><a class="menu__list__item" href="details.html">Details</a></li>
+        <li><a class="menu__list__item" href="upload.html">Upload</a></li>
+        <li><a class="menu__list__item" href="register.html">Register</a></li>
+        <li><a class="menu__list__item" href="#">Something</a></li>
+    </ul>
+</div>

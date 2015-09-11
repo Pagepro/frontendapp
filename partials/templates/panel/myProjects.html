@@ -18,7 +18,7 @@
                  <li class="projects-list__projects__project project project__my-proj{{$index}}"
                      ng-repeat="project in myProjects">
 
-                     <a ng-href="details/{{project.id}}">
+                     <a href="#/project/{{project.id}}">
                         <div class="project__background" style="background-image: url('{{project.templates[0].image}}')"> <!-- how should I link backgroud for this? -->
                         </div>
                         <div class="project__details">

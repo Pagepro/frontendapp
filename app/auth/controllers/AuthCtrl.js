@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var AccountController = function($scope, $state) {
+  var AccountCtrl = function($scope, $state) {
     // fixme
     // we need to consider cases with and without '/'
     if ($state.current.url === '/account' || $state.current.url === '/auth') {
@@ -8,7 +8,7 @@
     }
   };
 
-  AccountController.$inject = ['$scope', '$state'];
-  angular.module('frontendApp').controller('AccountController', AccountController);
+  AccountCtrl.$inject = ['$scope', '$state'];
+  angular.module('frontendApp').controller('AccountCtrl', AccountCtrl);
 
 }());
