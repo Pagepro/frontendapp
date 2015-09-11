@@ -8,7 +8,9 @@
 
 
   frontendApp
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('!');
     $urlRouterProvider.otherwise('/auth/login');
     $stateProvider
       .state('accountState', {

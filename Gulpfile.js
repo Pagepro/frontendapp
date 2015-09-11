@@ -26,7 +26,7 @@ gulp.task('serve', ['sass'], function() {
     });
 });
 gulp.task('watch', function() {
-    gulp.watch("partials/sass/**", ['sass']);
+    gulp.watch('partials/sass/**', ['sass']);
     gulp.watch(['app/templates/**/*.html', 'src/**/*.js'], reload);
 });
 gulp.task('sass', function () {
@@ -48,5 +48,5 @@ gulp.task('autoprefixer', function () {
         .pipe(gulp.dest('app/css/'));
 });
 
-gulp.task('default', ['sass', 'copy', 'watch', 'serve']);
+gulp.task('default', ['sass', 'watch', 'serve']);
 gulp.task('compile', ['sass']);
