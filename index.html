@@ -3,10 +3,10 @@
 <!--[if gt IE 8]><!--> <html lang="" class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <title>Home Page</title>
+        <title>FrontendApp</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-        <link rel="stylesheet" href="app/css/main.css?v=1437929479000">
+        <link rel="stylesheet" href="partials/css/main.css">
         <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
             <script>window.html5 || document.write('<script src="static/js/vendor/html5shiv.js"><\/script>')</script>
@@ -16,27 +16,25 @@
         <header-section></header-section>
         <ui-view></ui-view>
 
-        <!--  -->
-        <script src="app/scripts/vendor/angular/angular.js?v=1437929479000"></script>
-        <script src="app/scripts/vendor/angular-ui-router/release/angular-ui-router.js?v=1437929479000"></script>
+        <!-- Libraries -->
+        <script src="lib/angular/angular.js"></script>
+        <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+
         <!--  App -->
-        <script src="app/scripts/app.js?v=1437929479000"></script>
+        <script src="app/app.js"></script>
 
-        <!-- Controllers -->
-        <script src="app/scripts/controllers/pageController.js?v=1437929479000"></script>
-        <script src="app/scripts/controllers/homeController.js?v=1437929479000"></script>
-        <script src="app/scripts/controllers/accountController.js?v=1437929479000"></script>
-        <script src="app/scripts/controllers/loginController.js?v=1437929479000"></script>
-        <script src="app/scripts/controllers/registrationController.js?v=1437929479000"></script>
+        <!-- Commons -->
+        <script src="app/common/services/appSettings.js"></script>
+        <script src="app/common/directives/header/headerSection.js"></script>
 
-        <script src="app/scripts/controllers/myProjectsController.js?v=1437929479000"></script>
+        <!-- Auth Module -->
+        <script src="app/auth/controllers/AuthCtrl.js"></script>
+        <script src="app/auth/controllers/LoginCtrl.js"></script>
+        <script src="app/auth/controllers/RegistrationCtrl.js"></script>
 
-        <!-- Services -->
-        <script src="app/scripts/services/values.js?v=1437929479000"></script>
-        <script src="app/scripts/services/projectsFactory.js?v=1437929479000"></script>
-
-        <!-- Directives -->
-        <script src="app/scripts/directives/headerSectionDirective.js?v=1437929479000"></script>
+        <!-- Panel Module -->
+        <script src="app/panel/controllers/MyProjectsCtrl.js"></script>
+        <script src="app/panel/services/projectsFactory.js"></script>
 
     </body>
 </html>

@@ -8,32 +8,26 @@
 
 
   frontendApp
-  .config(function ($stateProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/auth/login');
     $stateProvider
-      .state('homeState', {
-        url: '/',
-        templateUrl: 'app/templates/home.html',
-        controller: 'HomeController',
-        controllerAs: 'HC',
-        pageName: 'Home Page'
-      })
       .state('accountState', {
         url: '/auth',
-        templateUrl: 'app/templates/account/general.html',
+        templateUrl: 'partials/templates/auth/account.html',
         controller: 'AccountController',
         controllerAs: 'AC',
         pageName: 'Account'
       })
       .state('accountState.login', {
         url: '/login',
-        templateUrl: 'app/templates/account/loginForm.html',
+        templateUrl: 'partials/templates/auth/login.html',
         controller: 'LoginController',
         controllerAs: 'LC',
         pageName: 'Login'
       })
       .state('accountState.register', {
         url: '/register',
-        templateUrl: 'app/templates/account/registrationForm.html',
+        templateUrl: 'partials/templates/auth/registration.html',
         controller: 'RegistrationController',
         controllerAs: 'RC',
         pageName: 'Register'
@@ -41,7 +35,7 @@
       // logged in
       .state('myProjectsState', {
         url: '/myProjects',
-        templateUrl: 'app/templates/myProjects.html',
+        templateUrl: 'partials/templates/panel/myProjects.html',
         controller: 'MyProjectsController',
         controllerAs: 'MPC',
         pageName: 'My Projects'
@@ -53,7 +47,7 @@
     // if so, redirect him to his projects,
     // else, redirect to login
     if (true) {
-      $state.go('accountState.login');
+      // $state.go('accountState.login');
     } else {
       $state.go('homeState');
     }
