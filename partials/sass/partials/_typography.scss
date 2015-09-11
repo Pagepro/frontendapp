@@ -19,8 +19,12 @@ body {
 a {
     text-decoration: none;
     color: $color_default;
-    
+
     &:hover {
         text-decoration: underline;
     }
+}
+
+[ng-click] {
+  cursor: pointer;
 }

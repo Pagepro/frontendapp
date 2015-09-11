@@ -13,6 +13,14 @@
         pageName: 'My Projects',
         module: 'panel'
       })
+      .state('allProjectsState', {
+        url: '/all-projects',
+        templateUrl: 'partials/templates/panel/allProjects.html',
+        controller: 'AllProjectsCtrl',
+        controllerAs: 'APC',
+        pageName: 'All Projects',
+        module: 'panel'
+      })
       .state('projectState', {
         url: '/project/:projectId',
         templateUrl: 'partials/templates/panel/project.html',

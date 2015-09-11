@@ -1,6 +1,7 @@
 (function () {
   'use strict';
 
+// this is factory of ALL projects or just for MY projects?
   var projectsFactory = function ($http, appSettings) {
     return {
       getProjects: function () {
