@@ -26,7 +26,7 @@ gulp.task('serve', ['sass'], function() {
     });
 });
 gulp.task('watch', function() {
-    gulp.watch("partials/sass/**", ['sass']);
+    gulp.watch('partials/sass/**', ['sass']);
     gulp.watch(['partials/templates/**/*.html', 'src/**/*.js'], reload);
 });
 gulp.task('sass', function () {

@@ -5,6 +5,9 @@
     return {
       getProjects: function () {
         return $http.get(appSettings.apiRoot + 'projects/');
+      },
+      getProject: function (customerId) {
+        return $http.get(appSettings.apiRoot + 'projects/' + customerId);
       }
     };
   };

@@ -1,7 +1,7 @@
 <main class="sec-content">
      <div class="sec-content__inner">
          <div class="project-details">
-             <h1 class="project-details__title sec-title">Sed ut perspiciatis details</h1>
+             <h1 class="project-details__title sec-title">{{ project.fileName }}</h1>
              <div class="project-details__progress__bar">
                  <span class="project__details__progress__bar__title">Details processing</span>
                  <span class="project__details__progress progress-bar">
@@ -27,23 +27,13 @@
                              </div>
                          </div>
                      </li>
-                     <li class="project-details__templates__list__template template">
-                         <div class="template__background"></div>
-                         <span class="template__status template__status--complete">Complete</span>
-                         <span class="template__handle">Move</span>
-                         <div class="template__details">
-                             <div class="template__details__title__wrapper">
-                                 <h2 class="template__details__title">Adipiscing elit sed do eiusmod tempor incididunt</h2>
-                             </div>
 
-                             <div class="template__actions">
-                                 <button class="template__actions__action action-jpg">Jpg</button>
-                                 <button class="template__actions__action action-html">Html</button>
-                                 <button class="template__actions__action action-edit">Edit</button>
-                                 <button class="template__actions__action action-delete">Delete</button>
-                             </div>
-                         </div>
+                     <li
+                        class="project-details__templates__list__template template"
+                        ng-repeat="template in project.templates" >
+                         <template-preview></template-preview>
                      </li>
+
                      <li class="project-details__templates__list__template template">
                          <div class="template__background"></div>
                          <span class="template__status template__status--qa">Q&amp;A</span>

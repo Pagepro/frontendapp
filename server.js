@@ -7,21 +7,22 @@ app.use(cors())
 
 app.use(express.static(__dirname + '/'));
 
-// app.get('/projects/:id', function(req, res) {
-//     var customerId = parseInt(req.params.id);
-//     var data = {};
-//     for (var i=0,len=customers.length;i<len;i++) {
-//         if (customers[i].id === customerId) {
-//            data = customers[i];
-//            break;
-//         }
-//     }
-//     res.json(data);
-// });
+app.get('/projects/:id', function(req, res) {
+  var customerId = parseInt(req.params.id);
+  var data = {};
+  for (var i = 0, len = projects.length; i < len; i++) {
+    if (projects[i].id === customerId) {
+      console.log('xd');
+      data = projects[i];
+      break;
+    }
+  }
+  res.json(data);
+});
 
 app.get('/projects', function(req, res) {
-    res.json(projects);
-    //res.json(500, { error: 'An error has occurred!' });
+  res.json(projects);
+  //res.json(500, { error: 'An error has occurred!' });
 });
 
 // app.get('/orders', function(req, res) {
@@ -54,7 +55,7 @@ app.listen(8080);
 console.log('Express listening on port 8080');
 /**
  * Generate the array using
- * http://beta.json-generator.com/NJmKpw9a
+ * http://beta.json-generator.com/
 
  * Update this markup every time!
 [
@@ -62,7 +63,7 @@ console.log('Express listening on port 8080');
     'repeat:7': {
       _id: '{{objectId()}}',
       id: '{{index()}}',
-      status: '{{random("finished", "in_progress", "new", "rejected", "qa")}}',
+      status: '{{random("complete", "inprogress", "new", "rejected", "qa")}}',
       about: '{{lorem(1, "paragraphs")}}',
       projectProgress: '{{integer(0, 100)}}',
       dateUpdated: '{{moment(this.date(new Date(2015, 2, 1), new Date())).valueOf()}}',
@@ -72,9 +73,22 @@ console.log('Express listening on port 8080');
         {
           'repeat:5': {
             id: '{{index()}}',
-            image: 'https://placeimg.com/640/480/any',
+            image: 'https://placeimg.com/640/480/any?v={{integer(4, 100)}}',
             name: function () {
-              return 'template' + '{{index()}}';
+              return 'templateName' + '{{index()}}';
+            }
+          }
+        }
+      ],
+      files: [
+        {
+          'repeat:3': {
+            id: '{{index()}}',
+            extension: '{{random("zip", "psd", "7z")}}',
+            size: '{{integer(0, 100)}}',
+            dateUpdated: '{{moment(this.date(new Date(2015, 2, 1), new Date())).valueOf()}}',
+            name: function () {
+              return 'templateName' + '{{index()}}';
             }
           }
         }
@@ -89,269 +103,430 @@ console.log('Express listening on port 8080');
 */
 var projects = [
   {
-    "_id": "55f187d258de6a4b6f0083c5",
+    "_id": "55f2b3bd128396a3fa6e47e4",
     "id": 0,
-    "status": "in_progress",
-    "about": "Sunt pariatur eu ad veniam in eiusmod. Cupidatat aute sunt ipsum do ex duis cupidatat esse ex. Labore qui est cillum occaecat aliqua amet exercitation sit. Incididunt magna nostrud eu fugiat mollit Lorem aliquip irure et proident. Anim laboris amet sit anim adipisicing deserunt magna enim. Adipisicing pariatur consequat ex ipsum officia ex qui duis adipisicing.",
-    "projectProgress": 74,
-    "dateUpdated": 1433033487219,
-    "dateAdded": 1401215560047,
-    "dateFinished": 1405861460776,
+    "status": "inprogress",
+    "about": "Irure fugiat enim magna aliquip velit ex officia ex. Ea fugiat tempor qui cillum consequat commodo voluptate nisi. Pariatur duis reprehenderit mollit sunt commodo do.",
+    "projectProgress": 14,
+    "dateUpdated": 1440382991926,
+    "dateAdded": 1397138548600,
+    "dateFinished": 1422469010342,
     "templates": [
       {
         "id": 0,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template0"
+        "image": "https://placeimg.com/640/480/any?v=11",
+        "name": "templateName0"
       },
       {
         "id": 1,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template1"
+        "image": "https://placeimg.com/640/480/any?v=40",
+        "name": "templateName1"
       },
       {
         "id": 2,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template2"
+        "image": "https://placeimg.com/640/480/any?v=53",
+        "name": "templateName2"
       },
       {
         "id": 3,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template3"
+        "image": "https://placeimg.com/640/480/any?v=66",
+        "name": "templateName3"
       },
       {
         "id": 4,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template4"
+        "image": "https://placeimg.com/640/480/any?v=6",
+        "name": "templateName4"
       }
     ],
-    "fileName": "SOK_{{index()}}"
-  },
-  {
-    "_id": "55f187d3341c845420cdcf0f",
-    "id": 1,
-    "status": "finished",
-    "about": "Voluptate reprehenderit culpa aute aliquip irure enim. Elit commodo magna tempor consectetur occaecat laboris eiusmod sit. Irure mollit esse eu ipsum ut in et. Minim elit non incididunt reprehenderit sint esse magna aliqua nostrud Lorem labore quis adipisicing nisi. Aute dolore ullamco nulla tempor sint id.",
-    "projectProgress": 69,
-    "dateUpdated": 1426102718781,
-    "dateAdded": 1440147186863,
-    "dateFinished": 1391152108329,
-    "templates": [
+    "files": [
       {
         "id": 0,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template0"
+        "extension": "psd",
+        "size": 76,
+        "dateUpdated": 1433365655076,
+        "name": "templateName0"
       },
       {
         "id": 1,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template1"
+        "extension": "zip",
+        "size": 61,
+        "dateUpdated": 1427968367700,
+        "name": "templateName1"
       },
       {
         "id": 2,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template2"
-      },
-      {
-        "id": 3,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template3"
-      },
-      {
-        "id": 4,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template4"
+        "extension": "7z",
+        "size": 70,
+        "dateUpdated": 1441853500079,
+        "name": "templateName2"
       }
     ],
     "fileName": "KRD_{{index()}}"
   },
   {
-    "_id": "55f187d345b92f403ba1a88e",
+    "_id": "55f2b3bd4e785797d4865dd6",
+    "id": 1,
+    "status": "rejected",
+    "about": "Elit labore esse do duis in ad. Id aliqua reprehenderit dolor laborum laborum irure adipisicing duis aute esse ad ex Lorem. Id quis ullamco in ad aute. Sunt aliqua eu ipsum magna et ex sit. Enim irure nulla ad id. Consectetur amet cupidatat commodo sunt ipsum reprehenderit laboris id minim esse qui ipsum.",
+    "projectProgress": 89,
+    "dateUpdated": 1440605515544,
+    "dateAdded": 1431642857538,
+    "dateFinished": 1439158406282,
+    "templates": [
+      {
+        "id": 0,
+        "image": "https://placeimg.com/640/480/any?v=11",
+        "name": "templateName0"
+      },
+      {
+        "id": 1,
+        "image": "https://placeimg.com/640/480/any?v=40",
+        "name": "templateName1"
+      },
+      {
+        "id": 2,
+        "image": "https://placeimg.com/640/480/any?v=53",
+        "name": "templateName2"
+      },
+      {
+        "id": 3,
+        "image": "https://placeimg.com/640/480/any?v=66",
+        "name": "templateName3"
+      },
+      {
+        "id": 4,
+        "image": "https://placeimg.com/640/480/any?v=6",
+        "name": "templateName4"
+      }
+    ],
+    "files": [
+      {
+        "id": 0,
+        "extension": "psd",
+        "size": 76,
+        "dateUpdated": 1433365655076,
+        "name": "templateName0"
+      },
+      {
+        "id": 1,
+        "extension": "zip",
+        "size": 61,
+        "dateUpdated": 1427968367700,
+        "name": "templateName1"
+      },
+      {
+        "id": 2,
+        "extension": "7z",
+        "size": 70,
+        "dateUpdated": 1441853500079,
+        "name": "templateName2"
+      }
+    ],
+    "fileName": "SOK_{{index()}}"
+  },
+  {
+    "_id": "55f2b3bdc60e06072d7ceea0",
     "id": 2,
-    "status": "finished",
-    "about": "Nostrud anim irure sunt laborum et amet. Incididunt nostrud amet dolore eiusmod id laborum ex labore ea quis reprehenderit sunt ipsum. Velit deserunt duis aute veniam nulla enim magna deserunt eu veniam. Ad veniam adipisicing esse sunt qui elit id. Consequat eu ex amet do. Dolor labore sint quis fugiat sint cillum minim magna sint sunt do ea consectetur nostrud. Dolore est non magna voluptate est exercitation magna sit non.",
-    "projectProgress": 91,
-    "dateUpdated": 1432774531277,
-    "dateAdded": 1418275147503,
-    "dateFinished": 1416741818098,
+    "status": "complete",
+    "about": "Et cupidatat eu nisi adipisicing consectetur. Duis cupidatat ut aute amet esse fugiat cillum et ullamco. Aute id excepteur excepteur elit. Labore sunt aliqua laborum occaecat enim aliqua dolor officia minim cupidatat id commodo nisi. Elit non exercitation aliqua occaecat commodo adipisicing sit labore cupidatat aliquip amet sunt qui. Qui ipsum officia aute qui labore.",
+    "projectProgress": 99,
+    "dateUpdated": 1435100649830,
+    "dateAdded": 1425370491510,
+    "dateFinished": 1389622473517,
     "templates": [
       {
         "id": 0,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template0"
+        "image": "https://placeimg.com/640/480/any?v=11",
+        "name": "templateName0"
       },
       {
         "id": 1,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template1"
+        "image": "https://placeimg.com/640/480/any?v=40",
+        "name": "templateName1"
       },
       {
         "id": 2,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template2"
+        "image": "https://placeimg.com/640/480/any?v=53",
+        "name": "templateName2"
       },
       {
         "id": 3,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template3"
+        "image": "https://placeimg.com/640/480/any?v=66",
+        "name": "templateName3"
       },
       {
         "id": 4,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template4"
+        "image": "https://placeimg.com/640/480/any?v=6",
+        "name": "templateName4"
       }
     ],
-    "fileName": "SOK_2"
+    "files": [
+      {
+        "id": 0,
+        "extension": "psd",
+        "size": 76,
+        "dateUpdated": 1433365655076,
+        "name": "templateName0"
+      },
+      {
+        "id": 1,
+        "extension": "zip",
+        "size": 61,
+        "dateUpdated": 1427968367700,
+        "name": "templateName1"
+      },
+      {
+        "id": 2,
+        "extension": "7z",
+        "size": 70,
+        "dateUpdated": 1441853500079,
+        "name": "templateName2"
+      }
+    ],
+    "fileName": "RZF_2"
   },
   {
-    "_id": "55f187d30c120529540f6ee9",
+    "_id": "55f2b3bd2a1df28735b1699f",
     "id": 3,
-    "status": "qa",
-    "about": "Enim laboris duis ullamco laborum aute quis aute elit laborum. Excepteur labore irure deserunt reprehenderit incididunt Lorem amet labore. Excepteur nostrud nulla quis enim esse sint eu mollit esse cillum elit voluptate anim. Non commodo irure minim fugiat id. Esse labore enim eiusmod quis Lorem elit consectetur excepteur commodo culpa.",
-    "projectProgress": 59,
-    "dateUpdated": 1435357112043,
-    "dateAdded": 1437400682031,
-    "dateFinished": 1394035094027,
+    "status": "inprogress",
+    "about": "Nostrud officia aliquip occaecat esse incididunt nulla aute sit. Incididunt deserunt adipisicing laborum exercitation ex anim velit exercitation culpa fugiat anim pariatur adipisicing id. Dolore velit fugiat cupidatat ipsum ullamco eiusmod incididunt. Esse esse voluptate commodo amet non consectetur et pariatur cupidatat.",
+    "projectProgress": 88,
+    "dateUpdated": 1431028352852,
+    "dateAdded": 1388608695356,
+    "dateFinished": 1429850359639,
     "templates": [
       {
         "id": 0,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template0"
+        "image": "https://placeimg.com/640/480/any?v=11",
+        "name": "templateName0"
       },
       {
         "id": 1,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template1"
+        "image": "https://placeimg.com/640/480/any?v=40",
+        "name": "templateName1"
       },
       {
         "id": 2,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template2"
+        "image": "https://placeimg.com/640/480/any?v=53",
+        "name": "templateName2"
       },
       {
         "id": 3,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template3"
+        "image": "https://placeimg.com/640/480/any?v=66",
+        "name": "templateName3"
       },
       {
         "id": 4,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template4"
+        "image": "https://placeimg.com/640/480/any?v=6",
+        "name": "templateName4"
       }
     ],
-    "fileName": "KRD_3"
+    "files": [
+      {
+        "id": 0,
+        "extension": "psd",
+        "size": 76,
+        "dateUpdated": 1433365655076,
+        "name": "templateName0"
+      },
+      {
+        "id": 1,
+        "extension": "zip",
+        "size": 61,
+        "dateUpdated": 1427968367700,
+        "name": "templateName1"
+      },
+      {
+        "id": 2,
+        "extension": "7z",
+        "size": 70,
+        "dateUpdated": 1441853500079,
+        "name": "templateName2"
+      }
+    ],
+    "fileName": "RZF_3"
   },
   {
-    "_id": "55f187d306670ce1a265828e",
+    "_id": "55f2b3bdabdcbad326240586",
     "id": 4,
-    "status": "qa",
-    "about": "Ad id do excepteur proident proident consectetur sint exercitation sint ullamco in. Pariatur voluptate cupidatat quis fugiat incididunt. Sint ut minim occaecat fugiat velit quis deserunt proident mollit occaecat.",
-    "projectProgress": 73,
-    "dateUpdated": 1438448695967,
-    "dateAdded": 1432292437398,
-    "dateFinished": 1431956426109,
+    "status": "complete",
+    "about": "Aliquip tempor cupidatat do veniam et exercitation cillum elit proident. Quis elit non tempor fugiat nisi incididunt amet. Elit laboris enim dolor magna occaecat laboris ipsum. Aliqua ex est laborum mollit amet do elit. Enim ex occaecat et nisi laboris eu irure sit tempor est elit veniam. Cillum proident dolor laborum nostrud est est ea qui laborum eiusmod officia. Proident reprehenderit deserunt ad ipsum aliquip exercitation laborum proident officia proident enim nisi ex excepteur.",
+    "projectProgress": 86,
+    "dateUpdated": 1429161846083,
+    "dateAdded": 1391670568029,
+    "dateFinished": 1399953662621,
     "templates": [
       {
         "id": 0,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template0"
+        "image": "https://placeimg.com/640/480/any?v=11",
+        "name": "templateName0"
       },
       {
         "id": 1,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template1"
+        "image": "https://placeimg.com/640/480/any?v=40",
+        "name": "templateName1"
       },
       {
         "id": 2,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template2"
+        "image": "https://placeimg.com/640/480/any?v=53",
+        "name": "templateName2"
       },
       {
         "id": 3,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template3"
+        "image": "https://placeimg.com/640/480/any?v=66",
+        "name": "templateName3"
       },
       {
         "id": 4,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template4"
+        "image": "https://placeimg.com/640/480/any?v=6",
+        "name": "templateName4"
       }
     ],
-    "fileName": "RZF_4"
+    "files": [
+      {
+        "id": 0,
+        "extension": "psd",
+        "size": 76,
+        "dateUpdated": 1433365655076,
+        "name": "templateName0"
+      },
+      {
+        "id": 1,
+        "extension": "zip",
+        "size": 61,
+        "dateUpdated": 1427968367700,
+        "name": "templateName1"
+      },
+      {
+        "id": 2,
+        "extension": "7z",
+        "size": 70,
+        "dateUpdated": 1441853500079,
+        "name": "templateName2"
+      }
+    ],
+    "fileName": "SOK_4"
   },
   {
-    "_id": "55f187d3d033c468606131c3",
+    "_id": "55f2b3bd916f9185e7a700e5",
     "id": 5,
-    "status": "finished",
-    "about": "Officia voluptate eu deserunt eiusmod incididunt reprehenderit laboris officia incididunt ad dolore irure anim ut. Cupidatat nulla do quis nostrud cillum ipsum elit. Dolor adipisicing dolor mollit pariatur anim elit qui eu. Aute laborum minim cupidatat culpa nisi consectetur. Minim eiusmod cupidatat exercitation quis anim voluptate fugiat commodo pariatur elit. Pariatur voluptate do culpa ex sit nisi minim in incididunt magna enim eu.",
-    "projectProgress": 23,
-    "dateUpdated": 1433976054243,
-    "dateAdded": 1432398750777,
-    "dateFinished": 1395245449924,
+    "status": "qa",
+    "about": "Dolor aliqua aliquip ullamco eu eu consequat. In officia minim nisi duis qui esse aliqua et amet consequat nisi sit. Anim nulla ea duis occaecat eiusmod pariatur ea. Sint commodo Lorem pariatur minim exercitation. Nostrud consectetur tempor nostrud anim quis sit culpa sunt sit tempor esse minim aute et. Aliqua proident ea nisi excepteur officia eu consectetur ipsum.",
+    "projectProgress": 22,
+    "dateUpdated": 1426930247874,
+    "dateAdded": 1418335358836,
+    "dateFinished": 1409997731741,
     "templates": [
       {
         "id": 0,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template0"
+        "image": "https://placeimg.com/640/480/any?v=11",
+        "name": "templateName0"
       },
       {
         "id": 1,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template1"
+        "image": "https://placeimg.com/640/480/any?v=40",
+        "name": "templateName1"
       },
       {
         "id": 2,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template2"
+        "image": "https://placeimg.com/640/480/any?v=53",
+        "name": "templateName2"
       },
       {
         "id": 3,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template3"
+        "image": "https://placeimg.com/640/480/any?v=66",
+        "name": "templateName3"
       },
       {
         "id": 4,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template4"
+        "image": "https://placeimg.com/640/480/any?v=6",
+        "name": "templateName4"
       }
     ],
-    "fileName": "RZF_5"
-  },
-  {
-    "_id": "55f187d3af4a8c0b583242da",
-    "id": 6,
-    "status": "new",
-    "about": "Officia aliqua minim esse mollit ex laborum ad sit Lorem esse tempor ut. Ipsum occaecat ullamco officia aute labore magna qui cillum non occaecat. Sunt est ullamco minim amet laboris esse fugiat eu ipsum aliquip dolore. Non exercitation ut ex minim fugiat.",
-    "projectProgress": 35,
-    "dateUpdated": 1440706671371,
-    "dateAdded": 1408474572026,
-    "dateFinished": 1398999896966,
-    "templates": [
+    "files": [
       {
         "id": 0,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template0"
+        "extension": "psd",
+        "size": 76,
+        "dateUpdated": 1433365655076,
+        "name": "templateName0"
       },
       {
         "id": 1,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template1"
+        "extension": "zip",
+        "size": 61,
+        "dateUpdated": 1427968367700,
+        "name": "templateName1"
       },
       {
         "id": 2,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template2"
+        "extension": "7z",
+        "size": 70,
+        "dateUpdated": 1441853500079,
+        "name": "templateName2"
+      }
+    ],
+    "fileName": "SOK_5"
+  },
+  {
+    "_id": "55f2b3bd0bad98a92f29a35e",
+    "id": 6,
+    "status": "rejected",
+    "about": "Cupidatat pariatur et enim incididunt voluptate nulla do deserunt voluptate. Non occaecat do consequat dolor ut non labore aute laboris aliquip id. Id dolore dolore duis labore fugiat ullamco eu excepteur cillum esse.",
+    "projectProgress": 85,
+    "dateUpdated": 1427586788002,
+    "dateAdded": 1412650323718,
+    "dateFinished": 1388833477966,
+    "templates": [
+      {
+        "id": 0,
+        "image": "https://placeimg.com/640/480/any?v=11",
+        "name": "templateName0"
+      },
+      {
+        "id": 1,
+        "image": "https://placeimg.com/640/480/any?v=40",
+        "name": "templateName1"
+      },
+      {
+        "id": 2,
+        "image": "https://placeimg.com/640/480/any?v=53",
+        "name": "templateName2"
       },
       {
         "id": 3,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template3"
+        "image": "https://placeimg.com/640/480/any?v=66",
+        "name": "templateName3"
       },
       {
         "id": 4,
-        "image": "https://placeimg.com/640/480/any",
-        "name": "template4"
+        "image": "https://placeimg.com/640/480/any?v=6",
+        "name": "templateName4"
+      }
+    ],
+    "files": [
+      {
+        "id": 0,
+        "extension": "psd",
+        "size": 76,
+        "dateUpdated": 1433365655076,
+        "name": "templateName0"
+      },
+      {
+        "id": 1,
+        "extension": "zip",
+        "size": 61,
+        "dateUpdated": 1427968367700,
+        "name": "templateName1"
+      },
+      {
+        "id": 2,
+        "extension": "7z",
+        "size": 70,
+        "dateUpdated": 1441853500079,
+        "name": "templateName2"
       }
     ],
     "fileName": "SOK_6"
   }
-];
+]
