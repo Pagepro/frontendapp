@@ -34,18 +34,18 @@ gulp.task('sass', function () {
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./app/css'))
+        .pipe(gulp.dest('./partials/css'))
         .pipe(reload({
             stream: true
         }));
 });
 gulp.task('autoprefixer', function () {
-    return gulp.src('app/css/*.css')
+    return gulp.src('partials/css/*.css')
         .pipe(autoprefixer({
             browsers: ['> 1%'],
             cascade: false
         }))
-        .pipe(gulp.dest('app/css/'));
+        .pipe(gulp.dest('partials/css/'));
 });
 
 gulp.task('default', ['sass', 'watch', 'serve']);

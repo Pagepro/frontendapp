@@ -1,16 +1,16 @@
 (function() {
   'use strict';
-  var templatePreview = function() {
+  var templatePreview = function(statusService) {
     return {
       restrict: 'E',
       templateUrl: 'app/panel/directives/templatePreview/templatePreview.html',
       link: function (scope) {
-        console.log(scope);
+        scope.projectStatus = statusService.getStatus(scope.template.statusCode);
       }
     };
   };
 
-  templatePreview.$inject = [];
+  templatePreview.$inject = ['statusService'];
   angular.module('frontendApp').directive('templatePreview', templatePreview);
 
 }());

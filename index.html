@@ -15,11 +15,12 @@
     </head>
     <body ng-app="frontendApp" ng-class="{'page--not-logged-in': showBodyBackground}">
         <header-section></header-section>
-        <ui-view></ui-view>
+        <ui-view class="slide-left"></ui-view>
 
         <!-- Libraries -->
         <script src="lib/angular/angular.js"></script>
         <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+        <script src="lib/angular-animate/angular-animate.js"></script>
         <script src="lib/angular-off-click/offClick.js"></script>
 
         <!--  App -->
@@ -38,6 +39,7 @@
         <!-- Panel Module -->
         <script src="app/panel/panel.js"></script>
         <script src="app/panel/services/projectsFactory.js"></script>
+        <script src="app/panel/services/statusService.js"></script>
         <script src="app/panel/directives/templatePreview/templatePreview.js"></script>
         <script src="app/panel/controllers/MyProjectsCtrl.js"></script>
         <script src="app/panel/controllers/AllProjectsCtrl.js"></script>

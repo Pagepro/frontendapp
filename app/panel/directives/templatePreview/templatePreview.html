@@ -1,6 +1,6 @@
 <div class="template__background" style="background-image: url('{{ template.image }}')"></div>
-<span class="template__status template__status--complete">Complete</span>
-<span class="template__handle">Move</span>
+<span class="template__status template__status--{{ projectStatus.className }}">{{ projectStatus.labelContent }}</span>
+<span class="template__handle" ng-hide="true">Move</span>
 <div class="template__details">
     <div class="template__details__title__wrapper">
         <h2 class="template__details__title">{{ template.name }}</h2>
