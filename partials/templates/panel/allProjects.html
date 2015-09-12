@@ -1,0 +1,40 @@
+<main class="sec-content">
+     <div class="sec-content__inner">
+         <div class="all-projects">
+             <h1 class="all-projects__title sec-title">All Projects</h1>
+             <table class="all-projects-table project-table">
+                 <thead>
+                     <tr class="project-table__title">
+                         <th>No</th>
+                         <th class="project-table--description-head">Project</th>
+                         <th>Status</th>
+                         <th>Date Created</th>
+                         <th>Date Finished</th>
+                     </tr>
+                 </thead>
+                 <tbody>
+                     <tr class="table-spacer" ng-repeat-start="project in allProjects" ng-hide="$first"><td>&nbsp;</td></tr>
+                     <tr ng-repeat-end>
+                         <td class="all-projects-table-m--number">No</td>
+                         <td class="all-projects-table-m--description">Project</td>
+                         <td class="all-projects-table--number">{{$index + 1}}</td>
+                         <td class="all-projects-table--description">{{project.fileName}}</td>
+                         <td class="all-projects-table-m--status">Status</td>
+                         <td class="all-projects-table--status all-projects-table--status-qa">{{project.status}}</td> <!-- class should change depends on returned status -->
+                         <td class="all-projects-table-m--date-start">Date created</td>
+                         <td class="all-projects-table-m--date-end">Date finished</td>
+                         <td class="all-projects-table--date-start ">{{project.dateAdded | date:'dd/MM/yyyy hh:mm'}}</td>
+                         <td class="all-projects-table--date-end">{{project.dateFinished | date:'dd/MM/yyyy hh:mm'}}</td>
+                     </tr>
+                 </tbody>
+             </table>
+             <ul class="all-projects__pagination">
+                 <li class="all-projects__pagination__item all-projects__pagination__item--prev"><a href="#" class="all-projects__pagination__item__inner"><span class="pagination-prev">Prev</span></a></li>
+                 <li class="all-projects__pagination__item"><a href="#" class="all-projects__pagination__item__inner">1</a></li>
+                 <li class="all-projects__pagination__item"><a href="#" class="all-projects__pagination__item__inner">2</a></li>
+                 <li class="all-projects__pagination__item active"><a href="#" class="all-projects__pagination__item__inner">3</a></li>
+                 <li class="all-projects__pagination__item all-projects__pagination__item--next"><a href="#" class="all-projects__pagination__item__inner"><span class="pagination-next">Next</span></a></li>
+             </ul>
+         </div>
+     </div>
+ </main>
