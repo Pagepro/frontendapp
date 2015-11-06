@@ -5,8 +5,12 @@
 /* Normalize
    ========================================================================== */
 @import "partials/normalize";
+@import "sprites";
+@import "../../lib/breakpoint-sass/stylesheets/breakpoint";
 
-//@import "bower_components/breakpoint-sass/stylesheets/breakpoint";
+/* External fonts
+   ========================================================================== */
+@import "partials/fonts";
 
 /* Variables (colors, sizes, fonts)
    ========================================================================== */
@@ -40,10 +44,6 @@
    ========================================================================== */
 @import "partials/components";
 
-/* Table Styles
-   ========================================================================== */
-@import "partials/tables";
-
 /* Vendor CSS
    ========================================================================== */
 @import "partials/vendor";
@@ -55,7 +55,3 @@
 /* Print Styles
    ========================================================================== */
 @import "partials/print";
-
-/* Angular animations
-   ========================================================================== */
-@import "partials/animations";

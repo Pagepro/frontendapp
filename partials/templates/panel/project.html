@@ -1,4 +1,375 @@
-<main class="sec-content">
+<main class="sec--main">
+    <div class="sec--main__head">
+        <div class="sec--main__inner">
+            <div class="project-essential-box">
+                <div class="project-essential-box__head">
+                    <h2 class="page-back">
+                        <a href="my-projects.html" class="page-back__content">
+                            <span class="icon icon--open-big--left"></span>
+                            <span class="main-title">
+                                <span class="label">{{ project.fileName }}</span>
+                            </span>
+                        </a>
+                        <span class="page-back__info">
+                            <span class="tooltip">
+                                <span class="label">Back to My Projects</span>
+                            </span>
+                        </span>
+                    </h2>
+                </div>
+                <div class="project-essential-box__content">
+                    <div class="progress-bar-wrapper">
+                        <progress class="progress-bar progress-bar--alt" value="{{ project.projectProgress}}" max="100"></progress>
+                        <p class="progress-bar-value">
+                            <span class="qty"></span>
+                            <span>%</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sec--main__content">
+        <section class="subsec">
+            <div class="subsec__inner">
+                <div class="subsec__head">
+                    <h3 class="subtitle">
+                        <span class="label">Project Templates</span>
+                    </h3>
+                    <ul class="display-mode-list">
+                        <li class="display-mode-list__item">
+                            <div class="dispaly-mode">
+                                <a href="project-details-list.html" class="dispaly-mode__content">
+                                    <span class="icon icon--display-mode"></span>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="display-mode-list__item active">
+                            <div class="dispaly-mode">
+                                <a href="project-details.html" class="dispaly-mode__content">
+                                    <span class="icon icon--display-mode--alt"></span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="subsec__content">
+                    <div class="project-box">
+                        <div class="project-box__content">
+                            <ul class="teasers-list">
+                                <li class="teasers-list__item">
+                                    <div class="teaser action-teaser js-teaser">
+                                        <div class="teaser__inner">
+                                            <div class="teaser__head">
+                                                <span class="icon icon--upload"></span>
+                                            </div>
+                                            <div class="teaser__content">
+                                                <form class="project-action-form">
+                                                    <fieldset class="form__fieldset">
+                                                        <div class="field field--input">
+                                                            <label class="label" for="project-name">Upload Templates</label>
+                                                            <input type="file" name="add_file" class="input input--file" id="project-name">
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="teasers-list__item" ng-repeat="template in project.templates">
+                                    <template-preview></template-preview>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="project-box__actions">
+                            <a href="#" class="action-btn">
+                                <span class="action-btn__content">
+                                    <span class="label">Download all templates (<span class="qty">7</span>)</span>
+                                    <span class="icon icon--download"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="subsec">
+            <div class="subsec__inner">
+                <div class="subsec__head">
+                    <h3 class="subtitle">
+                        <span class="label">Project Files</span>
+                    </h3>
+                </div>
+                <div class="subsec__content">
+                    <div class="project-box">
+                        <div class="project-box__content">
+                            <div class="files-box">
+                                <div class="files-box__head">
+                                    <div class="files-box__number">
+                                        <p class="filebox-title">No</p>
+                                    </div>
+                                    <div class="files-box__name">
+                                        <p class="filebox-title">File name</p>
+                                    </div>
+                                    <div class="files-box__extention">
+                                        <p class="filebox-title">Extention</p>
+                                    </div>
+                                    <div class="files-box__size">
+                                        <p class="filebox-title">Size</p>
+                                    </div>
+                                    <div class="files-box__uploaded-date">
+                                        <p class="filebox-title">Uploaded date</p>
+                                    </div>
+                                    <div class="files-box__actions">
+                                        <p class="filebox-title">Actions</p>
+                                    </div>
+                                </div>
+                                <div class="files-box__content">
+                                    <div class="files-box__number">
+                                    </div>
+                                    <ol class="files-list">
+                                        <li class="files-list__item">
+                                            <div class="files-list__item__inner">
+                                                <div class="files-list__item__counter">
+                                                </div>
+                                                <div class="files-list__item__content">
+                                                    <div class="file-data">
+                                                        <div class="file-data__inner">
+                                                            <div class="file-data__name">
+                                                                <h4 class="project-title">
+                                                                    <span class="label">Noragain.psd</span>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="file-data__extention">
+                                                                <div class="extention-label extention-label--psd">
+                                                                    <p class="label">psd</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-data__size">
+                                                                <p class="file-size">
+                                                                    <span class="size">10.5</span>
+                                                                    <span class="unit">MB</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="file-data__uploaded-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                            <div class="file-data__actions">
+                                                                <ul class="action-tools-list">
+                                                                    <li class="action-tools-list__item">
+                                                                        <div class="action-tool action-tool--highlighted" aria-label="download file">
+                                                                            <a href="#" target="_blank" class="action-tool__content">
+                                                                                <span class="icon icon--download"></span>
+                                                                            </a>
+                                                                            <div class="action-tool__info">
+                                                                                <div class="tooltip">
+                                                                                    <h4 class="label">Download</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="action-tools-list__item">
+                                                                        <div class="action-tool action-tool--highlighted" aria-label="delete file">
+                                                                            <a href="#" target="_blank" class="action-tool__content">
+                                                                                <span class="icon icon--trash"></span>
+                                                                            </a>
+                                                                            <div class="action-tool__info">
+                                                                                <div class="tooltip">
+                                                                                    <h4 class="label">Delete</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="files-list__item">
+                                            <div class="files-list__item__inner">
+                                                <div class="files-list__item__counter">
+                                                </div>
+                                                <div class="files-list__item__content">
+                                                    <div class="file-data">
+                                                        <div class="file-data__inner">
+                                                            <div class="file-data__name">
+                                                                <h4 class="project-title">
+                                                                    <span class="label">Loremipsumsetamet.psd</span>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="file-data__extention">
+                                                                <div class="extention-label extention-label--psd">
+                                                                    <p class="label">psd</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-data__size">
+                                                                <p class="file-size">
+                                                                    <span class="size">2.5</span>
+                                                                    <span class="unit">MB</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="file-data__uploaded-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                            <div class="file-data__actions">
+                                                                <ul class="action-tools-list">
+                                                                    <li class="action-tools-list__item">
+                                                                        <div class="action-tool action-tool--highlighted" aria-label="download file">
+                                                                            <a href="#" target="_blank" class="action-tool__content">
+                                                                                <span class="icon icon--download"></span>
+                                                                            </a>
+                                                                            <div class="action-tool__info">
+                                                                                <div class="tooltip">
+                                                                                    <h4 class="label">Download</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="action-tools-list__item">
+                                                                        <div class="action-tool action-tool--highlighted" aria-label="delete file">
+                                                                            <a href="#" target="_blank" class="action-tool__content">
+                                                                                <span class="icon icon--trash"></span>
+                                                                            </a>
+                                                                            <div class="action-tool__info">
+                                                                                <div class="tooltip">
+                                                                                    <h4 class="label">Delete</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="files-list__item">
+                                            <div class="files-list__item__inner">
+                                                <div class="files-list__item__counter">
+                                                </div>
+                                                <div class="files-list__item__content">
+                                                    <div class="file-data">
+                                                        <div class="file-data__inner">
+                                                            <div class="file-data__name">
+                                                                <h4 class="project-title">
+                                                                    <span class="label">Atvero.zip</span>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="file-data__extention">
+                                                                <div class="extention-label extention-label--zip">
+                                                                    <p class="label">zip</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-data__size">
+                                                                <p class="file-size">
+                                                                    <span class="size">2.5</span>
+                                                                    <span class="unit">MB</span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="file-data__uploaded-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                            <div class="file-data__actions">
+                                                                <ul class="action-tools-list">
+                                                                    <li class="action-tools-list__item">
+                                                                        <div class="action-tool action-tool--highlighted" aria-label="download file">
+                                                                            <a href="#" target="_blank" class="action-tool__content">
+                                                                                <span class="icon icon--download"></span>
+                                                                            </a>
+                                                                            <div class="action-tool__info">
+                                                                                <div class="tooltip">
+                                                                                    <h4 class="label">Download</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li class="action-tools-list__item">
+                                                                        <div class="action-tool action-tool--highlighted" aria-label="delete file">
+                                                                            <a href="#" target="_blank" class="action-tool__content">
+                                                                                <span class="icon icon--trash"></span>
+                                                                            </a>
+                                                                            <div class="action-tool__info">
+                                                                                <div class="tooltip">
+                                                                                    <h4 class="label">Delete</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-box__actions">
+                            <a href="#" class="action-btn">
+                                <span class="action-btn__content">
+                                    <span class="label">Download all files (<span class="qty">1188</span>)</span>
+                                    <span class="icon icon--download"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="subsec">
+            <div class="subsec__inner">
+                <div class="subsec__head">
+                    <h3 class="subtitle">
+                        <span class="label">Other informations</span>
+                    </h3>
+                </div>
+                <div class="subsec__content">
+                    <div class="project-box">
+                        <div class="project-box__content">
+                            <div class="project-time-box">
+                                <ul class="project-time-list">
+                                    <li class="project-time-list__item">
+                                        <div class="project-time">
+                                            <p class="project-time__head">
+                                                <span class="hours">20</span>
+                                                <span>h</span>
+                                            </p>
+                                            <p class="project-time__info-add">
+                                                ETA
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="project-time-list__item">
+                                        <div class="project-time">
+                                            <time class="project-time__head" datetime="{{ project.dateAdded | date:'dd/MM/yyyy' }}">{{ project.dateAdded | date:'dd/MM/yyyy' }}</time>
+                                            <p class="project-time__info-add">
+                                                Start date
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li class="project-time-list__item">
+                                        <div class="project-time">
+                                            <time class="project-time__head" datetime="{{ project.dateFinished | date:'dd/MM/yyyy' }}">{{ project.dateFinished | date:'dd/MM/yyyy' }}</time>
+                                            <p class="project-time__info-add">
+                                                Date of delivery
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!-- <main class="sec-content">
    <div class="sec-content__inner">
        <div class="project-details">
            <h1 class="project-details__title sec-title">{{ project.fileName }}</h1>
@@ -48,6 +419,8 @@
                    </tr>
                </thead>
                <tbody>
+
+
                    <tr ng-repeat-start="file in project.files" class="table-spacer" ng-hide="$first"><td>&nbsp;</td></tr>
                    <tr ng-repeat-end>
                        <td class="project-details-table-m--number">No</td>
@@ -82,3 +455,4 @@
    </div>
 </div>
 </main>
+ -->

@@ -1,5 +1,7 @@
 var express = require('express');
 var cors = require('cors');
+var Chance = require('chance');
+var chance = new Chance();
 var fs = require('fs');
 var projects;
 
@@ -83,3 +85,4 @@ app.get('/projects', function(req, res) {
 app.listen(8080);
 
 console.log('Express listening on port 8080');
+console.log(chance.integer());

@@ -1,4 +1,4 @@
-<div class="form-holder">
+<!-- <div class="form-holder">
     <form class="form-login forms__content__item" id="form-login" name="form-login" ng-submit="submitForm()">
         <div class="form-login__fieldset fields">
             <input type="text" class="fields__field" placeholder="E-mail" name="email02" id="email02"/>
@@ -7,3 +7,47 @@
         <button type="submit" class="form-login__button">Submit</button>
     </form>
 </div>
+ -->
+<form class="access-form" id="form-login" name="form-login" ng-submit="submitForm()">
+    <fieldset class="form__fieldset">
+        <div class="form__content">
+            <div class="form__section">
+                <div class="field field--input">
+                    <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="field_05">
+                </div>
+                <div class="field field--info">
+                    <div class="form-info required">
+                        <p>This field is required</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form__section">
+                <div class="field field--input">
+                    <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_06">
+                </div>
+                <div class="field field--info">
+                    <div class="form-info required">
+                        <p>This field is required</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form__actions">
+            <div class="form__section">
+                <button type="submit" class="btn btn--submit">
+                    <span class="label">Submit</span>
+                </button>
+                <div class="field field--info">
+                    <div class="form-info required">
+                        <p>Login or password is incorrect</p>
+                    </div>
+                </div>
+                <div class="field field--cta">
+                    <a href="remind-password.html" class="forgot-password-link">
+                        <span class="label">Forgot password?</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>

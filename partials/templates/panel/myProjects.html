@@ -1,4 +1,216 @@
+<main class="sec--main">
+    <div class="sec--main__head">
+        <div class="sec--main__inner">
+            <h2 class="main-title">
+                <span class="label">My Projects</span>
+            </h2>
+        </div>
+    </div>
+    <div class="sec--main__content">
+        <section class="subsec">
+            <div class="subsec__inner">
+                <div class="subsec__content">
+                    <div class="project-box">
+                        <div class="project-box__content">
+                            <ul class="teasers-list">
+                                <li class="teasers-list__item">
+                                    <div class="teaser action-teaser js-teaser">
+                                        <div class="teaser__inner">
+                                            <div class="teaser__head">
+                                                <span class="icon icon--plus"></span>
+                                            </div>
+                                            <div class="teaser__content">
+                                                <form class="project-action-form">
+                                                    <fieldset class="form__fieldset">
+                                                        <div class="field field--input">
+                                                            <label class="label" for="project-name">New Project</label>
+                                                            <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name">
+                                                        </div>
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
 
+                                <li class="teasers-list__item" ng-repeat="project in myProjects">
+                                    <div class="teaser project-teaser">
+                                        <a href="#/project/{{ project.id }}" class="teaser__inner">
+                                            <div class="teaser__actions">
+                                                <div class="status-label status-label--new">
+                                                    <p class="label">New</p>
+                                                </div>
+                                            </div>
+                                            <div class="teaser__head">
+                                                <div class="teaser__head__photo" style="background-image: url({{ project.templates[0].image }}{{ $index }})"></div>
+                                            </div>
+                                            <div class="teaser__content">
+                                                <div class="update-info">
+                                                    <div class="update-info__content">
+                                                        <span class="icon icon--clock"></span>
+                                                        <p class="label">
+                                                            Updated: <time datetime="2015-02-22 20:00">{{ project.dateAdded | date: 'dd.MM.yyyy' }}</time>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <progress class="progress-bar" value="{{ project.projectProgress }}" max="100"></progress>
+                                                <h3 class="project-title">
+                                                    <span class="label">{{ project.fileName }}</span>
+                                                </h3>
+                                                <p class="templates-info">
+                                                    <span class="qty">{{ project.templates.length }}</span>
+                                                    <span class="label">templates</span>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <!-- <li class="teasers-list__item">
+                                    <div class="teaser project-teaser">
+                                        <a href="project-details.html" class="teaser__inner">
+                                            <div class="teaser__actions">
+                                                <div class="status-label status-label--in-progress">
+                                                    <p class="label">in progress</p>
+                                                </div>
+                                            </div>
+                                            <div class="teaser__head">
+                                                <div class="teaser__head__photo" style="background-image: url(static/img/pic_project-2.jpg)"></div>
+                                            </div>
+                                            <div class="teaser__content">
+                                                <div class="update-info">
+                                                    <div class="update-info__content">
+                                                        <span class="icon icon--clock"></span>
+                                                        <p class="label">
+                                                            Updated: <time datetime="2015-02-22 20:00">22.02.2015</time>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <progress class="progress-bar" value="60" max="100"></progress>
+                                                <h3 class="project-title">
+                                                    <span class="label">Home Page</span>
+                                                </h3>
+                                                <p class="templates-info">
+                                                    <span class="qty">29</span>
+                                                    <span class="label">templates</span>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="teasers-list__item">
+                                    <div class="teaser project-teaser">
+                                        <a href="project-details.html" class="teaser__inner">
+                                            <div class="teaser__actions">
+                                                <div class="status-label status-label--finished">
+                                                    <p class="label">finished</p>
+                                                </div>
+                                            </div>
+                                            <div class="teaser__head">
+                                                <div class="teaser__head__photo" style="background-image: url(static/img/pic_project-3.jpg)"></div>
+                                            </div>
+                                            <div class="teaser__content">
+                                                <div class="update-info">
+                                                    <div class="update-info__content">
+                                                        <span class="icon icon--clock"></span>
+                                                        <p class="label">
+                                                            Updated: <time datetime="2015-02-22 20:00">22.02.2015</time>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <progress class="progress-bar" value="100" max="100"></progress>
+                                                <h3 class="project-title">
+                                                    <span class="label">Contact</span>
+                                                </h3>
+                                                <p class="templates-info">
+                                                    <span class="qty">29</span>
+                                                    <span class="label">templates</span>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="teasers-list__item">
+                                    <div class="teaser project-teaser">
+                                        <a href="project-details.html" class="teaser__inner">
+                                            <div class="teaser__actions">
+                                                <div class="status-label status-label--qa">
+                                                    <p class="label">Q&amp;A</p>
+                                                </div>
+                                            </div>
+                                            <div class="teaser__head">
+                                                <div class="teaser__head__photo" style="background-image: url(static/img/pic_project-2.jpg)"></div>
+                                            </div>
+                                            <div class="teaser__content">
+                                                <div class="update-info">
+                                                    <div class="update-info__content">
+                                                        <span class="icon icon--clock"></span>
+                                                        <p class="label">
+                                                            Updated: <time datetime="2015-02-22 20:00">22.02.2015</time>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <progress class="progress-bar" value="100" max="100"></progress>
+                                                <h3 class="project-title">
+                                                    <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+                                                </h3>
+                                                <p class="templates-info">
+                                                    <span class="qty">29</span>
+                                                    <span class="label">templates</span>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="teasers-list__item">
+                                    <div class="teaser project-teaser">
+                                        <a href="project-details.html" class="teaser__inner">
+                                            <div class="teaser__actions">
+                                                <div class="status-label status-label--in-progress">
+                                                    <p class="label">in progress</p>
+                                                </div>
+                                            </div>
+                                            <div class="teaser__head">
+                                                <div class="teaser__head__photo" style="background-image: url(static/img/pic_project-3.jpg)"></div>
+                                            </div>
+                                            <div class="teaser__content">
+                                                <div class="update-info">
+                                                    <div class="update-info__content">
+                                                        <span class="icon icon--clock"></span>
+                                                        <p class="label">
+                                                            Updated: <time datetime="2015-02-22 20:00">22.02.2015</time>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <progress class="progress-bar" value="36" max="100"></progress>
+                                                <h3 class="project-title">
+                                                    <span class="label">Some Page</span>
+                                                </h3>
+                                                <p class="templates-info">
+                                                    <span class="qty">29</span>
+                                                    <span class="label">templates</span>
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li> -->
+                            </ul>
+                        </div>
+                        <div class="project-box__actions">
+                            <a href="#/all-projects" class="action-btn">
+                                <span class="action-btn__content">
+                                    <span class="label">All projects</span>
+                                    <span class="icon icon--folder"></span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!--
 <main class="sec-content">
      <div class="sec-content__inner">
          <div class="projects-list">
@@ -19,7 +231,7 @@
                      ng-repeat="project in myProjects">
 
                      <a href="#/project/{{project.id}}">
-                        <div class="project__background" style="background-image: url('{{project.templates[0].image}}')"> <!-- how should I link backgroud for this? -->
+                        <div class="project__background" style="background-image: url('{{project.templates[0].image}}')">
                         </div>
                         <div class="project__details">
                              <p class="project__details__time">Updated: {{ project.dateAdded | date:'dd.MM.yyyy' }}</p>
@@ -36,3 +248,4 @@
          </div>
      </div>
  </main>
+ -->

@@ -1,32 +1,124 @@
 /* ==========================================================================
    Extends
    ========================================================================== */
+#kss-node {
+    .kss-wrapper {
+        width: 100%;
+    }
+}
 
 /* Place for helper classes to use for extending other modules.
    ========================================================================== */
+// Fonts
+//
+//
+// Styleguide 1
 
-%pseudoelements {
-    position: absolute;
+// Roboto - $font_normal
+//
+// .font--normal--100 - Roboto Thin, font-weight: 100
+// .font--normal--300 - Roboto Light, font-weight: 300
+// .font--normal--400 - Roboto Normal, font-weight: 400
+// .font--normal--500 - Roboto Medium, font-weight: 500
+// .font--normal--700 - Roboto Bold, font-weight: 700
+// .font--normal--900 - Roboto Ultra-Bold, font-weight: 900
+//
+// Markup:
+// <p class="font--normal {{modifier_class}}" style="font-size: 22px">Text example amet, italic text example elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure bold italic text example in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<br>AĄ aą ZŻ zż ZŹ zź LŁ lł OÓ oó CĆ cć</p>
+//
+// Styleguide 1.1
 
-    width: 0;
-    height: 0;
-
-    content: '';
+.font {
+    &--normal {
+        font-family: $font_normal;
+        &--100 {
+            font-weight: 100;
+        }
+        &--300 {
+            font-weight: 300;
+        }
+        &--400 {
+            font-weight: 400;
+        }
+        &--500 {
+            font-weight: 500;
+        }
+        &--700 {
+            font-weight: 700;
+        }
+        &--900 {
+            font-weight: 900;
+        }
+    }
 }
 
-%btn {
-    position: relative;
+// Colors
+//
+//
+// Styleguide 2
 
-    cursor: pointer;
-    transition: background-color 200ms ease;
-    text-transform: uppercase;
+// Colors
+//
+// .color_white - white Color Example
+// .color_grey_0 - grey_0 Color Example
+// .color_grey_1 - grey_1 Color Example
+// .color_grey_2 - grey_2 Color Example
+// .color_grey_3 - grey_3 Color Example
+// .color_grey_4 - grey_4 Color Example
+// .color_grey_5 - grey_5 Color Example
+// .color_black - black Color Example
+// .color_green - green Color Example
+// .color_blue - blue Color Example
+// .color_purple - purple Color Example
+// .color_red_dark - red_dark Color Example
+// .color_red - red Color Example
+//
+// Markup:
+// <div class="{{modifier_class}}" style="width: 50px; height: 50px;"></div>
+//
+// Styleguide 2.1
 
-    color: $color_white;
-    border: 0;
-    background-color: $color_red;
-    &:hover {
-        text-decoration: none;
-
-        background-color: $color_bg_project;
+.color {
+    &_white {
+        border: 1px solid #f4f4f4;
+        background: $color_white;
+    }
+    &_grey {
+        &_0 {
+            background: $color_grey_0;
+        }
+        &_1 {
+            background: $color_grey_1;
+        }
+        &_2 {
+            background: $color_grey_2;
+        }
+        &_3 {
+            background: $color_grey_3;
+        }
+        &_4 {
+            background: $color_grey_4;
+        }
+        &_5 {
+            background: $color_grey_5;
+        }
+    }
+    &_black {
+        background: $color_black;
+    }
+    &_green {
+        background: $color_green;
+    }
+    &_blue {
+        background: $color_blue;
+    }
+    &_purple {
+        background: $color_purple;
+    }
+    &_red {
+        background: $color_red;
+        &_dark {
+            background: $color_red_dark;
+        }
     }
 }

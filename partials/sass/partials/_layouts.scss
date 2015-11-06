@@ -1,310 +1,145 @@
 /* ==========================================================================
    Layouts
    ========================================================================== */
-body {
-    margin: 0;
-
-    font-family: $font_roboto_light;
-
-    background: #fff;
+.register,
+.login {
+    background: url('../img/pic_bg.jpg') no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
 }
-.page {
-    &--not-logged-in {
-        overflow-x: hidden;
 
-        background: url('../img/bg-register.jpg') center top no-repeat;
-    }
-    &--upload.uploading {
-        .project-upload__box {
-            height: 370px;
-        }
-        .project-upload__box__subtitle {
-            height: 120px;
-        }
-        .project-upload__box__details {
-            display: block;
-        }
-        .project-upload-files {
-            display: block;
-        }
+.sec--head,
+.sec--main,
+.subsec {
+    @extend %helper--sec;
+    &__inner {
+        @extend %helper--inner;
     }
 }
-.sec {
-    display: block;
-}
+
 .sec--head {
-    @extend .sec;
-}
-
-.sec-head {
-    height: 76px;
-    &__inner {
-        @extend .inner;
-    }
-}
-
-.sec-content {
-    &__inner {
-        @extend .inner;
-    }
-}
-
-.sec-title {
-    margin: 0;
-    padding-top: 100px;
-    padding-bottom: 50px;
-
-    font-family: $font_roboto_thin;
-    font-size: 48px;
-    font-weight: 300;
-
-    text-align: center;
-
-    color: $color_bg_project;
-}
-.head__search {
-    display: none;
-}
-.project-details-table-m {
-    &--number,
-    &--description,
-    &--status,
-    &--actions,
-    &--size,
-    &--date,
-    &--extension {
-        display: none;
-    }
-}
-.project-files-table-m {
-    &--description,
-    &--status,
-    &--size,
-    &--date,
-    &--extension {
-        display: none;
-    }
-}
-
-.all-projects-table-m {
-    &--status,
-    &--date-start,
-    &--date-end,
-    &--description,
-    &--number {
-        display: none;
-    }
-
-}
-
-.head {
-    &__title {
-        float: left;
-
-        margin: 0;
-        padding-top: 30px;
-    }
-    &__nav-path {
-        position: relative;
-
-        float: left;
-
-        margin-left: 35px;
-        padding-top: 30px;
-        &:before {
-            @extend %pseudoelements;
-            top: 42px;
-            left: -18.5px;
-        }
-    }
-    &__userpanel {
-        position: relative;
-        z-index: 4;
-
-        display: block;
-        float: right;
-
-        margin-top: 27px;
-        margin-right: 12px;
-        &:after {
-            @extend %pseudoelements;
-            top: 15px;
-            right: -10px;
-        }
-    }
-}
-
-.menu {
     position: fixed;
-    top: 0;
-    &__list {
-        position: absolute;
-        z-index: 3;
-        top: 70px;
-        right: 8px;
-        &__item {
-            display: block;
-        }
-        &:after,
-        &:before {
-            @extend %pseudoelements;
-            right: 20px;
-            bottom: 100%;
-        }
-    }
-    &__close {
-        position: absolute;
-        top: 50px;
-        left: 34px;
+    z-index: 20;
+    right: 0;
+    left: 0;
 
-        display: none;
-        &:before,
-        &:after {
-            @extend %pseudoelements;
-            top: 10px;
-            left: -4px;
+    height: $size_header_v;
 
-            display: block;
-        }
-    }
-    &.opened {
-        position: absolute;
-        right: 0;
-        left: 0;
+    opacity: 1;
 
-        margin: 0 auto;
-    }
-}
-.progress-bar {
-    position: absolute;
-    &__value {
-        position: absolute;
-
+    @extend %helper--transition;
+    &__inner {
+        max-width: $size_inner;
         height: 100%;
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        @extend %helper--transition;
+        @extend %helper--flex--space-between--center;
     }
-}
-
-.projects-list {
-    &__projects {
-        margin: 0 -8px;
-        &:after {
-            @extend %pseudoelements;
-
-            clear: both;
-        }
-    }
-    &__button {
-        float: left;
-        clear: both;
-
-        margin: 50px 0;
-        &:after {
-            @extend %pseudoelements;
-            top: 15px;
-            right: 20px;
+    &__box {
+        @extend %helper--flex--left--center;
+        flex-grow: 1;
+        & + .sec--head__box {
+            justify-content: flex-end;
         }
     }
-}
+    &.small {
+        height: $size_margin_big;
 
-.project__background:after,
-.project--add__background:after,
-.project-upload__box__background:after {
-    @extend %pseudoelements;
-    left: 50%;
-
-    margin-left: 1px;
-}
-.project__background:after {
-    top: 35%;
-}
-.project--add__background:after {
-    top: 33%;
-
-    margin-left: -1.5px;
-}
-.project-upload__box__background:after {
-    top: 30%;
-}
-
-.project {
-    position: relative;
-
-    float: left;
-    overflow: hidden;
-
-    margin: 0 8px;
-    margin-bottom: 20px;
-    &__details {
-        position: relative;
-        z-index: 2;
-        &__name {
-            margin: 0;
-            margin-top: 16px;
-        }
-        &__summary {
-            margin: 0;
-            margin-top: 20px;
-        }
-        &__time {
-            position: absolute;
-            z-index: 0;
-            top: 0;
-
-            margin: 0;
-            &:before {
-                @extend %pseudoelements;
+        border-bottom: 1px solid $color_grey_2;
+        background: rgba(255,255,255,.9);
+        &.hidden {
+            opacity: 0;
+            .sec--head {
+                &__inner {
+                    margin-top: -$size_margin_big;
+                }
             }
         }
     }
 }
-.project--add__background__icon {
-    &:before,
-    &:after {
-        @extend %pseudoelements;
+
+.sec--main {
+    margin-top: $size_header_v;
+    margin-bottom: 150px;
+    &__head,
+    &__content {
+        @extend %helper--sec;
+    }
+    &__content {
+        .access-box {
+            margin-top: $size_margin_big;
+        }
+    }
+    .subsec {
+        &:last-of-type {
+            .subsec__inner {
+                padding-bottom: 0;
+            }
+        }
+    }
+    .sec--main__head + .sec--main__content {
+        .access-box {
+            margin-top: 0;
+        }
     }
 }
-
-.project-details__files__title:after {
-    @extend %pseudoelements;
-}
-
-.project__details__progress__bar__title {
-    display: none;
-}
-
-.project-upload-files__button {
-    margin-bottom: 50px;
-    &:after {
-        @extend %pseudoelements;
-    }
-}
-
-.project-upload__box:hover {
-    .project-upload__box__background__icon {
-        &:before,
-        &:after {
-            @extend %pseudoelements;
+.sec--main {
+    @include breakpoint($breakpoint_smartphone) {
+        margin-bottom: 100px;
+        &__content {
+            .access-box {
+                margin-top: 5px;
+            }
         }
     }
 }
 
-.project-upload-files {
-    display: none;
-    clear: both;
-
-    width: 100%;
+.subsec {
+    &__head {
+        @extend %helper--flex--space-between--center;
+        .subtitle {
+            flex-grow: 1;
+        }
+        .display-mode-list {
+            margin-right: -$size_padding_display-mode;
+        }
+    }
+    &__content {
+        @extend %helper--flex--center--top;
+        .project-box {
+            width: 100%;
+        }
+    }
+    .subsec__head + .subsec__content {
+        margin-top: $size_padding_big;
+    }
 }
-
-.project-details__info {
-    position: relative;
-
-    clear: both;
-}
-
-.pagination-next,
-.pagination-prev {
-    &:before,
-    &:after {
-        @extend %pseudoelements;
-    } 
+.subsec {
+    @include breakpoint($breakpoint_tablet) {
+        &__head {
+            flex-wrap: wrap;
+            .subtitle,
+            .display-mode-list {
+                width: 100%;
+            }
+            .display-mode-list {
+                justify-content: center;
+            }
+            .subtitle + .display-mode-list {
+                margin-top: $size_padding;
+            }
+        }
+        .subsec__head + .subsec__content {
+            margin-top: $size_padding_middle;
+        }
+    }
+    @include breakpoint($breakpoint_smartphone) {
+        .subsec__head + .subsec__content {
+            margin-top: $size_padding;
+        }
+    }
 }

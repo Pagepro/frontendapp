@@ -1,4 +1,255 @@
-<main class="sec-content">
+<main class="sec--main">
+    <div class="sec--main__head">
+        <div class="sec--main__inner">
+            <h2 class="main-title">
+                <span class="label">All Projects (<span class="qty">231</span>)</span>
+            </h2>
+        </div>
+    </div>
+     <div class="sec--main__content">
+        <section class="subsec">
+            <div class="subsec__inner">
+                <div class="subsec__content">
+                    <div class="project-box">
+                        <div class="project-box__content">
+                            <div class="files-box files-box--projects">
+                                <div class="files-box__head">
+                                    <div class="files-box__number">
+                                        <p class="filebox-title">No</p>
+                                    </div>
+                                    <div class="files-box__name">
+                                        <p class="filebox-title">Project</p>
+                                    </div>
+                                    <div class="files-box__status">
+                                        <p class="filebox-title">Status</p>
+                                    </div>
+                                    <div class="files-box__create-date">
+                                        <p class="filebox-title">Date Created</p>
+                                    </div>
+                                    <div class="files-box__finish-date">
+                                        <p class="filebox-title">Date Finished</p>
+                                    </div>
+                                </div>
+                                <div class="files-box__content">
+                                    <div class="files-box__number">
+                                    </div>
+                                    <ol class="files-list">
+                                        <li class="files-list__item" ng-repeat="project in allProjects">
+                                            <a class="files-list__item__inner" href="project-details.html">
+                                                <div class="files-list__item__counter">
+                                                </div>
+                                                <div class="files-list__item__content">
+                                                    <div class="file-data file-data--project">
+                                                        <div class="file-data__inner">
+                                                            <div class="file-data__name">
+                                                                <h4 class="project-title">
+                                                                    <span class="label">{{ project.fileName }}</span>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="file-data__status">
+                                                                <div class="status-label status-label--new">
+                                                                    <p class="label">{{ project.statusCode }}</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-data__create-date">
+                                                                <time class="file-date" datetime="{{project.dateAdded | date:'dd/MM/yyyy hh:mm'}}">{{project.dateAdded | date:'dd/MM/yyyy'}}</time>
+                                                            </div>
+                                                            <div class="file-data__finish-date">
+                                                                <time class="file-date" datetime="{{project.dateFinished | date:'dd/MM/yyyy hh:mm'}}">{{project.dateFinished | date:'dd/MM/yyyy'}}</time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <!-- <li class="files-list__item">
+                                            <a class="files-list__item__inner" href="project-details.html">
+                                                <div class="files-list__item__counter">
+                                                </div>
+                                                <div class="files-list__item__content">
+                                                    <div class="file-data file-data--project">
+                                                        <div class="file-data__inner">
+                                                            <div class="file-data__name">
+                                                                <h4 class="project-title">
+                                                                    <span class="label">Frontendapp-v4</span>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="file-data__status">
+                                                                <div class="status-label status-label--finished">
+                                                                    <p class="label">finished</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-data__create-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                            <div class="file-data__finish-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="files-list__item">
+                                            <a class="files-list__item__inner" href="project-details.html">
+                                                <div class="files-list__item__counter">
+                                                </div>
+                                                <div class="files-list__item__content">
+                                                    <div class="file-data file-data--project">
+                                                        <div class="file-data__inner">
+                                                            <div class="file-data__name">
+                                                                <h4 class="project-title">
+                                                                    <span class="label">SomeProject_Name</span>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="file-data__status">
+                                                                <div class="status-label status-label--in-progress">
+                                                                    <p class="label">in progress</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-data__create-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                            <div class="file-data__finish-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="files-list__item">
+                                            <a class="files-list__item__inner" href="project-details.html">
+                                                <div class="files-list__item__counter">
+                                                </div>
+                                                <div class="files-list__item__content">
+                                                    <div class="file-data file-data--project">
+                                                        <div class="file-data__inner">
+                                                            <div class="file-data__name">
+                                                                <h4 class="project-title">
+                                                                    <span class="label">Lorem_Ipsum_DolorSitAmet_vol_2</span>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="file-data__status">
+                                                                <div class="status-label status-label--new">
+                                                                    <p class="label">new</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-data__create-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                            <div class="file-data__finish-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="files-list__item">
+                                            <a class="files-list__item__inner" href="project-details.html">
+                                                <div class="files-list__item__counter">
+                                                </div>
+                                                <div class="files-list__item__content">
+                                                    <div class="file-data file-data--project">
+                                                        <div class="file-data__inner">
+                                                            <div class="file-data__name">
+                                                                <h4 class="project-title">
+                                                                    <span class="label">Loremipsum</span>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="file-data__status">
+                                                                <div class="status-label status-label--qa">
+                                                                    <p class="label">Q&amp;A</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-data__create-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                            <div class="file-data__finish-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li class="files-list__item">
+                                            <a class="files-list__item__inner" href="project-details.html">
+                                                <div class="files-list__item__counter">
+                                                </div>
+                                                <div class="files-list__item__content">
+                                                    <div class="file-data file-data--project">
+                                                        <div class="file-data__inner">
+                                                            <div class="file-data__name">
+                                                                <h4 class="project-title">
+                                                                    <span class="label">Project_with_VeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVeryVery_long_name_just_for_test</span>
+                                                                </h4>
+                                                            </div>
+                                                            <div class="file-data__status">
+                                                                <div class="status-label status-label--in-progress">
+                                                                    <p class="label">in progress</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="file-data__create-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                            <div class="file-data__finish-date">
+                                                                <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li> -->
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-box__actions">
+                            <div class="pagination-box">
+                                <div class="pagination pagination--prev">
+                                    <a href="#" class="pagination__content">
+                                        <span class="icon icon--open-big--left"></span>
+                                    </a>
+                                </div>
+                                <ol class="pagination-list">
+                                    <li class="pagination-list__item">
+                                        <div class="pagination">
+                                            <a href="#" class="pagination__content">
+                                                <span class="counter"></span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="pagination-list__item">
+                                        <div class="pagination">
+                                            <a href="#" class="pagination__content">
+                                                <span class="counter"></span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    <li class="pagination-list__item">
+                                        <div class="pagination">
+                                            <a href="#" class="pagination__content">
+                                                <span class="counter"></span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ol>
+                                <div class="pagination pagination--next">
+                                    <a href="#" class="pagination__content">
+                                        <span class="icon icon--open-big--right"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+<!-- <main class="sec-content">
      <div class="sec-content__inner">
          <div class="all-projects">
              <h1 class="all-projects__title sec-title">All Projects</h1>
@@ -20,7 +271,7 @@
                          <td class="all-projects-table--number">{{$index + 1}}</td>
                          <td class="all-projects-table--description">{{project.fileName}}</td>
                          <td class="all-projects-table-m--status">Status</td>
-                         <td class="all-projects-table--status all-projects-table--status-qa">{{project.status}}</td> <!-- class should change depends on returned status -->
+                         <td class="all-projects-table--status all-projects-table--status-qa">{{project.status}}</td>
                          <td class="all-projects-table-m--date-start">Date created</td>
                          <td class="all-projects-table-m--date-end">Date finished</td>
                          <td class="all-projects-table--date-start ">{{project.dateAdded | date:'dd/MM/yyyy hh:mm'}}</td>
@@ -38,3 +289,4 @@
          </div>
      </div>
  </main>
+ -->

@@ -1,4 +1,4 @@
-<form class="form-register forms__content__item" id="form-register">
+<!-- <form class="form-register forms__content__item" id="form-register">
     <div class="form-register__fieldset fields">
         <input type="text" class="fields__field" placeholder="Username" name="username01" id="username01"/>
         <input type="text" class="fields__field" placeholder="E-mail" name="email01" id="email01"/>
@@ -6,4 +6,63 @@
         <input type="password" class="fields__field" placeholder="Re-password" name="repassword01" id="repassword01"/>
     </div>
     <button class="form-register__button">Submit</button>
+</form>
+ -->
+<form class="access-form">
+ <fieldset class="form__fieldset">
+     <div class="form__content">
+         <div class="form__section">
+             <div class="field field--input">
+                 <input class="input input--text" type="text" placeholder="USERNAME" name="username" id="field_01">
+             </div>
+         <div class="field field--info">
+                 <div class="form-info required">
+                     <p>This field is required</p>
+                 </div>
+             </div>
+         </div>
+         <div class="form__section">
+             <div class="field field--input">
+                 <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="field_02">
+             </div>
+         <div class="field field--info">
+                 <div class="form-info required">
+                     <p>This field is required</p>
+                 </div>
+             </div>
+         </div>
+         <div class="form__section">
+             <div class="field field--input">
+                 <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_03">
+             </div>
+         <div class="field field--info">
+                 <div class="form-info required">
+                     <p>This field is required</p>
+                 </div>
+             </div>
+         </div>
+         <div class="form__section">
+             <div class="field field--input">
+                 <input class="input input--text" type="password" placeholder="RE-PASSWORD" name="re-password" id="field_04">
+             </div>
+         <div class="field field--info">
+                 <div class="form-info required">
+                     <p>This field is required</p>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="form__actions">
+         <div class="form__section">
+             <button type="submit" class="btn btn--submit">
+                 <span class="label">Submit</span>
+             </button>
+             <div class="field field--info">
+                 <div class="form-info required">
+                     <p>Login or password is incorrect</p>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </fieldset>
 </form>

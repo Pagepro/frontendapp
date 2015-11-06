@@ -1,20 +1,59 @@
-<header class="sec-head">
-    <div class="sec-head__inner register-title">
-        <a class="head__title" href="#/">Frontend<span class="head__title__highlight">App</span></a>
-        <span class="head__nav-path">{{ pageName }}</span>
-        <button ng-if="module === 'panel'" ng-click="toggleMenu()" ng-class="{active: menuVisible}" class="head__userpanel"><span class="head__userpanel__text">K</span></button>
+<header class="sec--head">
+    <div class="sec--head__inner">
+        <div class="sec--head__box">
+            <ul class="breadcrumbs">
+                <li class="breadcrumbs__item">
+                    <h1 class="breadcrumb">
+                        <a href="index.html" class="breadcrumb__content">
+                           Frontend<span class="highlighted">App</span>
+                        </a>
+                    </h1>
+                </li>
+<!--                 <li class="breadcrumbs__item">
+                    <h3 class="breadcrumb">
+                        <a href="my-projects.html" class="breadcrumb__content">
+                           My Projects
+                        </a>
+                    </h3>
+                </li> -->
+                <li class="breadcrumbs__item">
+                    <h3 class="breadcrumb">
+                        <span class="breadcrumb__content">
+                            {{ pageName }}
+                        </span>
+                    </h3>
+                </li>
+            </ul>
+        </div>
+        <div class="sec--head__box" ng-if="module === 'panel'" class="menu" off-click="hideMenu()" off-click-if="menuVisible">
+            <div class="user-box" ng-class="{active: menuVisible}">
+                <span class="user-box__content js-trigger-user-box" aria-label="open user tool box" ng-click="toggleMenu()">
+                    <span class="user-btn">
+                        <span class="label">D</span>
+                    </span>
+                    <span class="icon icon--down-micro"></span>
+                </span>
+                <div class="user-box__actions">
+                    <div class="cloud-tooltip">
+                        <div class="cloud-tooltip__icon">
+                            <span class="icon icon--angle--up"></span>
+                        </div>
+                        <div class="cloud-tooltip__content">
+                            <ul class="cloud-tooltip-list">
+                                <li class="cloud-tooltip-list__item">
+                                    <a href="my-projects.html">My Projects</a>
+                                </li>
+                                <li class="cloud-tooltip-list__item">
+                                    <a href="all-projects.html" ng-click="hideMenu()" ui-sref="allProjectsState">All Projects</a>
+                                </li>
+                                <li class="cloud-tooltip-list__item">
+                                    <a href="#">Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </header>
-<div ng-if="module === 'panel'" class="menu" ng-class="{opened: menuVisible}" off-click="hideMenu()" off-click-if="menuVisible">
-    <button class="menu__close">x</button>
-    <ul class="menu__list">
-        <li><a class="menu__list__item" href="#">Logout</a></li>
-        <li><a class="menu__list__item" href="myprojects.html">My Projects</a></li>
-        <li><a class="menu__list__item" ng-click="hideMenu()" ui-sref="allProjectsState">All projects</a></li> <!-- hideMenu on click added, because we want to close menu after redirect -->
-        <li><a class="menu__list__item" href="#">My profile</a></li>
-        <li><a class="menu__list__item" href="details.html">Details</a></li>
-        <li><a class="menu__list__item" href="upload.html">Upload</a></li>
-        <li><a class="menu__list__item" href="register.html">Register</a></li>
-        <li><a class="menu__list__item" href="#">Something</a></li>
-    </ul>
-</div>

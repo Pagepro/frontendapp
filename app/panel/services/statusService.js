@@ -10,11 +10,11 @@
       };
       switch (statusCode) {
         case 0:
-          projectStatus.className = 'complete';
+          projectStatus.className = 'finished';
           projectStatus.labelContent = 'Complete';
           break;
         case 1:
-          projectStatus.className = 'progress';
+          projectStatus.className = 'in-progress';
           projectStatus.labelContent = 'In Progress';
           break;
         case 2:

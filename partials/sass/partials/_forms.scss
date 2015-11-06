@@ -1,7 +1,7 @@
 /* ==========================================================================
    Forms
    ========================================================================== */
-.form {
+%helper--form {
     fieldset {
         margin: 0;
         padding: 0;
@@ -10,6 +10,9 @@
     }
     input,
     textarea {
+        border-radius: 0;
+
+        -webkit-appearance: none;
         &:focus {
             outline: none;
         }
@@ -19,235 +22,386 @@
     }
 }
 
-input::-ms-clear {
-    display: none;
+/* Access form
+   ========================================================================== */
+// Access form
+//
+// .access-form - access form
+//
+// Markup:
+// <form class="access-form">
+//     <fieldset class="form__fieldset">
+//         <div class="form__content">
+//             <div class="form__section">
+//                 <div class="field field--input">
+//                     <input class="input input--text" type="text" placeholder="USERNAME" name="username" id="field_01">
+//                 </div>
+//             <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>This field is required</p>
+//                     </div>
+//                 </div>
+//             </div>
+//             <div class="form__section">
+//                 <div class="field field--input">
+//                     <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="field_02">
+//                 </div>
+//             <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>This field is required</p>
+//                     </div>
+//                 </div>
+//             </div>
+//             <div class="form__section">
+//                 <div class="field field--input">
+//                     <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_03">
+//                 </div>
+//             <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>This field is required</p>
+//                     </div>
+//                 </div>
+//             </div>
+//             <div class="form__section">
+//                 <div class="field field--input">
+//                     <input class="input input--text" type="password" placeholder="RE-PASSWORD" name="re-password" id="field_04">
+//                 </div>
+//             <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>This field is required</p>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//         <div class="form__actions">
+//             <div class="form__section">
+//                 <button type="submit" class="btn btn--submit">
+//                     <span class="label">Submit</span>
+//                 </button>
+//                 <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>Login or password is incorrect</p>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </fieldset>
+// </form>
+//
+// Styleguide 21.4
 
-    width: 0;
-    height: 0;
-}
+// Access form
+//
+// .access-form - access form
+//
+// Markup:
+// <form class="access-form">
+//     <fieldset class="form__fieldset">
+//         <div class="form__content">
+//             <div class="form__section error-message">
+//                 <div class="field field--input">
+//                     <input class="input input--text" type="text" placeholder="USERNAME" name="username" id="field_01">
+//                 </div>
+//             <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>This field is required</p>
+//                     </div>
+//                 </div>
+//             </div>
+//             <div class="form__section error-message">
+//                 <div class="field field--input">
+//                     <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="field_02">
+//                 </div>
+//             <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>This field is required</p>
+//                     </div>
+//                 </div>
+//             </div>
+//             <div class="form__section error-message">
+//                 <div class="field field--input">
+//                     <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_03">
+//                 </div>
+//             <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>This field is required</p>
+//                     </div>
+//                 </div>
+//             </div>
+//             <div class="form__section error-message">
+//                 <div class="field field--input">
+//                     <input class="input input--text" type="password" placeholder="RE-PASSWORD" name="re-password" id="field_04">
+//                 </div>
+//             <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>This field is required</p>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//         <div class="form__actions">
+//             <div class="form__section error-message">
+//                 <button type="submit" class="btn btn--submit">
+//                     <span class="label">Submit</span>
+//                 </button>
+//                 <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>Login or password is incorrect</p>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </fieldset>
+// </form>
+//
+// Styleguide 21.5
 
-.register-title a {
-    color: $color_title_reg;
-}
+.access-form {
+    width: $size_input_h;
 
-.fields__field {
-    height: 50px;
-    margin-bottom: 13px;
-    padding: 0 15px;
-
-    font-family: $font_roboto_bold;
-    font-size: 14px;
-
-    transition: 250ms ease-out;
-
-    color: $color_black;
-    border: 1px solid transparent;
-    border-radius: 0;
-    background-color: $color_bg_field;
-
-    -webkit-appearance: none;
-    &:focus {
-        border: 1px solid $color_tbl_border;
-        box-shadow: 0 0 15px 1px rgba(black, .1) inset;
+    @extend %helper--form;
+    ::-webkit-input-placeholder {
+        font-weight: 500;
+        // color: $color_black;
     }
-    &.warning {
-        color: $color_red;
-        border: 1px solid $color_red;
-        &::-webkit-input-placeholder {
-            color: $color_red;
-        }
-        &:-moz-placeholder {
-            opacity: 1;
-            color: $color_red;
-        }
-        &::-moz-placeholder {
-            opacity: 1;
-            color: $color_red;
-        }
-        &:-ms-input-placeholder {
-            color: $color_red;
-        }
+    :-moz-placeholder {
+        font-weight: 500;
+        /* Firefox 18- */
+        // color: $color_black;
     }
-    &::-webkit-input-placeholder,
-    &:-ms-input-placeholder {
-        color: $color_black;
+    ::-moz-placeholder {
+        font-weight: 500;
+        /* Firefox 19+ */
+        // color: $color_black;
     }
-    &:-moz-placeholder,
-    &::-moz-placeholder {
-        opacity: 1;
-        color: $color_black;
+    :-ms-input-placeholder {
+        font-weight: 500;
+        // color: $color_black;
     }
-}
-.form-register,
-.form-login {
-    width: 330px;
-    &__button {
-        width: 330px;
-        height: 50px;
-        margin-bottom: 50px;
-
-        font-family: $font_roboto_bold;
-
-        letter-spacing: .4px;
-        @extend %btn;
-    }
-}
-.forms__tabs {
-    position: relative;
-    left: -40px;
-
-    height: 36px;
-    margin-top: 70px;
-    margin-bottom: 40px;
-    margin-left: 50%;
-    padding: 0;
-
-    list-style: none;
-    &__item {
-        position: relative;
-
-        float: left;
-
-        width: 40px;
-        height: 36px;
-
-        content: '';
-        cursor: pointer;
-        transition: background-color 300ms ease;
-
-        border: 1px solid $color_tbl_border;
-        a {
-            position: relative;
-
-            display: block;
-
+    .form {
+        &__section {
             width: 100%;
-            height: 100%;
-
-            text-indent: -9999em;
-
-            outline: none;
-        }
-        &--register,
-        &--login {
-            &:before,
-            &:after {
-                position: absolute;
+            .field + .field--info,
+            .btn + .field--info {
+                margin-top: 0;
 
                 opacity: 0;
+                .form-info {
+                    height: 0;
+                }
             }
-            &:before {
-                top: 40px;
-                left: 50%;
-
-                margin-left: -1.5px;
-
-                border-width: 0 2.5px 3px 2.5px;
-                border-style: solid;
-                border-color: transparent transparent $color_black transparent;
+            .field:not(.field--info):not(.field--cta) {
+                border: 1px solid transparent;
             }
-            &:after {
-                top: 43px;
-                left: -30px;
+            &.error-message {
+                .field + .field--info,
+                .btn + .field--info {
+                    margin-top: $size_padding;
 
-                width: 100px;
-                height: 30px;
-                padding-top: 5px;
-
-                font-family: $font_roboto_bold;
-
-                text-align: center;
-                text-transform: uppercase;
-
-                color: $color_white;
-                background-color: $color_black;
-            }
-            &:hover {
-                &:after,
-                &:before {
                     opacity: 1;
+                    .form-info {
+                        height: $size_padding;
+                    }
                 }
-                &:before {
-                    content: '';
-                }
-            }
-        }
-        &--register {
-            background: url('../img/ico-lock.png') center center no-repeat;
-            &:hover {
-                &:after {
-                    content: 'Register';
+                .field:not(.field--info):not(.field--cta) {
+                    border: 1px solid $color_red;
                 }
             }
         }
-        &--login {
-            border-right: 0;
-            background: url('../img/ico-unlock.png') center center no-repeat;
-            &:hover {
-                &:after {
-                    content: 'Login';
+        &__content {
+            @extend %helper--flex--center--top;
+            flex-wrap: wrap;
+            .field {
+                width: 100%;
+
+                @extend %helper--transition;
+                .input {
+                    width: 100%;
+                    height: $size_input_v;
+                    padding: 0 $size_padding;
+
+                    font-size: 14px;
+                    font-weight: 500;
+
+                    color: $color_black;
+                    border: none;
+                    border: 1px solid $color_grey_1;
+                    background: $color_grey_1;
+                    ::-webkit-input-placeholder,
+                    input:-moz-placeholder {
+                        color: red;
+                    }
+                    &:focus {
+                        border-color: $color_grey_3;
+                        box-shadow: 0 0 15px 1px rgba(0, 0, 0, .1) inset;
+                    }
                 }
             }
         }
-        &.active {
-            background-color: $color_bg_field;
+        &__actions {
+            flex-wrap: wrap;
+            @extend %helper--flex--center--top;
+            .btn {
+                width: 100%;
+            }
+            .field {
+                &--cta {
+                    @extend %helper--flex--right--top;
+                }
+            }
         }
     }
-}
-// .forms__content__item.form-active {
-//     left: 50%;
-//     margin-left: -165px;
-//     opacity: 1;
-// }
-.forms__content__item {
-    margin: 0 auto;
-    opacity: 1;
+    .form__content + .form__actions {
+        margin-top: $size_padding;
+    }
+    .field + .field,
+    .form__section + .form__section,
+    .btn + .field {
+        margin-top: $size_padding;
+    }
+    .field + .field--cta,
+    .btn + .field--cta {
+        margin-top: calc(#{$size_padding} * 2);
+    }
 }
 
-.form-login {
-    &__message,
-    &__warning {
-        display: block;
-
+.access-form {
+    @include breakpoint($breakpoint_smartphone) {
         width: 100%;
-
-        font-family: $font_roboto_bold;
-        font-size: 14px;
-
-        text-align: center;
-        text-transform: uppercase;
-
-        color: $color_red;
-    }
-    &__warning {
-        position: relative;
-
-        margin-bottom: 50px;
-        padding-top: 40px;
-        &:before {
-            position: absolute;
-            top: 0;
-            left: -10.5px;
-
-            width: 21px;
-            height: 18px;
-            margin-left: 50%;
-
-            content: '';
-
-            background: url('../img/ico-warning.png') center center no-repeat;
+        .btn--submit {
+            width: 100%;
         }
-    }
-    &__message {
-        margin-bottom: 30px;
-    }
-    &__button {
-        margin-bottom: 40px;
+        .form {
+            &__content {
+                .field {
+                    .input {
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
     }
 }
 
-.fields__field,
-.form-register__button,
-.form-login__button {
+/* project-action-form
+   ========================================================================== */
+// Project-action form
+//
+//
+// Styleguide 14
+
+// Project-action form
+//
+// .project-action-form - project-action form
+// .active - project-action form active (class 'active' is added by JS)
+//
+// Markup:
+// <form class="project-action-form {{modifier_class}}">
+//     <fieldset class="form__fieldset">
+//         <div class="field field--input">
+//             <label class="label" for="project-name">New Project</label>
+//             <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name">
+//         </div>
+//     </fieldset>
+// </form>
+//
+// Styleguide 14.1
+
+.project-action-form {
     width: 100%;
+    height: $size_input_v;
+
+    @extend %helper--form;
+    @extend %helper--flex--vertical-space-between;
+    justify-content: center;
+    .NFI-filename {
+        display: none !important;
+    }
+    .NFI-button {
+        display: flex !important;
+
+        color: #adadad;
+
+        @extend %helper--flex--center--center;
+        input {
+            height: auto !important;
+        }
+    }
+    .form {
+        &__fieldset {
+            width: 100%;
+            .NFI-wrapper {
+                z-index: 10;
+
+                overflow: hidden !important;
+
+                cursor: pointer;
+            }
+            .field,
+            .NFI-wrapper {
+                position: relative;
+
+                width: 100%;
+                .label,
+                .input,
+                .NFI-button {
+                    width: 100%;
+
+                    font-size: 20px;
+                    font-weight: 300;
+
+                    transition: 300ms ease;
+                    text-align: center;
+                }
+                .label {
+                    z-index: 9;
+
+                    margin: 0;
+
+                    @extend %helper--absolute--center;
+                    @extend %helper--flex--center--center;
+                }
+                .input,
+                .NFI-button {
+                    position: relative;
+                    z-index: -1;
+
+                    height: $size_input_v;
+                    margin-top: 0;
+                    padding: 0 $size_padding;
+
+                    pointer-events: none;
+
+                    opacity: 0;
+                    border: none;
+                }
+            }
+        }
+    }
+    &.active {
+        .form {
+            &__fieldset {
+                .field {
+                    .label {
+                        top: -60px;
+
+                        font-size: 16px;
+
+                        color: $color_red;
+                    }
+                    .input,
+                    .NFI-button {
+                        z-index: 2;
+
+                        pointer-events: auto;
+
+                        opacity: 1;
+                    }
+                    .input {
+                        margin-top: 20px;
+                    }
+                }
+            }
+        }
+    }
 }
