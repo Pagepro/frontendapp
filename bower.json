@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "homepage": "https://github.com/Pagepro/libsasserplate",
   "authors": [
-    "Kuba Wiszniewski <kuba.wiszniewski@pagepro.pl>",
-    "Pawel Kromplewski <pawel.kromplewski@pagepro.pl"
+    "Kuba Wiszniewski <kuba.wiszniewski@pagepro.pl> JS",
+    "Pawel Kromplewski <pawel.kromplewski@pagepro.pl JS",
+    "Dominika Jaroszewicz <dominika.jaroszewicz@pagepro.pl CSS"
   ],
   "license": "MIT",
   "ignore": [

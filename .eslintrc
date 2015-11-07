@@ -1,6 +1,8 @@
 {
   "env": {
-    "browser": true,
+    "browser": true,                 // browser global variables
+    "amd": true,
+    "node": true
   },
   "globals": {
     "angular": true,

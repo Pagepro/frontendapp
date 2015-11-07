@@ -13,9 +13,9 @@
             <script>window.html5 || document.write('<script src="static/js/vendor/html5shiv.js"><\/script>')</script>
         <![endif]-->
     </head>
-    <body ng-app="frontendApp" ng-class="{'login': showBodyBackground}">
+    <body ng-app="frontendApp" ng-class="{'login': isAuth}" ng-directive="windowScroll">
         <header-section></header-section>
-        <ui-view class="slide-left"></ui-view>
+        <ui-view class="sec--main slide-left"></ui-view>
 
         <!-- Libraries -->
         <script src="lib/angular/angular.js"></script>
@@ -24,26 +24,7 @@
         <script src="lib/angular-off-click/offClick.js"></script>
 
         <!--  App -->
-        <script src="app/app.js"></script>
-
-        <!-- Commons -->
-        <script src="app/common/services/appSettings.js"></script>
-        <script src="app/common/directives/header/headerSection.js"></script>
-
-        <!-- Auth Module -->
-        <script src="app/auth/auth.js"></script>
-        <script src="app/auth/controllers/AuthCtrl.js"></script>
-        <script src="app/auth/controllers/LoginCtrl.js"></script>
-        <script src="app/auth/controllers/RegistrationCtrl.js"></script>
-
-        <!-- Panel Module -->
-        <script src="app/panel/panel.js"></script>
-        <script src="app/panel/services/projectsFactory.js"></script>
-        <script src="app/panel/services/statusService.js"></script>
-        <script src="app/panel/directives/templatePreview/templatePreview.js"></script>
-        <script src="app/panel/controllers/MyProjectsCtrl.js"></script>
-        <script src="app/panel/controllers/AllProjectsCtrl.js"></script>
-        <script src="app/panel/controllers/ProjectCtrl.js"></script>
+        <script src="out/app.js"></script>
 
     </body>
 </html>
