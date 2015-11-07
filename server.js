@@ -5,6 +5,13 @@ var chance = new Chance();
 var fs = require('fs');
 var projects;
 
+fs.readFile( __dirname + '/serverData.js', function (err, data) {
+  if (err) {
+    throw err;
+  }
+  tt = data;
+});
+
 fs.readFile( __dirname + '/test.json', function (err, data) {
   if (err) {
     throw err;
@@ -85,4 +92,3 @@ app.get('/projects', function(req, res) {
 app.listen(8080);
 
 console.log('Express listening on port 8080');
-console.log(chance.integer());
