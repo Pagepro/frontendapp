@@ -1,11 +1,10 @@
 {
   "name": "FrontendApp",
-  "version": "0.0.1",
-  "homepage": "https://github.com/Pagepro/libsasserplate",
+  "version": "0.0.2",
+  "homepage": "https://github.com/Pagepro/frontendapp",
   "authors": [
-    "Kuba Wiszniewski <kuba.wiszniewski@pagepro.pl> JS",
-    "Pawel Kromplewski <pawel.kromplewski@pagepro.pl JS",
-    "Dominika Jaroszewicz <dominika.jaroszewicz@pagepro.pl CSS"
+    "Kuba Wiszniewski <kuba.wiszniewski@pagepro.pl>",
+    "Pawel Kromplewski <pawel.kromplewski@pagepro.pl>"
   ],
   "license": "MIT",
   "ignore": [

@@ -1,11 +1,12 @@
 {
-  "name": "LibSasserPlate",
-  "version": "1.0.3",
+  "name": "FrontendApp",
+  "version": "0.0.2",
   "description": "Libsass starter",
   "author": "Pagepro <pagepro@pagepro.pl>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Pagepro/libsasserplate.git"
+    "url": "Based on AngularJS and Django Rest Framework web app is a tool for you to comunicate with your client.
+            Then can upload files, see the progress and contact your team, and you can see whether they are happy with how the job is being done or not."
   },
   "license": "MIT",
   "devDependencies": {
