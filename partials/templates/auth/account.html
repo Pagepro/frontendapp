@@ -1,38 +1,19 @@
+<div class="sec--main__head" ng-if="showit">
+    <div class="sec--main__inner">
+        <h2 class="main-title">
+            <span class="label">{{ pageName }}</span>
+        </h2>
+    </div>
+</div>
 <div class="sec--main__content">
     <div class="subsec">
         <div class="subsec__inner">
             <div class="subsec__content">
                 <div class="access-box">
                     <div class="access-box__head">
-                        <ul class="access-tools-list">
-                            <li class="access-tools-list__item" ng-class="{active: pageName === 'Register'}">
-                                <div class="access-tool">
-                                    <a ui-sref="accountState.register" class="access-tool__content">
-                                       <span class="icon icon--key"></span>
-                                    </a>
-                                    <div class="access-tool__info">
-                                        <div class="tooltip">
-                                            <h4 class="label">Register</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="access-tools-list__item" ng-class="{active: pageName === 'Login'}">
-                                <div class="access-tool">
-                                    <a ui-sref="accountState.login" class="access-tool__content">
-                                       <span class="icon icon--lock"></span>
-                                    </a>
-                                    <div class="access-tool__info">
-                                        <div class="tooltip">
-                                            <h4 class="label">Login</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                        <auth-headers></auth-headers>
                     </div>
-                    <div class="access-box__content" ui-view>
-                    </div>
+                    <div class="access-box__content" ui-view></div>
                 </div>
             </div>
         </div>

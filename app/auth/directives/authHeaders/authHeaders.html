@@ -1,0 +1,30 @@
+<ul class="access-tools-list" ng-if="pageName === 'Register' || pageName === 'Login'">
+    <li class="access-tools-list__item" ng-class="{active: pageName === 'Register'}">
+        <div class="access-tool">
+            <a ui-sref="accountState.register" class="access-tool__content">
+               <span class="icon icon--key"></span>
+            </a>
+            <div class="access-tool__info">
+                <div class="tooltip">
+                    <h4 class="label">Register</h4>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="access-tools-list__item" ng-class="{active: pageName === 'Login'}">
+        <div class="access-tool">
+            <a ui-sref="accountState.login" class="access-tool__content">
+               <span class="icon icon--lock"></span>
+            </a>
+            <div class="access-tool__info">
+                <div class="tooltip">
+                    <h4 class="label">Login</h4>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<div class="form-info" ng-if="pageName === 'Remind Password'">
+    <p>Please enter your e-mail to reset your password.</p>
+</div>

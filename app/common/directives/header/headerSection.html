@@ -4,18 +4,18 @@
             <ul class="breadcrumbs">
                 <li class="breadcrumbs__item">
                     <h1 class="breadcrumb">
-                        <a href="index.html" class="breadcrumb__content">
+                        <a href="#/" class="breadcrumb__content">
                            Frontend<span class="highlighted">App</span>
                         </a>
                     </h1>
                 </li>
-<!--                 <li class="breadcrumbs__item">
+                <li class="breadcrumbs__item" ng-repeat="trail in trails">
                     <h3 class="breadcrumb">
-                        <a href="my-projects.html" class="breadcrumb__content">
-                           My Projects
+                        <a href="{{ trail.link }}" class="breadcrumb__content">
+                           {{ trail.name }}
                         </a>
                     </h3>
-                </li> -->
+                </li>
                 <li class="breadcrumbs__item">
                     <h3 class="breadcrumb">
                         <span class="breadcrumb__content">
@@ -41,13 +41,13 @@
                         <div class="cloud-tooltip__content">
                             <ul class="cloud-tooltip-list">
                                 <li class="cloud-tooltip-list__item">
-                                    <a href="my-projects.html">My Projects</a>
+                                    <a href="#/my-projects" ng-click="hideMenu()">My Projects</a>
                                 </li>
                                 <li class="cloud-tooltip-list__item">
-                                    <a href="all-projects.html" ng-click="hideMenu()" ui-sref="allProjectsState">All Projects</a>
+                                    <a href="#/all-projects" ng-click="hideMenu()">All Projects</a>
                                 </li>
                                 <li class="cloud-tooltip-list__item">
-                                    <a href="#">Logout</a>
+                                    <a href="#!">Logout</a>
                                 </li>
                             </ul>
                         </div>
