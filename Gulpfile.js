@@ -3,19 +3,24 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var browser = require('browser-sync');
 var reload = browser.reload;
-var rev = require('gulp-rev');
 var autoprefixer = require('gulp-autoprefixer');
 var eslint = require('gulp-eslint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 
+var spawn = require('child_process').spawn;
+var node;
 
-
-gulp.task('rev', function() {
-  gulp.src('*.html')
-    .pipe(rev())
-    .pipe(gulp.dest('.'));
+gulp.task('server', function() {
+  if (node) node.kill()
+  node = spawn('node', ['server.js'], {stdio: 'inherit'})
+  node.on('close', function (code) {
+    if (code === 8) {
+      gulp.log('Error detected, waiting for changes...');
+    }
+  });
 });
+
 
 gulp.task('js', function() {
   gulp.src(['app/**/module.js', 'app/**/*.js'])
@@ -67,5 +72,9 @@ gulp.task('autoprefixer', function() {
     .pipe(gulp.dest('partials/css/'));
 });
 
-gulp.task('default', ['sass', 'watch', 'serve']);
+gulp.task('default', ['sass', 'watch', 'server', 'serve']);
 gulp.task('compile', ['sass', 'prod']);
+
+process.on('exit', function() {
+    if (node) node.kill()
+})

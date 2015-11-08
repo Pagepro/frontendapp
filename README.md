@@ -27,11 +27,6 @@ This will take care
 gulp
 ```
 
-##### Fake server
-```sh
-node server.js
-```
-
 ##### Build for production
 ```sh
 gulp compile

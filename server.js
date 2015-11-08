@@ -3,7 +3,7 @@ var cors = require('cors');
 
 var fs = require('fs');
 
-var projects = require('./serverData');
+var projects = require('./fake-server/projects');
 
 var app = express();
 
