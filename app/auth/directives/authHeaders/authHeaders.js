@@ -9,6 +9,6 @@
   };
 
   authHeaders.$inject = [];
-  angular.module('frontendApp').directive('authHeaders', authHeaders);
+  angular.module('authModule').directive('authHeaders', authHeaders);
 
 }());

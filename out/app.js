@@ -36,13 +36,14 @@
 (function() {
   'use strict';
   var authModule = angular.module('authModule', []);
+
   authModule
     .config(['$stateProvider', function($stateProvider) {
       $stateProvider
         .state('accountState', {
           url: '/auth',
           templateUrl: 'partials/templates/auth/account.html',
-          controller: 'AccountCtrl',
+          controller: 'AuthCtrl',
           controllerAs: 'AC',
           pageName: 'Account',
           module: 'auth'
@@ -116,16 +117,17 @@
 
 (function() {
   'use strict';
-  var AccountCtrl = function($scope, $state) {
+  var AuthCtrl = function($scope, $state) {
     // fixme
     // we need to consider cases with and without '/'
     if ($state.current.url === '/account' || $state.current.url === '/auth') {
       $state.go('accountState.login');
     }
+    $scope.test = 1;
   };
 
-  AccountCtrl.$inject = ['$scope', '$state'];
-  angular.module('frontendApp').controller('AccountCtrl', AccountCtrl);
+  AuthCtrl.$inject = ['$scope', '$state'];
+  angular.module('frontendApp').controller('AuthCtrl', AuthCtrl);
 
 }());
 
@@ -159,15 +161,6 @@
   RemindCtrl.$inject = ['$scope'];
   angular.module('frontendApp').controller('RemindCtrl', RemindCtrl);
 
-}());
-
-(function () {
-  'use strict';
-  angular.module('frontendApp').value('appSettings', {
-      title: 'Customers Application',
-      verion: '0.0.1',
-      apiRoot: 'http://localhost:8080/'
-  });
 }());
 
 (function() {
@@ -295,6 +288,15 @@
   angular.module('frontendApp').service('statusService', statusService);
 }());
 
+(function () {
+  'use strict';
+  angular.module('frontendApp').value('appSettings', {
+      title: 'Customers Application',
+      verion: '0.0.1',
+      apiRoot: 'http://localhost:8080/'
+  });
+}());
+
 (function() {
   'use strict';
 
@@ -306,7 +308,7 @@
   };
 
   authHeaders.$inject = [];
-  angular.module('frontendApp').directive('authHeaders', authHeaders);
+  angular.module('authModule').directive('authHeaders', authHeaders);
 
 }());
 

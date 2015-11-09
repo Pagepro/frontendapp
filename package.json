@@ -1,12 +1,14 @@
 {
   "name": "FrontendApp",
   "version": "0.0.2",
-  "description": "Libsass starter",
-  "author": "Pagepro <pagepro@pagepro.pl>",
+  "description": "Based on AngularJS and Django Rest Framework web app is a tool for you to comunicate with your client. Then can upload files, see the progress and contact your team, and you can see whether they are happy with how the job is being done or not.",
+  "authors": [
+    "Kuba Wiszniewski <kuba.wiszniewski@pagepro.pl>",
+    "Pawel Kromplewski <pawel.kromplewski@pagepro.pl>"
+  ],
   "repository": {
     "type": "git",
-    "url": "Based on AngularJS and Django Rest Framework web app is a tool for you to comunicate with your client.
-            Then can upload files, see the progress and contact your team, and you can see whether they are happy with how the job is being done or not."
+    "url": "https://github.com/Pagepro/frontendapp"
   },
   "license": "MIT",
   "devDependencies": {
@@ -27,7 +29,11 @@
     "gulp-uglify": "^1.4.2",
     "gulp-uncache": "^0.4.0-beta1",
     "gulp.spritesmith": "^3.8.2",
+    "jasmine-core": "^2.3.4",
     "jquery": "1.11.2",
+    "karma": "^0.13.15",
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-jasmine": "^0.3.6",
     "lodash": "^3.10.1"
   }
 }

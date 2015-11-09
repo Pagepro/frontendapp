@@ -1,11 +1,16 @@
 {
   "env": {
-    "browser": true,                 // browser global variables
+    "browser": true, // browser global variables
     "amd": true,
     "node": true
   },
   "globals": {
     "angular": true,
+    "describe": true,
+    "beforeEach": true,
+    "it": true,
+    "expect": true,
+    "inject": true
   },
   "rules": {
     "camelcase": 2,

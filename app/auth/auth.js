@@ -1,13 +1,14 @@
 (function() {
   'use strict';
   var authModule = angular.module('authModule', []);
+
   authModule
     .config(['$stateProvider', function($stateProvider) {
       $stateProvider
         .state('accountState', {
           url: '/auth',
           templateUrl: 'partials/templates/auth/account.html',
-          controller: 'AccountCtrl',
+          controller: 'AuthCtrl',
           controllerAs: 'AC',
           pageName: 'Account',
           module: 'auth'
