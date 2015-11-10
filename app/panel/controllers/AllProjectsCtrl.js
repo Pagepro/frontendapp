@@ -7,7 +7,6 @@
       projectsFactory.getProjects()
       .success(function (resp) {
         $scope.allProjects = resp;
-        console.log(resp);
       })
       .error(function (resp) {
         console.log(resp);
@@ -18,6 +17,6 @@
   };
 
   AllProjectsCtrl.$inject = ['$scope', 'projectsFactory'];
-  angular.module('frontendApp').controller('AllProjectsCtrl', AllProjectsCtrl);
+  angular.module('panelModule').controller('AllProjectsCtrl', AllProjectsCtrl);
 
 }());

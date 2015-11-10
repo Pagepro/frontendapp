@@ -1,0 +1,24 @@
+<div class="files-list__item__counter">
+</div>
+<div class="files-list__item__content">
+    <div class="file-data file-data--project">
+        <div class="file-data__inner">
+            <div class="file-data__name">
+                <h4 class="project-title">
+                    <span class="label">{{ project.name }}</span>
+                </h4>
+            </div>
+            <div class="file-data__status">
+                <div class="status-label status-label--{{projectStatus.className}}">
+                    <p class="label">{{ projectStatus.labelContent }}</p>
+                </div>
+            </div>
+            <div class="file-data__create-date">
+                <time class="file-date" datetime="{{project.created_on | date:'dd/MM/yyyy hh:mm'}}">{{project.created_on | date:'dd/MM/yyyy'}}</time>
+            </div>
+            <div class="file-data__finish-date">
+                <time class="file-date" datetime="{{project.finished_date | date:'dd/MM/yyyy hh:mm'}}">{{project.finished_date | date:'dd/MM/yyyy'}}</time>
+            </div>
+        </div>
+    </div>
+</div>
