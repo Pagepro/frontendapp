@@ -5,7 +5,7 @@
       restrict: 'E',
       templateUrl: 'app/panel/directives/templatePreview/templatePreview.html',
       link: function (scope) {
-        scope.projectStatus = statusService.getStatus(scope.template.statusCode);
+        scope.projectStatus = statusService.getStatus(scope.template.status);
       }
     };
   };

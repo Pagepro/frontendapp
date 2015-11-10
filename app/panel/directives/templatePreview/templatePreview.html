@@ -6,7 +6,8 @@
             </div>
         </div>
         <div class="teaser__head">
-            <div class="teaser__head__photo" style="background-image: url('{{ template.image }}')"></div>
+            <!-- <div class="teaser__head__photo" style="background-image: url('{{ template.filename }}')"></div> -->
+            <div class="teaser__head__photo" style="background-image: url(https://placeimg.com/640/480/any?v={{ $index }})"></div>
             <ul class="action-tools-list">
                 <li class="action-tools-list__item">
                     <div class="action-tool action-tool--highlighted" aria-label="open template picture">
@@ -36,7 +37,7 @@
         </div>
         <div class="teaser__content">
             <h3 class="project-title">
-                <span class="label">{{ template.name }}</span>
+                <span class="label">{{ template.filename }}</span>
             </h3>
             <ul class="action-tools-list">
                 <li class="action-tools-list__item">
@@ -91,21 +92,3 @@
         </div>
     </div>
 </div>
-<!--
-
-<div class="template__background" style="background-image: url('{{ template.image }}')"></div>
-<span class="template__status template__status--{{ projectStatus.className }}">{{ projectStatus.labelContent }}</span>
-<span class="template__handle" ng-hide="true">Move</span>
-<div class="template__details">
-    <div class="template__details__title__wrapper">
-        <h2 class="template__details__title">{{ template.name }}</h2>
-    </div>
-
-    <div class="template__actions">
-        <button class="template__actions__action action-jpg">Jpg</button>
-        <button class="template__actions__action action-html">Html</button>
-        <button class="template__actions__action action-edit">Edit</button>
-        <button class="template__actions__action action-delete">Delete</button>
-    </div>
-</div>
- -->

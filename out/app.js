@@ -163,6 +163,15 @@
 
 }());
 
+(function () {
+  'use strict';
+  angular.module('frontendApp').value('appSettings', {
+      title: 'Customers Application',
+      verion: '0.0.1',
+      apiRoot: 'http://localhost:8080/'
+  });
+}());
+
 (function() {
   'use strict';
   var AllProjectsCtrl = function($scope, projectsFactory) {
@@ -211,23 +220,52 @@
 
 (function() {
   'use strict';
-  var ProjectCtrl = function($scope, $stateParams, projectsFactory, statusService) {
+  var ProjectCtrl = function($scope, $q, $stateParams, projectsFactory, templatesFactory, filesFactory, statusService) {
+    var projectDfd = $q.defer();
+    var templatesDfd = $q.defer();
+    var filesDfd = $q.defer();
+
     $scope.project = null;
-    $scope.getStatus = function (code) {
+
+    $scope.getStatus = function(code) {
       return statusService.getStatus(code);
     };
 
-    projectsFactory.getProject($stateParams.projectId)
-    .success(function (resp) {
-      $scope.project = resp;
-    })
-    .error(function () {
-      // console.log('nope');
+    projectDfd  = projectsFactory.getProject($stateParams.projectId);
+    projectDfd.success(function (project) {
+      $scope.project = project;
     });
+
+    filesDfd = filesFactory.getFiles($stateParams.projectId);
+    filesDfd.success(function(files) {
+      $scope.files = files;
+    });
+
+    templatesDfd = templatesFactory.getTemplates($stateParams.projectId);
+    templatesDfd.success(function(templates) {
+      $scope.templates = templates;
+    });
+
   };
 
-  ProjectCtrl.$inject = ['$scope', '$stateParams', 'projectsFactory', 'statusService'];
-  angular.module('frontendApp').controller('ProjectCtrl', ProjectCtrl);
+  ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsFactory', 'templatesFactory', 'filesFactory', 'statusService'];
+  angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
+
+}());
+
+(function() {
+  'use strict';
+
+  var filesFactory = function($http, appSettings) {
+    return {
+      getFiles: function(projectId) {
+        return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/files');
+      }
+    };
+  };
+
+  filesFactory.$inject = ['$http', 'appSettings'];
+  angular.module('frontendApp').factory('filesFactory', filesFactory);
 
 }());
 
@@ -240,8 +278,8 @@
       getProjects: function () {
         return $http.get(appSettings.apiRoot + 'projects/');
       },
-      getProject: function (customerId) {
-        return $http.get(appSettings.apiRoot + 'projects/' + customerId);
+      getProject: function (projectId) {
+        return $http.get(appSettings.apiRoot + 'projects/' + projectId);
       }
     };
   };
@@ -288,13 +326,20 @@
   angular.module('frontendApp').service('statusService', statusService);
 }());
 
-(function () {
+(function() {
   'use strict';
-  angular.module('frontendApp').value('appSettings', {
-      title: 'Customers Application',
-      verion: '0.0.1',
-      apiRoot: 'http://localhost:8080/'
-  });
+
+  var templatesFactory = function($http, appSettings) {
+    return {
+      getTemplates: function(projectId) {
+        return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/templates');
+      }
+    };
+  };
+
+  templatesFactory.$inject = ['$http', 'appSettings'];
+  angular.module('frontendApp').factory('templatesFactory', templatesFactory);
+
 }());
 
 (function() {
@@ -369,12 +414,26 @@
 
 (function() {
   'use strict';
+
+  var projectFile = function () {
+    return {
+      restrict: 'A',
+      templateUrl: 'app/panel/directives/projectFile/projectFile.html'
+    };
+  };
+
+  angular.module('panelModule').directive('projectFile', projectFile);
+
+}());
+
+(function() {
+  'use strict';
   var templatePreview = function(statusService) {
     return {
       restrict: 'E',
       templateUrl: 'app/panel/directives/templatePreview/templatePreview.html',
       link: function (scope) {
-        scope.projectStatus = statusService.getStatus(scope.template.statusCode);
+        scope.projectStatus = statusService.getStatus(scope.template.status);
       }
     };
   };
