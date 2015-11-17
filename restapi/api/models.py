@@ -15,6 +15,9 @@ class Project(models.Model):
 	finished = models.PositiveSmallIntegerField()
 	status = models.IntegerField()
 
+	class Meta:
+		db_table = 'pfo_projects'
+
 """
 class ApiUserManager(BaseUserManager):
 	def create_user(self, email, username, password=None):
