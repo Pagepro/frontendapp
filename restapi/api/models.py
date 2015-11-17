@@ -1,6 +1,21 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserManager, PermissionsMixin
 
+
+class Project(models.Model):
+	name = models.CharField(max_length=255)
+	short_description = models.TextField()
+	long_description = models.TextField()
+	repository = models.TextField()
+	created_on = models.DateTimeField()
+	updated_on = models.DateTimeField()
+	finish_date = models.DateTimeField()
+	deadline_date = models.DateTimeField()
+	suggested_delivery_date = models.DateTimeField()
+	finished = models.PositiveSmallIntegerField()
+	status = models.IntegerField()
+
+"""
 class ApiUserManager(BaseUserManager):
 	def create_user(self, email, username, password=None):
 		if not email:
@@ -22,7 +37,7 @@ class ApiUserManager(BaseUserManager):
 		user.is_staff = True
 		user.save(using=self._db)
 		return user
-
+"""
 class ApiUser(AbstractBaseUser):
 	username = models.CharField(max_length=32, unique=True)
 	email = models.EmailField(max_length=254, unique=True)
