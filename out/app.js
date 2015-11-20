@@ -163,20 +163,36 @@
 
 }());
 
+(function () {
+  'use strict';
+  angular.module('frontendApp').value('appSettings', {
+      title: 'Customers Application',
+      verion: '0.0.1',
+      apiRoot: 'http://localhost:8080/'
+  });
+}());
+
 (function() {
   'use strict';
   var AllProjectsCtrl = function($scope, projectsFactory) {
     $scope.allProjects = null;
+    $scope.pageNo = null;
 
     function init() {
       projectsFactory.getProjects()
-      .success(function (resp) {
-        $scope.allProjects = resp;
+      .success(function (projects) {
+        $scope.allProjects = projects;
       })
-      .error(function (resp) {
-        console.log(resp);
+      .error(function (response) {
+        console.log(response);
       });
     }
+
+    $scope.loadWithParam = function() {
+      projectsFactory.getProjects($scope.pageNo).success(function (projects) {
+        $scope.allProjects = projects;
+      });
+    };
 
     init();
   };
@@ -265,8 +281,12 @@
 // this is factory of ALL projects or just for MY projects?
   var projectsFactory = function ($http, appSettings) {
     return {
-      getProjects: function () {
-        return $http.get(appSettings.apiRoot + 'projects/');
+      getProjects: function (pageNo) {
+        var baseUrl = appSettings.apiRoot + 'projects/';
+        if (!pageNo) {
+          return $http.get(baseUrl);
+        }
+        return $http.get(baseUrl + '?p=' + pageNo);
       },
       getProject: function (projectId) {
         return $http.get(appSettings.apiRoot + 'projects/' + projectId);
@@ -332,15 +352,6 @@
 
 }());
 
-(function () {
-  'use strict';
-  angular.module('frontendApp').value('appSettings', {
-      title: 'Customers Application',
-      verion: '0.0.1',
-      apiRoot: 'http://localhost:8080/'
-  });
-}());
-
 (function() {
   'use strict';
 
@@ -355,57 +366,6 @@
   angular.module('authModule').directive('authHeaders', authHeaders);
 
 }());
-
-(function() {
-  'use strict';
-
-  var inlineProject = function(statusService) {
-    return {
-      restrict: 'EA',
-      templateUrl: 'app/panel/directives/inlineProject/inlineProject.html',
-      link: function(scope) {
-        // scope.projectStatus.labelContent = "finished";
-        scope.projectStatus = statusService.getStatus(scope.project.status);
-      }
-    };
-  };
-
-  angular.$inject = ['statusService'];
-  angular.module('panelModule').directive('inlineProject', inlineProject);
-
-}());
-
-(function() {
-  'use strict';
-
-  var projectFile = function () {
-    return {
-      restrict: 'A',
-      templateUrl: 'app/panel/directives/projectFile/projectFile.html'
-    };
-  };
-
-  angular.module('panelModule').directive('projectFile', projectFile);
-
-}());
-
-(function() {
-  'use strict';
-  var templatePreview = function(statusService) {
-    return {
-      restrict: 'E',
-      templateUrl: 'app/panel/directives/templatePreview/templatePreview.html',
-      link: function (scope) {
-        scope.projectStatus = statusService.getStatus(scope.template.status);
-      }
-    };
-  };
-
-  templatePreview.$inject = ['statusService'];
-  angular.module('frontendApp').directive('templatePreview', templatePreview);
-
-}());
-
 
 (function() {
   'use strict';
@@ -461,3 +421,86 @@
 
   angular.module('frontendApp').directive('windowScroll', windowScroll);
 }());
+
+(function() {
+  'use strict';
+
+  var inlineProject = function(statusService) {
+    return {
+      restrict: 'EA',
+      templateUrl: 'app/panel/directives/inlineProject/inlineProject.html',
+      link: function(scope) {
+        // scope.projectStatus.labelContent = "finished";
+        scope.projectStatus = statusService.getStatus(scope.project.status);
+      }
+    };
+  };
+
+  angular.$inject = ['statusService'];
+  angular.module('panelModule').directive('inlineProject', inlineProject);
+
+}());
+
+(function() {
+  'use strict';
+
+  var pagination = function() {
+    return {
+      restrict: 'E',
+      scope: {
+        pageNo: '=page',
+        loadPage: '=load'
+      },
+      templateUrl: 'app/panel/directives/pagination/pagination.html',
+      link: function(scope) {
+        scope.goToPage = function() {
+          scope.pageNo = 1;
+          scope.loadPage();
+        };
+        scope.goFurther = function() {
+          scope.pageNo += 1;
+          scope.loadPage();
+        };
+        scope.goBack = function() {
+          scope.pageNo -= 1;
+          scope.loadPage();
+        };
+      }
+    };
+  };
+
+  angular.module('panelModule').directive('pagination', pagination);
+
+}());
+
+(function() {
+  'use strict';
+
+  var projectFile = function () {
+    return {
+      restrict: 'A',
+      templateUrl: 'app/panel/directives/projectFile/projectFile.html'
+    };
+  };
+
+  angular.module('panelModule').directive('projectFile', projectFile);
+
+}());
+
+(function() {
+  'use strict';
+  var templatePreview = function(statusService) {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/panel/directives/templatePreview/templatePreview.html',
+      link: function (scope) {
+        scope.projectStatus = statusService.getStatus(scope.template.status);
+      }
+    };
+  };
+
+  templatePreview.$inject = ['statusService'];
+  angular.module('frontendApp').directive('templatePreview', templatePreview);
+
+}());
+

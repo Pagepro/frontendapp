@@ -2,16 +2,23 @@
   'use strict';
   var AllProjectsCtrl = function($scope, projectsFactory) {
     $scope.allProjects = null;
+    $scope.pageNo = null;
 
     function init() {
       projectsFactory.getProjects()
-      .success(function (resp) {
-        $scope.allProjects = resp;
+      .success(function (projects) {
+        $scope.allProjects = projects;
       })
-      .error(function (resp) {
-        console.log(resp);
+      .error(function (response) {
+        console.log(response);
       });
     }
+
+    $scope.loadWithParam = function() {
+      projectsFactory.getProjects($scope.pageNo).success(function (projects) {
+        $scope.allProjects = projects;
+      });
+    };
 
     init();
   };

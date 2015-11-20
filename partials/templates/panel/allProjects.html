@@ -41,43 +41,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="project-box__actions">
-                            <div class="pagination-box">
-                                <div class="pagination pagination--prev">
-                                    <a href="#" class="pagination__content">
-                                        <span class="icon icon--open-big--left"></span>
-                                    </a>
-                                </div>
-                                <ol class="pagination-list">
-                                    <li class="pagination-list__item">
-                                        <div class="pagination">
-                                            <a href="#" class="pagination__content">
-                                                <span class="counter"></span>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="pagination-list__item">
-                                        <div class="pagination">
-                                            <a href="#" class="pagination__content">
-                                                <span class="counter"></span>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li class="pagination-list__item">
-                                        <div class="pagination">
-                                            <a href="#" class="pagination__content">
-                                                <span class="counter"></span>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ol>
-                                <div class="pagination pagination--next">
-                                    <a href="#" class="pagination__content">
-                                        <span class="icon icon--open-big--right"></span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        {{pageNo}}
+                        <pagination class="project-box__actions" page="pageNo" load="loadWithParam"></pagination>
                     </div>
                 </div>
             </div>
