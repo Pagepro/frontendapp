@@ -4,8 +4,10 @@
   var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'authModule', 'panelModule']);
   frontendApp
     .config(['$urlRouterProvider',
+      '$httpProvider',
       '$locationProvider',
-      function($urlRouterProvider) {
+      function($urlRouterProvider, $httpProvider) {
+        $httpProvider.interceptors.push('authInterceptor');
         $urlRouterProvider.otherwise('/auth/login');
       }
     ])
@@ -26,6 +28,8 @@
           $rootScope.module = data.module;
           $rootScope.trails = data.trails;
           $rootScope.isAuth = (data.module === 'auth');
+
+          $rootScope.displayTitle = data.displayTitle;
         });
         $rootScope.communicator = {};
       }
@@ -71,7 +75,7 @@
           controllerAs: 'RmC',
           pageName: 'Remind Password',
           module: 'auth',
-          showit: true
+          displayTitle: true
         });
     }]);
 }());
@@ -115,6 +119,36 @@
 
 }());
 
+(function () {
+  'use strict';
+  angular.module('frontendApp').value('appSettings', {
+      title: 'Customers Application',
+      verion: '0.0.1',
+      apiRoot: 'http://localhost:8080/'
+  });
+}());
+
+(function() {
+  'use strict';
+
+  var auth = function($http, appSettings) {
+    var baseApiUrl = appSettings.apiRoot;
+    console.log(baseApiUrl);
+    return {
+      loginUser: function(username, password) {
+        return $http.post(baseApiUrl + 'auth', {
+          username: username,
+          password: password
+        });
+      }
+    };
+  };
+
+  auth.$inject = ['$http', 'appSettings'];
+  angular.module('frontendApp').factory('auth', auth);
+
+}());
+
 (function() {
   'use strict';
   var AuthCtrl = function($scope, $state) {
@@ -133,14 +167,16 @@
 
 (function() {
   'use strict';
-  var LoginCtrl = function($scope, $state) {
-
+  var LoginCtrl = function($scope, $state, $window, auth) {
     $scope.submitForm = function () {
-      $state.go('myProjectsState');
+      auth.loginUser('tes', 't').success(function (authToken) {
+        $window.localStorage.token = authToken;
+        $state.go('myProjectsState');
+      });
     };
   };
 
-  LoginCtrl.$inject = ['$scope', '$state'];
+  LoginCtrl.$inject = ['$scope', '$state', '$window', 'auth'];
   angular.module('frontendApp').controller('LoginCtrl', LoginCtrl);
 
 }());
@@ -163,13 +199,32 @@
 
 }());
 
-(function () {
+(function() {
   'use strict';
-  angular.module('frontendApp').value('appSettings', {
-      title: 'Customers Application',
-      verion: '0.0.1',
-      apiRoot: 'http://localhost:8080/'
-  });
+  var authInterceptor = function($rootScope, $q, $window, $location) {
+    return {
+      request: function(config) {
+        config.headers = config.headers || {};
+        if ($window.localStorage.token) {
+          config.headers.Authorization = 'Token ' + $window.localStorage.token;
+        }
+        return config;
+      },
+      responseError: function(response) {
+        if (response.status === 401) {
+          $window.localStorage.removeItem('token');
+          $window.localStorage.removeItem('username');
+          $location.path('/');
+          return;
+        }
+        return $q.reject(response);
+      }
+    };
+  };
+
+  authInterceptor.$inject = ['$rootScope', '$q', '$window', '$location'];
+  angular.module('frontendApp').factory('authInterceptor', authInterceptor);
+
 }());
 
 (function() {
@@ -204,7 +259,7 @@
 
 (function() {
   'use strict';
-  var MyProjectsCtrl = function($scope, projectsFactory) {
+  var MyProjectsCtrl = function($scope, $document, projectsFactory) {
     $scope.myProjects = null;
     function init() {
       projectsFactory.getProjects()
@@ -216,10 +271,15 @@
         console.log(resp);
       });
     }
+
+    $document.ready(function () {
+      $scope.imageReady = true;
+    });
+
     init();
   };
 
-  MyProjectsCtrl.$inject = ['$scope', 'projectsFactory'];
+  MyProjectsCtrl.$inject = ['$scope', '$document', 'projectsFactory'];
   angular.module('frontendApp').controller('MyProjectsCtrl', MyProjectsCtrl);
 
 }());
@@ -232,13 +292,14 @@
     var filesDfd = $q.defer();
 
     $scope.project = null;
+    $scope.displayType = 'grid';
 
     $scope.getStatus = function(code) {
       return statusService.getStatus(code);
     };
 
-    projectDfd  = projectsFactory.getProject($stateParams.projectId);
-    projectDfd.success(function (project) {
+    projectDfd = projectsFactory.getProject($stateParams.projectId);
+    projectDfd.success(function(project) {
       $scope.project = project;
     });
 
@@ -251,7 +312,6 @@
     templatesDfd.success(function(templates) {
       $scope.templates = templates;
     });
-
   };
 
   ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsFactory', 'templatesFactory', 'filesFactory', 'statusService'];
@@ -354,22 +414,7 @@
 
 (function() {
   'use strict';
-
-  var authHeaders = function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'app/auth/directives/authHeaders/authHeaders.html'
-    };
-  };
-
-  authHeaders.$inject = [];
-  angular.module('authModule').directive('authHeaders', authHeaders);
-
-}());
-
-(function() {
-  'use strict';
-  var headerSection = function() {
+  var headerSection = function($window) {
     return {
       restrict: 'E',
       templateUrl: 'app/common/directives/header/headerSection.html',
@@ -381,11 +426,15 @@
         scope.hideMenu = function() {
           scope.menuVisible = false;
         };
+        scope.logout = function() {
+          scope.hideMenu();
+          $window.localStorage.removeItem('token');
+        };
       }
     };
   };
 
-  headerSection.$inject = [];
+  headerSection.$inject = ['$window'];
   angular.module('frontendApp').directive('headerSection', headerSection);
 
 }());
@@ -425,12 +474,26 @@
 (function() {
   'use strict';
 
+  var authHeaders = function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/auth/directives/authHeaders/authHeaders.html'
+    };
+  };
+
+  authHeaders.$inject = [];
+  angular.module('authModule').directive('authHeaders', authHeaders);
+
+}());
+
+(function() {
+  'use strict';
+
   var inlineProject = function(statusService) {
     return {
       restrict: 'EA',
       templateUrl: 'app/panel/directives/inlineProject/inlineProject.html',
       link: function(scope) {
-        // scope.projectStatus.labelContent = "finished";
         scope.projectStatus = statusService.getStatus(scope.project.status);
       }
     };
@@ -504,3 +567,29 @@
 
 }());
 
+
+(function() {
+  'use strict';
+  var projectTeaser = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/panel/directives/projectTeaser/projectTeaser.html'
+    };
+  };
+
+  angular.module('panelModule').directive('projectTeaser', projectTeaser);
+
+}());
+
+(function () {
+  'use strict';
+  var templatesListing = function () {
+    return {
+      restrict: 'EA',
+      scope: '=',
+      templateUrl: 'app/panel/directives/templatesListing/templatesListing.html'
+    };
+  };
+
+  angular.module('panelModule').directive('templatesListing', templatesListing);
+}());

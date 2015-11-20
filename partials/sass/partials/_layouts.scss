@@ -3,7 +3,7 @@
    ========================================================================== */
 .register,
 .login {
-    background: url('../img/pic_bg.jpg') no-repeat;
+    background: url('../img/pic_bg-3.jpg') no-repeat;
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -11,6 +11,7 @@
 
 .sec--head,
 .sec--main,
+.sec--popup,
 .subsec {
     @extend %helper--sec;
     &__inner {
@@ -49,7 +50,7 @@
     &.small {
         height: $size_margin_big;
 
-        border-bottom: 1px solid $color_grey_2;
+        border-bottom: 1px solid $color_grey_0;
         background: rgba(255,255,255,.9);
         &.hidden {
             opacity: 0;
@@ -106,6 +107,24 @@
         }
         .display-mode-list {
             margin-right: -$size_padding_display-mode;
+            &__item {
+                &:last-child {
+                    .dispaly-mode-box {
+                        &__info {
+                            right: 0; //ie
+                            // right: 0;
+                            // left: auto;
+                            left: -149%; //ie
+                            .tooltip {
+                                &:before {
+                                    right: calc(#{$size_acces-tool_h} / 5);
+                                    left: auto;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     &__content {
@@ -128,6 +147,22 @@
             }
             .display-mode-list {
                 justify-content: center;
+                &__item {
+                    &:last-child {
+                        .dispaly-mode-box {
+                            &__info {
+                                right: -50%;
+                                left: -50%;
+                                .tooltip {
+                                    &:before {
+                                        right: 0;
+                                        left: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
             .subtitle + .display-mode-list {
                 margin-top: $size_padding;
@@ -141,5 +176,22 @@
         .subsec__head + .subsec__content {
             margin-top: $size_padding;
         }
+    }
+}
+
+.sec--popup {
+    position: absolute;
+    z-index: 30;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+
+    background: rgba(0,0,0,.8);
+    &__inner {
+        @extend %helper--flex--center--center;
     }
 }

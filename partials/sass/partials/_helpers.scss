@@ -7,9 +7,10 @@
 %helper--sec {
     display: flex;
 
+    max-width: 100%;
+
     flex-wrap: wrap;
     flex-basis: 100%;
-    max-width: 100%;
     @extend %helper--flex--center--top;
 }
 
@@ -258,7 +259,7 @@
         width: 1px;
         height: 1px;
 
-        transition: 400ms ease-in-out, border-radius 400ms linear;
+        transition: 200ms ease-in-out, border-radius 200ms linear;
 
         border-radius: 50%;
         background: transparent;
@@ -266,6 +267,8 @@
         @extend %helper--after--absolute--center;
     }
 }
+
+
 
 %helper--round--after--hover {
     &:after {

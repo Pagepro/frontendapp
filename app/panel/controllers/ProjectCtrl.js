@@ -6,13 +6,14 @@
     var filesDfd = $q.defer();
 
     $scope.project = null;
+    $scope.displayType = 'grid';
 
     $scope.getStatus = function(code) {
       return statusService.getStatus(code);
     };
 
-    projectDfd  = projectsFactory.getProject($stateParams.projectId);
-    projectDfd.success(function (project) {
+    projectDfd = projectsFactory.getProject($stateParams.projectId);
+    projectDfd.success(function(project) {
       $scope.project = project;
     });
 
@@ -25,7 +26,6 @@
     templatesDfd.success(function(templates) {
       $scope.templates = templates;
     });
-
   };
 
   ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsFactory', 'templatesFactory', 'filesFactory', 'statusService'];

@@ -1,13 +1,15 @@
 (function() {
   'use strict';
-  var LoginCtrl = function($scope, $state) {
-
+  var LoginCtrl = function($scope, $state, $window, auth) {
     $scope.submitForm = function () {
-      $state.go('myProjectsState');
+      auth.loginUser('tes', 't').success(function (authToken) {
+        $window.localStorage.token = authToken;
+        $state.go('myProjectsState');
+      });
     };
   };
 
-  LoginCtrl.$inject = ['$scope', '$state'];
+  LoginCtrl.$inject = ['$scope', '$state', '$window', 'auth'];
   angular.module('frontendApp').controller('LoginCtrl', LoginCtrl);
 
 }());

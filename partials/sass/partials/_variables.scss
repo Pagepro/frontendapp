@@ -38,6 +38,8 @@ $size_padding_display-mode:					8px;
 $size_acces-tool_h:							40px;
 $size_acces-tool_v:							35px;
 
+$size_comment-box:							40px;
+
 $size_action-tool_v:						52px;
 
 $size_tooltip_line-height:					5px;
@@ -47,9 +49,14 @@ $size_input_v:								48px;
 
 $size_btn_v:								44px;
 
+$size_file-data-big_v:						65px;
+
 $size_teaser_h:								245px;
 $size_teaser_v:								378px;
 
+$size_checkbox:								20px;
+$size_checkbox_small:						15px;
+$size_checkbox_mini:						13px;
 
 // $size_filename_uploaded-date_h:				165px;
 $size_filename_uploaded-date_h:				140px;
@@ -58,21 +65,23 @@ $size_filename_status_h:					120px;
 $size_filename_actions-big_h:				284px;
 $size_filename_actions_h:					101px;
 $size_filename_extention_h:					80px;
+$size_filename_id:							54px;
 
 
 
 
 /* Breakpoints
 ========================================================================== */
-$breakpoint_tablet:             		max-width 1100px;
-$breakpoint_tablet-special:             max-width 913px;
-$breakpoint_tablet-mini:        		max-width 860px;
-$breakpoint_smartphone-big:         	max-width 825px;
-$breakpoint_smartphone:         		max-width 767px;
-$breakpoint_smartphone-special:     	max-width 728px;
-$breakpoint_smartphone-special-alt:     max-width 700px;
-$breakpoint_smartphone-medium:     		max-width 540px;
-$breakpoint_smartphone-mini:    		max-width 375px;
+$breakpoint_tablet:             				max-width 1100px;
+$breakpoint_tablet-special:             		max-width 913px;
+$breakpoint_tablet-mini:        				max-width 860px;
+$breakpoint_smartphone-big:         			max-width 825px;
+$breakpoint_smartphone:         				max-width 767px;
+$breakpoint_smartphone-special:     			max-width 728px;
+$breakpoint_smartphone-special-alt-0:     		max-width 708px;
+$breakpoint_smartphone-special-alt:     		max-width 700px;
+$breakpoint_smartphone-medium:     				max-width 540px;
+$breakpoint_smartphone-mini:    				max-width 375px;
 
 /* Fonts
 ========================================================================== */

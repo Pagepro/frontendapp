@@ -1,0 +1,30 @@
+<div class="teaser project-teaser">
+    <a href="#/project/{{ project.id }}" class="teaser__inner">
+        <div class="teaser__actions">
+            <div class="status-label status-label--new">
+                <p class="label">New</p>
+            </div>
+        </div>
+        <div class="teaser__head">
+            <div class="teaser__head__photo" style="background-image: url(https://placeimg.com/640/480/any?v={{ $index }})"></div>
+        </div>
+        <div class="teaser__content">
+            <div class="update-info">
+                <div class="update-info__content">
+                    <span class="icon icon--clock"></span>
+                    <p class="label">
+                        Updated: <time datetime="project.created_on | date: 'dd.MM.yyyy'">{{ project.created_on | date: 'dd.MM.yyyy' }}</time>
+                    </p>
+                </div>
+            </div>
+            <progress class="progress-bar" value="{{ project.finished }}" max="100"></progress>
+            <h3 class="project-title">
+                <span class="label">{{ project.name }}</span>
+            </h3>
+            <p class="templates-info">
+                <span class="qty">{{ project.templates_no }}</span>
+                <span class="label">templates</span>
+            </p>
+        </div>
+    </a>
+</div>

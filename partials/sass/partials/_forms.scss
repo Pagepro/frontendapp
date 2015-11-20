@@ -22,6 +22,118 @@
     }
 }
 
+/* Custom checkboxes
+   ========================================================================== */
+.icheckbox {
+    width: $size_checkbox;
+    height: $size_checkbox;
+
+    cursor: pointer;
+
+    border: 1px solid #9a9a9a;
+    border-radius: 2px;
+    background: $color_white;
+
+    @extend %helper--transition;
+    &:before {
+        width: 100%;
+        height: 100%;
+
+        font-family: $font_ico;
+        font-size: 14px;
+
+        content: '\e827';
+
+        opacity: 0;
+        color: $color_red_dark;
+
+        @extend %helper--transition;
+        @extend %helper--absolute--center;
+        @extend %helper--flex--center--center;
+    }
+    &.checked {
+        position: relative;
+
+        border-color: $color_red_dark;
+        background: linear-gradient(to bottom, #e32c49 0%,#d4213e 100%);
+        &:before {
+            opacity: 1;
+            color: $color_white;
+        }
+    }
+}
+
+.icheckbox {
+    @include breakpoint($breakpoint_tablet) {
+        width: $size_checkbox_small;
+        height: $size_checkbox_small;
+        &:before {
+            font-size: 10px;
+        }
+    }
+    @include breakpoint($breakpoint_smartphone) {
+        width: $size_checkbox_mini;
+        height: $size_checkbox_mini;
+    }
+}
+
+/* Custom selects
+   ========================================================================== */
+.hasCustomSelect {
+    z-index: 2;
+
+    width: $size_input_h;
+    height: $size_input_v;
+}
+.customSelect {
+    z-index: 1;
+
+    display: flex !important;
+    overflow: hidden;
+
+    width: 100%;
+    height: $size_input_v;
+    padding: 0 $size_acces-tool_h 0 $size_padding;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    border: 1px solid $color_grey_0;
+
+    @extend %helper--flex--left--center;
+    &:after {
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        width: $size_acces-tool_h;
+        height: 100%;
+        margin: auto 0;
+
+        font-family: $font_ico;
+        font-size: 12px;
+
+        content: '\e81f';
+
+        color: $color_red_dark;
+        border: 1px solid $color_grey_0;
+        border-left: none;
+        background: #f9f9f9;
+
+        @extend %helper--flex--center--center;
+    }
+}
+
+.customSelectInner {
+    overflow: hidden;
+
+    max-width: 100%;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
 /* Access form
    ========================================================================== */
 // Access form
@@ -405,3 +517,150 @@
         }
     }
 }
+
+/* create-ticket-form
+   ========================================================================== */
+.form-box {
+    @extend %helper--flex--left--center;
+    &__section {
+        flex-grow: 1;
+        &__head + &__content {
+            margin-top: $size_padding;
+        }
+    }
+}
+.checkboxes-list {
+    margin-right: -$size_padding;
+
+    @extend %helper--list;
+    @extend %helper--flex--left--center;
+    &__item {
+        margin-right: $size_padding;
+    }
+    .field {
+        @extend %helper--flex--left--center;
+        .label {
+            margin-right: 10px;
+
+            order: -1;
+        }
+    }
+}
+
+.create-ticket-form {
+    @extend %helper--form;
+    .form {
+        &__fieldset {
+            width: 100%;
+            .NFI-wrapper {
+                display: flex !important;
+                .NFI-filename {
+                    padding: 0;
+                    padding: 0 $size_padding !important;
+
+                    border: none;
+                    border: 1px solid $color_grey_0;
+                    border-right: none;
+
+                    order: 1;
+                    flex-grow: 1;
+                }
+                .NFI-button {
+                    display: flex !important;
+
+                    width: calc(#{$size_input_h} / 2);
+
+                    text-indent: -99998em;
+
+                    background: $color_red;
+
+                    flex-shrink: 0;
+                    @extend %helper--flex--center--center;
+                    order: 2;
+                }
+            }
+            .field,
+            .NFI-wrapper {
+                //
+                .label,
+                .input,
+                .NFI-button {
+                    //
+                }
+                .label {
+                    //
+                }
+                .input,
+                .NFI-button {
+                    //
+                }
+            }
+            .field {
+                position: relative;
+                &--select {
+                    width: $size_input_h;
+                }
+                .input--text,
+                .input--url,
+                .textarea {
+                    width: 100%;
+
+                    border: 1px solid $color_grey_0;
+                }
+                .input {
+                    height: $size_input_v;
+                    &--text,
+                    &--url {
+                        padding: 0 $size_padding;
+                    }
+                    &.NFI-wrapper {
+                        padding: 0;
+
+                        border: none;
+                    }
+                }
+                .textarea {
+                    height: calc(#{$size_input_v} * 4);
+                    padding: $size_padding;
+                }
+                .label {
+                    &--special {
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+
+                        width: calc(#{$size_input_h} / 2);
+                        margin: auto 0;
+
+                        font-size: 14px;
+                        font-weight: 500;
+
+                        text-align: center;
+                        text-transform: uppercase;
+
+                        color: $color_white;
+
+                        @extend %helper--flex--center--center;
+                    }
+                }
+            }
+        }
+        &__actions {
+            @extend %helper--flex--right--center;
+        }
+    }
+    .form-box + .form-box,
+    .form__content + .form__actions {
+        margin-top: $size_padding_middle;
+    }
+}
+
+
+
+
+
+
+
+
+//

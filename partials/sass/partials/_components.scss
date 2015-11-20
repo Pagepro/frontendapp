@@ -2,6 +2,20 @@
    Components
    ========================================================================== */
 
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    -webkit-animation: rotating 1s linear infinite;
+
+    animation-fill-mode: both;
+}
 
 /* Icons
    ========================================================================== */
@@ -46,6 +60,10 @@
 // .icon--lock - content: '\e822'
 // .icon--file--code - content: '\e823'
 // .icon--file--image - content: '\e824'
+// .icon--reload - content: '\e825'
+// .icon--comment - content: '\e826'
+// .icon--check - content: '\e827'
+// .icon--close - content: '\e827' rotate
 //
 // Markup:
 // <span class="icon {{modifier_class}}"></span>
@@ -61,12 +79,29 @@
 
 .icon {
     &:before {
+        margin: 0;
+
         font-family: $font_ico;
 
         @extend %helper--flex--center--center;
     }
     &--resize {
         transform: rotate(-45deg);
+    }
+    &--comment {
+        transform: scaleX(-1);
+
+        filter: FlipH;
+    }
+    &--close {
+        &:before {
+            font-family: $font_ico;
+
+            content: '\e81d';
+            transform: rotate(-45deg);
+
+            @extend %helper--flex--center--center;
+        }
     }
 }
 
@@ -400,53 +435,8 @@ h1.breadcrumb {
 
 .btn--submit {
     @extend .btn--default;
-}
-
-// Action button
-//
-// .action-btn - action button
-//
-// Markup:
-// <a href="/all-projects.html" class="action-btn">
-//     <span class="action-btn__content">
-//         <span class="label">All projects</span>
-//         <span class="icon icon--folder"></span>
-//     </span>
-// </a>
-//
-// Styleguide 6.3
-
-.action-btn {
-    display: inline-block;
-
-    color: $color_white;
-    background: $color_red;
-
-    @extend %helper--transition;
-    &__content {
-        height: $size_btn_v;
-        padding: 0 $size_padding;
-
-        @extend %helper--flex--center--center;
-    }
-    .label {
-        font-size: 14px;
-        font-weight: 300;
-
-        text-transform: uppercase;
-    }
-    .icon {
-        &--folder {
-            font-size: 18px;
-        }
-    }
-    .label + .icon {
-        margin-left: $size_padding;
-    }
-    &:hover {
-        text-decoration: none;
-
-        background: $color_black;
+    &--small {
+        width: calc(#{$size_input_h} / 2);
     }
 }
 
@@ -459,7 +449,7 @@ h1.breadcrumb {
 //     <span class="label">D</span>
 // </a>
 //
-// Styleguide 6.4
+// Styleguide 6.3
 
 .user-btn {
     width: $size_acces-tool_v;
@@ -483,6 +473,96 @@ h1.breadcrumb {
         background: $color_black;
     }
 }
+
+// Action button - example 1
+//
+// .action-btn - action button
+//
+// Markup:
+// <a href="/all-projects.html" class="action-btn">
+//     <span class="action-btn__content">
+//         <span class="label">All projects</span>
+//         <span class="icon icon--folder"></span>
+//     </span>
+// </a>
+//
+// Styleguide 6.4
+
+// Action button - example 2
+//
+// .action-btn - action button
+//
+// Markup:
+// <a href="#" class="action-btn">
+//     <span class="action-btn__content">
+//         <span class="label">Download all files (<span class="qty">1188</span>)</span>
+//         <span class="icon icon--download"></span>
+//     </span>
+// </a>
+//
+// Styleguide 6.5
+
+// Action button - example 3
+//
+// .action-btn - action button
+//
+// Markup:
+// <a href="#" class="action-btn js-rotate">
+//     <span class="action-btn__content">
+//         <span class="label"><span class="qty">7</span> more tickets</span>
+//         <span class="icon icon--reload rotate"></span>
+//     </span>
+// </a>
+//
+// Styleguide 6.6
+
+.action-btn {
+    display: inline-block;
+
+    color: $color_white;
+    background: $color_red;
+
+    @extend %helper--transition;
+    &__content {
+        height: $size_btn_v;
+        padding: 0 $size_padding;
+
+        @extend %helper--flex--center--center;
+    }
+    .label {
+        font-size: 15px;
+        font-weight: 400;
+
+        text-transform: uppercase;
+    }
+    .icon {
+        &--folder {
+            font-size: 18px;
+        }
+        &--download {
+            font-size: 20px;
+        }
+        &--reload {
+            font-size: 22px;
+        }
+        &--plus {
+            font-size: 28px;
+            &:before {
+                width: 20px;
+            }
+        }
+    }
+    .label + .icon {
+        margin-left: $size_padding;
+    }
+    &:hover {
+        text-decoration: none;
+
+        background: $color_black;
+    }
+}
+
+
 
 /* Headers
    ========================================================================== */
@@ -514,8 +594,15 @@ h1.breadcrumb {
 // Styleguide 7.3
 
 .main-title,
-.subtitle {
+.subtitle,
+.minor-title {
     margin: 0;
+    &.highlighted {
+        color: $color_red_dark;
+    }
+}
+.main-title,
+.subtitle {
     .label {
         font-weight: 100;
     }
@@ -556,11 +643,10 @@ h1.breadcrumb {
             font-size: 20px;
         }
     }
-    // @include breakpoint($breakpoint_smartphone) {
-    //     .label {
-    //         font-size: 17px;
-    //     }
-    // }
+}
+
+.minor-title {
+    //
 }
 
 // Main Header with page-back link
@@ -707,6 +793,7 @@ h1.breadcrumb {
 // .status-label--qa - Q&A
 // .status-label--finished - finished
 // .status-label--rejected - rejected
+// .status-label--done - done (tickets)
 //
 // Markup:
 // <div class="status-label {{modifier_class}}">
@@ -726,7 +813,8 @@ h1.breadcrumb {
     &--qa {
         background: $color_blue;
     }
-    &--finished {
+    &--finished,
+    &--done {
         background: $color_green;
     }
     &--rejected {
@@ -1221,7 +1309,7 @@ h1.breadcrumb {
 //
 // Styleguide 13
 
-// User box
+// User box - old version
 //
 // .user-box - user box
 //
@@ -1251,6 +1339,36 @@ h1.breadcrumb {
 // </div>
 //
 // Styleguide 13.1
+
+// User box - new version
+//
+// .user-box - user box
+//
+// Markup:
+// <div class="user-box">
+//     <a href="#" class="user-box__content js-trigger-user-box" aria-label="open user tool box">
+//         <span class="user-btn">
+//             <span class="label">D</span>
+//         </span>
+//     </a>
+//     <div class="user-box__actions">
+//         <div class="cloud-tooltip">
+//             <ul class="cloud-tooltip__list">
+//                 <li class="cloud-tooltip__list__item">
+//                     <a href="/my-projects">My Projects</a>
+//                 </li>
+//                 <li class="cloud-tooltip__list__item">
+//                     <a href="/all-projects">All Projects</a>
+//                 </li>
+//                 <li class="cloud-tooltip__list__item">
+//                     <a href="#">Logout</a>
+//                 </li>
+//             </ul>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 13.2
 
 .user-box {
     position: relative;
@@ -1777,6 +1895,9 @@ h1.breadcrumb {
     .teaser {
         &__head {
             @extend %helper--round--before--hover;
+            &:after {
+                transition: 400ms ease-in-out, border-radius 400ms linear;
+            }
         }
         &__inner {
             &:hover {
@@ -1968,9 +2089,12 @@ h1.breadcrumb {
                 top: 0;
                 bottom: 0;
                 left: 0;
+                // width: 0;
 
-                width: 0;
+                width: 100%;
                 margin: auto 0;
+
+                opacity: 0;
 
                 justify-content: center;
                 @extend %helper--transition;
@@ -2101,8 +2225,9 @@ h1.breadcrumb {
             &__head {
                 .action-tools-list {
                     z-index: 1;
+                    // width: 100%;
 
-                    width: 100%;
+                    opacity: 1;
                 }
             }
             &__content {
@@ -2154,7 +2279,6 @@ h1.breadcrumb {
 //             &__head {
 //                 .action-tools-list {
 //                     z-index: 1;
-
 //                     width: 100%;
 //                 }
 //             }
@@ -2165,7 +2289,6 @@ h1.breadcrumb {
 //                 }
 //                 .action-tools-list {
 //                     z-index: 2;
-
 //                     opacity: 1;
 //                 }
 //             }
@@ -2886,54 +3009,34 @@ h1.breadcrumb {
 // Styleguide 15.10
 
 .teasers-list {
+    margin-right: -$size_padding;
     margin-bottom: -$size_padding;
 
     flex-wrap: wrap;
     @extend %helper--list;
     @extend %helper--flex--left--top;
-    &__item {
+    &__item, > li {
         margin-right: $size_padding;
         margin-bottom: $size_padding;
-        &:nth-child(4n) {
-            margin-right: 0;
-        }
-        &:last-child {
-            margin-right: auto;
-        }
+    }
+    .drag-and-drop-placeholder {
+        width: $size_teaser_h;
+        height: $size_teaser_v;
+
+        border: 3px dotted $color_red_dark;
+        background: rgba(214,70,80,.5);
     }
 }
 
 .teasers-list {
     @include breakpoint($breakpoint_tablet) {
-        width: 765px; // 3x $size_teaser_h + 2x $size_padding
-        &__item {
-            &:nth-child(4n) {
-                margin-right: $size_padding;
-            }
-            &:nth-child(3n+3) {
-                margin-right: 0;
-            }
-        }
+        width: calc(3* #{$size_teaser_h} + 3* #{$size_padding});
     }
     @include breakpoint($breakpoint_tablet-mini) {
-        width: 505px; // 2x $size_teaser_h + 1x $size_padding
-        &__item {
-            &:nth-child(2n) {
-                margin-right: 0;
-            }
-            &:nth-child(3n) {
-                margin-right: $size_padding;
-            }
-            &:nth-child(6n) {
-                margin-right: 0;
-            }
-        }
+        width: calc(2 * #{$size_teaser_h} + 2* #{$size_padding});
     }
     @include breakpoint($breakpoint_smartphone-medium) {
-        width: $size_teaser_h;
-        &__item {
-            margin-right: 0;
-        }
+        width: calc(#{$size_teaser_h} + #{$size_padding});
     }
 }
 
@@ -2972,6 +3075,25 @@ h1.breadcrumb {
 
     font-size: 14px;
     font-weight: 300;
+}
+
+// ticket-desc
+//
+// .ticket-desc - ticket-desc
+//
+// Markup:
+// <div class="ticket-desc">
+//     <p>
+//         Lorem ipsum dolor sit amet, novum voluptua ex vim, posse phaedrum ad sit. Quo ad movet evertitur. Vim wisi instructior ad, id audire gloriatur duo. At quo minim equidem, ne ullum accumsan nominati sea. Has malis mundi constituam in, mandamus pertinacia sententiae in vim. Ut ius ferri ocurreret dignissim, labore dictas lobortis te pro.
+//     </p>
+// </div>
+//
+// Styleguide 16.3
+
+.ticket-desc {
+    > p {
+        text-transform: uppercase;
+    }
 }
 
 // file-data
@@ -3031,7 +3153,7 @@ h1.breadcrumb {
 //     </div>
 // </div>
 //
-// Styleguide 16.3
+// Styleguide 16.4
 
 // file-data--project
 //
@@ -3059,7 +3181,7 @@ h1.breadcrumb {
 //     </div>
 // </div>
 //
-// Styleguide 16.4
+// Styleguide 16.5
 
 // file-data--template
 //
@@ -3112,7 +3234,7 @@ h1.breadcrumb {
 //     </div>
 // </div>
 //
-// Styleguide 16.5
+// Styleguide 16.6
 
 // file-data--template-complexe
 //
@@ -3213,7 +3335,42 @@ h1.breadcrumb {
 //     </div>
 // </div>
 //
-// Styleguide 16.6
+// Styleguide 16.7
+
+// file-data--tickets
+//
+// .file-data--tickets - file-data--tickets
+//
+// Markup:
+// <div class="file-data file-data--tickets">
+//     <div class="file-data__inner">
+//         <div class="file-data__name">
+//             <div class="ticket-desc">
+//                 <p>
+//                     Lorem ipsum dolor sit amet, novum voluptua ex vim, posse phaedrum ad sit. Quo ad movet evertitur. Vim wisi instructior ad, id audire gloriatur duo. At quo minim equidem, ne ullum accumsan nominati sea. Has malis mundi constituam in, mandamus pertinacia sententiae in vim. Ut ius ferri ocurreret dignissim, labore dictas lobortis te pro.
+//                 </p>
+//             </div>
+//         </div>
+//         <div class="file-data__status">
+//             <div class="status-label status-label--new">
+//                 <p class="label">new</p>
+//             </div>
+//         </div>
+//         <div class="file-data__comments">
+//             <div class="comment-box">
+//                 <div class="comment-box__content">
+//                     <span class="icon icon--comment"></span>
+//                     <span class="qty">12</span>
+//                 </div>
+//             </div>
+//         </div>
+//         <div class="file-data__ticket-date">
+//             <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 16.8
 
 .kss-modifier-example {
     .file-data {
@@ -3238,7 +3395,9 @@ h1.breadcrumb {
     &__actions,
     &__status,
     &__create-date,
-    &__finish-date {
+    &__finish-date,
+    &__comments,
+    &__ticket-date {
         height: 100%;
 
         @extend %helper--flex--left--center;
@@ -3257,7 +3416,9 @@ h1.breadcrumb {
     &__size,
     &__uploaded-date,
     &__create-date,
-    &__finish-date {
+    &__finish-date,
+    &__comments,
+    &__ticket-date {
         padding: 0 $size_padding;
 
         border: 1px solid $color_grey_3;
@@ -3265,14 +3426,22 @@ h1.breadcrumb {
     &__name,
     &__size,
     &__uploaded-date,
-    &__create-date {
+    &__create-date,
+    &__comments {
         border-right: none;
     }
     &__size,
     &__uploaded-date,
     &__create-date,
-    &__finish-date {
+    &__finish-date,
+    &__comments,
+    &__ticket-date {
         border-left: none;
+    }
+    &__status,
+    &__comments,
+    &__ticket-date {
+        width: $size_filename_status_h;
     }
     &__name {
         min-width: 265px;
@@ -3314,6 +3483,9 @@ h1.breadcrumb {
     }
     &__uploaded-date {
         width: $size_filename_uploaded-date_h;
+    }
+    &__comments {
+        justify-content: center;
     }
     &__actions {
         width: $size_filename_actions_h;
@@ -3366,7 +3538,6 @@ h1.breadcrumb {
         }
     }
     &__status {
-        width: $size_filename_status_h;
         .status-label {
             width: 100%;
             .label {
@@ -3428,6 +3599,29 @@ h1.breadcrumb {
                         width: 16px;
                     }
                 }
+            }
+        }
+    }
+    &--tickets {
+        .file-data {
+            &__inner {
+                height: $size_file-data-big_v;
+            }
+            &__status {
+                align-items: stretch;
+                align-content: stretch;
+                .status-label {
+                    @extend %helper--flex--stretch;
+                    .label {
+                        height: auto;
+                    }
+                }
+            }
+            &__comments {
+                padding: 10px $size_padding 13px;
+            }
+            &__name {
+                max-width: calc(100% - #{$size_filename_status_h} - #{$size_filename_status_h} - #{$size_filename_status_h});
             }
         }
     }
@@ -3658,7 +3852,7 @@ h1.breadcrumb {
 //         </ol>
 //     </div>
 //
-// Styleguide 16.7
+// Styleguide 16.9
 
 // files-box--projects with files-list (with file-data--project)
 //
@@ -3803,7 +3997,7 @@ h1.breadcrumb {
 //     </div>
 // </div>
 //
-// Styleguide 16.8
+// Styleguide 16.10
 
 // files-box--templates with files-list (with file-data--template)
 //
@@ -4155,7 +4349,7 @@ h1.breadcrumb {
 //     </div>
 // </div>
 //
-// Styleguide 16.9
+// Styleguide 16.11
 
 
 // files-box--templates-complexe with files-list (with file-data--template-complexe)
@@ -4492,7 +4686,196 @@ h1.breadcrumb {
 //     </div>
 // </div>
 //
-// Styleguide 16.10
+// Styleguide 16.12
+
+// files-box--tickets with files-list (with file-data--tickets)
+//
+// .files-box--tickets - files-box--tickets with files-list (with file-data--tickets)
+//
+// Markup:
+// <div class="files-box files-box--tickets">
+//     <div class="files-box__head">
+//         <div class="files-box__id">
+//             <p class="filebox-title">Id</p>
+//         </div>
+//         <div class="files-box__name">
+//             <p class="filebox-title">Short ticket description</p>
+//         </div>
+//         <div class="files-box__status">
+//             <p class="filebox-title">Status</p>
+//         </div>
+//         <div class="files-box__comments">
+//             <p class="filebox-title">Comments</p>
+//         </div>
+//         <div class="files-box__ticket-date">
+//             <p class="filebox-title">Date</p>
+//         </div>
+//     </div>
+//     <div class="files-box__content">
+//         <div class="files-box__number">
+//         </div>
+//         <ol class="files-list">
+//             <li class="files-list__item">
+//                 <div class="files-list__item__inner">
+//                     <div class="files-list__item__id">
+//                         <a href="#" class="ticket-id-link">
+//                             <span class="label">#<span class="ticket-id">231</span></span>
+//                         </a>
+//                     </div>
+//                     <div class="files-list__item__content">
+//                         <div class="file-data file-data--tickets">
+//                             <div class="file-data__inner">
+//                                 <div class="file-data__name">
+//                                     <div class="ticket-desc">
+//                                         <p>
+//                                             Lorem ipsum dolor sit amet, novum voluptua ex vim, posse phaedrum ad sit. Quo ad movet evertitur. Vim wisi instructior ad, id audire gloriatur duo. At quo minim equidem, ne ullum accumsan nominati sea. Has malis mundi constituam in, mandamus pertinacia sententiae in vim. Ut ius ferri ocurreret dignissim, labore dictas lobortis te pro.
+//                                         </p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__status">
+//                                     <div class="status-label status-label--new">
+//                                         <p class="label">new</p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__comments">
+//                                     <div class="comment-box">
+//                                         <div class="comment-box__content">
+//                                             <span class="icon icon--comment"></span>
+//                                             <span class="qty">12</span>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__ticket-date">
+//                                     <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </li>
+//             <li class="files-list__item">
+//                 <div class="files-list__item__inner">
+//                     <div class="files-list__item__id">
+//                         <a href="#" class="ticket-id-link">
+//                             <span class="label">#<span class="ticket-id">231</span></span>
+//                         </a>
+//                     </div>
+//                     <div class="files-list__item__content">
+//                         <div class="file-data file-data--tickets">
+//                             <div class="file-data__inner">
+//                                 <div class="file-data__name">
+//                                     <div class="ticket-desc">
+//                                         <p>
+//                                             Lorem ipsum dolor sit amet, novum voluptua ex vim, posse phaedrum ad sit. Quo ad movet evertitur. Vim wisi instructior ad, id audire gloriatur duo. At quo minim equidem, ne ullum accumsan nominati sea.
+//                                         </p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__status">
+//                                     <div class="status-label status-label--in-progress">
+//                                         <p class="label">in progress</p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__comments">
+//                                     <div class="comment-box">
+//                                         <div class="comment-box__content">
+//                                             <span class="icon icon--comment"></span>
+//                                             <span class="qty">5</span>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__ticket-date">
+//                                     <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </li>
+//             <li class="files-list__item">
+//                 <div class="files-list__item__inner">
+//                     <div class="files-list__item__id">
+//                         <a href="#" class="ticket-id-link">
+//                             <span class="label">#<span class="ticket-id">231</span></span>
+//                         </a>
+//                     </div>
+//                     <div class="files-list__item__content">
+//                         <div class="file-data file-data--tickets">
+//                             <div class="file-data__inner">
+//                                 <div class="file-data__name">
+//                                     <div class="ticket-desc">
+//                                         <p>
+//                                             Lorem ipsum dolor sit amet, novum voluptua ex vim, posse phaedrum ad sit.
+//                                         </p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__status">
+//                                     <div class="status-label status-label--rejected">
+//                                         <p class="label">rejected</p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__comments">
+//                                     <div class="comment-box">
+//                                         <div class="comment-box__content">
+//                                             <span class="icon icon--comment"></span>
+//                                             <span class="qty">0</span>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__ticket-date">
+//                                     <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </li>
+//             <li class="files-list__item">
+//                 <div class="files-list__item__inner">
+//                     <div class="files-list__item__id">
+//                         <a href="#" class="ticket-id-link">
+//                             <span class="label">#<span class="ticket-id">231</span></span>
+//                         </a>
+//                     </div>
+//                     <div class="files-list__item__content">
+//                         <div class="file-data file-data--tickets">
+//                             <div class="file-data__inner">
+//                                 <div class="file-data__name">
+//                                     <div class="ticket-desc">
+//                                         <p>
+//                                             Lorem ipsum dolor sit amet, novum voluptua ex vim, posse phaedrum ad sit. Quo ad movet evertitur. Vim wisi instructior ad, id audire gloriatur duo. At quo minim equidem, ne ullum accumsan nominati sea. Has malis mundi constituam in, mandamus pertinacia sententiae in vim. Ut ius ferri ocurreret dignissim, labore dictas lobortis te pro.
+//                                         </p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__status">
+//                                     <div class="status-label status-label--done">
+//                                         <p class="label">done</p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__comments">
+//                                     <div class="comment-box">
+//                                         <div class="comment-box__content">
+//                                             <span class="icon icon--comment"></span>
+//                                             <span class="qty">3</span>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div class="file-data__ticket-date">
+//                                     <time class="file-date" datetime="2015-05-25 20:00">25/05/2015</time>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </li>
+//         </ol>
+//     </div>
+// </div>
+//
+// Styleguide 16.13
+
+.ticket-id-link {
+    @extend %helper--flex--center--center;
+}
 
 .files-list {
     margin-bottom: -$size_padding;
@@ -4500,7 +4883,7 @@ h1.breadcrumb {
     counter-reset: li;
 
     @extend %helper--list;
-    &__item {
+    &__item, > li {
         margin-bottom: $size_padding;
 
         @extend %helper--flex--left--center;
@@ -4508,6 +4891,10 @@ h1.breadcrumb {
             &:hover {
                 text-decoration: none;
                 .files-list__item {
+                    &__counter,
+                    &__id {
+                        border-color: $color_red;
+                    }
                     &__counter {
                         border-color: $color_red;
 
@@ -4538,17 +4925,48 @@ h1.breadcrumb {
             @extend %helper--flex--left--center;
             @extend %helper--transition;
         }
+        &__id,
         &__counter {
-            position: relative;
-
             overflow: hidden;
-
-            width: $size_btn_v;
-            height: $size_btn_v;
 
             border: 1px solid $color_grey_3;
 
             flex-shrink: 0;
+        }
+        &__id {
+            width: $size_filename_id;
+            height: $size_file-data-big_v;
+
+            justify-content: center;
+            @extend %helper--flex--stretch;
+            .ticket-id-link {
+                position: relative;
+
+                width: 100%;
+
+                color: $color_default;
+
+                @extend %helper--round--before--hover;
+                &:hover {
+                    text-decoration: none;
+
+                    color: $color_white;
+
+                    @extend %helper--round--after--hover;
+                    &:after {
+                        z-index: -1;
+
+                        background: $color_red;
+                    }
+                }
+            }
+        }
+        &__counter {
+            position: relative;
+
+            width: $size_btn_v;
+            height: $size_btn_v;
+
             @extend %helper--round--before--hover;
             &:after {
                 z-index: 1;
@@ -4561,7 +4979,7 @@ h1.breadcrumb {
 
                 content: counter(li);
                 counter-increment: li;
-                transition: 400ms ease-in-out, border-radius 400ms linear;
+                transition: 200ms ease-in-out, border-radius 200ms linear;
 
                 color: $color_default;
 
@@ -4579,6 +4997,13 @@ h1.breadcrumb {
                 }
             }
         }
+    }
+    .drag-and-drop-placeholder {
+        width: 100%;
+        height: $size_btn_v;
+
+        border: 1px dashed $color_red_dark;
+        background: rgba(214,70,80,.5);
     }
 }
 
@@ -4622,16 +5047,34 @@ h1.breadcrumb {
     &__actions,
     &__create-date,
     &__finish-date,
-    &__status {
+    &__status,
+    &__comments,
+    &__ticket-date {
         padding: 0 $size_padding;
     }
-    &__number {
+    &__extention,
+    &__status,
+    &__actions,
+    &__comments {
+        justify-content: center;
+        .filebox-title {
+            text-align: center;
+        }
+    }
+    &__number,
+    &__id {
         width: $size_btn_v;
 
         flex-shrink: 0;
         .filebox-title {
             text-align: center;
         }
+    }
+    &__number {
+        width: $size_btn_v;
+    }
+    &__id {
+        width: $size_filename_id;
     }
     &__name {
         min-width: 265px;
@@ -4652,22 +5095,23 @@ h1.breadcrumb {
     &__create-date {
         padding-left: 40px;
     }
+    &__status,
+    &__comments,
+    &__ticket-date {
+        width: $size_filename_status_h;
+    }
     &__uploaded-date {
         width: $size_filename_uploaded-date_h;
     }
     &__actions {
         width: $size_filename_actions_h;
         padding: 0;
-
-        @extend %helper--flex--space-between--center;
+        // @extend %helper--flex--space-between--center;
         .filebox-title {
             padding: 0 $size_padding;
 
             flex-grow: 1;
         }
-    }
-    &__status {
-        width: $size_filename_status_h;
     }
     &--projects {
         .files-box {
@@ -4695,6 +5139,16 @@ h1.breadcrumb {
         .files-box {
             &__name {
                 max-width: calc(100% - #{$size_btn_v} - #{$size_filename_status_h} - #{$size_filename_uploaded-date_h} - #{$size_filename_actions-big_h});
+            }
+            &__actions {
+                width: $size_filename_actions-big_h;
+            }
+        }
+    }
+    &--tickets {
+        .files-box {
+            &__name {
+                max-width: calc(100% - #{$size_filename_id} - #{$size_filename_status_h} - #{$size_filename_status_h} - #{$size_filename_status_h});
             }
         }
     }
@@ -4750,12 +5204,18 @@ h1.breadcrumb {
     @include breakpoint($breakpoint_smartphone-big) {
         overflow-x: scroll;
         &--projects,
-        &--templates {
+        &--templates,
+        &--tickets {
             overflow-x: hidden;
         }
     }
     @include breakpoint($breakpoint_smartphone-special) {
         &--projects {
+            overflow-x: scroll;
+        }
+    }
+    @include breakpoint($breakpoint_smartphone-special-alt-0) {
+        &--tickets {
             overflow-x: scroll;
         }
     }
@@ -6387,6 +6847,8 @@ h1.breadcrumb {
     &__content {
         overflow: hidden;
 
+        width: $size_acces-tool_h;
+
         color: $color_grey_2;
 
         @extend %helper--flex--center--center;
@@ -6399,7 +6861,6 @@ h1.breadcrumb {
     }
     .icon {
         height: 35px;
-        padding: 0 $size_padding_display-mode;
 
         @extend %helper--flex--center--center;
         &:before {
@@ -6428,10 +6889,62 @@ h1.breadcrumb {
     }
 }
 
+// Display mode box
+//
+// .dispaly-mode-box - dispaly-mode-box
+//
+// Markup:
+// <div class="dispaly-mode-box">
+//     <div class="dispaly-mode-box__content">
+//         <div class="dispaly-mode">
+//             <a href="project-details-list.html" class="dispaly-mode__content">
+//                 <span class="icon icon--display-mode"></span>   
+//             </a>
+//         </div>
+//     </div>
+//     <div class="dispaly-mode-box__info">
+//         <div class="tooltip">
+//             <h4 class="label">List View</h4>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 22.2
+
+.dispaly-mode-box {
+    position: relative;
+
+    display: inline-block;
+    &__info {
+        position: absolute;
+        right: -50%;
+        bottom: 0;
+        left: -50%;
+
+        display: none;
+
+        height: 1px;
+
+        opacity: 0;
+
+        @extend %helper--flex--center--top;
+        .tooltip {
+            margin-top: $size_padding;
+        }
+    }
+    &:hover {
+        .dispaly-mode-box {
+            &__info {
+                display: flex;
+
+                opacity: 1;
+            }
+        }
+    }
+}
 
 
-
-// Display mode list
+// Display mode list - dispaly-mode witheout tooltip
 //
 // .dispaly-mode-list - dispaly-mode-list
 //
@@ -6453,12 +6966,62 @@ h1.breadcrumb {
 //     </li> 
 // </ul>
 //
-// Styleguide 22.2
+// Styleguide 22.3
+
+
+// Display mode list - dispaly-mode with tooltip
+//
+// .dispaly-mode-list - dispaly-mode-list
+//
+// Markup:
+// <ul class="display-mode-list">
+//     <li class="display-mode-list__item">
+//         <div class="dispaly-mode-box">
+//             <div class="dispaly-mode-box__content">
+//                 <div class="dispaly-mode">
+//                     <a href="project-details-list.html" class="dispaly-mode__content">
+//                         <span class="icon icon--display-mode"></span>   
+//                     </a>
+//                 </div>
+//             </div>
+//             <div class="dispaly-mode-box__info">
+//                 <div class="tooltip">
+//                     <h4 class="label">List View</h4>
+//                 </div>
+//             </div>
+//         </div>
+//     </li>
+//     <li class="display-mode-list__item active">
+//         <div class="dispaly-mode-box">
+//             <div class="dispaly-mode-box__content">
+//                 <div class="dispaly-mode">
+//                     <a href="project-details.html" class="dispaly-mode__content">
+//                         <span class="icon icon--display-mode--alt"></span>   
+//                     </a>
+//                 </div>
+//             </div>
+//             <div class="dispaly-mode-box__info">
+//                 <div class="tooltip">
+//                     <h4 class="label">Grid View</h4>
+//                 </div>
+//             </div>
+//         </div>
+//     </li> 
+// </ul>
+//
+// Styleguide 22.4
 
 .display-mode-list {
+    position: relative;
+    z-index: 10;
+
     @extend %helper--list;
     @extend %helper--flex--left--top;
     &__item {
+        margin-right: 3px;
+        &:last-child {
+            margin-right: 0;
+        }
         &.active {
             .dispaly-mode {
                 &__content {
@@ -6552,6 +7115,8 @@ h1.breadcrumb {
                     width: 30px;
                     height: 27px;
 
+                    font-weight: 600;
+
                     color: $color_red;
 
                     @extend %helper--transition;
@@ -6587,8 +7152,122 @@ h1.breadcrumb {
     }
 }
 
+/* Comment box
+   ========================================================================== */
+// Comment box
+//
+//
+// Styleguide 24
 
+// Comment box"
+//
+// .comment-box" - comment-box"
+//
+// <div class="comment-box">
+//     <div class="comment-box__content">
+//         <span class="icon icon--comment"></span>
+//         <span class="qty">12</span>
+//     </div>
+// </div>
+//
+// Styleguide 24.1
 
+.comment-box {
+    width: $size_comment-box;
+    height: $size_comment-box;
+    &__content {
+        position: relative;
+
+        width: 100%;
+        height: 100%;
+
+        @extend %helper--flex--center--center;
+        .icon {
+            position: relative;
+            z-index: 1;
+
+            color: $color_red;
+            &--comment {
+                width: 100%;
+                height: 100%;
+
+                font-size: 40px;
+
+                @extend %helper--flex--center--center;
+                &:before {
+                    padding-top: 5px;
+                    padding-left: 2px;
+                }
+            }
+        }
+        .qty {
+            z-index: 2;
+
+            width: 100%;
+            height: 100%;
+
+            font-size: 11px;
+            font-weight: 600;
+
+            color: $color_white;
+
+            @extend %helper--absolute--center;
+            @extend %helper--flex--center--center;
+        }
+    }
+}
+
+/* Popup
+   ========================================================================== */
+.trigger-close-popup {
+    overflow: hidden;
+
+    width: $size_padding_big;
+    height: $size_padding_big;
+
+    border: 1px solid $color_red;
+
+    @extend %helper--flex--center--center;
+    @extend %helper--round--before--hover;
+    .icon {
+        font-size: 16px;
+
+        color: $color_red_dark;
+    }
+    &:hover {
+        text-decoration: none;
+
+        @extend %helper--round--after--hover;
+        .icon {
+            position: relative;
+            z-index: 2;
+
+            color: $color_white;
+        }
+        &:after {
+            z-index: 1;
+
+            background: $color_red;
+        }
+    }
+}
+.popup {
+    width: $size_inner;
+
+    background: $color_white;
+    &__inner {
+        padding: calc(#{$size_padding_middle} * 1.2) $size_padding_middle;
+    }
+    &__head {
+        @extend %helper--flex--space-between--center;
+        .subtitle {
+            margin-top: -8px;
+        }
+    }
+    &__head + &__content {
+        margin-top: calc(#{$size_padding_middle} - 8px);
+    }
+}
 
 
 

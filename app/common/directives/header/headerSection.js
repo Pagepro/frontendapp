@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var headerSection = function() {
+  var headerSection = function($window) {
     return {
       restrict: 'E',
       templateUrl: 'app/common/directives/header/headerSection.html',
@@ -12,11 +12,15 @@
         scope.hideMenu = function() {
           scope.menuVisible = false;
         };
+        scope.logout = function() {
+          scope.hideMenu();
+          $window.localStorage.removeItem('token');
+        };
       }
     };
   };
 
-  headerSection.$inject = [];
+  headerSection.$inject = ['$window'];
   angular.module('frontendApp').directive('headerSection', headerSection);
 
 }());

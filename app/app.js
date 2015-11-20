@@ -4,8 +4,10 @@
   var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'authModule', 'panelModule']);
   frontendApp
     .config(['$urlRouterProvider',
+      '$httpProvider',
       '$locationProvider',
-      function($urlRouterProvider) {
+      function($urlRouterProvider, $httpProvider) {
+        $httpProvider.interceptors.push('authInterceptor');
         $urlRouterProvider.otherwise('/auth/login');
       }
     ])
@@ -26,6 +28,8 @@
           $rootScope.module = data.module;
           $rootScope.trails = data.trails;
           $rootScope.isAuth = (data.module === 'auth');
+
+          $rootScope.displayTitle = data.displayTitle;
         });
         $rootScope.communicator = {};
       }

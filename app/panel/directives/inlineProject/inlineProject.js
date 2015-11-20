@@ -6,7 +6,6 @@
       restrict: 'EA',
       templateUrl: 'app/panel/directives/inlineProject/inlineProject.html',
       link: function(scope) {
-        // scope.projectStatus.labelContent = "finished";
         scope.projectStatus = statusService.getStatus(scope.project.status);
       }
     };

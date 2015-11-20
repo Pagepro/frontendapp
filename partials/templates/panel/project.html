@@ -37,16 +37,16 @@
                         <span class="label">Project Templates</span>
                     </h3>
                     <ul class="display-mode-list">
-                        <li class="display-mode-list__item">
+                        <li class="display-mode-list__item" ng-class="{active: displayType === 'inline'}">
                             <div class="dispaly-mode">
-                                <a href="project-details-list.html" class="dispaly-mode__content">
+                                <a ng-click="displayType='inline'" class="dispaly-mode__content">
                                     <span class="icon icon--display-mode"></span>
                                 </a>
                             </div>
                         </li>
-                        <li class="display-mode-list__item active">
+                        <li class="display-mode-list__item" ng-class="{active: displayType === 'grid'}">
                             <div class="dispaly-mode">
-                                <a href="project-details.html" class="dispaly-mode__content">
+                                <a ng-click="displayType='grid'" class="dispaly-mode__content">
                                     <span class="icon icon--display-mode--alt"></span>
                                 </a>
                             </div>
@@ -54,42 +54,7 @@
                     </ul>
                 </div>
                 <div class="subsec__content">
-                    <div class="project-box">
-                        <div class="project-box__content">
-                            <ul class="teasers-list">
-                                <li class="teasers-list__item">
-                                    <div class="teaser action-teaser js-teaser">
-                                        <div class="teaser__inner">
-                                            <div class="teaser__head">
-                                                <span class="icon icon--upload"></span>
-                                            </div>
-                                            <div class="teaser__content">
-                                                <form class="project-action-form">
-                                                    <fieldset class="form__fieldset">
-                                                        <div class="field field--input">
-                                                            <label class="label" for="project-name">Upload Templates</label>
-                                                            <input type="file" name="add_file" class="input input--file" id="project-name">
-                                                        </div>
-                                                    </fieldset>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="teasers-list__item" ng-repeat="template in templates">
-                                    <template-preview></template-preview>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="project-box__actions">
-                            <a href="#" class="action-btn">
-                                <span class="action-btn__content">
-                                    <span class="label">Download all templates (<span class="qty">{{templates.length}}</span>)</span>
-                                    <span class="icon icon--download"></span>
-                                </span>
-                            </a>
-                        </div>
-                    </div>
+                    <templates-listing ng-switch on="displayType" class="project-box"></templates-listing>
                 </div>
             </div>
         </section>

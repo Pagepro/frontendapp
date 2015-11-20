@@ -36,7 +36,7 @@
           controllerAs: 'RmC',
           pageName: 'Remind Password',
           module: 'auth',
-          showit: true
+          displayTitle: true
         });
     }]);
 }());
