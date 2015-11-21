@@ -33,5 +33,5 @@
       return projectStatus;
     };
   };
-  angular.module('frontendApp').service('statusService', statusService);
+  angular.module('panelModule').service('statusService', statusService);
 }());

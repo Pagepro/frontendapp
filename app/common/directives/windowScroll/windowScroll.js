@@ -3,10 +3,9 @@
   var windowScroll = function($window) {
     return {
       link: function(scope, element, attrs) {
-        var distance;
 
         angular.element($window).bind('scroll', function() {
-          distance = this.pageYOffset;
+          var distance = this.pageYOffset;
 
           if (distance >= 25) {
             scope.scrollClass = 'small';

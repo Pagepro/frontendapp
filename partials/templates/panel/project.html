@@ -1,162 +1,209 @@
-<main class="sec--main">
-    <div class="sec--main__head">
-        <div class="sec--main__inner">
-            <div class="project-essential-box">
-                <div class="project-essential-box__head">
-                    <h2 class="page-back">
-                        <a href="#/my-projects" class="page-back__content">
-                            <span class="icon icon--open-big--left"></span>
-                            <span class="main-title">
-                                <span class="label">{{ project.name }}</span>
-                            </span>
-                        </a>
-                        <span class="page-back__info">
-                            <span class="tooltip">
-                                <span class="label">Back to My Projects</span>
-                            </span>
+<div class="sec--main__head">
+    <div class="sec--main__inner">
+        <div class="project-essential-box">
+            <div class="project-essential-box__head">
+                <h2 class="page-back">
+                    <a href="#/my-projects" class="page-back__content">
+                        <span class="icon icon--open-big--left"></span>
+                        <span class="main-title">
+                            <span class="label">{{ project.name }}</span>
                         </span>
-                    </h2>
-                </div>
-                <div class="project-essential-box__content">
-                    <div class="progress-bar-wrapper">
-                        <progress class="progress-bar progress-bar--alt" value="{{ project.finished}}" max="100"></progress>
-                        <p class="progress-bar-value">
-                            <span class="qty">{{project.finished}}</span>
-                            <span>%</span>
-                        </p>
-                    </div>
+                    </a>
+                    <span class="page-back__info">
+                        <span class="tooltip">
+                            <span class="label">Back to My Projects</span>
+                        </span>
+                    </span>
+                </h2>
+            </div>
+            <div class="project-essential-box__content">
+                <div class="progress-bar-wrapper">
+                    <progress class="progress-bar progress-bar--alt" value="{{ project.finished}}" max="100"></progress>
+                    <p class="progress-bar-value">
+                        <span class="qty">{{project.finished}}</span>
+                        <span>%</span>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="sec--main__content">
-        <section class="subsec">
-            <div class="subsec__inner">
-                <div class="subsec__head">
-                    <h3 class="subtitle">
-                        <span class="label">Project Templates</span>
-                    </h3>
-                    <ul class="display-mode-list">
-                        <li class="display-mode-list__item" ng-class="{active: displayType === 'inline'}">
-                            <div class="dispaly-mode">
-                                <a ng-click="displayType='inline'" class="dispaly-mode__content">
-                                    <span class="icon icon--display-mode"></span>
-                                </a>
-                            </div>
-                        </li>
-                        <li class="display-mode-list__item" ng-class="{active: displayType === 'grid'}">
-                            <div class="dispaly-mode">
-                                <a ng-click="displayType='grid'" class="dispaly-mode__content">
-                                    <span class="icon icon--display-mode--alt"></span>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="subsec__content">
-                    <templates-listing ng-switch on="displayType" class="project-box"></templates-listing>
-                </div>
-            </div>
-        </section>
-        <section class="subsec">
-            <div class="subsec__inner">
-                <div class="subsec__head">
-                    <h3 class="subtitle">
-                        <span class="label">Project Files</span>
-                    </h3>
-                </div>
-                <div class="subsec__content">
-                    <div class="project-box">
-                        <div class="project-box__content">
-                            <div class="files-box">
-                                <div class="files-box__head">
-                                    <div class="files-box__number">
-                                        <p class="filebox-title">No</p>
-                                    </div>
-                                    <div class="files-box__name">
-                                        <p class="filebox-title">File name</p>
-                                    </div>
-                                    <div class="files-box__extention">
-                                        <p class="filebox-title">Extention</p>
-                                    </div>
-                                    <div class="files-box__size">
-                                        <p class="filebox-title">Size</p>
-                                    </div>
-                                    <div class="files-box__uploaded-date">
-                                        <p class="filebox-title">Uploaded date</p>
-                                    </div>
-                                    <div class="files-box__actions">
-                                        <p class="filebox-title">Actions</p>
-                                    </div>
-                                </div>
-                                <div class="files-box__content">
-                                    <div class="files-box__number">
-                                    </div>
-                                    <ol class="files-list">
-                                        <li class="files-list__item" ng-repeat="file in files">
-                                            <div class="files-list__item__inner" project-file></div>
-                                        </li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-box__actions">
-                            <a href="#" class="action-btn">
-                                <span class="action-btn__content">
-                                    <span class="label">Download all files (<span class="qty">{{files.length}}</span>)</span>
-                                    <span class="icon icon--download"></span>
-                                </span>
+</div>
+<div class="sec--main__content">
+    <section class="subsec">
+        <div class="subsec__inner">
+            <div class="subsec__head">
+                <h3 class="subtitle">
+                    <span class="label">Project Templates</span>
+                </h3>
+                <ul class="display-mode-list">
+                    <li class="display-mode-list__item" ng-class="{active: displayType === 'inline'}">
+                        <div class="dispaly-mode">
+                            <a ng-click="displayType='inline'" class="dispaly-mode__content">
+                                <span class="icon icon--display-mode"></span>
                             </a>
                         </div>
+                    </li>
+                    <li class="display-mode-list__item" ng-class="{active: displayType === 'grid'}">
+                        <div class="dispaly-mode">
+                            <a ng-click="displayType='grid'" class="dispaly-mode__content">
+                                <span class="icon icon--display-mode--alt"></span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="subsec__content">
+                <templates-listing ng-switch on="displayType" class="project-box"></templates-listing>
+            </div>
+        </div>
+    </section>
+    <section class="subsec">
+        <div class="subsec__inner">
+            <div class="subsec__head">
+                <h3 class="subtitle">
+                    <span class="label">Project Tickets</span>
+                </h3>
+            </div>
+            <div class="subsec__content">
+                <div class="project-box">
+                    <div class="project-box__content">
+                        <div class="files-box files-box--tickets">
+                            <div class="files-box__head">
+                                <div class="files-box__id">
+                                    <p class="filebox-title">Id</p>
+                                </div>
+                                <div class="files-box__name">
+                                    <p class="filebox-title">Short ticket description</p>
+                                </div>
+                                <div class="files-box__status">
+                                    <p class="filebox-title">Status</p>
+                                </div>
+                                <div class="files-box__comments">
+                                    <p class="filebox-title">Comments</p>
+                                </div>
+                                <div class="files-box__ticket-date">
+                                    <p class="filebox-title">Date</p>
+                                </div>
+                            </div>
+                            <div class="files-box__content">
+                                <div class="files-box__number">
+                                </div>
+                                <ol class="files-list">
+                                    <li class="files-list__item" inline-ticket ng-repeat="ticket in tickets"></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-box__actions">
+                        <a href="#" class="action-btn js-rotate">
+                            <span class="action-btn__content">
+                                <span class="label"><span class="qty">7</span> more tickets</span>
+                                <span class="icon icon--reload"></span>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="subsec">
-            <div class="subsec__inner">
-                <div class="subsec__head">
-                    <h3 class="subtitle">
-                        <span class="label">Other informations</span>
-                    </h3>
-                </div>
-                <div class="subsec__content">
-                    <div class="project-box">
-                        <div class="project-box__content">
-                            <div class="project-time-box">
-                                <ul class="project-time-list">
-                                    <li class="project-time-list__item">
-                                        <div class="project-time">
-                                            <p class="project-time__head">
-                                                <span class="hours">20</span>
-                                                <span>h</span>
-                                            </p>
-                                            <p class="project-time__info-add">
-                                                ETA
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="project-time-list__item">
-                                        <div class="project-time">
-                                            <time class="project-time__head" datetime="{{ project.created_on | date:'dd/MM/yyyy' }}">{{ project.created_on | date:'dd/MM/yyyy' }}</time>
-                                            <p class="project-time__info-add">
-                                                Start date
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li class="project-time-list__item">
-                                        <div class="project-time">
-                                            <time class="project-time__head" datetime="{{ project.suggested_delivery_date | date:'dd/MM/yyyy' }}">{{ project.suggested_delivery_date | date:'dd/MM/yyyy' }}</time>
-                                            <p class="project-time__info-add">
-                                                Date of delivery
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
+        </div>
+    </section>
+    <section class="subsec">
+        <div class="subsec__inner">
+            <div class="subsec__head">
+                <h3 class="subtitle">
+                    <span class="label">Project Files</span>
+                </h3>
+            </div>
+            <div class="subsec__content">
+                <div class="project-box">
+                    <div class="project-box__content">
+                        <div class="files-box">
+                            <div class="files-box__head">
+                                <div class="files-box__number">
+                                    <p class="filebox-title">No</p>
+                                </div>
+                                <div class="files-box__name">
+                                    <p class="filebox-title">File name</p>
+                                </div>
+                                <div class="files-box__extention">
+                                    <p class="filebox-title">Extention</p>
+                                </div>
+                                <div class="files-box__size">
+                                    <p class="filebox-title">Size</p>
+                                </div>
+                                <div class="files-box__uploaded-date">
+                                    <p class="filebox-title">Uploaded date</p>
+                                </div>
+                                <div class="files-box__actions">
+                                    <p class="filebox-title">Actions</p>
+                                </div>
                             </div>
+                            <div class="files-box__content">
+                                <div class="files-box__number">
+                                </div>
+                                <ol class="files-list">
+                                    <li class="files-list__item" ng-repeat="file in files">
+                                        <div class="files-list__item__inner" project-file></div>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-box__actions">
+                        <a href="#" class="action-btn">
+                            <span class="action-btn__content">
+                                <span class="label">Download all files (<span class="qty">{{files.length}}</span>)</span>
+                                <span class="icon icon--download"></span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="subsec">
+        <div class="subsec__inner">
+            <div class="subsec__head">
+                <h3 class="subtitle">
+                    <span class="label">Other informations</span>
+                </h3>
+            </div>
+            <div class="subsec__content">
+                <div class="project-box">
+                    <div class="project-box__content">
+                        <div class="project-time-box">
+                            <ul class="project-time-list">
+                                <li class="project-time-list__item">
+                                    <div class="project-time">
+                                        <p class="project-time__head">
+                                            <span class="hours">20</span>
+                                            <span>h</span>
+                                        </p>
+                                        <p class="project-time__info-add">
+                                            ETA
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="project-time-list__item">
+                                    <div class="project-time">
+                                        <time class="project-time__head" datetime="{{ project.created_on | date:'dd/MM/yyyy' }}">{{ project.created_on | date:'dd/MM/yyyy' }}</time>
+                                        <p class="project-time__info-add">
+                                            Start date
+                                        </p>
+                                    </div>
+                                </li>
+                                <li class="project-time-list__item">
+                                    <div class="project-time">
+                                        <time class="project-time__head" datetime="{{ project.suggested_delivery_date | date:'dd/MM/yyyy' }}">{{ project.suggested_delivery_date | date:'dd/MM/yyyy' }}</time>
+                                        <p class="project-time__info-add">
+                                            Date of delivery
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
-</main>
+        </div>
+    </section>
+</div>

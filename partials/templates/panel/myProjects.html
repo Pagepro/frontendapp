@@ -1,54 +1,52 @@
-<main class="sec--main">
-    <div class="sec--main__head">
-        <div class="sec--main__inner">
-            <h2 class="main-title">
-                <span class="label">My Projects</span>
-            </h2>
-        </div>
+<div class="sec--main__head">
+    <div class="sec--main__inner">
+        <h2 class="main-title">
+            <span class="label">My Projects</span>
+        </h2>
     </div>
-    <div class="sec--main__content">
-        <section class="subsec">
-            <div class="subsec__inner">
-                <div class="subsec__content">
-                    <div class="project-box">
-                        <div class="project-box__content">
-                            <ul class="teasers-list">
-                                <li class="teasers-list__item">
-                                    <div class="teaser action-teaser js-teaser">
-                                        <div class="teaser__inner">
-                                            <div class="teaser__head">
-                                                <span class="icon icon--plus"></span>
-                                            </div>
-                                            <div class="teaser__content">
-                                                <form class="project-action-form">
-                                                    <fieldset class="form__fieldset">
-                                                        <div class="field field--input">
-                                                            <label class="label" for="project-name">New Project</label>
-                                                            <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name">
-                                                        </div>
-                                                    </fieldset>
-                                                </form>
-                                            </div>
+</div>
+<div class="sec--main__content">
+    <section class="subsec">
+        <div class="subsec__inner">
+            <div class="subsec__content">
+                <div class="project-box">
+                    <div class="project-box__content">
+                        <ul class="teasers-list">
+                            <li class="teasers-list__item">
+                                <div class="teaser action-teaser js-teaser">
+                                    <div class="teaser__inner">
+                                        <div class="teaser__head">
+                                            <span class="icon icon--plus"></span>
+                                        </div>
+                                        <div class="teaser__content">
+                                            <form class="project-action-form">
+                                                <fieldset class="form__fieldset">
+                                                    <div class="field field--input">
+                                                        <label class="label" for="project-name">New Project</label>
+                                                        <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name">
+                                                    </div>
+                                                </fieldset>
+                                            </form>
                                         </div>
                                     </div>
-                                </li>
+                                </div>
+                            </li>
 
-                                <li class="teasers-list__item" ng-repeat="project in myProjects">
-                                    <project-teaser></project-teaser>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="project-box__actions">
-                            <a href="#/all-projects" class="action-btn">
-                                <span class="action-btn__content">
-                                    <span class="label">All projects</span>
-                                    <span class="icon icon--folder"></span>
-                                </span>
-                            </a>
-                        </div>
+                            <li class="teasers-list__item" ng-repeat="project in myProjects">
+                                <project-teaser></project-teaser>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="project-box__actions">
+                        <a href="#/all-projects" class="action-btn">
+                            <span class="action-btn__content">
+                                <span class="label">All projects</span>
+                                <span class="icon icon--folder"></span>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
-</main>
+        </div>
+    </section>
+</div>

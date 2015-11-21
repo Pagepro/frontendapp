@@ -1,0 +1,34 @@
+<div class="files-list__item__inner">
+    <div class="files-list__item__id">
+        <a href="#" class="ticket-id-link">
+            <span class="label">#<span class="ticket-id">231</span></span>
+        </a>
+    </div>
+    <div class="files-list__item__content">
+        <div class="file-data file-data--tickets">
+            <div class="file-data__inner">
+                <div class="file-data__name">
+                    <div class="ticket-desc">
+                        <p>{{ticket.description}}</p>
+                    </div>
+                </div>
+                <div class="file-data__status">
+                    <div class="status-label status-label--new">
+                        <p class="label">new</p>
+                    </div>
+                </div>
+                <div class="file-data__comments">
+                    <div class="comment-box">
+                        <div class="comment-box__content">
+                            <span class="icon icon--comment"></span>
+                            <span class="qty">{{ticket.comments.length}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="file-data__ticket-date">
+                    <time class="file-date" datetime="{{ticket.created_on | date:'dd/MM/yyyy hh:mm'}}">{{ticket.created_on | date:'dd/MM/yyyy'}}</time>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

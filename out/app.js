@@ -171,10 +171,9 @@
 
 (function() {
   'use strict';
-  var authInterceptor = function($rootScope, $q, $window, $location) {
+  var authInterceptor = function($q, $window, $location) {
     return {
       request: function(config) {
-        console.log(config);
         config.headers = config.headers || {};
         if ($window.localStorage.token) {
           config.headers.Authorization = 'Token ' + $window.localStorage.token;
@@ -193,7 +192,7 @@
     };
   };
 
-  authInterceptor.$inject = ['$rootScope', '$q', '$window', '$location'];
+  authInterceptor.$inject = ['$q', '$window', '$location'];
   angular.module('frontendApp').factory('authInterceptor', authInterceptor);
 
 }());
@@ -230,12 +229,12 @@
 
 (function() {
   'use strict';
-  var AllProjectsCtrl = function($scope, projectsFactory) {
+  var AllProjectsCtrl = function($scope, projectsService) {
     $scope.allProjects = null;
     $scope.pageNo = null;
 
     function init() {
-      projectsFactory.getProjects()
+      projectsService.getProjects()
       .success(function (projects) {
         $scope.allProjects = projects;
       })
@@ -245,7 +244,7 @@
     }
 
     $scope.loadWithParam = function() {
-      projectsFactory.getProjects($scope.pageNo).success(function (projects) {
+      projectsService.getProjects($scope.pageNo).success(function (projects) {
         $scope.allProjects = projects;
       });
     };
@@ -253,17 +252,17 @@
     init();
   };
 
-  AllProjectsCtrl.$inject = ['$scope', 'projectsFactory'];
+  AllProjectsCtrl.$inject = ['$scope', 'projectsService'];
   angular.module('panelModule').controller('AllProjectsCtrl', AllProjectsCtrl);
 
 }());
 
 (function() {
   'use strict';
-  var MyProjectsCtrl = function($scope, $document, projectsFactory) {
+  var MyProjectsCtrl = function($scope, $document, projectsService) {
     $scope.myProjects = null;
     function init() {
-      projectsFactory.getProjects()
+      projectsService.getProjects()
       .success(function (resp) {
         $scope.myProjects = resp;
         console.log(resp);
@@ -272,50 +271,56 @@
         console.log(resp);
       });
     }
-
-    $document.ready(function () {
-      $scope.imageReady = true;
-    });
-
     init();
   };
 
-  MyProjectsCtrl.$inject = ['$scope', '$document', 'projectsFactory'];
-  angular.module('frontendApp').controller('MyProjectsCtrl', MyProjectsCtrl);
+  MyProjectsCtrl.$inject = ['$scope', '$document', 'projectsService'];
+  angular.module('panelModule').controller('MyProjectsCtrl', MyProjectsCtrl);
 
 }());
 
 (function() {
   'use strict';
-  var ProjectCtrl = function($scope, $q, $stateParams, projectsFactory, templatesFactory, filesFactory, statusService) {
-    var projectDfd = $q.defer();
-    var templatesDfd = $q.defer();
-    var filesDfd = $q.defer();
+  var ProjectCtrl = function($scope, $stateParams, projectsService, templatesService, filesService, ticketsService, statusService) {
+    var projectPromise;
+    var templatesPromise;
+    var filesPromise;
+    var ticketsPromise;
 
     $scope.project = null;
+    $scope.files = null;
+    $scope.templates = null;
+    $scope.tickets = null;
+
     $scope.displayType = 'grid';
 
     $scope.getStatus = function(code) {
       return statusService.getStatus(code);
     };
 
-    projectDfd = projectsFactory.getProject($stateParams.projectId);
-    projectDfd.success(function(project) {
+    projectPromise = projectsService.getProject($stateParams.projectId);
+    projectPromise.success(function(project) {
       $scope.project = project;
     });
 
-    filesDfd = filesFactory.getFiles($stateParams.projectId);
-    filesDfd.success(function(files) {
+    filesPromise = filesService.getFiles($stateParams.projectId);
+    filesPromise.success(function(files) {
       $scope.files = files;
     });
 
-    templatesDfd = templatesFactory.getTemplates($stateParams.projectId);
-    templatesDfd.success(function(templates) {
+    templatesPromise = templatesService.getTemplates($stateParams.projectId);
+    templatesPromise.success(function(templates) {
       $scope.templates = templates;
+    });
+
+    ticketsPromise = ticketsService.getTickets($stateParams.projectId);
+    ticketsPromise.success(function(tickets) {
+      console.log(tickets);
+      $scope.tickets = tickets;
     });
   };
 
-  ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsFactory', 'templatesFactory', 'filesFactory', 'statusService'];
+  ProjectCtrl.$inject = ['$scope', '$stateParams', 'projectsService', 'templatesService', 'filesService', 'ticketsService', 'statusService'];
   angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
 
 }());
@@ -323,40 +328,36 @@
 (function() {
   'use strict';
 
-  var filesFactory = function($http, appSettings) {
-    return {
-      getFiles: function(projectId) {
-        return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/files');
-      }
+  var filesService = function($http, appSettings) {
+    this.getFiles = function(projectId) {
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/files');
     };
   };
 
-  filesFactory.$inject = ['$http', 'appSettings'];
-  angular.module('frontendApp').factory('filesFactory', filesFactory);
+  filesService.$inject = ['$http', 'appSettings'];
+  angular.module('panelModule').service('filesService', filesService);
 
 }());
 
 (function () {
   'use strict';
 
-// this is factory of ALL projects or just for MY projects?
-  var projectsFactory = function ($http, appSettings) {
-    return {
-      getProjects: function (pageNo) {
-        var baseUrl = appSettings.apiRoot + 'projects/';
-        if (!pageNo) {
-          return $http.get(baseUrl);
-        }
-        return $http.get(baseUrl + '?p=' + pageNo);
-      },
-      getProject: function (projectId) {
-        return $http.get(appSettings.apiRoot + 'projects/' + projectId);
+  var projectsService = function ($http, appSettings) {
+
+    this.getProjects = function (pageNo) {
+      var baseUrl = appSettings.apiRoot + 'projects/';
+      if (!pageNo) {
+        return $http.get(baseUrl);
       }
+      return $http.get(baseUrl + '?p=' + pageNo);
+    };
+    this.getProject = function (projectId) {
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId);
     };
   };
 
-  projectsFactory.$inject = ['$http', 'appSettings'];
-  angular.module('frontendApp').factory('projectsFactory', projectsFactory);
+  projectsService.$inject = ['$http', 'appSettings'];
+  angular.module('panelModule').service('projectsService', projectsService);
 }());
 
 (function () {
@@ -394,22 +395,34 @@
       return projectStatus;
     };
   };
-  angular.module('frontendApp').service('statusService', statusService);
+  angular.module('panelModule').service('statusService', statusService);
 }());
 
 (function() {
   'use strict';
 
-  var templatesFactory = function($http, appSettings) {
-    return {
-      getTemplates: function(projectId) {
-        return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/templates');
-      }
+  var templatesService = function($http, appSettings) {
+    this.getTemplates = function(projectId) {
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/templates');
     };
   };
 
-  templatesFactory.$inject = ['$http', 'appSettings'];
-  angular.module('frontendApp').factory('templatesFactory', templatesFactory);
+  templatesService.$inject = ['$http', 'appSettings'];
+  angular.module('frontendApp').service('templatesService', templatesService);
+
+}());
+
+(function() {
+  'use strict';
+
+  var ticketsService = function($http, appSettings) {
+    this.getTickets = function(projectId) {
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/tickets');
+    };
+  };
+
+  ticketsService.$inject = ['$http', 'appSettings'];
+  angular.module('panelModule').service('ticketsService', ticketsService);
 
 }());
 
@@ -460,10 +473,9 @@
   var windowScroll = function($window) {
     return {
       link: function(scope, element, attrs) {
-        var distance;
 
         angular.element($window).bind('scroll', function() {
-          distance = this.pageYOffset;
+          var distance = this.pageYOffset;
 
           if (distance >= 25) {
             scope.scrollClass = 'small';
@@ -502,6 +514,20 @@
 
   angular.$inject = ['statusService'];
   angular.module('panelModule').directive('inlineProject', inlineProject);
+
+}());
+
+(function () {
+  'use strict';
+
+  var inlineTicket = function () {
+    return {
+      restrict: 'AE',
+      templateUrl: 'app/panel/directives/inlineTicket/inlineTicket.html'
+    };
+  };
+  inlineTicket.$inject = [];
+  angular.module('panelModule').directive('inlineTicket', inlineTicket);
 
 }());
 

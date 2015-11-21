@@ -1,11 +1,11 @@
 (function() {
   'use strict';
-  var AllProjectsCtrl = function($scope, projectsFactory) {
+  var AllProjectsCtrl = function($scope, projectsService) {
     $scope.allProjects = null;
     $scope.pageNo = null;
 
     function init() {
-      projectsFactory.getProjects()
+      projectsService.getProjects()
       .success(function (projects) {
         $scope.allProjects = projects;
       })
@@ -15,7 +15,7 @@
     }
 
     $scope.loadWithParam = function() {
-      projectsFactory.getProjects($scope.pageNo).success(function (projects) {
+      projectsService.getProjects($scope.pageNo).success(function (projects) {
         $scope.allProjects = projects;
       });
     };
@@ -23,7 +23,7 @@
     init();
   };
 
-  AllProjectsCtrl.$inject = ['$scope', 'projectsFactory'];
+  AllProjectsCtrl.$inject = ['$scope', 'projectsService'];
   angular.module('panelModule').controller('AllProjectsCtrl', AllProjectsCtrl);
 
 }());

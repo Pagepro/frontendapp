@@ -8,6 +8,7 @@ var auth = require('./fake-server/auth');
 var projects = require('./fake-server/projects');
 var files = require('./fake-server/files');
 var templates = require('./fake-server/templates');
+var tickets = require('./fake-server/tickets');
 
 app.use(cors());
 
@@ -34,6 +35,14 @@ app.get('/projects/:id/templates', function(req, res) {
 app.get('/projects/:id/files', function(req, res) {
   if (req.headers.authorization) {
     res.json(files);
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
+});
+
+app.get('/projects/:id/tickets', function(req, res) {
+  if (req.headers.authorization) {
+    res.json(tickets);
   } else {
     res.json(401, { error: 'An error has occurred!' });
   }
