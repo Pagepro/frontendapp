@@ -3,7 +3,9 @@
   var templatePreview = function(statusService) {
     return {
       restrict: 'E',
-      templateUrl: 'app/panel/directives/templatePreview/templatePreview.html',
+      templateUrl: function (el, attr) {
+        return 'app/panel/directives/templatePreview/' + attr.type + 'templatePreview.html';
+      },
       link: function (scope) {
         scope.projectStatus = statusService.getStatus(scope.template.status);
       }

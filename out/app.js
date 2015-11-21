@@ -119,36 +119,6 @@
 
 }());
 
-(function () {
-  'use strict';
-  angular.module('frontendApp').value('appSettings', {
-      title: 'Customers Application',
-      verion: '0.0.1',
-      apiRoot: 'http://localhost:8080/'
-  });
-}());
-
-(function() {
-  'use strict';
-
-  var auth = function($http, appSettings) {
-    var baseApiUrl = appSettings.apiRoot;
-    console.log(baseApiUrl);
-    return {
-      loginUser: function(username, password) {
-        return $http.post(baseApiUrl + 'auth', {
-          username: username,
-          password: password
-        });
-      }
-    };
-  };
-
-  auth.$inject = ['$http', 'appSettings'];
-  angular.module('frontendApp').factory('auth', auth);
-
-}());
-
 (function() {
   'use strict';
   var AuthCtrl = function($scope, $state) {
@@ -204,6 +174,7 @@
   var authInterceptor = function($rootScope, $q, $window, $location) {
     return {
       request: function(config) {
+        console.log(config);
         config.headers = config.headers || {};
         if ($window.localStorage.token) {
           config.headers.Authorization = 'Token ' + $window.localStorage.token;
@@ -224,6 +195,36 @@
 
   authInterceptor.$inject = ['$rootScope', '$q', '$window', '$location'];
   angular.module('frontendApp').factory('authInterceptor', authInterceptor);
+
+}());
+
+(function () {
+  'use strict';
+  angular.module('frontendApp').value('appSettings', {
+      title: 'Customers Application',
+      verion: '0.0.1',
+      apiRoot: 'http://localhost:8080/'
+  });
+}());
+
+(function() {
+  'use strict';
+
+  var auth = function($http, appSettings) {
+    var baseApiUrl = appSettings.apiRoot;
+    console.log(baseApiUrl);
+    return {
+      loginUser: function(username, password) {
+        return $http.post(baseApiUrl + 'auth', {
+          username: username,
+          password: password
+        });
+      }
+    };
+  };
+
+  auth.$inject = ['$http', 'appSettings'];
+  angular.module('frontendApp').factory('auth', auth);
 
 }());
 
@@ -414,6 +415,21 @@
 
 (function() {
   'use strict';
+
+  var authHeaders = function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/auth/directives/authHeaders/authHeaders.html'
+    };
+  };
+
+  authHeaders.$inject = [];
+  angular.module('authModule').directive('authHeaders', authHeaders);
+
+}());
+
+(function() {
+  'use strict';
   var headerSection = function($window) {
     return {
       restrict: 'E',
@@ -469,21 +485,6 @@
   windowScroll.$inject = ['$window'];
 
   angular.module('frontendApp').directive('windowScroll', windowScroll);
-}());
-
-(function() {
-  'use strict';
-
-  var authHeaders = function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'app/auth/directives/authHeaders/authHeaders.html'
-    };
-  };
-
-  authHeaders.$inject = [];
-  angular.module('authModule').directive('authHeaders', authHeaders);
-
 }());
 
 (function() {
@@ -552,10 +553,25 @@
 
 (function() {
   'use strict';
+  var projectTeaser = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/panel/directives/projectTeaser/projectTeaser.html'
+    };
+  };
+
+  angular.module('panelModule').directive('projectTeaser', projectTeaser);
+
+}());
+
+(function() {
+  'use strict';
   var templatePreview = function(statusService) {
     return {
       restrict: 'E',
-      templateUrl: 'app/panel/directives/templatePreview/templatePreview.html',
+      templateUrl: function (el, attr) {
+        return 'app/panel/directives/templatePreview/' + attr.type + 'templatePreview.html';
+      },
       link: function (scope) {
         scope.projectStatus = statusService.getStatus(scope.template.status);
       }
@@ -567,19 +583,6 @@
 
 }());
 
-
-(function() {
-  'use strict';
-  var projectTeaser = function() {
-    return {
-      restrict: 'E',
-      templateUrl: 'app/panel/directives/projectTeaser/projectTeaser.html'
-    };
-  };
-
-  angular.module('panelModule').directive('projectTeaser', projectTeaser);
-
-}());
 
 (function () {
   'use strict';

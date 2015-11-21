@@ -3,6 +3,7 @@
   var authInterceptor = function($rootScope, $q, $window, $location) {
     return {
       request: function(config) {
+        console.log(config);
         config.headers = config.headers || {};
         if ($window.localStorage.token) {
           config.headers.Authorization = 'Token ' + $window.localStorage.token;

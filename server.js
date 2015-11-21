@@ -16,20 +16,35 @@ app.post('/auth', function (req, res) {
 });
 
 app.get('/projects/:id', function(req, res) {
-  res.json(projects[req.params.id]);
+  if (req.headers.authorization) {
+    res.json(projects[req.params.id]);
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
 });
 
 app.get('/projects/:id/templates', function(req, res) {
-  res.json(templates);
+  if (req.headers.authorization) {
+    res.json(templates);
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
 });
 
 app.get('/projects/:id/files', function(req, res) {
-  res.json(files);
+  if (req.headers.authorization) {
+    res.json(files);
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
 });
 
 app.get('/projects', function(req, res) {
-  res.json(projects);
-  //res.json(500, { error: 'An error has occurred!' });
+  if (req.headers.authorization) {
+    res.json(projects);
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
 });
 
 app.listen(8080);
