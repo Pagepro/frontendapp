@@ -9,12 +9,13 @@
             <div class="file-data__inner">
                 <div class="file-data__name">
                     <div class="ticket-desc">
-                        <p>{{ticket.description}}</p>
+                        <!-- TODO -->
+                        <p data-ellipsis data-ng-bind="ticket.description" data-ellipsis-symbol="..." style="height: 40px; line-height: 20px;">{{ticket.description}}</p>
                     </div>
                 </div>
                 <div class="file-data__status">
-                    <div class="status-label status-label--new">
-                        <p class="label">new</p>
+                    <div class="status-label status-label--{{status.className}}">
+                        <p class="label">{{status.labelContent}}</p>
                     </div>
                 </div>
                 <div class="file-data__comments">
