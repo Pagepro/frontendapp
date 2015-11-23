@@ -9,7 +9,7 @@ class ProjectSerializer(serializers.HyperlinkedModelSerializer):
 		model = Project
 		fields = ('url', 'name', 'short_description', 'long_description', 'repository', 'created_on', 'updated_on', 'files', 'templates')
 
-class TemplateFileSerializer(serializers.HyperlinkedModelSerializer):
+class TemplateFileSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = TemplateFile
 
