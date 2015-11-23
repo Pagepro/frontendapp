@@ -3,6 +3,9 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, UserMa
 
 
 class Project(models.Model):
+	class Meta:
+		db_table = 'pfo_projects'
+
 	name = models.CharField(max_length=255)
 	short_description = models.TextField()
 	long_description = models.TextField()
@@ -15,8 +18,23 @@ class Project(models.Model):
 	finished = models.PositiveSmallIntegerField()
 	status = models.IntegerField()
 
+class ProjectFile(models.Model):
 	class Meta:
-		db_table = 'pfo_projects'
+		db_table = 'pfo_project_files'
+
+	project = models.ForeignKey(Project)
+	name = models.CharField(max_length=255)
+	filename = models.CharField(max_length=255)
+	original_filename = models.CharField(max_length=255)
+	extension =models.CharField(max_length=10)
+	size = models.IntegerField()
+	order = models.IntegerField()
+	status = models.IntegerField()
+	uploaded_date = models.DateTimeField()
+
+class TemplateFile(ProjectFile):
+	class Meta:
+		db_table = 'pfo_project_templates'
 
 """
 class ApiUserManager(BaseUserManager):
