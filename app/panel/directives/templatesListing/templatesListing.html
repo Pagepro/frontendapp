@@ -1,17 +1,17 @@
 <div class="project-box__content" ng-switch-when="grid">
     <ul class="teasers-list" ui-sortable="sortableOptions" ng-model="templates">
         <li class="teasers-list__item">
-            <div class="teaser action-teaser js-teaser">
+            <div class="teaser action-teaser js-teaser" ng-click="toggleInput()">
                 <div class="teaser__inner">
                     <div class="teaser__head">
                         <span class="icon icon--upload"></span>
                     </div>
                     <div class="teaser__content">
-                        <form class="project-action-form">
+                        <form class="project-action-form" ng-class="{active: activeInput}">
                             <fieldset class="form__fieldset">
                                 <div class="field field--input">
                                     <label class="label" for="project-name">Upload Templates</label>
-                                    <input type="file" name="add_file" class="input input--file" id="project-name">
+                                    <input type="file" name="add_file" class="input input--file" id="project-name" ng-class="{active: activeInput}">
                                 </div>
                             </fieldset>
                         </form>
@@ -24,7 +24,6 @@
         </li>
     </ul>
 </div>
-
 <div class="project-box__content" ng-switch-when="inline">
     <div class="files-box files-box--templates-complexe">
         <div class="files-box__head">

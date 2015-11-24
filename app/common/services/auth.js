@@ -1,20 +1,21 @@
 (function() {
   'use strict';
 
-  var auth = function($http, appSettings) {
+  var authService = function($http, $window, appSettings) {
     var baseApiUrl = appSettings.apiRoot;
-    console.log(baseApiUrl);
-    return {
-      loginUser: function(username, password) {
-        return $http.post(baseApiUrl + 'auth', {
-          username: username,
-          password: password
-        });
-      }
+
+    this.loginUser = function(username, password) {
+      return $http.post(baseApiUrl + 'auth', {
+        username: username,
+        password: password
+      });
+    };
+    this.logout = function () {
+      $window.localStorage.removeItem('token');
     };
   };
 
-  auth.$inject = ['$http', 'appSettings'];
-  angular.module('frontendApp').factory('auth', auth);
+  authService.$inject = ['$http', '$window', 'appSettings'];
+  angular.module('frontendApp').service('authService', authService);
 
 }());

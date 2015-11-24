@@ -39,6 +39,45 @@
 
 (function() {
   'use strict';
+  var panelModule = angular.module('panelModule', []);
+
+  panelModule
+    .config(['$stateProvider', function($stateProvider) {
+      $stateProvider
+        .state('myProjectsState', {
+          url: '/my-projects',
+          templateUrl: 'partials/templates/panel/myProjects.html',
+          controller: 'MyProjectsCtrl',
+          controllerAs: 'MPC',
+          pageName: 'My Projects',
+          module: 'panel'
+        })
+        .state('allProjectsState', {
+          url: '/all-projects',
+          templateUrl: 'partials/templates/panel/allProjects.html',
+          controller: 'AllProjectsCtrl',
+          controllerAs: 'APC',
+          pageName: 'All Projects',
+          module: 'panel',
+          trails: [{
+            name: 'My Projects',
+            link: '#/my-projects'
+          }]
+        })
+        .state('projectState', {
+          url: '/project/:projectId',
+          templateUrl: 'partials/templates/panel/project.html',
+          controller: 'ProjectCtrl',
+          controllerAs: 'PC',
+          pageName: 'Project',
+          module: 'panel'
+        });
+    }]);
+
+}());
+
+(function() {
+  'use strict';
   var authModule = angular.module('authModule', []);
 
   authModule
@@ -78,142 +117,6 @@
           displayTitle: true
         });
     }]);
-}());
-
-(function() {
-  'use strict';
-  var panelModule = angular.module('panelModule', []);
-
-  panelModule
-    .config(['$stateProvider', function($stateProvider) {
-      $stateProvider
-        .state('myProjectsState', {
-          url: '/my-projects',
-          templateUrl: 'partials/templates/panel/myProjects.html',
-          controller: 'MyProjectsCtrl',
-          controllerAs: 'MPC',
-          pageName: 'My Projects',
-          module: 'panel'
-        })
-        .state('allProjectsState', {
-          url: '/all-projects',
-          templateUrl: 'partials/templates/panel/allProjects.html',
-          controller: 'AllProjectsCtrl',
-          controllerAs: 'APC',
-          pageName: 'All Projects',
-          module: 'panel',
-          trails: [{
-            name: 'My Projects',
-            link: '#/my-projects'
-          }]
-        })
-        .state('projectState', {
-          url: '/project/:projectId',
-          templateUrl: 'partials/templates/panel/project.html',
-          controller: 'ProjectCtrl',
-          controllerAs: 'PC',
-          pageName: 'Project',
-          module: 'panel'
-        });
-    }]);
-
-}());
-
-(function () {
-  'use strict';
-  angular.module('frontendApp').value('appSettings', {
-      title: 'Fronted App',
-      verion: '0.0.2',
-      apiRoot: 'http://localhost:8080/'
-  });
-}());
-
-(function() {
-  'use strict';
-
-  var auth = function($http, appSettings) {
-    var baseApiUrl = appSettings.apiRoot;
-    console.log(baseApiUrl);
-    return {
-      loginUser: function(username, password) {
-        return $http.post(baseApiUrl + 'auth', {
-          username: username,
-          password: password
-        });
-      }
-    };
-  };
-
-  auth.$inject = ['$http', 'appSettings'];
-  angular.module('frontendApp').factory('auth', auth);
-
-}());
-
-(function () {
-  'use strict';
-
-  var loaderFactory = function () {
-    return {
-      createLoader: function () {
-        console.log('create loader');
-      },
-      removeLoader: function () {
-        console.log('remove loader');
-      }
-    };
-  };
-
-  angular.module('frontendApp').factory('loaderFactory', loaderFactory);
-}());
-
-(function() {
-  'use strict';
-  var AuthCtrl = function($scope, $state) {
-    // fixme
-    // we need to consider cases with and without '/'
-    if ($state.current.url === '/account' || $state.current.url === '/auth') {
-      $state.go('accountState.login');
-    }
-    $scope.test = 1;
-  };
-
-  AuthCtrl.$inject = ['$scope', '$state'];
-  angular.module('frontendApp').controller('AuthCtrl', AuthCtrl);
-
-}());
-
-(function() {
-  'use strict';
-  var LoginCtrl = function($scope, $state, $window, auth) {
-    $scope.submitForm = function () {
-      auth.loginUser('tes', 't').success(function (authToken) {
-        $window.localStorage.token = authToken;
-        $state.go('myProjectsState');
-      });
-    };
-  };
-
-  LoginCtrl.$inject = ['$scope', '$state', '$window', 'auth'];
-  angular.module('frontendApp').controller('LoginCtrl', LoginCtrl);
-
-}());
-
-(function() {
-  'use strict';
-  var RegistrationCtrl = function ($scope) {};
-
-  RegistrationCtrl.$inject = ['$scope'];
-  angular.module('frontendApp').controller('RegistrationCtrl', RegistrationCtrl);
-
-}());
-
-(function() {
-  'use strict';
-  var RemindCtrl = function($scope) {};
-
-  RemindCtrl.$inject = ['$scope'];
-  angular.module('frontendApp').controller('RemindCtrl', RemindCtrl);
-
 }());
 
 (function() {
@@ -300,11 +203,19 @@
     templatesPromise = templatesService.getTemplates($stateParams.projectId);
     templatesPromise.success(function(templates) {
       $scope.templates = templates;
+      $scope.deleteTemplate = templatesService.deleteTemplate;
     });
+
+    ticketsPromise = ticketsService.getTickets($stateParams.projectId);
+    ticketsPromise.success(function(tickets) {
+      $scope.tickets = tickets;
+    });
+
 
     $scope.sortableOptions = {
       update: function(e, ui) {
-        console.log('dummy-text');
+        console.log(e);
+        console.log(ui);
       },
       placeholder: 'drag-and-drop-placeholder',
       cancel: '.js-no-drop-item',
@@ -313,46 +224,11 @@
       opacity: 0.8,
       tolerance: 'pointer'
      };
-
-    ticketsPromise = ticketsService.getTickets($stateParams.projectId);
-    ticketsPromise.success(function(tickets) {
-      console.log(tickets);
-      $scope.tickets = tickets;
-    });
   };
+
 
   ProjectCtrl.$inject = ['$scope', '$stateParams', 'projectsService', 'templatesService', 'filesService', 'ticketsService', 'statusService'];
   angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
-
-}());
-
-(function() {
-  'use strict';
-  var authInterceptor = function($q, $window, $location, loaderFactory) {
-    return {
-      request: function(config) {
-        config.headers = config.headers || {};
-        if ($window.localStorage.token) {
-          config.headers.Authorization = 'Token ' + $window.localStorage.token;
-        }
-        loaderFactory.createLoader();
-        return config;
-      },
-      responseError: function(response) {
-        if (response.status === 401) {
-          $window.localStorage.removeItem('token');
-          $window.localStorage.removeItem('username');
-          $location.path('/');
-          loaderFactory.removeLoader();
-          return;
-        }
-        return $q.reject(response);
-      }
-    };
-  };
-
-  authInterceptor.$inject = ['$q', '$window', '$location', 'loaderFactory'];
-  angular.module('frontendApp').factory('authInterceptor', authInterceptor);
 
 }());
 
@@ -433,8 +309,14 @@
   'use strict';
 
   var templatesService = function($http, appSettings) {
+    var self = this;
     this.getTemplates = function(projectId) {
-      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/templates');
+      self.route = appSettings.apiRoot + 'projects/' + projectId + '/templates';
+      return $http.get(this.route);
+    };
+    this.deleteTemplate = function (templateId) {
+      console.log('dummy-text');
+      return $http.delete(self.route + '/' + templateId);
     };
   };
 
@@ -459,7 +341,283 @@
 
 (function() {
   'use strict';
-  var headerSection = function($window) {
+  var AuthCtrl = function($scope, $state) {
+    // fixme
+    // we need to consider cases with and without '/'
+    if ($state.current.url === '/account' || $state.current.url === '/auth') {
+      $state.go('accountState.login');
+    }
+    $scope.test = 1;
+  };
+
+  AuthCtrl.$inject = ['$scope', '$state'];
+  angular.module('frontendApp').controller('AuthCtrl', AuthCtrl);
+
+}());
+
+(function() {
+  'use strict';
+  var LoginCtrl = function($scope, $state, $window, authService) {
+    $scope.submitForm = function () {
+      authService.loginUser('tes', 't').success(function (authToken) {
+        $window.localStorage.token = authToken;
+        $state.go('myProjectsState');
+      });
+    };
+  };
+
+  LoginCtrl.$inject = ['$scope', '$state', '$window', 'authService'];
+  angular.module('frontendApp').controller('LoginCtrl', LoginCtrl);
+
+}());
+
+(function() {
+  'use strict';
+  var RegistrationCtrl = function ($scope) {};
+
+  RegistrationCtrl.$inject = ['$scope'];
+  angular.module('frontendApp').controller('RegistrationCtrl', RegistrationCtrl);
+
+}());
+
+(function() {
+  'use strict';
+  var RemindCtrl = function($scope) {};
+
+  RemindCtrl.$inject = ['$scope'];
+  angular.module('frontendApp').controller('RemindCtrl', RemindCtrl);
+
+}());
+
+(function() {
+  'use strict';
+  var authInterceptor = function($q, $window, $location, loaderFactory) {
+    return {
+      request: function(config) {
+        config.headers = config.headers || {};
+        if ($window.localStorage.token) {
+          config.headers.Authorization = 'Token ' + $window.localStorage.token;
+        }
+        loaderFactory.createLoader();
+        return config;
+      },
+      responseError: function(response) {
+        if (response.status === 401) {
+          $window.localStorage.removeItem('token');
+          $window.localStorage.removeItem('username');
+          $location.path('/');
+          loaderFactory.removeLoader();
+          return;
+        }
+        return $q.reject(response);
+      }
+    };
+  };
+
+  authInterceptor.$inject = ['$q', '$window', '$location', 'loaderFactory'];
+  angular.module('frontendApp').factory('authInterceptor', authInterceptor);
+
+}());
+
+(function () {
+  'use strict';
+  angular.module('frontendApp').value('appSettings', {
+      title: 'Fronted App',
+      verion: '0.0.2',
+      apiRoot: 'http://localhost:8080/'
+  });
+}());
+
+(function() {
+  'use strict';
+
+  var authService = function($http, $window, appSettings) {
+    var baseApiUrl = appSettings.apiRoot;
+
+    this.loginUser = function(username, password) {
+      return $http.post(baseApiUrl + 'auth', {
+        username: username,
+        password: password
+      });
+    };
+    this.logout = function () {
+      $window.localStorage.removeItem('token');
+    };
+  };
+
+  authService.$inject = ['$http', '$window', 'appSettings'];
+  angular.module('frontendApp').service('authService', authService);
+
+}());
+
+(function () {
+  'use strict';
+
+  var loaderFactory = function () {
+    return {
+      createLoader: function () {
+        console.log('create loader');
+      },
+      removeLoader: function () {
+        console.log('remove loader');
+      }
+    };
+  };
+
+  angular.module('frontendApp').factory('loaderFactory', loaderFactory);
+}());
+
+(function() {
+  'use strict';
+
+  var inlineProject = function(statusService) {
+    return {
+      restrict: 'EA',
+      templateUrl: 'app/panel/directives/inlineProject/inlineProject.html',
+      link: function(scope) {
+        scope.projectStatus = statusService.getStatus(scope.project.status);
+      }
+    };
+  };
+
+  angular.$inject = ['statusService'];
+  angular.module('panelModule').directive('inlineProject', inlineProject);
+
+}());
+
+(function () {
+  'use strict';
+
+  var inlineTicket = function (statusService) {
+    return {
+      restrict: 'AE',
+      templateUrl: 'app/panel/directives/inlineTicket/inlineTicket.html',
+      link: function (scope) {
+        scope.status = statusService.getStatus(scope.ticket.status);
+      }
+    };
+  };
+  inlineTicket.$inject = ['statusService'];
+  angular.module('panelModule').directive('inlineTicket', inlineTicket);
+
+}());
+
+(function() {
+  'use strict';
+
+  var pagination = function() {
+    return {
+      restrict: 'E',
+      scope: {
+        pageNo: '=page',
+        loadPage: '=load'
+      },
+      templateUrl: 'app/panel/directives/pagination/pagination.html',
+      link: function(scope) {
+        scope.goToPage = function() {
+          scope.pageNo = 1;
+          scope.loadPage();
+        };
+        scope.goFurther = function() {
+          scope.pageNo += 1;
+          scope.loadPage();
+        };
+        scope.goBack = function() {
+          scope.pageNo -= 1;
+          scope.loadPage();
+        };
+      }
+    };
+  };
+
+  angular.module('panelModule').directive('pagination', pagination);
+
+}());
+
+(function() {
+  'use strict';
+
+  var projectFile = function () {
+    return {
+      restrict: 'A',
+      templateUrl: 'app/panel/directives/projectFile/projectFile.html'
+    };
+  };
+
+  angular.module('panelModule').directive('projectFile', projectFile);
+
+}());
+
+(function() {
+  'use strict';
+  var projectTeaser = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/panel/directives/projectTeaser/projectTeaser.html'
+    };
+  };
+
+  angular.module('panelModule').directive('projectTeaser', projectTeaser);
+
+}());
+
+(function() {
+  'use strict';
+  var templatePreview = function(statusService) {
+    return {
+      restrict: 'E',
+      templateUrl: function (el, attr) {
+        return 'app/panel/directives/templatePreview/' + attr.type + 'templatePreview.html';
+      },
+      link: function (scope) {
+        scope.projectStatus = statusService.getStatus(scope.template.status);
+      }
+    };
+  };
+
+  templatePreview.$inject = ['statusService'];
+  angular.module('frontendApp').directive('templatePreview', templatePreview);
+
+}());
+
+
+(function () {
+  'use strict';
+  var templatesListing = function () {
+    return {
+      restrict: 'EA',
+      scope: '=',
+      templateUrl: 'app/panel/directives/templatesListing/templatesListing.html',
+      link: function (scope) {
+        scope.activeInput = false;
+        scope.toggleInput = function () {
+          scope.activeInput = !scope.activeInput;
+        };
+      }
+    };
+  };
+
+  angular.module('panelModule').directive('templatesListing', templatesListing);
+}());
+
+(function() {
+  'use strict';
+
+  var authHeaders = function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/auth/directives/authHeaders/authHeaders.html'
+    };
+  };
+
+  authHeaders.$inject = [];
+  angular.module('authModule').directive('authHeaders', authHeaders);
+
+}());
+
+(function() {
+  'use strict';
+  var headerSection = function(authService) {
     return {
       restrict: 'E',
       templateUrl: 'app/common/directives/header/headerSection.html',
@@ -473,13 +631,13 @@
         };
         scope.logout = function() {
           scope.hideMenu();
-          $window.localStorage.removeItem('token');
+          authService.logout();
         };
       }
     };
   };
 
-  headerSection.$inject = ['$window'];
+  headerSection.$inject = ['authService'];
   angular.module('frontendApp').directive('headerSection', headerSection);
 
 }());
@@ -526,146 +684,4 @@
   windowScroll.$inject = ['$window'];
 
   angular.module('frontendApp').directive('windowScroll', windowScroll);
-}());
-
-(function() {
-  'use strict';
-
-  var authHeaders = function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'app/auth/directives/authHeaders/authHeaders.html'
-    };
-  };
-
-  authHeaders.$inject = [];
-  angular.module('authModule').directive('authHeaders', authHeaders);
-
-}());
-
-(function() {
-  'use strict';
-
-  var inlineProject = function(statusService) {
-    return {
-      restrict: 'EA',
-      templateUrl: 'app/panel/directives/inlineProject/inlineProject.html',
-      link: function(scope) {
-        scope.projectStatus = statusService.getStatus(scope.project.status);
-      }
-    };
-  };
-
-  angular.$inject = ['statusService'];
-  angular.module('panelModule').directive('inlineProject', inlineProject);
-
-}());
-
-(function () {
-  'use strict';
-
-  var inlineTicket = function (statusService) {
-    return {
-      restrict: 'AE',
-      templateUrl: 'app/panel/directives/inlineTicket/inlineTicket.html',
-      link: function (scope) {
-        scope.status = statusService.getStatus(scope.ticket.status);
-      }
-    };
-  };
-  inlineTicket.$inject = ['statusService'];
-  angular.module('panelModule').directive('inlineTicket', inlineTicket);
-
-}());
-
-(function() {
-  'use strict';
-
-  var projectFile = function () {
-    return {
-      restrict: 'A',
-      templateUrl: 'app/panel/directives/projectFile/projectFile.html'
-    };
-  };
-
-  angular.module('panelModule').directive('projectFile', projectFile);
-
-}());
-
-(function() {
-  'use strict';
-
-  var pagination = function() {
-    return {
-      restrict: 'E',
-      scope: {
-        pageNo: '=page',
-        loadPage: '=load'
-      },
-      templateUrl: 'app/panel/directives/pagination/pagination.html',
-      link: function(scope) {
-        scope.goToPage = function() {
-          scope.pageNo = 1;
-          scope.loadPage();
-        };
-        scope.goFurther = function() {
-          scope.pageNo += 1;
-          scope.loadPage();
-        };
-        scope.goBack = function() {
-          scope.pageNo -= 1;
-          scope.loadPage();
-        };
-      }
-    };
-  };
-
-  angular.module('panelModule').directive('pagination', pagination);
-
-}());
-
-(function() {
-  'use strict';
-  var projectTeaser = function() {
-    return {
-      restrict: 'E',
-      templateUrl: 'app/panel/directives/projectTeaser/projectTeaser.html'
-    };
-  };
-
-  angular.module('panelModule').directive('projectTeaser', projectTeaser);
-
-}());
-
-(function() {
-  'use strict';
-  var templatePreview = function(statusService) {
-    return {
-      restrict: 'E',
-      templateUrl: function (el, attr) {
-        return 'app/panel/directives/templatePreview/' + attr.type + 'templatePreview.html';
-      },
-      link: function (scope) {
-        scope.projectStatus = statusService.getStatus(scope.template.status);
-      }
-    };
-  };
-
-  templatePreview.$inject = ['statusService'];
-  angular.module('frontendApp').directive('templatePreview', templatePreview);
-
-}());
-
-
-(function () {
-  'use strict';
-  var templatesListing = function () {
-    return {
-      restrict: 'EA',
-      scope: '=',
-      templateUrl: 'app/panel/directives/templatesListing/templatesListing.html'
-    };
-  };
-
-  angular.module('panelModule').directive('templatesListing', templatesListing);
 }());

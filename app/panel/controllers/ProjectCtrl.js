@@ -30,11 +30,19 @@
     templatesPromise = templatesService.getTemplates($stateParams.projectId);
     templatesPromise.success(function(templates) {
       $scope.templates = templates;
+      $scope.deleteTemplate = templatesService.deleteTemplate;
     });
+
+    ticketsPromise = ticketsService.getTickets($stateParams.projectId);
+    ticketsPromise.success(function(tickets) {
+      $scope.tickets = tickets;
+    });
+
 
     $scope.sortableOptions = {
       update: function(e, ui) {
-        console.log('dummy-text');
+        console.log(e);
+        console.log(ui);
       },
       placeholder: 'drag-and-drop-placeholder',
       cancel: '.js-no-drop-item',
@@ -43,13 +51,8 @@
       opacity: 0.8,
       tolerance: 'pointer'
      };
-
-    ticketsPromise = ticketsService.getTickets($stateParams.projectId);
-    ticketsPromise.success(function(tickets) {
-      console.log(tickets);
-      $scope.tickets = tickets;
-    });
   };
+
 
   ProjectCtrl.$inject = ['$scope', '$stateParams', 'projectsService', 'templatesService', 'filesService', 'ticketsService', 'statusService'];
   angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);

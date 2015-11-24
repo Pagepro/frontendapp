@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var headerSection = function($window) {
+  var headerSection = function(authService) {
     return {
       restrict: 'E',
       templateUrl: 'app/common/directives/header/headerSection.html',
@@ -14,13 +14,13 @@
         };
         scope.logout = function() {
           scope.hideMenu();
-          $window.localStorage.removeItem('token');
+          authService.logout();
         };
       }
     };
   };
 
-  headerSection.$inject = ['$window'];
+  headerSection.$inject = ['authService'];
   angular.module('frontendApp').directive('headerSection', headerSection);
 
 }());
