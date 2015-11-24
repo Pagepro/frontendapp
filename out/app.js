@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'authModule', 'panelModule', 'dibari.angular-ellipsis']);
+  var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'authModule', 'panelModule', 'dibari.angular-ellipsis', 'ui.sortable']);
   frontendApp
     .config(['$urlRouterProvider',
       '$httpProvider',
@@ -119,6 +119,53 @@
 
 }());
 
+(function () {
+  'use strict';
+  angular.module('frontendApp').value('appSettings', {
+      title: 'Fronted App',
+      verion: '0.0.2',
+      apiRoot: 'http://localhost:8080/'
+  });
+}());
+
+(function() {
+  'use strict';
+
+  var auth = function($http, appSettings) {
+    var baseApiUrl = appSettings.apiRoot;
+    console.log(baseApiUrl);
+    return {
+      loginUser: function(username, password) {
+        return $http.post(baseApiUrl + 'auth', {
+          username: username,
+          password: password
+        });
+      }
+    };
+  };
+
+  auth.$inject = ['$http', 'appSettings'];
+  angular.module('frontendApp').factory('auth', auth);
+
+}());
+
+(function () {
+  'use strict';
+
+  var loaderFactory = function () {
+    return {
+      createLoader: function () {
+        console.log('create loader');
+      },
+      removeLoader: function () {
+        console.log('remove loader');
+      }
+    };
+  };
+
+  angular.module('frontendApp').factory('loaderFactory', loaderFactory);
+}());
+
 (function() {
   'use strict';
   var AuthCtrl = function($scope, $state) {
@@ -166,64 +213,6 @@
 
   RemindCtrl.$inject = ['$scope'];
   angular.module('frontendApp').controller('RemindCtrl', RemindCtrl);
-
-}());
-
-(function() {
-  'use strict';
-  var authInterceptor = function($q, $window, $location) {
-    return {
-      request: function(config) {
-        config.headers = config.headers || {};
-        if ($window.localStorage.token) {
-          config.headers.Authorization = 'Token ' + $window.localStorage.token;
-        }
-        return config;
-      },
-      responseError: function(response) {
-        if (response.status === 401) {
-          $window.localStorage.removeItem('token');
-          $window.localStorage.removeItem('username');
-          $location.path('/');
-          return;
-        }
-        return $q.reject(response);
-      }
-    };
-  };
-
-  authInterceptor.$inject = ['$q', '$window', '$location'];
-  angular.module('frontendApp').factory('authInterceptor', authInterceptor);
-
-}());
-
-(function () {
-  'use strict';
-  angular.module('frontendApp').value('appSettings', {
-      title: 'Customers Application',
-      verion: '0.0.1',
-      apiRoot: 'http://localhost:8080/'
-  });
-}());
-
-(function() {
-  'use strict';
-
-  var auth = function($http, appSettings) {
-    var baseApiUrl = appSettings.apiRoot;
-    console.log(baseApiUrl);
-    return {
-      loginUser: function(username, password) {
-        return $http.post(baseApiUrl + 'auth', {
-          username: username,
-          password: password
-        });
-      }
-    };
-  };
-
-  auth.$inject = ['$http', 'appSettings'];
-  angular.module('frontendApp').factory('auth', auth);
 
 }());
 
@@ -313,6 +302,18 @@
       $scope.templates = templates;
     });
 
+    $scope.sortableOptions = {
+      update: function(e, ui) {
+        console.log('dummy-text');
+      },
+      placeholder: 'drag-and-drop-placeholder',
+      cancel: '.js-no-drop-item',
+      handle: '.action-tool--drag-and-drop',
+      cursor: 'move',
+      opacity: 0.8,
+      tolerance: 'pointer'
+     };
+
     ticketsPromise = ticketsService.getTickets($stateParams.projectId);
     ticketsPromise.success(function(tickets) {
       console.log(tickets);
@@ -322,6 +323,36 @@
 
   ProjectCtrl.$inject = ['$scope', '$stateParams', 'projectsService', 'templatesService', 'filesService', 'ticketsService', 'statusService'];
   angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
+
+}());
+
+(function() {
+  'use strict';
+  var authInterceptor = function($q, $window, $location, loaderFactory) {
+    return {
+      request: function(config) {
+        config.headers = config.headers || {};
+        if ($window.localStorage.token) {
+          config.headers.Authorization = 'Token ' + $window.localStorage.token;
+        }
+        loaderFactory.createLoader();
+        return config;
+      },
+      responseError: function(response) {
+        if (response.status === 401) {
+          $window.localStorage.removeItem('token');
+          $window.localStorage.removeItem('username');
+          $location.path('/');
+          loaderFactory.removeLoader();
+          return;
+        }
+        return $q.reject(response);
+      }
+    };
+  };
+
+  authInterceptor.$inject = ['$q', '$window', '$location', 'loaderFactory'];
+  angular.module('frontendApp').factory('authInterceptor', authInterceptor);
 
 }());
 
@@ -428,21 +459,6 @@
 
 (function() {
   'use strict';
-
-  var authHeaders = function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'app/auth/directives/authHeaders/authHeaders.html'
-    };
-  };
-
-  authHeaders.$inject = [];
-  angular.module('authModule').directive('authHeaders', authHeaders);
-
-}());
-
-(function() {
-  'use strict';
   var headerSection = function($window) {
     return {
       restrict: 'E',
@@ -466,6 +482,19 @@
   headerSection.$inject = ['$window'];
   angular.module('frontendApp').directive('headerSection', headerSection);
 
+}());
+
+(function () {
+  'use strict';
+  var loader = function () {
+    return {
+      restrict: 'EAC',
+      templateUrl: 'app/common/directives/loader/loader.html'
+    };
+  };
+
+  loader.$inject = ['$http'];
+  angular.module('frontendApp').directive('loader', loader);
 }());
 
 (function() {
@@ -497,6 +526,21 @@
   windowScroll.$inject = ['$window'];
 
   angular.module('frontendApp').directive('windowScroll', windowScroll);
+}());
+
+(function() {
+  'use strict';
+
+  var authHeaders = function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/auth/directives/authHeaders/authHeaders.html'
+    };
+  };
+
+  authHeaders.$inject = [];
+  angular.module('authModule').directive('authHeaders', authHeaders);
+
 }());
 
 (function() {
@@ -537,6 +581,20 @@
 (function() {
   'use strict';
 
+  var projectFile = function () {
+    return {
+      restrict: 'A',
+      templateUrl: 'app/panel/directives/projectFile/projectFile.html'
+    };
+  };
+
+  angular.module('panelModule').directive('projectFile', projectFile);
+
+}());
+
+(function() {
+  'use strict';
+
   var pagination = function() {
     return {
       restrict: 'E',
@@ -563,20 +621,6 @@
   };
 
   angular.module('panelModule').directive('pagination', pagination);
-
-}());
-
-(function() {
-  'use strict';
-
-  var projectFile = function () {
-    return {
-      restrict: 'A',
-      templateUrl: 'app/panel/directives/projectFile/projectFile.html'
-    };
-  };
-
-  angular.module('panelModule').directive('projectFile', projectFile);
 
 }());
 

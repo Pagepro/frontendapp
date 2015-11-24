@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'authModule', 'panelModule', 'dibari.angular-ellipsis']);
+  var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'authModule', 'panelModule', 'dibari.angular-ellipsis', 'ui.sortable']);
   frontendApp
     .config(['$urlRouterProvider',
       '$httpProvider',

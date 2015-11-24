@@ -32,6 +32,18 @@
       $scope.templates = templates;
     });
 
+    $scope.sortableOptions = {
+      update: function(e, ui) {
+        console.log('dummy-text');
+      },
+      placeholder: 'drag-and-drop-placeholder',
+      cancel: '.js-no-drop-item',
+      handle: '.action-tool--drag-and-drop',
+      cursor: 'move',
+      opacity: 0.8,
+      tolerance: 'pointer'
+     };
+
     ticketsPromise = ticketsService.getTickets($stateParams.projectId);
     ticketsPromise.success(function(tickets) {
       console.log(tickets);
