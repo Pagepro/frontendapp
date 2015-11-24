@@ -15,17 +15,24 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 #from django.contrib import admin
-from rest_framework import routers
+#from rest_framework import routers
+from rest_framework_nested import routers
 from rest_framework.authtoken import views as auth_views
 from api import views
 
 router = routers.DefaultRouter()
 router.register(r'projects', views.ProjectViewSet)
 
+project_router = routers.NestedSimpleRouter(router, r'projects', lookup='project')
+project_router.register(r'files', views.ProjectFileViewSet, base_name='projectfile')
+project_router.register(r'templates', views.ProjectFileViewSet, base_name='projecttemplate')
+
 urlpatterns = [
     url(r'^', include(router.urls)),
+    url(r'^', include(project_router.urls)),
  #   url(r'^admin/', include(admin.site.urls)),
-    url(r'^auth/', auth_views.obtain_auth_token)
+    url(r'^auth/', auth_views.obtain_auth_token),
+    url(r'^patterns/', views.show_url_patterns)
 ]
 
 """ Temp login for testing browsable api """
