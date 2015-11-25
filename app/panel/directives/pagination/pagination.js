@@ -4,23 +4,36 @@
   var pagination = function() {
     return {
       restrict: 'E',
-      scope: {
-        pageNo: '=page',
-        loadPage: '=load'
-      },
       templateUrl: 'app/panel/directives/pagination/pagination.html',
-      link: function(scope) {
-        scope.goToPage = function() {
-          scope.pageNo = 1;
-          scope.loadPage();
-        };
-        scope.goFurther = function() {
-          scope.pageNo += 1;
-          scope.loadPage();
-        };
-        scope.goBack = function() {
-          scope.pageNo -= 1;
-          scope.loadPage();
+      scope: {
+        getterService: '=service'
+      },
+      transclude: true,
+      controller: function ($scope) {
+        $scope.currentPage = 0;
+        $scope.setPage = function (page) {
+          if (page >= 0) {
+            // @fixme $parent??
+            //                     '
+            //     |\          .(' *) ' .
+            //     | \        ' .*) .'*
+            //     |(*\      .*(// .*) .
+            //     |___\       // (. '*
+            //     ((("'\     // '  * .
+            //     ((c'7')   /\)
+            //     ((((^))  /  \
+            //   .-')))(((-'   /
+            //      (((()) __/'
+            // jgs   )))( |
+            //        (()
+            //         ))
+            $scope.getterService(page).success(function (resp) {
+              $scope.$parent.allProjects = resp;
+            });
+            $scope.currentPage = page;
+          } else {
+            return false;
+          }
         };
       }
     };

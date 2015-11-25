@@ -41,7 +41,6 @@
 
     $scope.sortableOptions = {
       update: function(e, ui) {
-        console.log(e);
         console.log(ui);
       },
       placeholder: 'drag-and-drop-placeholder',

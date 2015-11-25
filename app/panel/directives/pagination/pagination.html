@@ -1,18 +1,18 @@
 <div class="pagination-box">
     <div class="pagination pagination--prev" style="display: block; position: relative; left: -18px;">
-        <a class="pagination__content" ng-click="goBack()">
+        <a class="pagination__content" ng-click="setPage(currentPage - 1)">
             <span class="icon icon--open-big--left"></span>
         </a>
     </div>
     <ol class="pagination-list">
-        <li class="pagination-list__item" ng-click="goToPage($index)">
+        <li class="pagination-list__item" ng-click="setPage(1)">
             <div class="pagination">
                 <a class="pagination__content">
                     <span class="counter"></span>
                 </a>
             </div>
         </li>
-        <li class="pagination-list__item" ng-click="goToPage()">
+        <li class="pagination-list__item">
             <div class="pagination">
                 <a class="pagination__content">
                     <span class="counter"></span>
@@ -28,7 +28,7 @@
         </li>
     </ol>
     <div class="pagination pagination--next" style="display: block; position: relative; left: 18px;">
-        <a class="pagination__content" ng-click="goFurther()">
+        <a class="pagination__content" ng-click="setPage(currentPage + 1)">
             <span class="icon icon--open-big--right"></span>
         </a>
     </div>

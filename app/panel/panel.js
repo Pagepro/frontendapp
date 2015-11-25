@@ -30,8 +30,12 @@
           templateUrl: 'partials/templates/panel/project.html',
           controller: 'ProjectCtrl',
           controllerAs: 'PC',
-          pageName: 'Project',
-          module: 'panel'
+          pageName: 'Project Details',
+          module: 'panel',
+          trails: [{
+            name: 'My Projects',
+            link: '#/my-projects'
+          }]
         });
     }]);
 

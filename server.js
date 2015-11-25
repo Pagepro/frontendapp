@@ -50,7 +50,11 @@ app.get('/projects/:id/tickets', function(req, res) {
 
 app.get('/projects', function(req, res) {
   if (req.headers.authorization) {
-    res.json(projects);
+    if (req.query.p) {
+      res.json({});
+    } else {
+      res.json(projects);
+    }
   } else {
     res.json(401, { error: 'An error has occurred!' });
   }

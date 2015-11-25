@@ -39,45 +39,6 @@
 
 (function() {
   'use strict';
-  var panelModule = angular.module('panelModule', []);
-
-  panelModule
-    .config(['$stateProvider', function($stateProvider) {
-      $stateProvider
-        .state('myProjectsState', {
-          url: '/my-projects',
-          templateUrl: 'partials/templates/panel/myProjects.html',
-          controller: 'MyProjectsCtrl',
-          controllerAs: 'MPC',
-          pageName: 'My Projects',
-          module: 'panel'
-        })
-        .state('allProjectsState', {
-          url: '/all-projects',
-          templateUrl: 'partials/templates/panel/allProjects.html',
-          controller: 'AllProjectsCtrl',
-          controllerAs: 'APC',
-          pageName: 'All Projects',
-          module: 'panel',
-          trails: [{
-            name: 'My Projects',
-            link: '#/my-projects'
-          }]
-        })
-        .state('projectState', {
-          url: '/project/:projectId',
-          templateUrl: 'partials/templates/panel/project.html',
-          controller: 'ProjectCtrl',
-          controllerAs: 'PC',
-          pageName: 'Project',
-          module: 'panel'
-        });
-    }]);
-
-}());
-
-(function() {
-  'use strict';
   var authModule = angular.module('authModule', []);
 
   authModule
@@ -121,221 +82,44 @@
 
 (function() {
   'use strict';
-  var AllProjectsCtrl = function($scope, projectsService) {
-    $scope.allProjects = null;
-    $scope.pageNo = null;
+  var panelModule = angular.module('panelModule', []);
 
-    function init() {
-      projectsService.getProjects()
-      .success(function (projects) {
-        $scope.allProjects = projects;
-      })
-      .error(function (response) {
-        console.log(response);
-      });
-    }
-
-    $scope.loadWithParam = function() {
-      projectsService.getProjects($scope.pageNo).success(function (projects) {
-        $scope.allProjects = projects;
-      });
-    };
-
-    init();
-  };
-
-  AllProjectsCtrl.$inject = ['$scope', 'projectsService'];
-  angular.module('panelModule').controller('AllProjectsCtrl', AllProjectsCtrl);
-
-}());
-
-(function() {
-  'use strict';
-  var MyProjectsCtrl = function($scope, $document, projectsService) {
-    $scope.myProjects = null;
-    function init() {
-      projectsService.getProjects()
-      .success(function (resp) {
-        $scope.myProjects = resp;
-        console.log(resp);
-      })
-      .error(function (resp) {
-        console.log(resp);
-      });
-    }
-    init();
-  };
-
-  MyProjectsCtrl.$inject = ['$scope', '$document', 'projectsService'];
-  angular.module('panelModule').controller('MyProjectsCtrl', MyProjectsCtrl);
-
-}());
-
-(function() {
-  'use strict';
-  var ProjectCtrl = function($scope, $stateParams, projectsService, templatesService, filesService, ticketsService, statusService) {
-    var projectPromise;
-    var templatesPromise;
-    var filesPromise;
-    var ticketsPromise;
-
-    $scope.project = null;
-    $scope.files = null;
-    $scope.templates = null;
-    $scope.tickets = null;
-
-    $scope.displayType = 'grid';
-
-    $scope.getStatus = function(code) {
-      return statusService.getStatus(code);
-    };
-
-    projectPromise = projectsService.getProject($stateParams.projectId);
-    projectPromise.success(function(project) {
-      $scope.project = project;
-    });
-
-    filesPromise = filesService.getFiles($stateParams.projectId);
-    filesPromise.success(function(files) {
-      $scope.files = files;
-    });
-
-    templatesPromise = templatesService.getTemplates($stateParams.projectId);
-    templatesPromise.success(function(templates) {
-      $scope.templates = templates;
-      $scope.deleteTemplate = templatesService.deleteTemplate;
-    });
-
-    ticketsPromise = ticketsService.getTickets($stateParams.projectId);
-    ticketsPromise.success(function(tickets) {
-      $scope.tickets = tickets;
-    });
-
-
-    $scope.sortableOptions = {
-      update: function(e, ui) {
-        console.log(e);
-        console.log(ui);
-      },
-      placeholder: 'drag-and-drop-placeholder',
-      cancel: '.js-no-drop-item',
-      handle: '.action-tool--drag-and-drop',
-      cursor: 'move',
-      opacity: 0.8,
-      tolerance: 'pointer'
-     };
-  };
-
-
-  ProjectCtrl.$inject = ['$scope', '$stateParams', 'projectsService', 'templatesService', 'filesService', 'ticketsService', 'statusService'];
-  angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
-
-}());
-
-(function() {
-  'use strict';
-
-  var filesService = function($http, appSettings) {
-    this.getFiles = function(projectId) {
-      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/files');
-    };
-  };
-
-  filesService.$inject = ['$http', 'appSettings'];
-  angular.module('panelModule').service('filesService', filesService);
-
-}());
-
-(function () {
-  'use strict';
-
-  var projectsService = function ($http, appSettings) {
-
-    this.getProjects = function (pageNo) {
-      var baseUrl = appSettings.apiRoot + 'projects/';
-      if (!pageNo) {
-        return $http.get(baseUrl);
-      }
-      return $http.get(baseUrl + '?p=' + pageNo);
-    };
-    this.getProject = function (projectId) {
-      return $http.get(appSettings.apiRoot + 'projects/' + projectId);
-    };
-  };
-
-  projectsService.$inject = ['$http', 'appSettings'];
-  angular.module('panelModule').service('projectsService', projectsService);
-}());
-
-(function () {
-  'use strict';
-
-  var statusService = function () {
-    this.getStatus = function (statusCode) {
-      var projectStatus = {
-        code: statusCode,
-        className: '',
-        labelContent: ''
-      };
-      switch (statusCode) {
-        case 0:
-          projectStatus.className = 'finished';
-          projectStatus.labelContent = 'Complete';
-          break;
-        case 1:
-          projectStatus.className = 'in-progress';
-          projectStatus.labelContent = 'In Progress';
-          break;
-        case 2:
-          projectStatus.className = 'qa';
-          projectStatus.labelContent = 'Q&A';
-          break;
-        case 3:
-          projectStatus.className = 'rejected';
-          projectStatus.labelContent = 'Rejected';
-          break;
-        case 4:
-          projectStatus.className = 'new';
-          projectStatus.labelContent = 'New';
-          break;
-      }
-      return projectStatus;
-    };
-  };
-  angular.module('panelModule').service('statusService', statusService);
-}());
-
-(function() {
-  'use strict';
-
-  var templatesService = function($http, appSettings) {
-    var self = this;
-    this.getTemplates = function(projectId) {
-      self.route = appSettings.apiRoot + 'projects/' + projectId + '/templates';
-      return $http.get(this.route);
-    };
-    this.deleteTemplate = function (templateId) {
-      console.log('dummy-text');
-      return $http.delete(self.route + '/' + templateId);
-    };
-  };
-
-  templatesService.$inject = ['$http', 'appSettings'];
-  angular.module('frontendApp').service('templatesService', templatesService);
-
-}());
-
-(function() {
-  'use strict';
-
-  var ticketsService = function($http, appSettings) {
-    this.getTickets = function(projectId) {
-      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/tickets');
-    };
-  };
-
-  ticketsService.$inject = ['$http', 'appSettings'];
-  angular.module('panelModule').service('ticketsService', ticketsService);
+  panelModule
+    .config(['$stateProvider', function($stateProvider) {
+      $stateProvider
+        .state('myProjectsState', {
+          url: '/my-projects',
+          templateUrl: 'partials/templates/panel/myProjects.html',
+          controller: 'MyProjectsCtrl',
+          controllerAs: 'MPC',
+          pageName: 'My Projects',
+          module: 'panel'
+        })
+        .state('allProjectsState', {
+          url: '/all-projects',
+          templateUrl: 'partials/templates/panel/allProjects.html',
+          controller: 'AllProjectsCtrl',
+          controllerAs: 'APC',
+          pageName: 'All Projects',
+          module: 'panel',
+          trails: [{
+            name: 'My Projects',
+            link: '#/my-projects'
+          }]
+        })
+        .state('projectState', {
+          url: '/project/:projectId',
+          templateUrl: 'partials/templates/panel/project.html',
+          controller: 'ProjectCtrl',
+          controllerAs: 'PC',
+          pageName: 'Project Details',
+          module: 'panel',
+          trails: [{
+            name: 'My Projects',
+            link: '#/my-projects'
+          }]
+        });
+    }]);
 
 }());
 
@@ -469,135 +253,217 @@
 
 (function() {
   'use strict';
+  var AllProjectsCtrl = function($scope, projectsService) {
+    $scope.allProjects = null;
+    $scope.pageNo = null;
+    $scope.service = projectsService.getProjects;
 
-  var inlineProject = function(statusService) {
-    return {
-      restrict: 'EA',
-      templateUrl: 'app/panel/directives/inlineProject/inlineProject.html',
-      link: function(scope) {
-        scope.projectStatus = statusService.getStatus(scope.project.status);
-      }
+    function init() {
+      projectsService.getProjects()
+      .success(function (projects) {
+        $scope.allProjects = projects;
+      })
+      .error(function (response) {
+        console.log(response);
+      });
+    }
+
+
+    init();
+  };
+
+  AllProjectsCtrl.$inject = ['$scope', 'projectsService'];
+  angular.module('panelModule').controller('AllProjectsCtrl', AllProjectsCtrl);
+
+}());
+
+(function() {
+  'use strict';
+  var MyProjectsCtrl = function($scope, $document, projectsService) {
+    $scope.myProjects = null;
+    function init() {
+      projectsService.getProjects()
+      .success(function (resp) {
+        $scope.myProjects = resp;
+        console.log(resp);
+      })
+      .error(function (resp) {
+        console.log(resp);
+      });
+    }
+    init();
+  };
+
+  MyProjectsCtrl.$inject = ['$scope', '$document', 'projectsService'];
+  angular.module('panelModule').controller('MyProjectsCtrl', MyProjectsCtrl);
+
+}());
+
+(function() {
+  'use strict';
+  var ProjectCtrl = function($scope, $stateParams, projectsService, templatesService, filesService, ticketsService, statusService) {
+    var projectPromise;
+    var templatesPromise;
+    var filesPromise;
+    var ticketsPromise;
+
+    $scope.project = null;
+    $scope.files = null;
+    $scope.templates = null;
+    $scope.tickets = null;
+
+    $scope.displayType = 'grid';
+
+    $scope.getStatus = function(code) {
+      return statusService.getStatus(code);
+    };
+
+    projectPromise = projectsService.getProject($stateParams.projectId);
+    projectPromise.success(function(project) {
+      $scope.project = project;
+    });
+
+    filesPromise = filesService.getFiles($stateParams.projectId);
+    filesPromise.success(function(files) {
+      $scope.files = files;
+    });
+
+    templatesPromise = templatesService.getTemplates($stateParams.projectId);
+    templatesPromise.success(function(templates) {
+      $scope.templates = templates;
+      $scope.deleteTemplate = templatesService.deleteTemplate;
+    });
+
+    ticketsPromise = ticketsService.getTickets($stateParams.projectId);
+    ticketsPromise.success(function(tickets) {
+      $scope.tickets = tickets;
+    });
+
+
+    $scope.sortableOptions = {
+      update: function(e, ui) {
+        console.log(ui);
+      },
+      placeholder: 'drag-and-drop-placeholder',
+      cancel: '.js-no-drop-item',
+      handle: '.action-tool--drag-and-drop',
+      cursor: 'move',
+      opacity: 0.8,
+      tolerance: 'pointer'
+     };
+  };
+
+
+  ProjectCtrl.$inject = ['$scope', '$stateParams', 'projectsService', 'templatesService', 'filesService', 'ticketsService', 'statusService'];
+  angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
+
+}());
+
+(function() {
+  'use strict';
+
+  var filesService = function($http, appSettings) {
+    this.getFiles = function(projectId) {
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/files');
     };
   };
 
-  angular.$inject = ['statusService'];
-  angular.module('panelModule').directive('inlineProject', inlineProject);
+  filesService.$inject = ['$http', 'appSettings'];
+  angular.module('panelModule').service('filesService', filesService);
 
 }());
 
 (function () {
   'use strict';
 
-  var inlineTicket = function (statusService) {
-    return {
-      restrict: 'AE',
-      templateUrl: 'app/panel/directives/inlineTicket/inlineTicket.html',
-      link: function (scope) {
-        scope.status = statusService.getStatus(scope.ticket.status);
+  var projectsService = function ($http, appSettings) {
+
+    this.getProjects = function (pageNo) {
+      var baseUrl = appSettings.apiRoot + 'projects/';
+      if (!pageNo) {
+        return $http.get(baseUrl);
       }
+      return $http.get(baseUrl + '?p=' + pageNo);
     };
-  };
-  inlineTicket.$inject = ['statusService'];
-  angular.module('panelModule').directive('inlineTicket', inlineTicket);
-
-}());
-
-(function() {
-  'use strict';
-
-  var pagination = function() {
-    return {
-      restrict: 'E',
-      scope: {
-        pageNo: '=page',
-        loadPage: '=load'
-      },
-      templateUrl: 'app/panel/directives/pagination/pagination.html',
-      link: function(scope) {
-        scope.goToPage = function() {
-          scope.pageNo = 1;
-          scope.loadPage();
-        };
-        scope.goFurther = function() {
-          scope.pageNo += 1;
-          scope.loadPage();
-        };
-        scope.goBack = function() {
-          scope.pageNo -= 1;
-          scope.loadPage();
-        };
-      }
+    this.getProject = function (projectId) {
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId);
     };
   };
 
-  angular.module('panelModule').directive('pagination', pagination);
-
+  projectsService.$inject = ['$http', 'appSettings'];
+  angular.module('panelModule').service('projectsService', projectsService);
 }());
-
-(function() {
-  'use strict';
-
-  var projectFile = function () {
-    return {
-      restrict: 'A',
-      templateUrl: 'app/panel/directives/projectFile/projectFile.html'
-    };
-  };
-
-  angular.module('panelModule').directive('projectFile', projectFile);
-
-}());
-
-(function() {
-  'use strict';
-  var projectTeaser = function() {
-    return {
-      restrict: 'E',
-      templateUrl: 'app/panel/directives/projectTeaser/projectTeaser.html'
-    };
-  };
-
-  angular.module('panelModule').directive('projectTeaser', projectTeaser);
-
-}());
-
-(function() {
-  'use strict';
-  var templatePreview = function(statusService) {
-    return {
-      restrict: 'E',
-      templateUrl: function (el, attr) {
-        return 'app/panel/directives/templatePreview/' + attr.type + 'templatePreview.html';
-      },
-      link: function (scope) {
-        scope.projectStatus = statusService.getStatus(scope.template.status);
-      }
-    };
-  };
-
-  templatePreview.$inject = ['statusService'];
-  angular.module('frontendApp').directive('templatePreview', templatePreview);
-
-}());
-
 
 (function () {
   'use strict';
-  var templatesListing = function () {
-    return {
-      restrict: 'EA',
-      scope: '=',
-      templateUrl: 'app/panel/directives/templatesListing/templatesListing.html',
-      link: function (scope) {
-        scope.activeInput = false;
-        scope.toggleInput = function () {
-          scope.activeInput = !scope.activeInput;
-        };
+
+  var statusService = function () {
+    this.getStatus = function (statusCode) {
+      var projectStatus = {
+        code: statusCode,
+        className: '',
+        labelContent: ''
+      };
+      switch (statusCode) {
+        case 0:
+          projectStatus.className = 'finished';
+          projectStatus.labelContent = 'Complete';
+          break;
+        case 1:
+          projectStatus.className = 'in-progress';
+          projectStatus.labelContent = 'In Progress';
+          break;
+        case 2:
+          projectStatus.className = 'qa';
+          projectStatus.labelContent = 'Q&A';
+          break;
+        case 3:
+          projectStatus.className = 'rejected';
+          projectStatus.labelContent = 'Rejected';
+          break;
+        case 4:
+          projectStatus.className = 'new';
+          projectStatus.labelContent = 'New';
+          break;
       }
+      return projectStatus;
+    };
+  };
+  angular.module('panelModule').service('statusService', statusService);
+}());
+
+(function() {
+  'use strict';
+
+  var templatesService = function($http, appSettings) {
+    var self = this;
+    this.getTemplates = function(projectId) {
+      self.route = appSettings.apiRoot + 'projects/' + projectId + '/templates';
+      return $http.get(this.route);
+    };
+    this.deleteTemplate = function (templateId) {
+      console.log('dummy-text');
+      return $http.delete(self.route + '/' + templateId);
     };
   };
 
-  angular.module('panelModule').directive('templatesListing', templatesListing);
+  templatesService.$inject = ['$http', 'appSettings'];
+  angular.module('frontendApp').service('templatesService', templatesService);
+
+}());
+
+(function() {
+  'use strict';
+
+  var ticketsService = function($http, appSettings) {
+    this.getTickets = function(projectId) {
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/tickets');
+    };
+  };
+
+  ticketsService.$inject = ['$http', 'appSettings'];
+  angular.module('panelModule').service('ticketsService', ticketsService);
+
 }());
 
 (function() {
@@ -684,4 +550,150 @@
   windowScroll.$inject = ['$window'];
 
   angular.module('frontendApp').directive('windowScroll', windowScroll);
+}());
+
+(function() {
+  'use strict';
+
+  var inlineProject = function(statusService) {
+    return {
+      restrict: 'EA',
+      templateUrl: 'app/panel/directives/inlineProject/inlineProject.html',
+      link: function(scope) {
+        scope.projectStatus = statusService.getStatus(scope.project.status);
+      }
+    };
+  };
+
+  angular.$inject = ['statusService'];
+  angular.module('panelModule').directive('inlineProject', inlineProject);
+
+}());
+
+(function () {
+  'use strict';
+
+  var inlineTicket = function (statusService) {
+    return {
+      restrict: 'AE',
+      templateUrl: 'app/panel/directives/inlineTicket/inlineTicket.html',
+      link: function (scope) {
+        scope.status = statusService.getStatus(scope.ticket.status);
+      }
+    };
+  };
+  inlineTicket.$inject = ['statusService'];
+  angular.module('panelModule').directive('inlineTicket', inlineTicket);
+
+}());
+
+(function() {
+  'use strict';
+
+  var pagination = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/panel/directives/pagination/pagination.html',
+      scope: {
+        getterService: '=service'
+      },
+      transclude: true,
+      controller: function ($scope) {
+        $scope.currentPage = 0;
+        $scope.setPage = function (page) {
+          if (page >= 0) {
+            // @fixme $parent??
+            //                     '
+            //     |\          .(' *) ' .
+            //     | \        ' .*) .'*
+            //     |(*\      .*(// .*) .
+            //     |___\       // (. '*
+            //     ((("'\     // '  * .
+            //     ((c'7')   /\)
+            //     ((((^))  /  \
+            //   .-')))(((-'   /
+            //      (((()) __/'
+            // jgs   )))( |
+            //        (()
+            //         ))
+            $scope.getterService(page).success(function (resp) {
+              $scope.$parent.allProjects = resp;
+            });
+            $scope.currentPage = page;
+          } else {
+            return false;
+          }
+        };
+      }
+    };
+  };
+
+  angular.module('panelModule').directive('pagination', pagination);
+
+}());
+
+(function() {
+  'use strict';
+
+  var projectFile = function () {
+    return {
+      restrict: 'A',
+      templateUrl: 'app/panel/directives/projectFile/projectFile.html'
+    };
+  };
+
+  angular.module('panelModule').directive('projectFile', projectFile);
+
+}());
+
+(function() {
+  'use strict';
+  var projectTeaser = function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'app/panel/directives/projectTeaser/projectTeaser.html'
+    };
+  };
+
+  angular.module('panelModule').directive('projectTeaser', projectTeaser);
+
+}());
+
+(function() {
+  'use strict';
+  var templatePreview = function(statusService) {
+    return {
+      restrict: 'E',
+      templateUrl: function (el, attr) {
+        return 'app/panel/directives/templatePreview/' + attr.type + 'templatePreview.html';
+      },
+      link: function (scope) {
+        scope.projectStatus = statusService.getStatus(scope.template.status);
+      }
+    };
+  };
+
+  templatePreview.$inject = ['statusService'];
+  angular.module('frontendApp').directive('templatePreview', templatePreview);
+
+}());
+
+
+(function () {
+  'use strict';
+  var templatesListing = function () {
+    return {
+      restrict: 'EA',
+      scope: '=',
+      templateUrl: 'app/panel/directives/templatesListing/templatesListing.html',
+      link: function (scope) {
+        scope.activeInput = false;
+        scope.toggleInput = function () {
+          scope.activeInput = !scope.activeInput;
+        };
+      }
+    };
+  };
+
+  angular.module('panelModule').directive('templatesListing', templatesListing);
 }());

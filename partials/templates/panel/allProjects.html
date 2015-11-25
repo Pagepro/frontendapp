@@ -1,7 +1,7 @@
 <div class="sec--main__head">
     <div class="sec--main__inner">
         <h2 class="main-title">
-            <span class="label">All Projects (<span class="qty">1</span>)</span>
+            <span class="label">All Projects (<span class="qty">{{allProjects.length || 0}}</span>)</span>
         </h2>
     </div>
 </div>
@@ -34,14 +34,13 @@
                                 </div>
                                 <ol class="files-list">
                                     <li class="files-list__item" ng-repeat="project in allProjects">
-                                        <a class="files-list__item__inner" href="project-details.html" inline-project></a>
+                                        <a class="files-list__item__inner" href="#/project/{{project.id}}" inline-project></a>
                                     </li>
                                 </ol>
                             </div>
                         </div>
                     </div>
-                    {{pageNo}}
-                    <pagination class="project-box__actions" page="pageNo" load="loadWithParam"></pagination>
+                    <pagination class="project-box__actions" service="service"></pagination>
                 </div>
             </div>
         </div>
