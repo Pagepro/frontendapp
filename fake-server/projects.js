@@ -30,4 +30,9 @@ while (projects.length < _.random(10, 20)) {
   });
 }
 
-module.exports = projects;
+module.exports = {
+  'count': 306,
+  'next': 'http://api.frontendapp.com/projects/?page=3',
+  'previous': 'http://api.frontendapp.com/projects/',
+  'results': projects
+};

@@ -6,16 +6,19 @@
     $scope.service = projectsService.getProjects;
 
     function init() {
-      projectsService.getProjects()
+      $scope.service()
       .success(function (projects) {
-        $scope.allProjects = projects;
+        $scope.allProjects = projects.results;
+        $scope.pagination = {
+          count: projects.count,
+          next: projects.next,
+          previous: projects.previous
+        }
       })
       .error(function (response) {
-        console.log(response);
+        //
       });
     }
-
-
     init();
   };
 

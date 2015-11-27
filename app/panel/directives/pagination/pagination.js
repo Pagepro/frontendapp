@@ -27,8 +27,9 @@
             // jgs   )))( |
             //        (()
             //         ))
+            console.log($scope.$parent.pagination);
             $scope.getterService(page).success(function (resp) {
-              $scope.$parent.allProjects = resp;
+              $scope.$parent.allProjects = resp.results;
             });
             $scope.currentPage = page;
           } else {

@@ -50,7 +50,7 @@ app.get('/projects/:id/tickets', function(req, res) {
 
 app.get('/projects', function(req, res) {
   if (req.headers.authorization) {
-    if (req.query.p) {
+    if (req.query.page) {
       res.json({});
     } else {
       res.json(projects);

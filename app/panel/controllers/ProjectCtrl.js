@@ -35,13 +35,28 @@
 
     ticketsPromise = ticketsService.getTickets($stateParams.projectId);
     ticketsPromise.success(function(tickets) {
-      $scope.tickets = tickets;
+      $scope.tickets = tickets.sort(function (item, nextItem) {
+        return item.order > nextItem.order;
+      });
     });
 
 
     $scope.sortableOptions = {
-      update: function(e, ui) {
-        console.log(ui);
+      // update: function() {
+        // for (var index in $scope.tickets) {
+        //   $scope.tickets[index].order = index;
+        //   console.log([$scope.tickets[index].order]);
+        // }
+      // },
+      update: function() {
+        // set new order after update
+        for (var index in $scope.tickets) {
+          $scope.tickets[index].order = index;
+        }
+        // push all items to array with newly ordered ids
+        ticketsService.updateOrder($scope.tickets.map(function (item) {
+          return item.id;
+        }));
       },
       placeholder: 'drag-and-drop-placeholder',
       cancel: '.js-no-drop-item',

@@ -5,11 +5,10 @@
     function init() {
       projectsService.getProjects()
       .success(function (resp) {
-        $scope.myProjects = resp;
-        console.log(resp);
+        $scope.myProjects = resp.results;
       })
       .error(function (resp) {
-        console.log(resp);
+        //
       });
     }
     init();

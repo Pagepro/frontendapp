@@ -209,6 +209,7 @@
       title: 'Fronted App',
       verion: '0.0.2',
       apiRoot: 'http://localhost:8080/'
+      // apiRoot: 'http://localhost:8080/'
   });
 }());
 
@@ -219,7 +220,7 @@
     var baseApiUrl = appSettings.apiRoot;
 
     this.loginUser = function(username, password) {
-      return $http.post(baseApiUrl + 'auth', {
+      return $http.post(baseApiUrl + 'auth/', {
         username: username,
         password: password
       });
@@ -259,16 +260,19 @@
     $scope.service = projectsService.getProjects;
 
     function init() {
-      projectsService.getProjects()
+      $scope.service()
       .success(function (projects) {
-        $scope.allProjects = projects;
+        $scope.allProjects = projects.results;
+        $scope.pagination = {
+          count: projects.count,
+          next: projects.next,
+          previous: projects.previous
+        }
       })
       .error(function (response) {
-        console.log(response);
+        //
       });
     }
-
-
     init();
   };
 
@@ -284,11 +288,10 @@
     function init() {
       projectsService.getProjects()
       .success(function (resp) {
-        $scope.myProjects = resp;
-        console.log(resp);
+        $scope.myProjects = resp.results;
       })
       .error(function (resp) {
-        console.log(resp);
+        //
       });
     }
     init();
@@ -336,13 +339,28 @@
 
     ticketsPromise = ticketsService.getTickets($stateParams.projectId);
     ticketsPromise.success(function(tickets) {
-      $scope.tickets = tickets;
+      $scope.tickets = tickets.sort(function (item, nextItem) {
+        return item.order > nextItem.order;
+      });
     });
 
 
     $scope.sortableOptions = {
-      update: function(e, ui) {
-        console.log(ui);
+      // update: function() {
+        // for (var index in $scope.tickets) {
+        //   $scope.tickets[index].order = index;
+        //   console.log([$scope.tickets[index].order]);
+        // }
+      // },
+      update: function() {
+        // set new order after update
+        for (var index in $scope.tickets) {
+          $scope.tickets[index].order = index;
+        }
+        // push all items to array with newly ordered ids
+        ticketsService.updateOrder($scope.tickets.map(function (item) {
+          return item.id;
+        }));
       },
       placeholder: 'drag-and-drop-placeholder',
       cancel: '.js-no-drop-item',
@@ -377,13 +395,13 @@
   'use strict';
 
   var projectsService = function ($http, appSettings) {
-
+    var self = this;
     this.getProjects = function (pageNo) {
       var baseUrl = appSettings.apiRoot + 'projects/';
       if (!pageNo) {
         return $http.get(baseUrl);
       }
-      return $http.get(baseUrl + '?p=' + pageNo);
+      return $http.get(baseUrl + '?page=' + pageNo);
     };
     this.getProject = function (projectId) {
       return $http.get(appSettings.apiRoot + 'projects/' + projectId);
@@ -456,8 +474,13 @@
   'use strict';
 
   var ticketsService = function($http, appSettings) {
+    var self = this;
     this.getTickets = function(projectId) {
-      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/tickets');
+      self.projectId = projectId;
+      return $http.get(appSettings.apiRoot + 'projects/' + self.projectId + '/tickets');
+    };
+    this.updateOrder = function (sortedArray) {
+      return $http.post(appSettings.apiRoot + 'projects/' + self.projectId + '/tickets', sortedArray);
     };
   };
 
@@ -616,8 +639,9 @@
             // jgs   )))( |
             //        (()
             //         ))
+            console.log($scope.$parent.pagination);
             $scope.getterService(page).success(function (resp) {
-              $scope.$parent.allProjects = resp;
+              $scope.$parent.allProjects = resp.results;
             });
             $scope.currentPage = page;
           } else {

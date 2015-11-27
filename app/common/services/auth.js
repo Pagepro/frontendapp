@@ -5,7 +5,7 @@
     var baseApiUrl = appSettings.apiRoot;
 
     this.loginUser = function(username, password) {
-      return $http.post(baseApiUrl + 'auth', {
+      return $http.post(baseApiUrl + 'auth/', {
         username: username,
         password: password
       });
