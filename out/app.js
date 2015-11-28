@@ -1,7 +1,9 @@
 (function() {
   'use strict';
 
-  var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'authModule', 'panelModule', 'dibari.angular-ellipsis', 'ui.sortable']);
+  var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'authModule', 'panelModule',
+    'dibari.angular-ellipsis', 'ui.sortable', 'angularSpinners'
+  ]);
   frontendApp
     .config(['$urlRouterProvider',
       '$httpProvider',
@@ -175,14 +177,13 @@
 
 (function() {
   'use strict';
-  var authInterceptor = function($q, $window, $location, loaderFactory) {
+  var authInterceptor = function($q, $window, $location) {
     return {
       request: function(config) {
         config.headers = config.headers || {};
         if ($window.localStorage.token) {
           config.headers.Authorization = 'Token ' + $window.localStorage.token;
         }
-        loaderFactory.createLoader();
         return config;
       },
       responseError: function(response) {
@@ -190,7 +191,6 @@
           $window.localStorage.removeItem('token');
           $window.localStorage.removeItem('username');
           $location.path('/');
-          loaderFactory.removeLoader();
           return;
         }
         return $q.reject(response);
@@ -198,7 +198,7 @@
     };
   };
 
-  authInterceptor.$inject = ['$q', '$window', '$location', 'loaderFactory'];
+  authInterceptor.$inject = ['$q', '$window', '$location'];
   angular.module('frontendApp').factory('authInterceptor', authInterceptor);
 
 }());
@@ -209,7 +209,7 @@
       title: 'Fronted App',
       verion: '0.0.2',
       apiRoot: 'http://localhost:8080/'
-      // apiRoot: 'http://localhost:8080/'
+      // apiRoot: 'http://api.frontendapp.com/'
   });
 }());
 
@@ -235,76 +235,153 @@
 
 }());
 
-(function () {
+/*
+ * Modified angular-spinners by chevex
+ * https://github.com/codetunnel/angular-spinners
+ */
+(function() {
   'use strict';
-
-  var loaderFactory = function () {
+  var spinnerService = function() {
+    var spinners = {};
     return {
-      createLoader: function () {
-        console.log('create loader');
+      _register: function(data) {
+        if (!data.hasOwnProperty('name')) {
+          throw new Error("Spinner must specify a name when registering with the spinner service.");
+        }
+        if (spinners.hasOwnProperty(data.name)) {
+          throw new Error("A spinner with the name '" + data.name + "' has already been registered.");
+        }
+        spinners[data.name] = data;
       },
-      removeLoader: function () {
-        console.log('remove loader');
+      _unregister: function(name) {
+        if (spinners.hasOwnProperty(name)) {
+          delete spinners[name];
+        }
+      },
+      _unregisterGroup: function(group) {
+        for (var name in spinners) {
+          if (spinners[name].group === group) {
+            delete spinners[name];
+          }
+        }
+      },
+      _unregisterAll: function() {
+        for (var name in spinners) {
+          delete spinners[name];
+        }
+      },
+      show: function(name) {
+        var spinner = spinners[name];
+        if (!spinner) {
+          throw new Error("No spinner named '" + name + "' is registered.");
+        }
+        spinner.show();
+      },
+      hide: function(name) {
+        var spinner = spinners[name];
+        if (!spinner) {
+          throw new Error("No spinner named '" + name + "' is registered.");
+        }
+        spinner.hide();
+      },
+      showGroup: function(group) {
+        var groupExists = false;
+        for (var name in spinners) {
+          var spinner = spinners[name];
+          if (spinner.group === group) {
+            spinner.show();
+            groupExists = true;
+          }
+        }
+        if (!groupExists) {
+          throw new Error("No spinners found with group '" + group + "'.")
+        }
+      },
+      hideGroup: function(group) {
+        var groupExists = false;
+        for (var name in spinners) {
+          var spinner = spinners[name];
+          if (spinner.group === group) {
+            spinner.hide();
+            groupExists = true;
+          }
+        }
+        if (!groupExists) {
+          throw new Error("No spinners found with group '" + group + "'.")
+        }
+      },
+      showAll: function() {
+        for (var name in spinners) {
+          spinners[name].show();
+        }
+      },
+      hideAll: function() {
+        for (var name in spinners) {
+          spinners[name].hide();
+        }
       }
     };
   };
+  angular.module('angularSpinners', []).factory('spinnerService', spinnerService);
 
-  angular.module('frontendApp').factory('loaderFactory', loaderFactory);
 }());
 
 (function() {
   'use strict';
-  var AllProjectsCtrl = function($scope, projectsService) {
+  var AllProjectsCtrl = function($scope, projectsService, spinnerService) {
     $scope.allProjects = null;
     $scope.pageNo = null;
     $scope.service = projectsService.getProjects;
 
-    function init() {
+    $scope.init = function() {
+      spinnerService.show('all-projects');
       $scope.service()
-      .success(function (projects) {
-        $scope.allProjects = projects.results;
-        $scope.pagination = {
-          count: projects.count,
-          next: projects.next,
-          previous: projects.previous
-        }
-      })
-      .error(function (response) {
-        //
-      });
-    }
-    init();
+        .success(function(projects) {
+          $scope.allProjects = projects.results;
+          $scope.pagination = {
+            count: projects.count,
+            next: projects.next,
+            previous: projects.previous
+          };
+        })
+        .error(function() {})
+        .finally(function() {
+          spinnerService.hide('all-projects');
+        });
+    };
+
   };
 
-  AllProjectsCtrl.$inject = ['$scope', 'projectsService'];
+  AllProjectsCtrl.$inject = ['$scope', 'projectsService', 'spinnerService'];
   angular.module('panelModule').controller('AllProjectsCtrl', AllProjectsCtrl);
 
 }());
 
 (function() {
   'use strict';
-  var MyProjectsCtrl = function($scope, $document, projectsService) {
+  var MyProjectsCtrl = function($scope, projectsService, spinnerService) {
     $scope.myProjects = null;
-    function init() {
+    $scope.init = function() {
+      spinnerService.show('my-projects');
       projectsService.getProjects()
-      .success(function (resp) {
-        $scope.myProjects = resp.results;
-      })
-      .error(function (resp) {
-        //
-      });
-    }
-    init();
+        .success(function(resp) {
+          $scope.myProjects = resp.results;
+        })
+        .error(function() {})
+        .finally(function() {
+          spinnerService.hide('my-projects');
+        });
+    };
   };
 
-  MyProjectsCtrl.$inject = ['$scope', '$document', 'projectsService'];
+  MyProjectsCtrl.$inject = ['$scope', 'projectsService', 'spinnerService'];
   angular.module('panelModule').controller('MyProjectsCtrl', MyProjectsCtrl);
 
 }());
 
 (function() {
   'use strict';
-  var ProjectCtrl = function($scope, $stateParams, projectsService, templatesService, filesService, ticketsService, statusService) {
+  var ProjectCtrl = function($scope, $q, $stateParams, projectsService, templatesService, filesService, ticketsService, statusService, spinnerService) {
     var projectPromise;
     var templatesPromise;
     var filesPromise;
@@ -321,44 +398,14 @@
       return statusService.getStatus(code);
     };
 
-    projectPromise = projectsService.getProject($stateParams.projectId);
-    projectPromise.success(function(project) {
-      $scope.project = project;
-    });
-
-    filesPromise = filesService.getFiles($stateParams.projectId);
-    filesPromise.success(function(files) {
-      $scope.files = files;
-    });
-
-    templatesPromise = templatesService.getTemplates($stateParams.projectId);
-    templatesPromise.success(function(templates) {
-      $scope.templates = templates;
-      $scope.deleteTemplate = templatesService.deleteTemplate;
-    });
-
-    ticketsPromise = ticketsService.getTickets($stateParams.projectId);
-    ticketsPromise.success(function(tickets) {
-      $scope.tickets = tickets.sort(function (item, nextItem) {
-        return item.order > nextItem.order;
-      });
-    });
-
-
     $scope.sortableOptions = {
-      // update: function() {
-        // for (var index in $scope.tickets) {
-        //   $scope.tickets[index].order = index;
-        //   console.log([$scope.tickets[index].order]);
-        // }
-      // },
       update: function() {
         // set new order after update
         for (var index in $scope.tickets) {
           $scope.tickets[index].order = index;
         }
         // push all items to array with newly ordered ids
-        ticketsService.updateOrder($scope.tickets.map(function (item) {
+        ticketsService.updateOrder($scope.tickets.map(function(item) {
           return item.id;
         }));
       },
@@ -368,11 +415,38 @@
       cursor: 'move',
       opacity: 0.8,
       tolerance: 'pointer'
-     };
+    };
+    $scope.init = function() {
+      projectPromise = projectsService.getProject($stateParams.projectId);
+      projectPromise.success(function(project) {
+        $scope.project = project;
+      });
+
+      filesPromise = filesService.getFiles($stateParams.projectId);
+      filesPromise.success(function(files) {
+        $scope.files = files;
+      });
+
+      templatesPromise = templatesService.getTemplates($stateParams.projectId);
+      templatesPromise.success(function(templates) {
+        $scope.templates = templates;
+        $scope.deleteTemplate = templatesService.deleteTemplate;
+      });
+
+      ticketsPromise = ticketsService.getTickets($stateParams.projectId);
+      ticketsPromise.success(function(tickets) {
+        $scope.tickets = tickets.sort(function(item, nextItem) {
+          return item.order > nextItem.order;
+        });
+      });
+      $q.all([projectPromise, filesPromise, templatesPromise, ticketsPromise]).then(function(resp) {
+        spinnerService.hide('project-details');
+      });
+    };
   };
 
 
-  ProjectCtrl.$inject = ['$scope', '$stateParams', 'projectsService', 'templatesService', 'filesService', 'ticketsService', 'statusService'];
+  ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsService', 'templatesService', 'filesService', 'ticketsService', 'statusService', 'spinnerService'];
   angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
 
 }());
@@ -531,19 +605,6 @@
 
 }());
 
-(function () {
-  'use strict';
-  var loader = function () {
-    return {
-      restrict: 'EAC',
-      templateUrl: 'app/common/directives/loader/loader.html'
-    };
-  };
-
-  loader.$inject = ['$http'];
-  angular.module('frontendApp').directive('loader', loader);
-}());
-
 (function() {
   'use strict';
   var windowScroll = function($window) {
@@ -573,6 +634,101 @@
   windowScroll.$inject = ['$window'];
 
   angular.module('frontendApp').directive('windowScroll', windowScroll);
+}());
+
+/*
+ * Modified angular-spinners by chevex
+ * https://github.com/codetunnel/angular-spinners
+ */
+(function() {
+  'use strict';
+  var spinner = function($timeout) {
+    return {
+      restrict: 'EA',
+      replace: true,
+      transclude: true,
+      scope: {
+        name: '@?',
+        group: '@?',
+        show: '=?',
+        register: '@?',
+        onLoaded: '&?',
+        onShow: '&?',
+        onHide: '&?'
+      },
+      templateUrl: 'app/common/directives/loader/loader.html',
+      controller: function($scope, spinnerService) {
+
+        // register should be true by default if not specified.
+        if (!$scope.hasOwnProperty('register')) {
+          $scope.register = true;
+        } else {
+          $scope.register = $scope.register.toLowerCase() === 'false' ? false : true;
+        }
+
+        // Declare a mini-API to hand off to our service so the service
+        // doesn't have a direct reference to this directive's scope.
+        var api = {
+          name: $scope.name,
+          group: $scope.group,
+          show: function() {
+            $scope.show = true;
+          },
+          hide: function() {
+            // temp solution to work on loaders
+            $timeout(function () {
+              $scope.show = false;
+            }, 1000);
+
+            // $scope.show = false;
+          },
+          toggle: function() {
+            $scope.show = !$scope.show;
+          }
+        };
+
+        // Register this spinner with the spinner service.
+        if ($scope.register === true) {
+          spinnerService._register(api);
+        }
+
+        // If an onShow or onHide expression was provided, register a watcher
+        // that will fire the relevant expression when show's value changes.
+        if ($scope.onShow || $scope.onHide) {
+          $scope.$watch('show', function(show) {
+            if (show && $scope.onShow) {
+              $scope.onShow({
+                spinnerService: spinnerService,
+                spinnerApi: api
+              });
+            } else if (!show && $scope.onHide) {
+              $scope.onHide({
+                spinnerService: spinnerService,
+                spinnerApi: api
+              });
+            }
+          });
+        }
+
+        // This spinner is good to go. Fire the onLoaded expression.
+        if ($scope.onLoaded) {
+          $scope.onLoaded({
+            spinnerService: spinnerService,
+            spinnerApi: api
+          });
+        }
+
+        // Unregister this spinner if the $destroy event is emitted on scope.
+        $scope.$on('$destroy', function() {
+          spinnerService._unregister($scope.name);
+        });
+      }
+    };
+  };
+
+  spinner.$inject = ['$timeout'];
+  angular.module('angularSpinners').directive('spinner', spinner);
+
 }());
 
 (function() {
