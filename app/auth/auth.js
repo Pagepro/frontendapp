@@ -7,7 +7,7 @@
       $stateProvider
         .state('accountState', {
           url: '/auth',
-          templateUrl: 'partials/templates/auth/account.html',
+          templateUrl: 'app/auth/templates/account.html',
           controller: 'AuthCtrl',
           controllerAs: 'AC',
           pageName: 'Account',
@@ -15,7 +15,7 @@
         })
         .state('accountState.login', {
           url: '/login',
-          templateUrl: 'partials/templates/auth/login.html',
+          templateUrl: 'app/auth/templates/login.html',
           controller: 'LoginCtrl',
           controllerAs: 'LC',
           pageName: 'Login',
@@ -23,7 +23,7 @@
         })
         .state('accountState.register', {
           url: '/register',
-          templateUrl: 'partials/templates/auth/registration.html',
+          templateUrl: 'app/auth/templates/registration.html',
           controller: 'RegistrationCtrl',
           controllerAs: 'RC',
           pageName: 'Register',
@@ -31,7 +31,7 @@
         })
         .state('accountState.remindState', {
           url: '/remind',
-          templateUrl: 'partials/templates/auth/remind.html',
+          templateUrl: 'app/auth/templates/remind.html',
           controller: 'RemindCtrl',
           controllerAs: 'RmC',
           pageName: 'Remind Password',

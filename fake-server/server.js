@@ -4,11 +4,11 @@ var express = require('express');
 var cors = require('cors');
 var app = express();
 
-var auth = require('./fake-server/auth');
-var projects = require('./fake-server/projects');
-var files = require('./fake-server/files');
-var templates = require('./fake-server/templates');
-var tickets = require('./fake-server/tickets');
+var auth = require('./auth');
+var projects = require('./projects');
+var files = require('./files');
+var templates = require('./templates');
+var tickets = require('./tickets');
 
 app.use(cors());
 

@@ -7,7 +7,7 @@
       $stateProvider
         .state('myProjectsState', {
           url: '/my-projects',
-          templateUrl: 'partials/templates/panel/myProjects.html',
+          templateUrl: 'app/panel/templates/myProjects.html',
           controller: 'MyProjectsCtrl',
           controllerAs: 'MPC',
           pageName: 'My Projects',
@@ -15,7 +15,7 @@
         })
         .state('allProjectsState', {
           url: '/all-projects',
-          templateUrl: 'partials/templates/panel/allProjects.html',
+          templateUrl: 'app/panel/templates/allProjects.html',
           controller: 'AllProjectsCtrl',
           controllerAs: 'APC',
           pageName: 'All Projects',
@@ -27,7 +27,7 @@
         })
         .state('projectState', {
           url: '/project/:projectId',
-          templateUrl: 'partials/templates/panel/project.html',
+          templateUrl: 'app/panel/templates/project.html',
           controller: 'ProjectCtrl',
           controllerAs: 'PC',
           pageName: 'Project Details',
