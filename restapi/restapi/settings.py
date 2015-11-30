@@ -40,9 +40,11 @@ INSTALLED_APPS = (
     'api',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -106,6 +108,8 @@ REST_FRAMEWORK = {
     ),
     'PAGE_SIZE': 10
 }
+# Temporary setting, we need to make whitelist later
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
