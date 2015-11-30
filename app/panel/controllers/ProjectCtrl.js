@@ -36,6 +36,7 @@
       tolerance: 'pointer'
     };
     $scope.init = function() {
+      spinnerService.show('project-details');
       projectPromise = projectsService.getProject($stateParams.projectId);
       projectPromise.success(function(project) {
         $scope.project = project;

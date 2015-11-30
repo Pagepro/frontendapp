@@ -46,7 +46,7 @@ gulp.task('serve', ['sass'], function() {
 });
 
 gulp.task('watch', ['js'], function() {
-  gulp.watch('partials/sass/**', ['sass']);
+  gulp.watch('app/common/**/*.scss', ['sass']);
   gulp.watch(['app/**/templates/*.html', 'app/**/directives/*.html'], reload);
   gulp.watch(['app/**/*.js'], ['js']);
 });
