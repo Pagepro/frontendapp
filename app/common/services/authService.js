@@ -10,6 +10,9 @@
         password: password
       });
     };
+    this.registerUser = function (user) {
+      return $http.post(baseApiUrl + 'register/', user);
+    }
     this.logout = function () {
       $window.localStorage.removeItem('token');
     };

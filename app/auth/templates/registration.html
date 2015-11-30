@@ -7,15 +7,15 @@
     </div>
     <button class="form-register__button">Submit</button>
 </form>
- -->
-<form class="access-form">
+-->
+<form class="access-form" name="registrationForm" novalidate ng-submit="save(user)">
  <fieldset class="form__fieldset">
      <div class="form__content">
          <div class="form__section">
              <div class="field field--input">
-                 <input class="input input--text" type="text" placeholder="USERNAME" name="username" id="field_01">
+                 <input class="input input--text" type="text" placeholder="USERNAME" ng-model="user.name" id="username" name="username" ng-model-options="{ updateOn: 'blur' }" required>
              </div>
-         <div class="field field--info">
+         <div class="field field--info" ng-show="{{registrationForm.username.$invalid}}">
                  <div class="form-info required">
                      <p>This field is required</p>
                  </div>
@@ -23,9 +23,9 @@
          </div>
          <div class="form__section">
              <div class="field field--input">
-                 <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="field_02">
+                 <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="email" ng-model="user.email" required>
              </div>
-         <div class="field field--info">
+         <div class="field field--info" ng-show="{{registrationForm.e-mail.$invalid}}">
                  <div class="form-info required">
                      <p>This field is required</p>
                  </div>
@@ -33,15 +33,15 @@
          </div>
          <div class="form__section">
              <div class="field field--input">
-                 <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_03">
+                 <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="password" ng-model="user.password" required>
              </div>
-         <div class="field field--info">
+         <div class="field field--info" ng-show="{{registrationForm.password.$invalid}}">
                  <div class="form-info required">
                      <p>This field is required</p>
                  </div>
              </div>
          </div>
-         <div class="form__section">
+         <!-- <div class="form__section">
              <div class="field field--input">
                  <input class="input input--text" type="password" placeholder="RE-PASSWORD" name="re-password" id="field_04">
              </div>
@@ -50,7 +50,7 @@
                      <p>This field is required</p>
                  </div>
              </div>
-         </div>
+         </div> -->
      </div>
      <div class="form__actions">
          <div class="form__section">
