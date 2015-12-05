@@ -8,12 +8,12 @@
     </form>
 </div>
  -->
-<form class="access-form" id="form-login" name="form-login" ng-submit="submitForm()">
+<form class="access-form" id="form-login" name="form-login" ng-submit="login(user)">
     <fieldset class="form__fieldset">
         <div class="form__content">
             <div class="form__section">
                 <div class="field field--input">
-                    <input class="input input--text" type="text" placeholder="E-MAIL" name="e-mail" id="field_05">
+                    <input class="input input--text" type="text" placeholder="E-MAIL" name="email" id="email" ng-model="user.email">
                 </div>
                 <div class="field field--info">
                     <div class="form-info required">
@@ -23,7 +23,7 @@
             </div>
             <div class="form__section">
                 <div class="field field--input">
-                    <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_06">
+                    <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="password" ng-model="user.password">
                 </div>
                 <div class="field field--info">
                     <div class="form-info required">

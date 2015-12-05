@@ -1,15 +1,15 @@
 (function() {
   'use strict';
-  var LoginCtrl = function($scope, $state, $window, authService) {
-    $scope.submitForm = function () {
-      authService.loginUser('tes', 't').success(function (authToken) {
-        $window.localStorage.token = authToken;
+  var LoginCtrl = function($scope, $state, authService) {
+    $scope.login = function (user) {
+      authService.loginUser(user.email, user.password).success(function (authToken) {
+        authService.setAuthToken(authToken.token);
         $state.go('myProjectsState');
       });
     };
   };
 
-  LoginCtrl.$inject = ['$scope', '$state', '$window', 'authService'];
+  LoginCtrl.$inject = ['$scope', '$state', 'authService'];
   angular.module('frontendApp').controller('LoginCtrl', LoginCtrl);
 
 }());
