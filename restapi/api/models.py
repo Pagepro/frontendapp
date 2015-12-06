@@ -32,9 +32,19 @@ class ProjectFile(models.Model):
 	status = models.IntegerField()
 	uploaded_date = models.DateTimeField()
 
-class TemplateFile(ProjectFile):
+class ProjectTemplate(models.Model):
 	class Meta:
 		db_table = 'pfo_project_templates'
+		
+	project = models.ForeignKey(Project)
+	name = models.CharField(max_length=255)
+	filename = models.CharField(max_length=255)
+	original_filename = models.CharField(max_length=255)
+	extension =models.CharField(max_length=10)
+	size = models.IntegerField()
+	order = models.IntegerField()
+	status = models.IntegerField()
+	uploaded_date = models.DateTimeField()
 
 """
 class ApiUserManager(BaseUserManager):

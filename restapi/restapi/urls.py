@@ -25,7 +25,7 @@ router.register(r'projects', views.ProjectViewSet)
 
 project_router = routers.NestedSimpleRouter(router, r'projects', lookup='project')
 project_router.register(r'files', views.ProjectFileViewSet, base_name='projectfile')
-project_router.register(r'templates', views.ProjectFileViewSet, base_name='projecttemplate')
+project_router.register(r'templates', views.ProjectTemplateViewSet, base_name='projecttemplate')
 
 urlpatterns = [
     url(r'^', include(router.urls)),

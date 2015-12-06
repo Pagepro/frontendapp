@@ -9,11 +9,10 @@ class ProjectSerializer(serializers.ModelSerializer):
 		model = Project
 		fields = ('id', 'name', 'short_description', 'long_description', 'repository', 'created_on', 'updated_on', 'files', 'templates')
 
-class TemplateFileSerializer(serializers.ModelSerializer):
+class ProjectTemplateSerializer(serializers.ModelSerializer):
 	class Meta:
-		model = TemplateFile
+		model = ProjectTemplate
 
 class ProjectFileSerializer(serializers.ModelSerializer):
-	#url = NestedHyperlinkedRelatedField(read_only=True,view_name='projectfile-detail', lookup_url_kwarg='project_pk')
 	class Meta:
 		model = ProjectFile

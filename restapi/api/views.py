@@ -20,16 +20,16 @@ class ProjectFileViewSet(viewsets.ViewSet):
  		serializer = ProjectFileSerializer(file, context={'request': request})
  		return Response(serializer.data)
 
-class TemplateFileViewSet(viewsets.ViewSet):
+class ProjectTemplateViewSet(viewsets.ViewSet):
 	def list(self, request, project_pk=None):
-		queryset = TemplateFile.objects.filter(project=project_pk).order_by('-uploaded_date')
-		serializer = TemplateFileSerializer(queryset, many=True, context={'request': request})
+		queryset = ProjectTemplate.objects.filter(project=project_pk).order_by('-uploaded_date')
+		serializer = ProjectTemplateSerializer(queryset, many=True, context={'request': request})
  		return Response(serializer.data)
 
  	def retrieve(self, request, pk=None, project_pk=None):
- 		queryset = TemplateFile.objects.filter(project=project_pk)
+ 		queryset = ProjectTemplate.objects.filter(project=project_pk)
  		file = get_object_or_404(queryset, pk=pk)
- 		serializer = TemplateFileSerializer(file, context={'request': request})
+ 		serializer = ProjectTemplateSerializer(file, context={'request': request})
  		return Response(serializer.data)
 
 from django.http import HttpResponse
