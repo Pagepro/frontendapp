@@ -1,68 +1,75 @@
-<!-- <form class="form-register forms__content__item" id="form-register">
-    <div class="form-register__fieldset fields">
-        <input type="text" class="fields__field" placeholder="Username" name="username01" id="username01"/>
-        <input type="text" class="fields__field" placeholder="E-mail" name="email01" id="email01"/>
-        <input type="password" class="fields__field" placeholder="Password" name="password01" id="password01"/>
-        <input type="password" class="fields__field" placeholder="Re-password" name="repassword01" id="repassword01"/>
-    </div>
-    <button class="form-register__button">Submit</button>
-</form>
--->
 <form class="access-form" name="registrationForm" novalidate ng-submit="save(user)">
- <fieldset class="form__fieldset">
-     <div class="form__content">
-         <div class="form__section">
-             <div class="field field--input">
-                 <input class="input input--text" type="text" placeholder="USERNAME" ng-model="user.name" id="username" name="username" ng-model-options="{ updateOn: 'blur' }" required>
-             </div>
-         <div class="field field--info" ng-show="{{registrationForm.username.$invalid}}">
-                 <div class="form-info required">
-                     <p>This field is required</p>
-                 </div>
-             </div>
-         </div>
-         <div class="form__section">
-             <div class="field field--input">
-                 <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="email" ng-model="user.email" required>
-             </div>
-         <div class="field field--info" ng-show="{{registrationForm.e-mail.$invalid}}">
-                 <div class="form-info required">
-                     <p>This field is required</p>
-                 </div>
-             </div>
-         </div>
-         <div class="form__section">
-             <div class="field field--input">
-                 <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="password" ng-model="user.password" required>
-             </div>
-         <div class="field field--info" ng-show="{{registrationForm.password.$invalid}}">
-                 <div class="form-info required">
-                     <p>This field is required</p>
-                 </div>
-             </div>
-         </div>
-         <!-- <div class="form__section">
-             <div class="field field--input">
-                 <input class="input input--text" type="password" placeholder="RE-PASSWORD" name="re-password" id="field_04">
-             </div>
-         <div class="field field--info">
-                 <div class="form-info required">
-                     <p>This field is required</p>
-                 </div>
-             </div>
-         </div> -->
-     </div>
-     <div class="form__actions">
-         <div class="form__section">
-             <button type="submit" class="btn btn--submit">
-                 <span class="label">Submit</span>
-             </button>
-             <div class="field field--info">
-                 <div class="form-info required">
-                     <p>Login or password is incorrect</p>
-                 </div>
-             </div>
-         </div>
-     </div>
- </fieldset>
+    <fieldset class="form__fieldset">
+        <div class="form__content">
+            <div class="form__section">
+                <div class="field field--input">
+                    <input
+                    class="input input--text"
+                    type="text"
+                    placeholder="USERNAME"
+                    ng-model="user.name"
+                    id="username"
+                    name="username"
+                    ng-model-options="{ updateOn: 'blur' }"
+                    required>
+                </div>
+                <div class="field field--info" ng-if="registrationForm.username.$invalid">
+                    <div class="form-info required">
+                        <p>This field is required</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form__section">
+                <div class="field field--input">
+                    <input
+                    class="input input--text"
+                    type="email"
+                    placeholder="E-MAIL"
+                    name="email"
+                    id="email"
+                    ng-model="user.email"
+                    ng-model-options="{ updateOn: 'blur' }"
+                    required>
+                </div>
+                <div class="field field--info" ng-if="registrationForm.email.$invalid">
+                    <div class="form-info required">
+                        <p>This field is required</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form__section">
+                <div class="field field--input">
+                    <input
+                    class="input input--text"
+                    type="password"
+                    placeholder="PASSWORD"
+                    name="password"
+                    id="password"
+                    ng-model="user.password"
+                    ng-model-options="{ updateOn: 'blur' }"
+                    required>
+                </div>
+                <div class="field field--info" ng-if="registrationForm.password.$invalid">
+                    <div class="form-info required">
+                        <p>This field is required</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form__actions">
+            <div class="form__section">
+                <button
+                type="submit"
+                class="btn btn--submit"
+                ng-disable="registrationForm.password.$invalid || registrationForm.email.$invalid || registrationForm.username.$invalid">
+                <span class="label">Submit</span>
+            </button>
+            <div class="field field--info" ng-if="error">
+                <div class="form-info required">
+                    <p>{{error}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
 </form>

@@ -295,12 +295,13 @@
             width: 100%;
             .field + .field--info,
             .btn + .field--info {
-                margin-top: 0;
+                // display: none;
+                // margin-top: 0;
 
-                opacity: 0;
-                .form-info {
-                    height: 0;
-                }
+                // opacity: 0;
+                // .form-info {
+                //     height: 0;
+                // }
             }
             .field:not(.field--info):not(.field--cta) {
                 border: 1px solid transparent;

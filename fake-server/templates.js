@@ -18,6 +18,7 @@ function Templates() {
       'id': _.uniqueId(),
       'project_id': _.uniqueId(),
       'filename': chance.name(),
+      'name': chance.name(),
       'original_filename': chance.word({
         syllables: 20
       }),
