@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework_nested.relations import NestedHyperlinkedRelatedField
 from api.models import *
 
-class ProjectSerializer(serializers.HyperlinkedModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
 	files = serializers.HyperlinkedIdentityField(view_name='projectfile-list', lookup_url_kwarg='project_pk')
 	templates = serializers.HyperlinkedIdentityField(view_name='projecttemplate-list', lookup_url_kwarg='project_pk')
 	class Meta:
