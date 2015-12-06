@@ -7,7 +7,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 	templates = serializers.HyperlinkedIdentityField(view_name='projecttemplate-list', lookup_url_kwarg='project_pk')
 	class Meta:
 		model = Project
-		fields = ('url', 'name', 'short_description', 'long_description', 'repository', 'created_on', 'updated_on', 'files', 'templates')
+		fields = ('id', 'name', 'short_description', 'long_description', 'repository', 'created_on', 'updated_on', 'files', 'templates')
 
 class TemplateFileSerializer(serializers.ModelSerializer):
 	class Meta:
