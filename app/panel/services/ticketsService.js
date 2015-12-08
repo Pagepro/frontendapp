@@ -7,9 +7,6 @@
       self.projectId = projectId;
       return $http.get(appSettings.apiRoot + 'projects/' + self.projectId + '/tickets');
     };
-    this.updateOrder = function (sortedArray) {
-      return $http.post(appSettings.apiRoot + 'projects/' + self.projectId + '/tickets', sortedArray);
-    };
   };
 
   ticketsService.$inject = ['$http', 'appSettings'];

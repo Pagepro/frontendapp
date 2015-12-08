@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var templatePreview = function(statusService) {
+  var templatePreview = function(statusService, appSettings) {
     return {
       restrict: 'E',
       templateUrl: function (el, attr) {
@@ -8,11 +8,12 @@
       },
       link: function (scope) {
         scope.projectStatus = statusService.getStatus(scope.template.status);
+        scope.baseUrl = appSettings.filesRoot;
       }
     };
   };
 
-  templatePreview.$inject = ['statusService'];
+  templatePreview.$inject = ['statusService', 'appSettings'];
   angular.module('frontendApp').directive('templatePreview', templatePreview);
 
 }());

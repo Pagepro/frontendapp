@@ -20,11 +20,11 @@
     $scope.sortableOptions = {
       update: function() {
         // set new order after update
-        for (var index in $scope.tickets) {
-          $scope.tickets[index].order = index;
+        for (var index in $scope.templates) {
+          $scope.templates[index].order = index;
         }
         // push all items to array with newly ordered ids
-        ticketsService.updateOrder($scope.tickets.map(function(item) {
+        templatesService.updateOrder($scope.templates.map(function(item) {
           return item.id;
         }));
       },
