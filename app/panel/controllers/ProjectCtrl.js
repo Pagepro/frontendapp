@@ -53,13 +53,14 @@
         $scope.deleteTemplate = templatesService.deleteTemplate;
       });
 
-      // ticketsPromise = ticketsService.getTickets($stateParams.projectId);
-      // ticketsPromise.success(function(tickets) {
-      //   $scope.tickets = tickets.sort(function(item, nextItem) {
-      //     return item.order > nextItem.order;
-      //   });
-      // });
-      $q.all([projectPromise, filesPromise, templatesPromise, ticketsPromise]).then(function(resp) {
+      ticketsPromise = ticketsService.getTickets($stateParams.projectId);
+      ticketsPromise.success(function(tickets) {
+        $scope.tickets = tickets.sort(function(item, nextItem) {
+          return item.order > nextItem.order;
+        });
+      });
+
+      $q.all([projectPromise, filesPromise, templatesPromise, ticketsPromise]).then(function() {
         spinnerService.hide('project-details');
       });
     };

@@ -2,15 +2,20 @@
   'use strict';
 
   var projectsService = function ($http, appSettings) {
-    this.getProjects = function (pageNo) {
-      var baseUrl = appSettings.apiRoot + 'projects/';
-      if (!pageNo) {
-        return $http.get(baseUrl);
+    var baseUrl = appSettings.apiRoot + 'projects/';
+    this.getProjects = function (pageNo, projectStatus) {
+      var requestUrl = baseUrl;
+
+      if (pageNo) {
+        requestUrl += ('?page=' + pageNo);
       }
-      return $http.get(baseUrl + '?page=' + pageNo);
+      if (projectStatus) {
+        requestUrl += ('?status=' + projectStatus);
+      }
+      return $http.get(requestUrl);
     };
     this.getProject = function (projectId) {
-      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/');
+      return $http.get(baseUrl + projectId + '/');
     };
   };
 

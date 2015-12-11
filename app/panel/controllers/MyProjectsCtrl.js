@@ -4,7 +4,7 @@
     $scope.myProjects = null;
     $scope.init = function() {
       spinnerService.show('my-projects');
-      projectsService.getProjects()
+      projectsService.getProjects(null, 'active')
         .success(function(resp) {
           $scope.myProjects = resp.results;
         })

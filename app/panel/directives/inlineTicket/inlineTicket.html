@@ -1,7 +1,7 @@
 <div class="files-list__item__inner">
     <div class="files-list__item__id">
-        <a href="#" class="ticket-id-link">
-            <span class="label">#<span class="ticket-id">231</span></span>
+        <a href="#{{location}}/tickets/{{ticket.id}}/" class="ticket-id-link">
+            <span class="label">#<span class="ticket-id">{{ticket.id}}</span></span>
         </a>
     </div>
     <div class="files-list__item__content">
@@ -10,7 +10,7 @@
                 <div class="file-data__name">
                     <div class="ticket-desc">
                         <!-- TODO -->
-                        <p data-ellipsis data-ng-bind="ticket.description" data-ellipsis-symbol="..." style="height: 40px; line-height: 20px;">{{ticket.description}}</p>
+                        <p data-ellipsis data-ng-bind="ticket.description" data-ellipsis-symbol="..." style="height: 40px; line-height: 20px; display: flex; flex-flow: column nowrap; justify-content: center;">{{ticket.description}}</p>
                     </div>
                 </div>
                 <div class="file-data__status">
@@ -22,7 +22,7 @@
                     <div class="comment-box">
                         <div class="comment-box__content">
                             <span class="icon icon--comment"></span>
-                            <span class="qty">{{ticket.comments.length}}</span>
+                            <span class="qty">{{ticket.comments.length}}1</span>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@
 
     $scope.init = function() {
       spinnerService.show('all-projects');
-      $scope.service()
+      $scope.service(null, 'all')
         .success(function(projects) {
           $scope.allProjects = projects.results;
           $scope.pagination = {

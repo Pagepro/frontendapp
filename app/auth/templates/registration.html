@@ -1,16 +1,16 @@
-<form class="access-form" name="registrationForm" novalidate ng-submit="save(user)">
+<form class="access-form" name="registrationForm" novalidate ng-submit="save(user)" form-autofill-fix>
     <fieldset class="form__fieldset">
         <div class="form__content">
             <div class="form__section">
                 <div class="field field--input">
                     <input
+                    id="username"
                     class="input input--text"
                     type="text"
                     placeholder="USERNAME"
                     ng-model="user.name"
-                    id="username"
                     name="username"
-                    ng-model-options="{ updateOn: 'blur' }"
+                    auto-fill-sync
                     required>
                 </div>
                 <div class="field field--info" ng-if="registrationForm.username.$invalid">
@@ -22,13 +22,13 @@
             <div class="form__section">
                 <div class="field field--input">
                     <input
+                    id="email"
                     class="input input--text"
-                    type="email"
+                    type="text"
                     placeholder="E-MAIL"
                     name="email"
-                    id="email"
                     ng-model="user.email"
-                    ng-model-options="{ updateOn: 'blur' }"
+                    auto-fill-sync
                     required>
                 </div>
                 <div class="field field--info" ng-if="registrationForm.email.$invalid">
@@ -40,13 +40,13 @@
             <div class="form__section">
                 <div class="field field--input">
                     <input
+                    id="password"
                     class="input input--text"
                     type="password"
                     placeholder="PASSWORD"
                     name="password"
-                    id="password"
                     ng-model="user.password"
-                    ng-model-options="{ updateOn: 'blur' }"
+                    auto-fill-sync
                     required>
                 </div>
                 <div class="field field--info" ng-if="registrationForm.password.$invalid">

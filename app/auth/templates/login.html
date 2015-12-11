@@ -4,14 +4,14 @@
             <div class="form__section">
                 <div class="field field--input">
                     <input
+                    id="email"
                     class="input input--text"
                     type="text"
                     placeholder="E-MAIL"
                     name="email"
-                    id="email"
                     ng-model="user.email"
-                    ng-model-options="{ updateOn: 'blur' }"
-                    required>
+                    required
+                    auto-fill-sync>
                 </div>
                 <div class="field field--info" ng-show="loginForm.email.$invalid">
                     <div class="form-info required">
@@ -22,14 +22,14 @@
             <div class="form__section">
                 <div class="field field--input">
                     <input
+                    id="password"
                     class="input input--text"
                     type="password"
                     placeholder="PASSWORD"
                     name="password"
-                    id="password"
                     ng-model="user.password"
-                    ng-model-options="{ updateOn: 'blur' }"
-                    required>
+                    required
+                    auto-fill-sync>
                 </div>
                 <div class="field field--info" ng-if="loginForm.password.$invalid">
                     <div class="form-info required">

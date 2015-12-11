@@ -24,7 +24,8 @@
     "moment": "~2.10.3",
     "compass-breakpoint": "breakpoint-sass#~2.6.1",
     "angular-mocks": "~1.4.7",
-    "angular-ellipsis": "~0.1.6"
+    "angular-ellipsis": "~0.1.6",
+    "angular-dropzone": "~0.1.2"
   },
   "dependencies": {
     "angular-ui-sortable": "~0.13.4"

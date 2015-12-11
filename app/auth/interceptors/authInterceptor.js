@@ -10,7 +10,7 @@
         return config;
       },
       responseError: function(response) {
-        if (response.status === 401) {
+        if (response.status === 401 || response.status === 403) {
           $window.localStorage.removeItem('token');
           $window.localStorage.removeItem('username');
           $location.path('/');

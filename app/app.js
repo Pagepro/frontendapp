@@ -16,15 +16,7 @@
     .run(['$state',
       '$rootScope',
       function($state, $rootScope) {
-        // todo
-        // here's a place to check whether a user is logged in
-        // if so, redirect him to his projects,
-        // else, redirect to login
-        // if (true) {
-        $state.go('accountState.login');
-        // } else {
-        // $state.go('homeState');
-        // }
+        $state.go('myProjectsState');
         $rootScope.$on('$stateChangeSuccess', function(event, data) {
           $rootScope.pageName = data.pageName;
           $rootScope.module = data.module;
@@ -33,7 +25,6 @@
 
           $rootScope.displayTitle = data.displayTitle;
         });
-        $rootScope.communicator = {};
       }
     ]);
 
