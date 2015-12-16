@@ -51,13 +51,14 @@
       templatesPromise.success(function(templates) {
         $scope.templates = templates;
         $scope.deleteTemplate = templatesService.deleteTemplate;
+        $scope.templates = templates.sort(function(item, nextItem) {
+          return item.order > nextItem.order;
+        });
       });
 
       ticketsPromise = ticketsService.getTickets($stateParams.projectId);
       ticketsPromise.success(function(tickets) {
-        $scope.tickets = tickets.sort(function(item, nextItem) {
-          return item.order > nextItem.order;
-        });
+        $scope.tickets = tickets;
       });
 
       $q.all([projectPromise, filesPromise, templatesPromise, ticketsPromise]).then(function() {

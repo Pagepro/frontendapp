@@ -14,7 +14,7 @@
       $window.localStorage.token = token;
     };
     this.registerUser = function (user) {
-      return $http.post(baseApiUrl + 'register/', user);
+      return $http.post(baseApiUrl + 'accounts/', user);
     };
     this.logout = function () {
       $window.localStorage.removeItem('token');

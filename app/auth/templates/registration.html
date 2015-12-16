@@ -8,7 +8,7 @@
                     class="input input--text"
                     type="text"
                     placeholder="USERNAME"
-                    ng-model="user.name"
+                    ng-model="user.username"
                     name="username"
                     auto-fill-sync
                     required>
@@ -64,9 +64,11 @@
                 ng-disable="registrationForm.password.$invalid || registrationForm.email.$invalid || registrationForm.username.$invalid">
                 <span class="label">Submit</span>
             </button>
-            <div class="field field--info" ng-if="error">
+            <div class="field field--info" ng-if="errors">
                 <div class="form-info required">
-                    <p>{{error}}</p>
+                    <p ng-repeat="error in errors">
+                        {{error}}
+                    </p>
                 </div>
             </div>
         </div>

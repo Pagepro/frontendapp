@@ -10,7 +10,8 @@
     "beforeEach": true,
     "it": true,
     "expect": true,
-    "inject": true
+    "inject": true,
+    "_": true
   },
   "rules": {
     "camelcase": 2,

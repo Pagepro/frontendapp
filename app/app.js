@@ -2,7 +2,7 @@
   'use strict';
 
   var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'authModule', 'panelModule',
-    'dibari.angular-ellipsis', 'ui.sortable', 'angularSpinners'
+    'dibari.angular-ellipsis', 'ui.sortable', 'angularSpinners', 'toaster'
   ]);
   frontendApp
     .config(['$urlRouterProvider',

@@ -25,7 +25,8 @@
     "compass-breakpoint": "breakpoint-sass#~2.6.1",
     "angular-mocks": "~1.4.7",
     "angular-ellipsis": "~0.1.6",
-    "angular-dropzone": "~0.1.2"
+    "angular-dropzone": "~0.1.2",
+    "AngularJS-Toaster": "angularjs-toaster#~0.4.181"
   },
   "dependencies": {
     "angular-ui-sortable": "~0.13.4"
