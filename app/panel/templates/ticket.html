@@ -1,0 +1,336 @@
+
+<div class="sec--main__head">
+    <div class="sec--main__inner">
+        <h2 class="page-back">
+            <a ui-sref="projectState({projectId: {{parentProject}}})" class="page-back__content">
+                <span class="icon icon--open-big--left"></span>
+                <span class="main-title">
+                    <span class="label">Ticket #<span class="ticket-id">{{ticketId}}</span></span>
+                </span>
+            </a>
+            <span class="page-back__info">
+                <span class="tooltip">
+                    <span class="label">Back to Project details</span>
+                </span>
+            </span>
+        </h2>
+    </div>
+</div>
+<div class="sec--main__content">
+    <section class="subsec">
+        <div class="subsec__inner">
+            <div class="subsec__head">
+                <h3 class="subtitle">
+                    <span class="label">Info</span>
+                </h3>
+            </div>
+            <div class="subsec__content">
+                <div class="ticket-data-box" style="width: 100%;">
+                    <div class="ticket-data-box__head">
+                        <div class="ticket-data-box__head__row">
+                            <div class="update-info update-info--alt">
+                                <div class="update-info__content">
+                                    <span class="icon icon--clock"></span>
+                                    <p class="label">
+                                        Last update:
+                                        <time datetime="2015-02-22T20:05:00+01:00">
+                                            <strong>2015-02-22</strong>,
+                                            <span>20:05:00</span>
+                                        </time>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ticket-data-box__head__row">
+                            <p class="ticket-author">
+                                <span>Published by: </span>
+                                <strong>Krzysztof Oszczapiński</strong>
+                            </p>
+                            <p class="ticket-publish-date">
+                                <span>on: </span>
+                                <time datetime="2015-02-22T20:00:00+01:00">
+                                    <strong>2015-02-22</strong>,
+                                    <span>20:00:00</span>
+                                </time>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="ticket-data-box__content">
+                        <form class="ticket-form">
+                            <fieldset class="form__fieldset">
+                                <div class="form__content">
+                                    <div class="form-box form-box--double">
+                                        <div class="form-box__section">
+                                            <div class="form-box__section__head">
+                                                <label class="label" for="popup-browsers">Status</label>
+                                            </div>
+                                            <div class="form-box__section__content">
+                                                <div class="form__section">
+                                                    <div class="labels-choice">
+                                                        <ul class="labels-choice-list js-labels-choice-list" ng-class="{active: statusListVisible}" ng-click="toggleStatusList();">
+                                                            <li class="labels-choice-list__item">
+                                                                <div class="status-label status-label--new">
+                                                                    <p class="label">new</p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="labels-choice-list__item active">
+                                                                <div class="status-label status-label--in-progress">
+                                                                    <p class="label">in progress</p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="labels-choice-list__item">
+                                                                <div class="status-label status-label--done">
+                                                                    <p class="label">done</p>
+                                                                </div>
+                                                            </li>
+                                                            <li class="labels-choice-list__item">
+                                                                <div class="status-label status-label--rejected">
+                                                                    <p class="label">rejected</p>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-box__section">
+                                            <div class="form-box__section__head">
+                                                <label class="label" for="popup-template">Assigned to</label>
+                                            </div>
+                                            <div class="form-box__section__content">
+                                                <div class="form__section">
+                                                    <div class="field field--select">
+                                                        <select id="popup-template">
+                                                            <option>Popek Król Albanii</option>
+                                                            <option>Krzysztof Oszczapiński</option>
+                                                            <option>Krzysztof Łojniewski</option>
+                                                            <option>Dominika Jaroszewicz</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="subsec">
+        <div class="subsec__inner">
+            <div class="subsec__head">
+                <h3 class="subtitle">
+                    <span class="label">Description</span>
+                </h3>
+            </div>
+            <div class="subsec__content">
+                <div class="ticket-box">
+                    <div class="ticket-box__content">
+                        <div class="ticket-description">
+                            <p>
+                                Trzeba przygotować ekran szczegółów ticketu.<br>
+                                To ekran dla klienta czyli ma nieco okrojone funkcjonalności.<br><br>
+
+                                Wygląda to tak:<br>
+                                - published by: dane, data dodania, data aktualizacji,<br>
+                                - ticket status: np. Done - to jest select<br>
+                                - assigned to: to jest select<br>
+                                - opis ticketu<br>
+                                - info do jakiego template przypisany jest ticket<br>
+                                - sekcja komentarzy<br><br>
+
+                                Każdy komentarz to:<br>
+                                - treść<br>
+                                - podpis imię i nazwisko<br>
+                                - podpis: data i czas dodania<br><br>
+
+                                Pod sekcją komentarzy - formularz dodawnia komentarza.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="ticket-box__details">
+                        <ul class="ticket-details-info-list">
+                            <li class="ticket-details-info-list__item ticket-details-info-list__item--alt">
+                                <div class="ticket-details-info ticket-details-info--alt">
+                                    <div class="ticket-details-info__head">
+                                        <span class="icon icon--screen"></span>
+                                        <p class="label">Screenshots:</p>
+                                    </div>
+                                    <div class="ticket-details-info__content">
+                                        <div class="screenshots-list-box">
+                                            <div class="screenshots-list-box__head">
+                                                <div class="screenshots-list-box__no">
+                                                    <p class="screenshots-list-box-title">No</p>
+                                                </div>
+                                                <div class="screenshots-list-box__name">
+                                                    <p class="screenshots-list-box-title">Name</p>
+                                                </div>
+                                                <div class="screenshots-list-box__preview">
+                                                    <p class="screenshots-list-box-title">Preview</p>
+                                                </div>
+                                            </div>
+                                            <div class="screenshots-list-box__content">
+                                                <ol class="screenshots-list">
+                                                    <li class="screenshots-list__item">
+                                                        <div class="screenshot-box">
+                                                            <a class="screenshot-box__content" href="#" target="_blank">
+                                                                <span class="counter"></span>
+                                                                <span class="label">Screenshot_xyz_20.12.2015.png</span>
+                                                                <figure class="screenshot">
+                                                                    <img src="/static/img/404.png" alt="screen">
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="screenshots-list__item">
+                                                        <div class="screenshot-box">
+                                                            <a class="screenshot-box__content" href="#" target="_blank">
+                                                                <span class="counter"></span>
+                                                                <span class="label">Screenshot</span>
+                                                                <figure class="screenshot">
+                                                                    <img src="/static/img/pic_bg.jpg" alt="screen">
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                    <li class="screenshots-list__item">
+                                                        <div class="screenshot-box">
+                                                            <a class="screenshot-box__content" href="#" target="_blank">
+                                                                <span class="counter"></span>
+                                                                <span class="label">blablabla__some-screenshot_name_NAME_121249_blaBLABlaaaa.jpg</span>
+                                                                <figure class="screenshot">
+                                                                    <img src="/static/img/pic_project-2.jpg" alt="screen">
+                                                                </figure>
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                </ol>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="ticket-details-info-list__item">
+                                <div class="ticket-details-info">
+                                    <div class="ticket-details-info__head">
+                                        <span class="icon icon--file--code"></span>
+                                        <p class="label">Templates:</p>
+                                    </div>
+                                    <div class="ticket-details-info__content">
+                                        <p class="details"><a href="#" target="_blank">Template_xyz</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="ticket-details-info-list__item">
+                                <div class="ticket-details-info">
+                                    <div class="ticket-details-info__head">
+                                        <span class="icon icon--chrome"></span>
+                                        <p class="label">Browsers:</p>
+                                    </div>
+                                    <div class="ticket-details-info__content">
+                                        <p class="details">IE 11, Firefox on Windows</p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ticket-box__actions">
+                        <a href="#" class="action-btn">
+                            <span class="action-btn__content">
+                                <span class="label">Edit description</span>
+                                <span class="icon icon--pencil"></span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="subsec">
+        <div class="subsec__inner">
+            <div class="subsec__head">
+                <div class="subsec__head__box">
+                    <h3 class="subtitle">
+                        <span class="label">Comments</span>
+                    </h3>
+                    <div class="comment-box">
+                        <div class="comment-box__content">
+                            <span class="icon icon--comment"></span>
+                            <span class="qty">{{ticket.comments_count}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="subsec__content">
+                <div class="comments">
+                    <div class="comments__content">
+                        <ul class="comments-list">
+                            <li class="comments-list__item" ng-repeat="comment in comments">
+                                <div class="comment">
+                                    <div class="comment__ico">
+                                        <span class="icon icon--comment"></span>
+                                    </div>
+                                    <div class="comment__info">
+                                        <div class="comment__info__data">
+                                            <span class="comment-author">
+                                                {{comment.author}}
+                                            </span>
+                                            <time class="comment-date" datetime="{{comment.date}}">{{comment.date | date:'dd-MM-yyyy HH:mm'}}</time>
+                                        </div>
+                                        <div class="comment__info__content">
+                                            <p>
+                                                {{comment.content}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="comment__actions">
+                                        <div class="action-tool" aria-label="delete comment">
+                                            <a href="#" target="_blank" class="action-tool__content">
+                                                <span class="icon icon--trash"></span>
+                                            </a>
+                                            <div class="action-tool__info">
+                                                <div class="tooltip tooltip--bottom">
+                                                    <h4 class="label">Delete</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="comments__actions">
+                        <form class="ticket-details-comment-form">
+                            <fieldset class="form__fieldset">
+                                <div class="form__content">
+                                    <div class="form-box">
+                                        <div class="form-box__section">
+                                            <div class="form-box__section__head">
+                                                <label class="label" for="popup-description">New comment</label>
+                                            </div>
+                                            <div class="form-box__section__content">
+                                                <div class="form__section">
+                                                    <div class="field field--textarea">
+                                                        <textarea class="textarea" id="popup-description"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form__actions">
+                                    <button class="btn btn--submit btn--submit--small">
+                                        <span class="label">Add comment</span>
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -5,6 +5,18 @@
   panelModule
     .config(['$stateProvider', function($stateProvider) {
       $stateProvider
+        .state('newProjectState', {
+          url: '/new-project',
+          templateUrl: 'app/panel/templates/newProject.html',
+          controller: 'NewProjectCtrl',
+          controllerAs: 'NPC',
+          pageName: 'Upload Files',
+          module: 'panel',
+          trails: [{
+            name: 'My Projects',
+            link: '#/my-projects'
+          }]
+        })
         .state('myProjectsState', {
           url: '/my-projects',
           templateUrl: 'app/panel/templates/myProjects.html',
@@ -35,6 +47,39 @@
           trails: [{
             name: 'My Projects',
             link: '#/my-projects'
+          }]
+        })
+        .state('projectState.submitBug', {
+          url: '/new-ticket',
+          templateUrl: 'app/panel/templates/submitBug.html',
+          controller: 'SubmitBugCtrl',
+          controllerAs: 'SBC',
+          pageName: 'New Ticket',
+          module: 'panel'
+        })
+        .state('projectState.editTemplate', {
+          url: '/edit-template/:templateId',
+          templateUrl: 'app/panel/templates/editTemplate.html',
+          controller: 'EditTemplateCtrl',
+          controllerAs: 'ETC',
+          pageName: 'Edit Template',
+          module: 'panel'
+        })
+        .state('ticketState', {
+          url: '/project/:projectId/ticket/:ticketId',
+          templateUrl: 'app/panel/templates/ticket.html',
+          controller: 'TicketCtrl',
+          controllerAs: 'TC',
+          pageName: 'Ticket Details',
+          module: 'panel',
+          trails: [{
+            name: 'My Projects',
+            link: '#/my-projects'
+          },
+          {
+            name: 'Project Details',
+            // fixme
+            link: '#/my-projects/'
           }]
         });
     }]);

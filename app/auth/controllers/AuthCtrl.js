@@ -6,7 +6,6 @@
     if ($state.current.url === '/account' || $state.current.url === '/auth') {
       $state.go('accountState.login');
     }
-    $scope.test = 1;
   };
 
   AuthCtrl.$inject = ['$scope', '$state'];

@@ -48,7 +48,7 @@
         color: $color_red_dark;
 
         @extend %helper--transition;
-        @extend %helper--absolute--center;
+        @extend %helper--absolute--center--center;
         @extend %helper--flex--center--center;
     }
     &.checked {
@@ -84,6 +84,11 @@
 
     width: $size_input_h;
     height: $size_input_v;
+}
+.hasCustomSelect {
+    @include breakpoint($breakpoint_smartphone) {
+        width: 100%;
+    }
 }
 .customSelect {
     z-index: 1;
@@ -295,13 +300,12 @@
             width: 100%;
             .field + .field--info,
             .btn + .field--info {
-                // display: none;
-                // margin-top: 0;
+                margin-top: 0;
 
-                // opacity: 0;
-                // .form-info {
-                //     height: 0;
-                // }
+                opacity: 0;
+                .form-info {
+                    height: 0;
+                }
             }
             .field:not(.field--info):not(.field--cta) {
                 border: 1px solid transparent;
@@ -422,39 +426,54 @@
 
 .project-action-form {
     width: 100%;
-    height: $size_input_v;
 
     @extend %helper--form;
-    @extend %helper--flex--vertical-space-between;
-    justify-content: center;
-    .NFI-filename {
-        display: none !important;
-    }
     .NFI-button {
-        display: flex !important;
-
         color: #adadad;
-
-        @extend %helper--flex--center--center;
-        input {
-            height: auto !important;
-        }
     }
     .form {
         &__fieldset {
-            width: 100%;
-            .NFI-wrapper {
-                z-index: 10;
+            position: relative;
 
+            height: 100%;
+
+            background: $color_white;
+            .NFI-wrapper {
+                z-index: -1;
+
+                display: flex !important;
                 overflow: hidden !important;
 
+                box-sizing: border-box;
+                padding-top: 1px;
+
                 cursor: pointer;
+
+                opacity: 0;
+                // background: aqua;
+
+                @extend %helper--transition;
+                @extend %helper--absolute--center--center;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                align-content: flex-start;
+                justify-content: center;
+            }
+            .NFI-filename {
+                display: none !important;
+            }
+            .field {
+                height: 100%;
+                .input {
+                    &--text {
+                        opacity: 0;
+
+                        @extend %helper--absolute--center-horizontal--vertical-to-top;
+                    }
+                }
             }
             .field,
             .NFI-wrapper {
-                position: relative;
-
-                width: 100%;
                 .label,
                 .input,
                 .NFI-button {
@@ -465,28 +484,32 @@
 
                     transition: 300ms ease;
                     text-align: center;
+
+                    border: none;
                 }
                 .label {
-                    z-index: 9;
-
-                    margin: 0;
-
-                    @extend %helper--absolute--center;
-                    @extend %helper--flex--center--center;
-                }
-                .input,
-                .NFI-button {
                     position: relative;
-                    z-index: -1;
+                    z-index: 1;
 
-                    height: $size_input_v;
-                    margin-top: 0;
-                    padding: 0 $size_padding;
+                    box-sizing: border-box;
+                    width: 100%;
+                    height: 100%;
+                    margin: 0;
+                    padding-bottom: 0;
 
-                    pointer-events: none;
+                    @extend %helper--transition;
+                    @extend %helper--flex--center--center;
+                    &:before {
+                        top: -$size_teaser_h;
+                        right: 0;
+                        left: 0;
 
-                    opacity: 0;
-                    border: none;
+                        width: 100%;
+                        height: $size_teaser_h;
+                        margin: 0 auto;
+
+                        @extend %helper--after--absolute;
+                    }
                 }
             }
         }
@@ -494,24 +517,28 @@
     &.active {
         .form {
             &__fieldset {
+                background: transparent;
+                .NFI-wrapper {
+                    z-index: 2;
+
+                    padding-top: 65px;
+
+                    opacity: 1;
+                }
                 .field {
                     .label {
-                        top: -60px;
+                        padding-bottom: 40px;
 
                         font-size: 16px;
 
                         color: $color_red;
                     }
-                    .input,
-                    .NFI-button {
-                        z-index: 2;
-
-                        pointer-events: auto;
-
-                        opacity: 1;
-                    }
                     .input {
-                        margin-top: 20px;
+                        &--text {
+                            top: 65px;
+
+                            opacity: 1;
+                        }
                     }
                 }
             }
@@ -519,7 +546,106 @@
     }
 }
 
-/* create-ticket-form
+// .project-action-form {
+//     width: 100%;
+//     height: $size_input_v;
+
+//     @extend %helper--form;
+//     @extend %helper--flex--vertical-space-between;
+//     justify-content: center;
+//     .NFI-filename {
+//         display: none !important;
+//     }
+//     .NFI-button {
+//         display: flex !important;
+
+//         color: #adadad;
+
+//         @extend %helper--flex--center--center;
+//         input {
+//             height: auto !important;
+//         }
+//     }
+//     .form {
+//         &__fieldset {
+//             width: 100%;
+//             .NFI-wrapper {
+//                 z-index: 10;
+
+//                 overflow: hidden !important;
+
+//                 cursor: pointer;
+//             }
+//             .field,
+//             .NFI-wrapper {
+//                 position: relative;
+
+//                 width: 100%;
+//                 .label,
+//                 .input,
+//                 .NFI-button {
+//                     width: 100%;
+
+//                     font-size: 20px;
+//                     font-weight: 300;
+
+//                     transition: 300ms ease;
+//                     text-align: center;
+//                 }
+//                 .label {
+//                     z-index: 9;
+
+//                     margin: 0;
+
+//                     @extend %helper--absolute--center--center;
+//                     @extend %helper--flex--center--center;
+//                 }
+//                 .input,
+//                 .NFI-button {
+//                     position: relative;
+//                     z-index: -1;
+
+//                     height: $size_input_v;
+//                     margin-top: 0;
+//                     padding: 0 $size_padding;
+
+//                     pointer-events: none;
+
+//                     opacity: 0;
+//                     border: none;
+//                 }
+//             }
+//         }
+//     }
+//     &.active {
+//         .form {
+//             &__fieldset {
+//                 .field {
+//                     .label {
+//                         top: -60px;
+
+//                         font-size: 16px;
+
+//                         color: $color_red;
+//                     }
+//                     .input,
+//                     .NFI-button {
+//                         z-index: 2;
+
+//                         pointer-events: auto;
+
+//                         opacity: 1;
+//                     }
+//                     .input {
+//                         margin-top: 20px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+/* ticket-form
    ========================================================================== */
 .form-box {
     @extend %helper--flex--left--center;
@@ -527,6 +653,39 @@
         flex-grow: 1;
         &__head + &__content {
             margin-top: $size_padding;
+        }
+    }
+    &--double {
+        .form-box {
+            &__section {
+                &:first-of-type {
+                    flex-grow: 0;
+                }
+                &:last-of-type {
+                    max-width: calc(100% - #{$size_input_h} - #{$size_padding_medium});
+                    margin-left: $size_padding_medium;
+                }
+            }
+        }
+    }
+}
+.form-box {
+    @include breakpoint($breakpoint_smartphone) {
+        &--double {
+            flex-wrap: wrap;
+            .form-box {
+                &__section {
+                    &:first-of-type,
+                    &:first-of-type {
+                        width: 100%;
+                    }
+                    &:last-of-type {
+                        max-width: 100%;
+                        margin-top: $size_padding_medium;
+                        margin-left: 0;
+                    }
+                }
+            }
         }
     }
 }
@@ -548,8 +707,15 @@
     }
 }
 
-.create-ticket-form {
+.ticket-form,
+.ticket-details-comment-form {
     @extend %helper--form;
+    .label {
+        font-size: 14px;
+        font-weight: 600;
+
+        text-transform: uppercase;
+    }
     .form {
         &__fieldset {
             width: 100%;
@@ -567,33 +733,29 @@
                     flex-grow: 1;
                 }
                 .NFI-button {
+                    position: relative;
+
                     display: flex !important;
+                    overflow: visible !important;
 
                     width: calc(#{$size_input_h} / 2);
 
-                    text-indent: -99998em;
+                    font-size: 14px;
+                    font-weight: 500;
 
+                    text-align: center;
+                    text-transform: uppercase;
+
+                    color: $color_white;
                     background: $color_red;
 
                     flex-shrink: 0;
                     @extend %helper--flex--center--center;
                     order: 2;
-                }
-            }
-            .field,
-            .NFI-wrapper {
-                //
-                .label,
-                .input,
-                .NFI-button {
-                    //
-                }
-                .label {
-                    //
-                }
-                .input,
-                .NFI-button {
-                    //
+                    .NFI-current {
+                        width: calc(#{$size_inner} - #{$size_padding_medium} - #{$size_padding_medium});
+                        height: $size_input_v !important;
+                    }
                 }
             }
             .field {
@@ -648,12 +810,66 @@
             }
         }
         &__actions {
-            @extend %helper--flex--right--center;
+            @extend %helper--flex--left--center;
         }
     }
+}
+.ticket-form {
     .form-box + .form-box,
     .form__content + .form__actions {
-        margin-top: $size_padding_middle;
+        margin-top: $size_padding_medium;
+    }
+}
+.ticket-details-comment-form {
+    .form {
+        &__fieldset {
+            .field {
+                .textarea {
+                    height: calc(#{$size_input_v} * 6);
+
+                    resize: vertical;
+                }
+            }
+        }
+    }
+    .form-box__section__head + .form-box__section__content {
+        margin-top: 30px;
+    }
+    .form__content + .form__actions {
+        margin-top: $size_btn_v;
+    }
+}
+
+.ticket-form {
+    @include breakpoint($breakpoint_smartphone) {
+        .form {
+            &__fieldset {
+                .NFI-wrapper {
+                    .NFI-button {
+                        max-width: 48%;
+                        .NFI-current {
+                            width: calc(100vw - #{$size_padding} * 4);
+                        }
+                    }
+                }
+                .field {
+                    &--select {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    @include breakpoint($breakpoint_smartphone-mini-special) {
+        .form {
+            &__fieldset {
+                .NFI-wrapper {
+                    .NFI-button {
+                        width: 40%;
+                    }
+                }
+            }
+        }
     }
 }
 

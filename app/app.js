@@ -18,6 +18,8 @@
       function($state, $rootScope) {
         $state.go('myProjectsState');
         $rootScope.$on('$stateChangeSuccess', function(event, data) {
+          // cross-browser scroll top hack
+          document.body.scrollTop = document.documentElement.scrollTop = 0;
           $rootScope.pageName = data.pageName;
           $rootScope.module = data.module;
           $rootScope.trails = data.trails;

@@ -1,5 +1,5 @@
 <div class="project-box__content animate-switch" ng-switch-when="grid">
-    <ul class="teasers-list slide-animation" ui-sortable="sortableOptions" ng-model="templates">
+    <ul class="teasers-list" ui-sortable="sortableOptions" ng-model="templates">
         <li class="teasers-list__item">
             <div class="teaser action-teaser js-teaser" ng-click="toggleInput()"  ng-class="{active: activeInput}">
                 <div class="teaser__inner">
@@ -46,7 +46,7 @@
         <div class="files-box__content">
             <div class="files-box__number">
             </div>
-            <ol class="files-list js-drag-and-drop-list slide-animation" ui-sortable="sortableOptions" ng-model="templates">
+            <ol class="files-list js-drag-and-drop-list" ui-sortable="sortableOptions" ng-model="templates">
                 <li class="files-list__item" ng-repeat="template in templates">
                     <template-preview type="inline"></template-preview>
                 </li>

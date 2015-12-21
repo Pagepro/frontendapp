@@ -87,7 +87,41 @@
 
     text-indent: -99998em;
 }
-%helper--absolute--center {
+%helper--absolute--center-vertical {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    margin: auto 0;
+}
+%helper--absolute--center-vertical--horizontal-to-left {
+    left: 0;
+
+    @extend %helper--absolute--center-vertical;
+}
+%helper--absolute--center-vertical--horizontal-to-right {
+    right: 0;
+
+    @extend %helper--absolute--center-vertical;
+}
+%helper--absolute--center-horizontal {
+    position: absolute;
+    right: 0;
+    left: 0;
+
+    margin: 0 auto;
+}
+%helper--absolute--center-horizontal--vertical-to-top {
+    top: 0;
+
+    @extend %helper--absolute--center-horizontal;
+}
+%helper--absolute--center-horizontal--vertical-to-bottom {
+    bottom: 0;
+
+    @extend %helper--absolute--center-horizontal;
+}
+%helper--absolute--center--center {
     position: absolute;
     top: 0;
     right: 0;
@@ -111,7 +145,7 @@
 }
 %helper--after--absolute--center {
     @extend %helper--after;
-    @extend %helper--absolute--center;
+    @extend %helper--absolute--center--center;
 }
 %helper--link--hover {
     text-decoration: none;
@@ -267,8 +301,6 @@
         @extend %helper--after--absolute--center;
     }
 }
-
-
 
 %helper--round--after--hover {
     &:after {

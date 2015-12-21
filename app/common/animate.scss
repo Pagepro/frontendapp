@@ -4,14 +4,17 @@
       position: fixed;
       top: 0;
       left: 0;
-      background: rgba(255, 255, 255, 1);
+      background: rgba(255, 255, 255, .3);
       z-index: 100;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .sk-folding-cube {
       margin: 20px auto;
       margin: 50% auto;
       position: absolute;
-      top: -240px;
       width: 40px;
       height: 40px;
       position: relative;
@@ -99,7 +102,7 @@
     }
 
 /* ==========================================================================
-   Print Styles
+   NG animations temp
    ========================================================================== */
 // temp
 
@@ -192,6 +195,15 @@
   opacity: 1;
   left: 0;
 }
+
+
+.slide-anything.ng-enter, .slide-anything.ng-leave {
+    -webkit-transition: 0.5s linear all;
+    -moz-transition: 0.5s linear all;
+    -o-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+}
+
 
 /* ==========================================================================
    toaster

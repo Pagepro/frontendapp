@@ -1,6 +1,17 @@
 /* ==========================================================================
    Layouts
    ========================================================================== */
+body.blocked {
+    overflow: hidden;
+    .popup {
+        position: fixed;
+        right: 0;
+        left: 0;
+
+        margin: 0 auto;
+    }
+}
+
 .register,
 .login {
     background: url('../img/pic_bg-3.jpg') no-repeat;
@@ -66,6 +77,19 @@
 .sec--main {
     margin-top: $size_header_v;
     margin-bottom: 150px;
+    &__inner {
+        position: relative;
+
+        @extend %helper--flex--center--center;
+        .project-essential-box {
+            width: 100%;
+        }
+        .action-btn {
+            height: 44px;
+
+            @extend %helper--absolute--center-vertical--horizontal-to-right;
+        }
+    }
     &__head,
     &__content {
         @extend %helper--sec;
@@ -73,6 +97,10 @@
     &__content {
         .access-box {
             margin-top: $size_margin_big;
+        }
+        .ticket-box,
+        .comments {
+            width: 100%;
         }
     }
     .subsec {
@@ -86,6 +114,9 @@
         .access-box {
             margin-top: 0;
         }
+    }
+    &.blocked {
+        overflow: hidden;
     }
 }
 .sec--main {
@@ -102,8 +133,12 @@
 .subsec {
     &__head {
         @extend %helper--flex--space-between--center;
-        .subtitle {
+        .subtitle,
+        .main-title {
             flex-grow: 1;
+        }
+        .main-title {
+            margin-bottom: 30px;
         }
         .display-mode-list {
             margin-right: -$size_padding_display-mode;
@@ -126,6 +161,12 @@
                 }
             }
         }
+        &__box {
+            @extend %helper--flex--left--center;
+            .subtitle + .comment-box {
+                margin-left: 10px;
+            }
+        }
     }
     &__content {
         @extend %helper--flex--center--top;
@@ -141,6 +182,9 @@
     @include breakpoint($breakpoint_tablet) {
         &__head {
             flex-wrap: wrap;
+            .main-title {
+                margin-bottom: 34px;
+            }
             .subtitle,
             .display-mode-list {
                 width: 100%;
@@ -169,10 +213,13 @@
             }
         }
         .subsec__head + .subsec__content {
-            margin-top: $size_padding_middle;
+            margin-top: $size_padding_medium;
         }
     }
     @include breakpoint($breakpoint_smartphone) {
+        .main-title {
+            margin-bottom: 25px;
+        }
         .subsec__head + .subsec__content {
             margin-top: $size_padding;
         }
