@@ -1,7 +1,10 @@
 <section class="sec--popup">
     <div class="sec--popup__inner">
-        <div class="popup" off-click="returnToProject()">
-            <div class="popup__inner">
+        <div class="popup">
+            <div class="popup__inner"
+            ngf-drop="updateNameValue($file)" ng-model="file"
+            ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
+            accept="image/*" ngf-pattern="'image/*'">
                 <div class="popup__head">
                     <div class="popup__head__title">
                         <h2 class="subtitle highlighted">
@@ -26,7 +29,7 @@
                                         <div class="form-box__section__content">
                                             <div class="form__section">
                                                 <div class="field field--input">
-                                                    <input class="input input--text" type="text" name="template_name" id="popup-template-title">
+                                                    <input class="input input--text" type="text" name="template_name" id="popup-template-title" ng-model="title" value="{{title}}">
                                                 </div>
                                             </div>
                                         </div>
@@ -40,7 +43,9 @@
                                         <div class="form-box__section__content">
                                             <div class="form__section">
                                                 <div class="field field--input">
-                                                    <input type="file" name="add_file" class="input input--file" id="popup-template-img">
+                                                    <input type="file" name="add_file" class="input input--file" id="popup-template-img"
+                                                    placeholder="{{file.name}}"
+                                                    ngf-select="updateNameValue($file)" ng-model="file" ngf-multiple="false" ngf-allow-dir="false" accept="image/*" ngf-pattern="'image/*'">
                                                     <div class="input-holder"></div>
                                                 </div>
                                             </div>
@@ -55,7 +60,7 @@
                                         <div class="form-box__section__content">
                                             <div class="form__section">
                                                 <div class="field field--textarea">
-                                                    <textarea class="textarea" id="popup-comment"></textarea>
+                                                    <textarea class="textarea" id="popup-comment" ng-model="comment"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -63,7 +68,7 @@
                                 </div>
                             </div>
                             <div class="form__actions">
-                                <button class="btn btn--submit btn--submit--small">
+                                <button class="btn btn--submit btn--submit--small" type="submit" ng-click="uploadFiles(file)">
                                     <span class="label">Save</span>
                                 </button>
                             </div>

@@ -5,11 +5,16 @@
     var self = this;
     this.getTemplates = function(projectId) {
       self.projectId = projectId;
-      self.route = appSettings.apiRoot + 'projects/' + projectId + '/templates/';
-      return $http.get(this.route);
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/templates/');
     };
-    this.deleteTemplate = function (templateId) {
-      return $http.delete(self.route + '/' + templateId);
+    this.getTemplate = function (projectId, templateId) {
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/templates/' + templateId);
+    };
+    this.updateTemplate = function (projectId, templateId) {
+      return $http.put(appSettings.apiRoot + 'projects/' + projectId + '/templates/' + templateId);
+    };
+    this.deleteTemplate = function (projectId, templateId) {
+      return $http.delete(appSettings.apiRoot + 'projects/' + projectId + '/templates/' + templateId);
     };
     this.updateOrder = function (sortedArray) {
       return $http.post(appSettings.apiRoot + 'projects/' + self.projectId + '/templates', sortedArray);

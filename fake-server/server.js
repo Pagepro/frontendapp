@@ -9,6 +9,8 @@ var projects = require('./projects');
 var files = require('./files');
 var templates = require('./templates');
 var tickets = require('./tickets');
+var ticketDetails = require('./ticketDetails');
+var comments = require('./comments');
 
 app.use(cors());
 
@@ -32,6 +34,27 @@ app.get('/projects/:id/templates', function(req, res) {
   }
 });
 
+app.post('/projects/:id/templates', function(req, res) {
+    res.status(200).json({ success: 'You have successfully added a new template!' });
+    // res.json(401, { error: 'An error has occurred!' });
+  // }
+});
+
+app.get('/projects/:id/templates/:templateId', function(req, res) {
+  if (req.headers.authorization) {
+    res.json(templates[1]);
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
+});
+app.put('/projects/:id/templates/:templateId', function(req, res) {
+  if (req.headers.authorization) {
+    res.json(templates);
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
+});
+
 app.get('/projects/:id/files', function(req, res) {
   if (req.headers.authorization) {
     res.json(files);
@@ -43,6 +66,29 @@ app.get('/projects/:id/files', function(req, res) {
 app.get('/projects/:id/tickets', function(req, res) {
   if (req.headers.authorization) {
     res.json(tickets);
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
+});
+
+app.post('/projects/:id/tickets', function(req, res) {
+  if (req.headers.authorization) {
+    res.json(200, {success: 'A new ticket has been added.'});
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
+});
+
+app.get('/projects/:id/tickets/:ticketId', function(req, res) {
+  if (req.headers.authorization) {
+    res.json(ticketDetails);
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
+});
+app.get('/projects/:id/tickets/:ticketId/comments', function(req, res) {
+  if (req.headers.authorization) {
+    res.json(comments);
   } else {
     res.json(401, { error: 'An error has occurred!' });
   }

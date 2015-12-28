@@ -4,7 +4,7 @@
       title: 'Fronted App',
       verion: '0.0.2',
       filesRoot: 'http://frontendapp.com/uploads/',
-      // apiRoot: 'http://localhost:1234/'
-      apiRoot: 'http://api.frontendapp.com/'
+      apiRoot: 'http://localhost:1234/'
+      // apiRoot: 'http://api.frontendapp.com/'
   });
 }());

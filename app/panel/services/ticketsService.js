@@ -7,6 +7,9 @@
       self.projectId = projectId;
       return $http.get(appSettings.apiRoot + 'projects/' + self.projectId + '/tickets/');
     };
+    this.getTicketDetails = function (projectId, ticketId) {
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + ticketId);
+    };
   };
 
   ticketsService.$inject = ['$http', 'appSettings'];

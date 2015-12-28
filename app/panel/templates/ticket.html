@@ -1,4 +1,3 @@
-
 <div class="sec--main__head">
     <div class="sec--main__inner">
         <h2 class="page-back">
@@ -33,9 +32,9 @@
                                     <span class="icon icon--clock"></span>
                                     <p class="label">
                                         Last update:
-                                        <time datetime="2015-02-22T20:05:00+01:00">
-                                            <strong>2015-02-22</strong>,
-                                            <span>20:05:00</span>
+                                        <time datetime="{{ticket.updated_on | date:'dd/MM/yyyy hh:mm:ss'}}+01:00">
+                                            <strong>{{ticket.updated_on | date:'dd/MM/yyyy'}}</strong>,
+                                            <span>{{ticket.updated_on | date:'hh:mm'}}</span>
                                         </time>
                                     </p>
                                 </div>
@@ -44,13 +43,13 @@
                         <div class="ticket-data-box__head__row">
                             <p class="ticket-author">
                                 <span>Published by: </span>
-                                <strong>Krzysztof Oszczapiński</strong>
+                                <strong>{{ticket.author}}</strong>
                             </p>
                             <p class="ticket-publish-date">
                                 <span>on: </span>
-                                <time datetime="2015-02-22T20:00:00+01:00">
-                                    <strong>2015-02-22</strong>,
-                                    <span>20:00:00</span>
+                                <time datetime="{{ticket.created_on | date:'dd/MM/yyyy hh:mm:ss'}}+01:00">
+                                    <strong>{{ticket.created_on | date:'dd/MM/yyyy'}}</strong>,
+                                    <span>{{ticket.created_on | date:'hh:mm'}}</span>
                                 </time>
                             </p>
                         </div>
@@ -131,23 +130,7 @@
                     <div class="ticket-box__content">
                         <div class="ticket-description">
                             <p>
-                                Trzeba przygotować ekran szczegółów ticketu.<br>
-                                To ekran dla klienta czyli ma nieco okrojone funkcjonalności.<br><br>
-
-                                Wygląda to tak:<br>
-                                - published by: dane, data dodania, data aktualizacji,<br>
-                                - ticket status: np. Done - to jest select<br>
-                                - assigned to: to jest select<br>
-                                - opis ticketu<br>
-                                - info do jakiego template przypisany jest ticket<br>
-                                - sekcja komentarzy<br><br>
-
-                                Każdy komentarz to:<br>
-                                - treść<br>
-                                - podpis imię i nazwisko<br>
-                                - podpis: data i czas dodania<br><br>
-
-                                Pod sekcją komentarzy - formularz dodawnia komentarza.
+                                {{ticket.description}}
                             </p>
                         </div>
                     </div>
@@ -174,35 +157,13 @@
                                             </div>
                                             <div class="screenshots-list-box__content">
                                                 <ol class="screenshots-list">
-                                                    <li class="screenshots-list__item">
+                                                    <li class="screenshots-list__item" ng-repeat="screenshot in ticket.screenshots">
                                                         <div class="screenshot-box">
                                                             <a class="screenshot-box__content" href="#" target="_blank">
                                                                 <span class="counter"></span>
-                                                                <span class="label">Screenshot_xyz_20.12.2015.png</span>
+                                                                <span class="label">{{screenshot}}</span>
                                                                 <figure class="screenshot">
-                                                                    <img src="/static/img/404.png" alt="screen">
-                                                                </figure>
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                    <li class="screenshots-list__item">
-                                                        <div class="screenshot-box">
-                                                            <a class="screenshot-box__content" href="#" target="_blank">
-                                                                <span class="counter"></span>
-                                                                <span class="label">Screenshot</span>
-                                                                <figure class="screenshot">
-                                                                    <img src="/static/img/pic_bg.jpg" alt="screen">
-                                                                </figure>
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                    <li class="screenshots-list__item">
-                                                        <div class="screenshot-box">
-                                                            <a class="screenshot-box__content" href="#" target="_blank">
-                                                                <span class="counter"></span>
-                                                                <span class="label">blablabla__some-screenshot_name_NAME_121249_blaBLABlaaaa.jpg</span>
-                                                                <figure class="screenshot">
-                                                                    <img src="/static/img/pic_project-2.jpg" alt="screen">
+                                                                    <img src="screenshot" alt="screen">
                                                                 </figure>
                                                             </a>
                                                         </div>
@@ -220,7 +181,7 @@
                                         <p class="label">Templates:</p>
                                     </div>
                                     <div class="ticket-details-info__content">
-                                        <p class="details"><a href="#" target="_blank">Template_xyz</a></p>
+                                        <p class="details" ng-repeat="template in ticket.templates"><a ui-sref="projectState({projectId: {{template.template_id}}})" target="_blank">{{template.template_name}}</a></p>
                                     </div>
                                 </div>
                             </li>
