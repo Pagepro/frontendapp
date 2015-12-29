@@ -18,20 +18,17 @@ var ticketDetails = {
       'sentences': _.random(5, 9)
     }),
     'screenshots': [
-        'nazwa1',
-        'nazwa2',
-        'nazwa3'
+        'screenshot1',
+        'screenshot2',
+        'screenshot3'
     ],
     // just one or multiple templates may have the same ticket assigned to them??
     templates: [{
         'template_id': _.random(3, 100),
         'template_name': chance.name()
     }],
-    'browsers': _.map([0, 1, 2, 3, 4], function (browserCode) {
-        if(browserCode % _.random(1, 2) === 0) {
-            return browserCode;
-        }
-    })
+    // they are being added as a text field, so lets not complicate things with browser codes, especially with systems being there too
+    'browsers': 'IE8, IE9 - windows 7, Safari - OSX 10.11.1'
 };
 
 

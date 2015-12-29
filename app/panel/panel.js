@@ -49,22 +49,26 @@
             link: '#/my-projects'
           }]
         })
-        .state('projectState.submitBug', {
-          url: '/new-ticket',
-          templateUrl: 'app/panel/templates/submitBug.html',
-          controller: 'SubmitBugCtrl',
-          controllerAs: 'SBC',
-          pageName: 'New Ticket',
-          module: 'panel'
-        })
-        .state('projectState.editTemplate', {
-          url: '/edit-template/:templateId',
-          templateUrl: 'app/panel/templates/editTemplate.html',
-          controller: 'EditTemplateCtrl',
-          controllerAs: 'ETC',
-          pageName: 'Edit Template',
-          module: 'panel'
-        })
+          .state('projectState.submitBug', {
+            url: '/new-ticket',
+            templateUrl: 'app/panel/templates/submitBug.html',
+            controller: 'SubmitBugCtrl',
+            controllerAs: 'SBC',
+            pageName: 'New Ticket',
+            module: 'panel',
+            params: {
+              'projectId': null,
+              'templateId': null
+            }
+          })
+          .state('projectState.editTemplate', {
+            url: '/edit-template/:templateId',
+            templateUrl: 'app/panel/templates/editTemplate.html',
+            controller: 'EditTemplateCtrl',
+            controllerAs: 'ETC',
+            pageName: 'Edit Template',
+            module: 'panel'
+          })
         .state('ticketState', {
           url: '/project/:projectId/ticket/:ticketId',
           templateUrl: 'app/panel/templates/ticket.html',

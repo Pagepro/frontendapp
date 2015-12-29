@@ -1,7 +1,11 @@
-<section class="sec--popup">
+<section class="sec--popup" ng-click="returnToProject()">
     <div class="sec--popup__inner">
-        <div class="popup" off-click="returnToProject()">
-            <div class="popup__inner">
+        <div class="popup">
+            <div class="popup__inner"
+            ng-click="$event.stopPropagation();"
+            ngf-drop="updateNameValue($file.name)" ng-model="file"
+            ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
+            accept="image/*" ngf-pattern="'image/*'">
                 <div class="popup__head">
                     <div class="popup__head__title">
                         <h2 class="subtitle highlighted">
@@ -26,7 +30,7 @@
                                         <div class="form-box__section__content">
                                             <div class="form__section">
                                                 <div class="field field--textarea">
-                                                    <textarea class="textarea" id="popup-description"></textarea>
+                                                    <textarea class="textarea" id="description" name="description" model="description"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -40,7 +44,7 @@
                                         <div class="form-box__section__content">
                                             <div class="form__section">
                                                 <div class="field field--input">
-                                                    <input class="input input--url" type="url" name="url" id="popup-screenshot">
+                                                    <input class="input input--url" type="url" name="url" id="url" model="url">
                                                 </div>
                                             </div>
                                         </div>
@@ -54,7 +58,9 @@
                                         <div class="form-box__section__content">
                                             <div class="form__section">
                                                 <div class="field field--input">
-                                                    <input type="file" name="add_file" class="input input--file" id="popup-attachment">
+                                                    <input type="file" name="file" class="input input--file" id="file"
+                                                    placeholder="{{file.name}}"
+                                                    ngf-select="updateNameValue($file.name)" ng-model="file" ngf-multiple="false" ngf-allow-dir="false" accept="image/*" ngf-pattern="'image/*'">
                                                     <div class="input-holder"></div>
                                                 </div>
                                             </div>
@@ -69,10 +75,10 @@
                                         <div class="form-box__section__content">
                                             <div class="form__section">
                                                 <div class="field field--select">
-                                                    <select id="popup-template">
-                                                        <option>Home Page</option>
-                                                        <option>Contact</option>
-                                                        <option>Exemplary-veryveryveryvery_VEEEERYvery_long_TEMPLATE-title</option>
+                                                    <select id="popup-template" required>
+                                                        <option ng-if="!currentTemplateId" selected disabled>Chose a template...</option>
+                                                        <option
+                                                        ng-repeat="template in templates" model="template.id" ng-selected="template.selected">{{template.name}}</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -85,7 +91,7 @@
                                         <div class="form-box__section__content">
                                             <div class="form__section">
                                                 <div class="field field--input">
-                                                    <input type="text" name="add_browser" class="input input--text" id="popup-browsers">
+                                                    <input type="text" name="browsers" class="input input--text" id="browsers" model="browsers">
                                                 </div>
                                             </div>
                                         </div>
@@ -93,7 +99,7 @@
                                 </div>
                             </div>
                             <div class="form__actions">
-                                <button class="btn btn--submit btn--submit--small">
+                                <button class="btn btn--submit btn--submit--small" type="submit" ng-click="uploadFiles(file)" ng-disabled="isUploading || !file">
                                     <span class="label">Create Ticket</span>
                                 </button>
                             </div>

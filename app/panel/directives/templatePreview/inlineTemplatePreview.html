@@ -45,7 +45,7 @@
                         </li>
                         <li class="action-tools-list__item">
                             <div class="action-tool action-tool--highlighted" aria-label="open template picture">
-                                <a ui-sref="projectState.submitBug" class="action-tool__content">
+                                <a ui-sref=".submitBug({templateId: {{template.id}}})" class="action-tool__content">
                                     <span class="icon icon--bug"></span>
                                 </a>
                                 <div class="action-tool__info">
@@ -69,7 +69,7 @@
                         </li>
                         <li class="action-tools-list__item">
                             <div class="action-tool action-tool--highlighted" aria-label="edit template">
-                                <a ui-sref="projectState.editTemplate({templateId: {{template.id}}})" class="action-tool__content">
+                                <a ui-sref=".editTemplate({templateId: {{template.id}}})" class="action-tool__content">
                                     <span class="icon icon--pencil"></span>
                                 </a>
                                 <div class="action-tool__info">
@@ -81,7 +81,7 @@
                         </li>
                         <li class="action-tools-list__item">
                             <div class="action-tool action-tool--highlighted" aria-label="delete template">
-                                <a class="action-tool__content"  ng-click="deleteTemplate(template.id)">
+                                <a class="action-tool__content"  ng-click="deleteTemplate(projectId, template.id)">
                                     <span class="icon icon--trash"></span>
                                 </a>
                                 <div class="action-tool__info">

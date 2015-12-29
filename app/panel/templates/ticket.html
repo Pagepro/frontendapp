@@ -1,7 +1,8 @@
+<spinner name="project-details" group="full-page" on-loaded="init()"></spinner>
 <div class="sec--main__head">
     <div class="sec--main__inner">
         <h2 class="page-back">
-            <a ui-sref="projectState({projectId: {{parentProject}}})" class="page-back__content">
+            <a ui-sref="projectState({projectId: {{projectId}}})" class="page-back__content">
                 <span class="icon icon--open-big--left"></span>
                 <span class="main-title">
                     <span class="label">Ticket #<span class="ticket-id">{{ticketId}}</span></span>
@@ -192,7 +193,7 @@
                                         <p class="label">Browsers:</p>
                                     </div>
                                     <div class="ticket-details-info__content">
-                                        <p class="details">IE 11, Firefox on Windows</p>
+                                        <p class="details">{{ticket.browsers}}</p>
                                     </div>
                                 </div>
                             </li>
@@ -220,7 +221,7 @@
                     <div class="comment-box">
                         <div class="comment-box__content">
                             <span class="icon icon--comment"></span>
-                            <span class="qty">{{ticket.comments_count}}</span>
+                            <span class="qty">{{comments.length}}</span>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 (function() {
   'use strict';
-  var ProjectCtrl = function($scope, $q, $stateParams, projectsService, templatesService, filesService, ticketsService, statusService, spinnerService) {
+  var ProjectCtrl = function($scope, $q, $stateParams, projectsService, templatesService, filesService,
+    ticketsService, statusService, spinnerService) {
     var projectPromise;
     var templatesPromise;
     var filesPromise;
@@ -10,6 +11,7 @@
     $scope.files = null;
     $scope.templates = null;
     $scope.tickets = null;
+    $scope.projectId = $stateParams.projectId;
 
     $scope.displayType = 'grid';
 
@@ -68,7 +70,8 @@
   };
 
 
-  ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsService', 'templatesService', 'filesService', 'ticketsService', 'statusService', 'spinnerService'];
+  ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsService', 'templatesService', 'filesService',
+  'ticketsService', 'statusService', 'spinnerService'];
   angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
 
 }());

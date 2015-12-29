@@ -1,33 +1,43 @@
 (function() {
   'use strict';
-  var TicketCtrl = function($scope, $stateParams, commentsService, ticketsService) {
+  var TicketCtrl = function($scope, $q, $stateParams, commentsService, ticketsService, spinnerService) {
+    var ticketPromise;
+    var commentsPromise;
+
     $scope.parentProject = null;
     $scope.comments = null;
+    $scope.ticket = null;
+    $scope.projectId = $stateParams.projectId;
+    $scope.ticketId = null;
     $scope.statusListVisible = false;
 
-    var init = function () {
-      angular.element('select').customSelect();
-      $scope.parentProject = $stateParams.projectId;
-      $scope.ticketId = $stateParams.ticketId;
+    $scope.init = function () {
+      spinnerService.show('project-details');
 
+      angular.element('select').customSelect();
+
+      $scope.ticketId = $stateParams.ticketId;
       // Get the ticket
-      ticketsService.getTicketDetails($stateParams.projectId, $stateParams.ticketId)
+      ticketPromise = ticketsService.getTicketDetails($stateParams.projectId, $stateParams.ticketId);
+      ticketPromise
       .success(function (ticket) {
         $scope.ticket = ticket;
       })
-      .error(function (response) {
-        // fixme, add some sort of error handling
-        console.log(response);
+      .error(function () {
+        // @todo, add some sort of error handling
       });
 
       // Comments are served separately, get them too
-      commentsService.getComments($stateParams.projectId, $stateParams.ticketId)
+      commentsPromise = commentsService.getComments($stateParams.projectId, $stateParams.ticketId);
+      commentsPromise
       .success(function (comments) {
         $scope.comments = comments;
       })
-      .error(function (response) {
-        // fixme, add some sort of error handling
-        console.log(response);
+      .error(function () {
+        // @todo, add some sort of error handling
+      });
+      $q.all([ticketPromise, commentsPromise]).then(function () {
+        spinnerService.hide('project-details');
       });
     };
 
@@ -37,11 +47,8 @@
     $scope.changeTicketStatus = function () {
 
     };
-
-    init();
   };
-
-  TicketCtrl.$inject = ['$scope', '$stateParams', 'commentsService', 'ticketsService'];
+  TicketCtrl.$inject = ['$scope', '$q', '$stateParams', 'commentsService', 'ticketsService', 'spinnerService'];
   angular.module('panelModule').controller('TicketCtrl', TicketCtrl);
 
 }());

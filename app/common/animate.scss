@@ -1,6 +1,12 @@
 .dragover {
   background: #FCFCFC;
 }
+.files-list__item__id .ticket-id-link:hover {
+  background-color: #e65962;
+}
+.btn--default[disabled] {
+  background: #B2B2B2;
+}
     .page-loader {
       width: 100%;
       height: 100%;

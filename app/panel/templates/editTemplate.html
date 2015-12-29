@@ -1,8 +1,9 @@
-<section class="sec--popup">
+<section class="sec--popup" ng-click="returnToProject()">
     <div class="sec--popup__inner">
         <div class="popup">
             <div class="popup__inner"
-            ngf-drop="updateNameValue($file)" ng-model="file"
+            ng-click="$event.stopPropagation();"
+            ngf-drop="updateNameValue($file.name)" ng-model="file"
             ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
             accept="image/*" ngf-pattern="'image/*'">
                 <div class="popup__head">
@@ -43,9 +44,9 @@
                                         <div class="form-box__section__content">
                                             <div class="form__section">
                                                 <div class="field field--input">
-                                                    <input type="file" name="add_file" class="input input--file" id="popup-template-img"
+                                                    <input type="file" name="file" class="input input--file" id="popup-template-img"
                                                     placeholder="{{file.name}}"
-                                                    ngf-select="updateNameValue($file)" ng-model="file" ngf-multiple="false" ngf-allow-dir="false" accept="image/*" ngf-pattern="'image/*'">
+                                                    ngf-select="updateNameValue($file.name)" ng-model="file" ngf-multiple="false" ngf-allow-dir="false" accept="image/*" ngf-pattern="'image/*'">
                                                     <div class="input-holder"></div>
                                                 </div>
                                             </div>
@@ -68,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="form__actions">
-                                <button class="btn btn--submit btn--submit--small" type="submit" ng-click="uploadFiles(file)">
+                                <button class="btn btn--submit btn--submit--small" type="submit" ng-click="uploadFiles(file)" ng-disabled="isUploading || !file">
                                     <span class="label">Save</span>
                                 </button>
                             </div>

@@ -1,6 +1,6 @@
 <div class="files-list__item__inner">
     <div class="files-list__item__id">
-        <a href="#{{location}}/ticket/{{ticket.id}}" class="ticket-id-link">
+        <a ui-sref="ticketState({projectId: {{projectId}}, ticketId: {{ticket.id}}})" class="ticket-id-link">
             <span class="label">#<span class="ticket-id">{{ticket.id}}</span></span>
         </a>
     </div>
@@ -22,7 +22,7 @@
                     <div class="comment-box">
                         <div class="comment-box__content">
                             <span class="icon icon--comment"></span>
-                            <span class="qty">{{ticket.comments_count}}</span>
+                            <span class="qty">{{tickets.length}}</span>
                         </div>
                     </div>
                 </div>

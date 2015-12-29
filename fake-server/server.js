@@ -39,6 +39,9 @@ app.post('/projects/:id/templates', function(req, res) {
     // res.json(401, { error: 'An error has occurred!' });
   // }
 });
+app.post('/uploads', function(req, res) {
+    res.status(200).json({ success: 'You have successfully added a new template!' });
+});
 
 app.get('/projects/:id/templates/:templateId', function(req, res) {
   if (req.headers.authorization) {
