@@ -1,20 +1,26 @@
 <div class="sec--main__head">
     <div class="sec--main__inner">
-        <!-- <div class="status-label status-label--done">
+        <div class="status-label status-label--done">
             <p class="label">Project created</p>
-        </div> -->
+        </div>
     </div>
 </div>
 <div class="sec--main__content">
     <section class="subsec">
-        <div class="subsec__inner">
+        <form class="subsec__inner">
             <div class="subsec__head">
-                <h2 class="main-title">
-                    <span class="label">New project name</span>
-                </h2>
+                <input type="text" name="name" id="name" class="new-project-name" placeholder="New project name" model="name" value="{{name}}" autocomplete="off">
             </div>
             <div class="subsec__content">
-                <div class="project-box">
+                <!-- <div class="project-box"
+                ngf-drop ng-model="files"
+                ngf-drag-over-class="'dragover'" ngf-multiple="false" ngf-allow-dir="false"
+                accept="image/*,application/pdf,.psd,.zip,.rar,.7z,.tar" ngf-pattern="'image/*,application/pdf,.psd,.zip,.rar,.7z,.tar'"> -->
+                <div class="project-box"
+                    ngf-drop class="drop-box" ng-model="files"
+                    ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+                    accept="image/*,application/pdf"
+                    ngf-pattern="'image/*,application/pdf'">
                     <div class="project-box__content">
                         <ul class="teasers-list teasers-list--alt">
                             <li class="teasers-list__item">
@@ -24,14 +30,39 @@
                                             <span class="icon icon--upload"></span>
                                         </div>
                                         <div class="teaser__content">
-                                            <form class="project-action-form">
+                                            <div class="project-actions">
                                                 <fieldset class="form__fieldset">
                                                     <div class="field field--input">
                                                         <label class="label" for="project-name">Upload Files</label>
-                                                        <input type="file" name="add_file" class="input input--file" id="project-name">
+                                                        <input type="file" name="add_file" class="input input--file" id="project-name" ngf-select ng-model="file" >
                                                     </div>
                                                 </fieldset>
-                                            </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="teasers-list__item" ng-repeat="file in filesInProgress">
+                                <div class="teaser action-teaser action-teaser--in-progress">
+                                    <div class="teaser__inner">
+                                        <div class="teaser__head">
+                                            <span class="icon icon--plus"></span>
+                                        </div>
+                                        <div class="teaser__content">
+                                            <p class="title">
+                                                <span class="label">{{file.name}}</span>
+                                            </p>
+                                            <div class="progress-bar-wrapper progress-bar-wrapper--alt">
+                                                <progress class="progress-bar progress-bar--alt" value="{{file.progress}}" max="100"></progress>
+                                                <p class="progress-bar-value">
+                                                    <span class="qty">{{file.progress}}</span>
+                                                    <span>%</span>
+                                                </p>
+                                                <p class="progress-bar-file-size">
+                                                    <span class="size">{{file.sizeTotal || '-'}}</span>
+                                                    <span class="unit">{{file.unit}}</span>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -40,6 +71,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </section>
 </div>

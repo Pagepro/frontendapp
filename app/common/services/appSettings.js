@@ -3,7 +3,8 @@
   angular.module('frontendApp').value('appSettings', {
       title: 'Fronted App',
       verion: '0.0.2',
-      filesRoot: 'http://frontendapp.com/uploads/',
+      screenshotRoot: 'http://frontendapp.com/uploads/',
+      fileRoot: 'http://frontendapp.com/projects/download/file/',
       apiRoot: 'http://localhost:1234/'
       // apiRoot: 'http://api.frontendapp.com/'
   });

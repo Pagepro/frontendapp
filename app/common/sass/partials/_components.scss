@@ -196,7 +196,7 @@ object {
 //     <li class="breadcrumbs__item">
 //         <h1 class="breadcrumb">
 //             <a href="/index.html" class="breadcrumb__content">
-//                Frontend<span class="highlighted">App</span> 
+//                Frontend<span class="highlighted">App</span>
 //             </a>
 //         </h1>
 //     </li>
@@ -758,7 +758,7 @@ h1.breadcrumb {
 
 // Main Header with page-back link
 //
-// .page-back - main header with page-back link 
+// .page-back - main header with page-back link
 //
 // Markup:
 // <h2 class="page-back">
@@ -2015,7 +2015,8 @@ h1.breadcrumb {
     &__inner {
         width: 100%;
         height: 100%;
-        &:hover {
+        &:hover,
+        .dragover & {
             text-decoration: none;
         }
     }
@@ -2093,7 +2094,8 @@ h1.breadcrumb {
             }
         }
         &__inner {
-            &:hover {
+            &:hover,
+            .dragover & {
                 .teaser {
                     &__head {
                         @extend %helper--round--after--hover;
@@ -2122,7 +2124,8 @@ h1.breadcrumb {
     }
     .teaser {
         &__inner {
-            &:hover {
+            &:hover,
+            .dragover & {
                 .teaser {
                     &__head {
                         .icon {
@@ -3292,7 +3295,7 @@ h1.breadcrumb {
 //
 // Markup:
 // <p class="file-size">
-//     <span class="size">2.5</span> 
+//     <span class="size">2.5</span>
 //     <span class="unit">MB</span>
 // </p>
 //
@@ -3362,7 +3365,7 @@ h1.breadcrumb {
 //         </div>
 //         <div class="file-data__size">
 //             <p class="file-size">
-//                 <span class="size">10.5</span> 
+//                 <span class="size">10.5</span>
 //                 <span class="unit">MB</span>
 //             </p>
 //         </div>
@@ -3970,7 +3973,7 @@ h1.breadcrumb {
 //                                 </div>
 //                                 <div class="file-data__size">
 //                                     <p class="file-size">
-//                                         <span class="size">10.5</span> 
+//                                         <span class="size">10.5</span>
 //                                         <span class="unit">MB</span>
 //                                     </p>
 //                                 </div>
@@ -4029,7 +4032,7 @@ h1.breadcrumb {
 //                                 </div>
 //                                 <div class="file-data__size">
 //                                     <p class="file-size">
-//                                         <span class="size">2.5</span> 
+//                                         <span class="size">2.5</span>
 //                                         <span class="unit">MB</span>
 //                                     </p>
 //                                 </div>
@@ -4088,7 +4091,7 @@ h1.breadcrumb {
 //                                 </div>
 //                                 <div class="file-data__size">
 //                                     <p class="file-size">
-//                                         <span class="size">2.5</span> 
+//                                         <span class="size">2.5</span>
 //                                         <span class="unit">MB</span>
 //                                     </p>
 //                                 </div>
@@ -5675,7 +5678,7 @@ h1.breadcrumb {
 //
 // .pagination-box - pagination-box
 // .prev-active - prev-active
-// .next-active - next-active 
+// .next-active - next-active
 // .prev-active.next-active - prev-active and next-active
 //
 // Markup:
@@ -6366,7 +6369,7 @@ h1.breadcrumb {
 //                                         </div>
 //                                         <div class="file-data__size">
 //                                             <p class="file-size">
-//                                                 <span class="size">10.5</span> 
+//                                                 <span class="size">10.5</span>
 //                                                 <span class="unit">MB</span>
 //                                             </p>
 //                                         </div>
@@ -6425,7 +6428,7 @@ h1.breadcrumb {
 //                                         </div>
 //                                         <div class="file-data__size">
 //                                             <p class="file-size">
-//                                                 <span class="size">2.5</span> 
+//                                                 <span class="size">2.5</span>
 //                                                 <span class="unit">MB</span>
 //                                             </p>
 //                                         </div>
@@ -6484,7 +6487,7 @@ h1.breadcrumb {
 //                                         </div>
 //                                         <div class="file-data__size">
 //                                             <p class="file-size">
-//                                                 <span class="size">2.5</span> 
+//                                                 <span class="size">2.5</span>
 //                                                 <span class="unit">MB</span>
 //                                             </p>
 //                                         </div>
@@ -6842,7 +6845,7 @@ h1.breadcrumb {
 // Markup:
 // <div class="access-tool">
 //     <a href="/register.html" class="access-tool__content">
-//        <span class="icon icon--key"></span> 
+//        <span class="icon icon--key"></span>
 //     </a>
 //     <div class="access-tool__info">
 //         <div class="tooltip">
@@ -6908,7 +6911,7 @@ h1.breadcrumb {
 //     <li class="access-tools-list__item">
 //         <div class="access-tool">
 //             <a href="/register.html" class="access-tool__content">
-//                <span class="icon icon--key"></span> 
+//                <span class="icon icon--key"></span>
 //             </a>
 //             <div class="access-tool__info">
 //                 <div class="tooltip">
@@ -6920,7 +6923,7 @@ h1.breadcrumb {
 //     <li class="access-tools-list__item">
 //         <div class="access-tool">
 //             <a href="/login.html" class="access-tool__content">
-//                <span class="icon icon--lock"></span> 
+//                <span class="icon icon--lock"></span>
 //             </a>
 //             <div class="access-tool__info">
 //                 <div class="tooltip">
@@ -7005,7 +7008,7 @@ h1.breadcrumb {
 //             <li class="access-tools-list__item active">
 //                 <div class="access-tool">
 //                     <a href="/register.html" class="access-tool__content">
-//                        <span class="icon icon--key"></span> 
+//                        <span class="icon icon--key"></span>
 //                     </a>
 //                     <div class="access-tool__info">
 //                         <div class="tooltip">
@@ -7017,7 +7020,7 @@ h1.breadcrumb {
 //             <li class="access-tools-list__item">
 //                 <div class="access-tool">
 //                     <a href="/login.html" class="access-tool__content">
-//                        <span class="icon icon--lock"></span> 
+//                        <span class="icon icon--lock"></span>
 //                     </a>
 //                     <div class="access-tool__info">
 //                         <div class="tooltip">
@@ -7117,7 +7120,7 @@ h1.breadcrumb {
 // Markup:
 // <div class="dispaly-mode">
 //     <a href="#" class="dispaly-mode__content">
-//         <span class="icon icon--display-mode"></span>   
+//         <span class="icon icon--display-mode"></span>
 //     </a>
 // </div>
 //
@@ -7179,7 +7182,7 @@ h1.breadcrumb {
 //     <div class="dispaly-mode-box__content">
 //         <div class="dispaly-mode">
 //             <a href="project-details-list.html" class="dispaly-mode__content">
-//                 <span class="icon icon--display-mode"></span>   
+//                 <span class="icon icon--display-mode"></span>
 //             </a>
 //         </div>
 //     </div>
@@ -7234,17 +7237,17 @@ h1.breadcrumb {
 //     <li class="display-mode-list__item active">
 //         <div class="dispaly-mode">
 //             <a href="#" class="dispaly-mode__content">
-//                 <span class="icon icon--display-mode"></span>   
+//                 <span class="icon icon--display-mode"></span>
 //             </a>
 //         </div>
 //     </li>
 //     <li class="display-mode-list__item">
 //         <div class="dispaly-mode">
 //             <a href="#" class="dispaly-mode__content">
-//                 <span class="icon icon--display-mode--alt"></span>   
+//                 <span class="icon icon--display-mode--alt"></span>
 //             </a>
 //         </div>
-//     </li> 
+//     </li>
 // </ul>
 //
 // Styleguide 22.3
@@ -7261,7 +7264,7 @@ h1.breadcrumb {
 //             <div class="dispaly-mode-box__content">
 //                 <div class="dispaly-mode">
 //                     <a href="project-details-list.html" class="dispaly-mode__content">
-//                         <span class="icon icon--display-mode"></span>   
+//                         <span class="icon icon--display-mode"></span>
 //                     </a>
 //                 </div>
 //             </div>
@@ -7277,7 +7280,7 @@ h1.breadcrumb {
 //             <div class="dispaly-mode-box__content">
 //                 <div class="dispaly-mode">
 //                     <a href="project-details.html" class="dispaly-mode__content">
-//                         <span class="icon icon--display-mode--alt"></span>   
+//                         <span class="icon icon--display-mode--alt"></span>
 //                     </a>
 //                 </div>
 //             </div>
@@ -7287,7 +7290,7 @@ h1.breadcrumb {
 //                 </div>
 //             </div>
 //         </div>
-//     </li> 
+//     </li>
 // </ul>
 //
 // Styleguide 22.4

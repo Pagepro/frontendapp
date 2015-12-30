@@ -14,25 +14,8 @@
                     <div class="project-box__content">
                         <ul class="teasers-list">
                             <li class="teasers-list__item">
-                                <a href="#/new-project" class="teaser action-teaser js-teaser" style="display: block;">
-                                    <div class="teaser__inner">
-                                        <div class="teaser__head">
-                                            <span class="icon icon--plus"></span>
-                                        </div>
-                                        <div class="teaser__content">
-                                            <form class="project-action-form">
-                                                <fieldset class="form__fieldset">
-                                                    <div class="field field--input">
-                                                        <label class="label" for="project-name">New Project</label>
-                                                        <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name">
-                                                    </div>
-                                                </fieldset>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </a>
+                                <new-project-tile></new-project-tile>
                             </li>
-
                             <li class="teasers-list__item" ng-repeat="project in myProjects">
                                 <project-teaser></project-teaser>
                             </li>

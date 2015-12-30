@@ -8,7 +8,7 @@
       },
       link: function (scope) {
         scope.projectStatus = statusService.getStatus(scope.template.status);
-        scope.baseUrl = appSettings.filesRoot;
+        scope.baseUrl = appSettings.screenshotRoot;
       }
     };
   };

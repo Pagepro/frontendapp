@@ -15,7 +15,11 @@
           trails: [{
             name: 'My Projects',
             link: '#/my-projects'
-          }]
+          }],
+          params: {
+            'projectId': null,
+            'projectName': null
+          }
         })
         .state('myProjectsState', {
           url: '/my-projects',

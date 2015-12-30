@@ -22,6 +22,79 @@
     }
 }
 
+/* Form messages
+   ========================================================================== */
+// Form info / required info
+//
+// .form-info - form info
+// .required - form info (required)
+//
+// Markup:
+// <div class="form-info {{modifier_class}}">
+//     <p>Please enter your e-mail to reset your password.</p>
+// </div>
+//
+// Styleguide 21.3
+
+.form-info {
+    overflow: hidden;
+
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px 0;
+
+    @extend %helper--transition;
+    > p {
+        margin: 0;
+        padding: 0 $size_padding;
+
+        font-size: 12px;
+
+        text-align: left;
+        text-transform: uppercase;
+    }
+    &.required {
+        color: $color_white;
+        background: $color_red;
+    }
+}
+
+.form-info {
+    @include breakpoint($breakpoint_smartphone) {
+        width: 100%;
+        > p {
+            font-size: 11px;
+        }
+    }
+}
+
+.field--info {
+    margin-top: 0;
+
+    opacity: 0;
+    .form-info {
+        max-height: 0;
+        padding: 0;
+    }
+}
+.field:not(.field--info):not(.field--cta) {
+    border: 1px solid transparent;
+}
+.error-message {
+    .field--info {
+        opacity: 1;
+        .form-info {
+            max-height: 62px;
+            padding: 5px 0;
+        }
+    }
+    .field:not(.field--info):not(.field--cta) {
+        border: 1px solid $color_red;
+    }
+}
+
+
+
 /* Custom checkboxes
    ========================================================================== */
 .icheckbox {
@@ -150,10 +223,17 @@
 //     <fieldset class="form__fieldset">
 //         <div class="form__content">
 //             <div class="form__section">
-//                 <div class="field field--input">
-//                     <input class="input input--text" type="text" placeholder="USERNAME" name="username" id="field_01">
+//                 <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>Oops, something went wrong. Please restart your computer three times and try again.</p>
+//                     </div>
 //                 </div>
-//             <div class="field field--info">
+//             </div>
+//             <div class="form__section">
+//                 <div class="field field--input">
+//                     <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="field_05">
+//                 </div>
+//                 <div class="field field--info">
 //                     <div class="form-info required">
 //                         <p>This field is required</p>
 //                     </div>
@@ -161,29 +241,9 @@
 //             </div>
 //             <div class="form__section">
 //                 <div class="field field--input">
-//                     <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="field_02">
+//                     <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_06">
 //                 </div>
-//             <div class="field field--info">
-//                     <div class="form-info required">
-//                         <p>This field is required</p>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="form__section">
-//                 <div class="field field--input">
-//                     <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_03">
-//                 </div>
-//             <div class="field field--info">
-//                     <div class="form-info required">
-//                         <p>This field is required</p>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="form__section">
-//                 <div class="field field--input">
-//                     <input class="input input--text" type="password" placeholder="RE-PASSWORD" name="re-password" id="field_04">
-//                 </div>
-//             <div class="field field--info">
+//                 <div class="field field--info">
 //                     <div class="form-info required">
 //                         <p>This field is required</p>
 //                     </div>
@@ -199,6 +259,11 @@
 //                     <div class="form-info required">
 //                         <p>Login or password is incorrect</p>
 //                     </div>
+//                 </div>
+//                 <div class="field field--cta">
+//                     <a href="remind-password.html" class="forgot-password-link">
+//                         <span class="label">Forgot password?</span>
+//                     </a>
 //                 </div>
 //             </div>
 //         </div>
@@ -209,17 +274,24 @@
 
 // Access form
 //
-// .access-form - access form
+// .access-form - error messages
 //
 // Markup:
 // <form class="access-form">
 //     <fieldset class="form__fieldset">
 //         <div class="form__content">
 //             <div class="form__section error-message">
-//                 <div class="field field--input">
-//                     <input class="input input--text" type="text" placeholder="USERNAME" name="username" id="field_01">
+//                 <div class="field field--info">
+//                     <div class="form-info required">
+//                         <p>Oops, something went wrong. Please restart your computer three times and try again.</p>
+//                     </div>
 //                 </div>
-//             <div class="field field--info">
+//             </div>
+//             <div class="form__section error-message">
+//                 <div class="field field--input">
+//                     <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="field_05">
+//                 </div>
+//                 <div class="field field--info">
 //                     <div class="form-info required">
 //                         <p>This field is required</p>
 //                     </div>
@@ -227,29 +299,9 @@
 //             </div>
 //             <div class="form__section error-message">
 //                 <div class="field field--input">
-//                     <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="field_02">
+//                     <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_06">
 //                 </div>
-//             <div class="field field--info">
-//                     <div class="form-info required">
-//                         <p>This field is required</p>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="form__section error-message">
-//                 <div class="field field--input">
-//                     <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_03">
-//                 </div>
-//             <div class="field field--info">
-//                     <div class="form-info required">
-//                         <p>This field is required</p>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="form__section error-message">
-//                 <div class="field field--input">
-//                     <input class="input input--text" type="password" placeholder="RE-PASSWORD" name="re-password" id="field_04">
-//                 </div>
-//             <div class="field field--info">
+//                 <div class="field field--info">
 //                     <div class="form-info required">
 //                         <p>This field is required</p>
 //                     </div>
@@ -257,7 +309,7 @@
 //             </div>
 //         </div>
 //         <div class="form__actions">
-//             <div class="form__section error-message">
+//             <div class="form__section">
 //                 <button type="submit" class="btn btn--submit">
 //                     <span class="label">Submit</span>
 //                 </button>
@@ -265,6 +317,11 @@
 //                     <div class="form-info required">
 //                         <p>Login or password is incorrect</p>
 //                     </div>
+//                 </div>
+//                 <div class="field field--cta">
+//                     <a href="remind-password.html" class="forgot-password-link">
+//                         <span class="label">Forgot password?</span>
+//                     </a>
 //                 </div>
 //             </div>
 //         </div>
@@ -301,28 +358,6 @@
             .field + .field--info,
             .btn + .field--info {
                 margin-top: 0;
-
-                opacity: 0;
-                .form-info {
-                    height: 0;
-                }
-            }
-            .field:not(.field--info):not(.field--cta) {
-                border: 1px solid transparent;
-            }
-            &.error-message {
-                .field + .field--info,
-                .btn + .field--info {
-                    margin-top: $size_padding;
-
-                    opacity: 1;
-                    .form-info {
-                        height: $size_padding;
-                    }
-                }
-                .field:not(.field--info):not(.field--cta) {
-                    border: 1px solid $color_red;
-                }
             }
         }
         &__content {
@@ -424,6 +459,31 @@
 //
 // Styleguide 14.1
 
+.new-project-name {
+    overflow: hidden;
+
+    width: 100%;
+    padding: 0 40px;
+
+    font-family: $font-normal;
+    font-size: 48px;
+    font-weight: 100;
+
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    border: none;
+    &,
+    &::-webkit-input-placeholder,
+    &::-moz-placeholder,
+    &:-ms-input-placeholder {
+        color: $color_default;
+    }
+}
+.project-actions {
+    @extend .project-action-form;
+}
 .project-action-form {
     width: 100%;
 
@@ -546,107 +606,73 @@
     }
 }
 
-// .project-action-form {
-//     width: 100%;
-//     height: $size_input_v;
-
-//     @extend %helper--form;
-//     @extend %helper--flex--vertical-space-between;
-//     justify-content: center;
-//     .NFI-filename {
-//         display: none !important;
-//     }
-//     .NFI-button {
-//         display: flex !important;
-
-//         color: #adadad;
-
-//         @extend %helper--flex--center--center;
-//         input {
-//             height: auto !important;
-//         }
-//     }
-//     .form {
-//         &__fieldset {
-//             width: 100%;
-//             .NFI-wrapper {
-//                 z-index: 10;
-
-//                 overflow: hidden !important;
-
-//                 cursor: pointer;
-//             }
-//             .field,
-//             .NFI-wrapper {
-//                 position: relative;
-
-//                 width: 100%;
-//                 .label,
-//                 .input,
-//                 .NFI-button {
-//                     width: 100%;
-
-//                     font-size: 20px;
-//                     font-weight: 300;
-
-//                     transition: 300ms ease;
-//                     text-align: center;
-//                 }
-//                 .label {
-//                     z-index: 9;
-
-//                     margin: 0;
-
-//                     @extend %helper--absolute--center--center;
-//                     @extend %helper--flex--center--center;
-//                 }
-//                 .input,
-//                 .NFI-button {
-//                     position: relative;
-//                     z-index: -1;
-
-//                     height: $size_input_v;
-//                     margin-top: 0;
-//                     padding: 0 $size_padding;
-
-//                     pointer-events: none;
-
-//                     opacity: 0;
-//                     border: none;
-//                 }
-//             }
-//         }
-//     }
-//     &.active {
-//         .form {
-//             &__fieldset {
-//                 .field {
-//                     .label {
-//                         top: -60px;
-
-//                         font-size: 16px;
-
-//                         color: $color_red;
-//                     }
-//                     .input,
-//                     .NFI-button {
-//                         z-index: 2;
-
-//                         pointer-events: auto;
-
-//                         opacity: 1;
-//                     }
-//                     .input {
-//                         margin-top: 20px;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
 /* ticket-form
    ========================================================================== */
+// Ticket form
+//
+// .ticket-form - .ticket-form
+//
+// Markup:
+// <form class="ticket-form">
+//     <fieldset class="form__fieldset">
+//         <div class="form__content">
+//             <div class="form-box form-box--double">
+//                 <div class="form-box__section">
+//                     <div class="form-box__section__head">
+//                         <label class="label" for="popup-browsers">Status</label>
+//                     </div>
+//                     <div class="form-box__section__content">
+//                         <div class="form__section">
+//                             <div class="labels-choice">
+//                                 <ul class="labels-choice-list js-labels-choice-list">
+//                                     <li class="labels-choice-list__item">
+//                                         <div class="status-label status-label--new">
+//                                             <p class="label">new</p>
+//                                         </div>
+//                                     </li>
+//                                     <li class="labels-choice-list__item active">
+//                                         <div class="status-label status-label--in-progress">
+//                                             <p class="label">in progress</p>
+//                                         </div>
+//                                     </li>
+//                                     <li class="labels-choice-list__item">
+//                                         <div class="status-label status-label--done">
+//                                             <p class="label">done</p>
+//                                         </div>
+//                                     </li>
+//                                     <li class="labels-choice-list__item">
+//                                         <div class="status-label status-label--rejected">
+//                                             <p class="label">rejected</p>
+//                                         </div>
+//                                     </li>
+//                                 </ul>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//                 <div class="form-box__section">
+//                     <div class="form-box__section__head">
+//                         <label class="label" for="popup-template">Assigned to</label>
+//                     </div>
+//                     <div class="form-box__section__content">
+//                         <div class="form__section">
+//                             <div class="field field--select">
+//                                 <select id="popup-template" class="hasCustomSelect" style="-webkit-appearance: menulist-button; position: absolute; opacity: 0; height: 48px; font-size: 15px;">
+//                                     <option>Popek Król Albanii</option>
+//                                     <option>Krzysztof Oszczapiński</option>
+//                                     <option>Krzysztof Łojniewski</option>
+//                                     <option>Dominika Jaroszewicz</option>
+//                                 </select><span class="customSelect" style="display: inline-block;"><span class="customSelectInner" style="display: inline-block;">Popek Król Albanii</span></span>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </fieldset>
+// </form>
+//
+// Styleguide 26.3
 .form-box {
     @extend %helper--flex--left--center;
     &__section {
@@ -721,6 +747,13 @@
             width: 100%;
             .NFI-wrapper {
                 display: flex !important;
+                .NFI-filename,
+                .NFI-current {
+                    font-size: 15px;
+                    font-weight: 300;
+
+                    color: $color_default;
+                }
                 .NFI-filename {
                     padding: 0;
                     padding: 0 $size_padding !important;
@@ -762,12 +795,21 @@
                 position: relative;
                 &--select {
                     width: $size_input_h;
+
+                    font-size: 15px;
+                    font-weight: 300;
+
+                    color: $color_default;
                 }
                 .input--text,
                 .input--url,
                 .textarea {
                     width: 100%;
 
+                    font-size: 15px;
+                    font-weight: 300;
+
+                    color: $color_default;
                     border: 1px solid $color_grey_0;
                 }
                 .input {
@@ -813,10 +855,12 @@
             @extend %helper--flex--left--center;
         }
     }
+    .form__content + .form__actions {
+        margin-top: $size_btn_v;
+    }
 }
 .ticket-form {
-    .form-box + .form-box,
-    .form__content + .form__actions {
+    .form-box + .form-box {
         margin-top: $size_padding_medium;
     }
 }
@@ -832,16 +876,49 @@
             }
         }
     }
-    .form-box__section__head + .form-box__section__content {
+    .form-box__section__head + .form-box__section__content,
+    .form__section.error-message + .form__section {
         margin-top: 30px;
     }
-    .form__content + .form__actions {
-        margin-top: $size_btn_v;
+}
+
+.ticket-form,
+.ticket-details-comment-form {
+    @include breakpoint($breakpoint_tablet) {
+        .form {
+            &__fieldset {
+                .NFI-wrapper {
+                    .NFI-filename,
+                    .NFI-current {
+                        font-size: 13px;
+                    }
+                }
+                .field {
+                    &--select,
+                    &--input {
+                        font-size: 13px;
+                    }
+                    .input--text,
+                    .input--url,
+                    .textarea {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+    @include breakpoint($breakpoint_smartphone) {
+        .btn--submit {
+            width: 100%;
+        }
     }
 }
 
 .ticket-form {
     @include breakpoint($breakpoint_smartphone) {
+        .labels-choice {
+            width: 100%;
+        }
         .form {
             &__fieldset {
                 .NFI-wrapper {

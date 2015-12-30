@@ -3,6 +3,7 @@
 var express = require('express');
 var cors = require('cors');
 var app = express();
+var _ = require('lodash');
 
 var auth = require('./auth');
 var projects = require('./projects');
@@ -16,6 +17,17 @@ app.use(cors());
 
 app.post('/auth', function (req, res) {
   res.json(auth.token);
+});
+
+app.post('/projects/', function(req, res) {
+  res.json({
+    id: _.random(67, 400),
+    name: 'New Project Name'
+  });
+});
+
+app.put('/projects/:id', function(req, res) {
+  res.status(200).json({success: 'All good.'});
 });
 
 app.get('/projects/:id', function(req, res) {

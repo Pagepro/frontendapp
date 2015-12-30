@@ -9,28 +9,32 @@
 
     var init = function () {
       angular.element('.input--file').nicefileinput();
-      // angular.element('select').customSelect();
 
       // this may be a number or null, depending on whether user enters
       // the view from url or from clicking a link with parameter
       // if it's clicked, it simply adds additional feature of selecting propper template for him
       $scope.currentTemplateId = $stateParams.templateId;
+
       templatesService.getTemplates($stateParams.projectId)
-      // fixme - we should really start using different plugin for selects or get rid of it completly
       .success(function (templates) {
-        $scope.templates = _.map(templates, function (template) {
-          var selected;
-          if ($stateParams.templateId) {
-            selected = (template.id === $stateParams.templateId);
+        console.log(templates);
+        if (templates.length) {
+            $scope.templates = _.map(templates, function (template) {
+              var selected;
+              if ($stateParams.templateId) {
+                selected = (template.id === $stateParams.templateId);
+              }
+              return {
+                id: template.id,
+                name: template.name,
+                selected: selected
+              };
+            });
+          } else {
+            toaster.pop('error', 'No templates yet.', 'There are no templates yet added to the project you\'re trying to add a ticket to. Please, first add a template, then add a ticket to it.');
+            $scope.returnToProject();
           }
-          return {
-            id: template.id,
-            name: template.name,
-            selected: selected
-          };
         });
-        // angular.element('select').trigger('render');
-      });
     };
 
     init();

@@ -17,6 +17,11 @@
     this.getProject = function (projectId) {
       return $http.get(baseUrl + projectId + '/');
     };
+    this.createNewProject = function (projectName) {
+      return $http.post(baseUrl, {
+        name: projectName
+      });
+    };
   };
 
   projectsService.$inject = ['$http', 'appSettings'];

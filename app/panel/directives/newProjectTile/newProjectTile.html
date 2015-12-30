@@ -1,0 +1,18 @@
+<spinner name="new-project" group="sectional" on-loaded="init()"></spinner>
+<figure class="teaser action-teaser" ng-class="{active: isFocused}" ng-click="focusForm()" off-click="loseFocus()">
+    <div class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--plus"></span>
+        </div>
+        <div class="teaser__content">
+            <form class="project-action-form" ng-class="{active: isFocused}" ng-submit="createProject(project)">
+                <fieldset class="form__fieldset">
+                    <div class="field field--input" ng-click="checkFocus(isFocused, $event)">
+                        <label class="label" for="project-name">New Project</label>
+                        <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name" ng-model="project.name" autocomplete="off">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</figure>

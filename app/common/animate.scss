@@ -19,6 +19,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      &.c-sectional {
+        position: absolute;
+      }
     }
     .sk-folding-cube {
       margin: 20px auto;
