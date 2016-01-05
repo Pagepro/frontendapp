@@ -1,0 +1,3388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>kss-node Styleguide</title>
+    <meta name="description" content="" />
+    <meta name="generator" content="kss-node" />
+    <link rel="stylesheet" href="public/kss.css" />
+    <link rel="stylesheet" href="../../app/common/css/main.css" />
+    
+    <!--[if lt IE 9]>
+    <script src="public/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body id="kss-node">
+    <div class="kss-wrapper">
+      <div class="kss-sidebar">
+        <div class="kss-sidebar-inner">
+          <header class="kss-header">
+            <h1 class="kss-doc-title"><a href="./">Styleguide</a></h1>
+          </header>
+          <nav class="kss-nav">
+            <ul class="kss-menu" data-kss-ref="15">
+              <li class="kss-menu-item"><a href="./"><span class="kss-ref">0</span><span class="kss-name">Overview</span></a></li>
+              <li class="kss-menu-item"><a href="section-1.html"><span class="kss-ref">1</span><span class="kss-name">Fonts</span></a></li>
+              <li class="kss-menu-item"><a href="section-2.html"><span class="kss-ref">2</span><span class="kss-name">Colors</span></a></li>
+              <li class="kss-menu-item"><a href="section-3.html"><span class="kss-ref">3</span><span class="kss-name">Icons</span></a></li>
+              <li class="kss-menu-item"><a href="section-4.html"><span class="kss-ref">4</span><span class="kss-name">Breadcrumbs</span></a></li>
+              <li class="kss-menu-item"><a href="section-5.html"><span class="kss-ref">5</span><span class="kss-name">Tooltips</span></a></li>
+              <li class="kss-menu-item"><a href="section-6.html"><span class="kss-ref">6</span><span class="kss-name">Buttons</span></a></li>
+              <li class="kss-menu-item"><a href="section-7.html"><span class="kss-ref">7</span><span class="kss-name">Headers</span></a></li>
+              <li class="kss-menu-item"><a href="section-8.html"><span class="kss-ref">8</span><span class="kss-name">Labels</span></a></li>
+              <li class="kss-menu-item"><a href="section-9.html"><span class="kss-ref">9</span><span class="kss-name">Progress bar</span></a></li>
+              <li class="kss-menu-item"><a href="section-10.html"><span class="kss-ref">10</span><span class="kss-name">Update info</span></a></li>
+              <li class="kss-menu-item"><a href="section-11.html"><span class="kss-ref">11</span><span class="kss-name">Project headings</span></a></li>
+              <li class="kss-menu-item"><a href="section-12.html"><span class="kss-ref">12</span><span class="kss-name">Action tools</span></a></li>
+              <li class="kss-menu-item"><a href="section-13.html"><span class="kss-ref">13</span><span class="kss-name">User box</span></a></li>
+              <li class="kss-menu-item"><a href="section-14.html"><span class="kss-ref">14</span><span class="kss-name">Project-action form</span></a></li>
+              <li class="kss-menu-item"><a href="section-15.html"><span class="kss-ref">15</span><span class="kss-name">Teasers</span></a></li>
+              <li class="kss-menu-item"><a href="section-16.html"><span class="kss-ref">16</span><span class="kss-name">Files</span></a></li>
+              <li class="kss-menu-item"><a href="section-17.html"><span class="kss-ref">17</span><span class="kss-name">Pagination</span></a></li>
+              <li class="kss-menu-item"><a href="section-18.html"><span class="kss-ref">18</span><span class="kss-name">Project dates</span></a></li>
+              <li class="kss-menu-item"><a href="section-19.html"><span class="kss-ref">19</span><span class="kss-name">Project-box</span></a></li>
+              <li class="kss-menu-item"><a href="section-20.html"><span class="kss-ref">20</span><span class="kss-name">Project essential box</span></a></li>
+              <li class="kss-menu-item"><a href="section-21.html"><span class="kss-ref">21</span><span class="kss-name">Acces tools</span></a></li>
+              <li class="kss-menu-item"><a href="section-22.html"><span class="kss-ref">22</span><span class="kss-name">Display mode</span></a></li>
+              <li class="kss-menu-item"><a href="section-23.html"><span class="kss-ref">23</span><span class="kss-name">Upload box</span></a></li>
+              <li class="kss-menu-item"><a href="section-24.html"><span class="kss-ref">24</span><span class="kss-name">Comments</span></a></li>
+              <li class="kss-menu-item"><a href="section-25.html"><span class="kss-ref">25</span><span class="kss-name">Screenshots</span></a></li>
+              <li class="kss-menu-item"><a href="section-26.html"><span class="kss-ref">26</span><span class="kss-name">Tickets</span></a></li>
+            </ul>
+            <ul class="kss-menu-child">
+              <li class="kss-menu-item"><a href="#section-15.1"><span class="kss-ref">15.1</span><span class="kss-name">user action teaser - example 1</span></a></li>
+              <li class="kss-menu-item"><a href="#section-15.2"><span class="kss-ref">15.2</span><span class="kss-name">user action teaser - example 2</span></a></li>
+              <li class="kss-menu-item"><a href="#section-15.3"><span class="kss-ref">15.3</span><span class="kss-name">active user action teaser - example 1</span></a></li>
+              <li class="kss-menu-item"><a href="#section-15.4"><span class="kss-ref">15.4</span><span class="kss-name">active user action teaser - example 2</span></a></li>
+              <li class="kss-menu-item"><a href="#section-15.5"><span class="kss-ref">15.5</span><span class="kss-name">action teaser (upload in progress) - example 3</span></a></li>
+              <li class="kss-menu-item"><a href="#section-15.6"><span class="kss-ref">15.6</span><span class="kss-name">project teaser</span></a></li>
+              <li class="kss-menu-item"><a href="#section-15.7"><span class="kss-ref">15.7</span><span class="kss-name">template teaser - old version</span></a></li>
+              <li class="kss-menu-item"><a href="#section-15.8"><span class="kss-ref">15.8</span><span class="kss-name">template teaser - new version</span></a></li>
+              <li class="kss-menu-item"><a href="#section-15.9"><span class="kss-ref">15.9</span><span class="kss-name">template teaser witheout tools - new version</span></a></li>
+              <li class="kss-menu-item"><a href="#section-15.10"><span class="kss-ref">15.10</span><span class="kss-name">teasers list example 1 - old version</span></a></li>
+              <li class="kss-menu-item"><a href="#section-15.11"><span class="kss-ref">15.11</span><span class="kss-name">teasers list example 1 - new version</span></a></li>
+              <li class="kss-menu-item"><a href="#section-15.12"><span class="kss-ref">15.12</span><span class="kss-name">teasers list example 2</span></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="kss-content">
+        <article class="kss-article">
+          <section id="section-15" class="kss-section kss-depth-1">
+            <h1 class="kss-title"><span class="kss-ref">15</span> Teasers</h1>
+          </section>
+          <section id="section-15.1" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.1</span> user action teaser - example 1</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="teaser action-teaser js-teaser">
+    <div href="#" class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--plus"></span>
+        </div>
+        <div class="teaser__content">
+            <form class="project-action-form">
+                <fieldset class="form__fieldset">
+                    <div class="field field--input">
+                        <label class="label" for="project-name">New Project</label>
+                        <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.action-teaser</div>
+                  <div class="kss-modifier-description">
+                    action-teaser
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="teaser action-teaser js-teaser">
+    <div href="#" class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--plus"></span>
+        </div>
+        <div class="teaser__content">
+            <form class="project-action-form">
+                <fieldset class="form__fieldset">
+                    <div class="field field--input">
+                        <label class="label" for="project-name">New Project</label>
+                        <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;teaser action-teaser js-teaser&quot;&gt;
+    &lt;div href=&quot;#&quot; class=&quot;teaser__inner&quot;&gt;
+        &lt;div class=&quot;teaser__head&quot;&gt;
+            &lt;span class=&quot;icon icon--plus&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__content&quot;&gt;
+            &lt;form class=&quot;project-action-form&quot;&gt;
+                &lt;fieldset class=&quot;form__fieldset&quot;&gt;
+                    &lt;div class=&quot;field field--input&quot;&gt;
+                        &lt;label class=&quot;label&quot; for=&quot;project-name&quot;&gt;New Project&lt;/label&gt;
+                        &lt;input class=&quot;input input--text&quot; type=&quot;text&quot; placeholder=&quot;Project Name&quot; name=&quot;project-name&quot; id=&quot;project-name&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/fieldset&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section id="section-15.2" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.2</span> user action teaser - example 2</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="teaser action-teaser js-teaser">
+    <div href="#" class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--upload"></span>
+        </div>
+        <div class="teaser__content">
+            <form class="project-action-form">
+                <fieldset class="form__fieldset">
+                    <div class="field field--input">
+                        <label class="label" for="project-name">Upload Templates</label>
+                        <input type="file" name="add_file" class="input input--file">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.action-teaser</div>
+                  <div class="kss-modifier-description">
+                    action-teaser
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="teaser action-teaser js-teaser">
+    <div href="#" class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--upload"></span>
+        </div>
+        <div class="teaser__content">
+            <form class="project-action-form">
+                <fieldset class="form__fieldset">
+                    <div class="field field--input">
+                        <label class="label" for="project-name">Upload Templates</label>
+                        <input type="file" name="add_file" class="input input--file">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;teaser action-teaser js-teaser&quot;&gt;
+    &lt;div href=&quot;#&quot; class=&quot;teaser__inner&quot;&gt;
+        &lt;div class=&quot;teaser__head&quot;&gt;
+            &lt;span class=&quot;icon icon--upload&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__content&quot;&gt;
+            &lt;form class=&quot;project-action-form&quot;&gt;
+                &lt;fieldset class=&quot;form__fieldset&quot;&gt;
+                    &lt;div class=&quot;field field--input&quot;&gt;
+                        &lt;label class=&quot;label&quot; for=&quot;project-name&quot;&gt;Upload Templates&lt;/label&gt;
+                        &lt;input type=&quot;file&quot; name=&quot;add_file&quot; class=&quot;input input--file&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/fieldset&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section id="section-15.3" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.3</span> active user action teaser - example 1</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="teaser action-teaser js-teaser active">
+    <div href="#" class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--plus"></span>
+        </div>
+        <div class="teaser__content">
+            <form class="project-action-form active">
+                <fieldset class="form__fieldset">
+                    <div class="field field--input">
+                        <label class="label" for="project-name">New Project</label>
+                        <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.action-teaser</div>
+                  <div class="kss-modifier-description">
+                    active action-teaser (classes added by JS)
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="teaser action-teaser js-teaser active">
+    <div href="#" class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--plus"></span>
+        </div>
+        <div class="teaser__content">
+            <form class="project-action-form active">
+                <fieldset class="form__fieldset">
+                    <div class="field field--input">
+                        <label class="label" for="project-name">New Project</label>
+                        <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;teaser action-teaser js-teaser active&quot;&gt;
+    &lt;div href=&quot;#&quot; class=&quot;teaser__inner&quot;&gt;
+        &lt;div class=&quot;teaser__head&quot;&gt;
+            &lt;span class=&quot;icon icon--plus&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__content&quot;&gt;
+            &lt;form class=&quot;project-action-form active&quot;&gt;
+                &lt;fieldset class=&quot;form__fieldset&quot;&gt;
+                    &lt;div class=&quot;field field--input&quot;&gt;
+                        &lt;label class=&quot;label&quot; for=&quot;project-name&quot;&gt;New Project&lt;/label&gt;
+                        &lt;input class=&quot;input input--text&quot; type=&quot;text&quot; placeholder=&quot;Project Name&quot; name=&quot;project-name&quot; id=&quot;project-name&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/fieldset&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section id="section-15.4" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.4</span> active user action teaser - example 2</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="teaser action-teaser js-teaser active">
+    <div href="#" class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--upload"></span>
+        </div>
+        <div class="teaser__content">
+            <form class="project-action-form active">
+                <fieldset class="form__fieldset">
+                    <div class="field field--input">
+                        <label class="label" for="project-name">Upload Templates</label>
+                        <input type="file" name="add_file" class="input input--file">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.action-teaser</div>
+                  <div class="kss-modifier-description">
+                    active action-teaser (classes added by JS) + input file styles added by JS plugin
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="teaser action-teaser js-teaser active">
+    <div href="#" class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--upload"></span>
+        </div>
+        <div class="teaser__content">
+            <form class="project-action-form active">
+                <fieldset class="form__fieldset">
+                    <div class="field field--input">
+                        <label class="label" for="project-name">Upload Templates</label>
+                        <input type="file" name="add_file" class="input input--file">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;teaser action-teaser js-teaser active&quot;&gt;
+    &lt;div href=&quot;#&quot; class=&quot;teaser__inner&quot;&gt;
+        &lt;div class=&quot;teaser__head&quot;&gt;
+            &lt;span class=&quot;icon icon--upload&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__content&quot;&gt;
+            &lt;form class=&quot;project-action-form active&quot;&gt;
+                &lt;fieldset class=&quot;form__fieldset&quot;&gt;
+                    &lt;div class=&quot;field field--input&quot;&gt;
+                        &lt;label class=&quot;label&quot; for=&quot;project-name&quot;&gt;Upload Templates&lt;/label&gt;
+                        &lt;input type=&quot;file&quot; name=&quot;add_file&quot; class=&quot;input input--file&quot;&gt;
+                    &lt;/div&gt;
+                &lt;/fieldset&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section id="section-15.5" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.5</span> action teaser (upload in progress) - example 3</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="teaser action-teaser action-teaser--in-progress">
+    <div class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--plus"></span>
+        </div>
+        <div class="teaser__content">
+            <p class="title">
+                <span class="label">Upload Files</span>
+            </p>
+            <div class="progress-bar-wrapper progress-bar-wrapper--alt">
+                <progress class="progress-bar progress-bar--alt" value="35" max="100"></progress>
+                <p class="progress-bar-value">
+                    <span class="qty">35</span>
+                    <span>%</span>
+                </p>
+                <p class="progress-bar-file-size">
+                    <span class="size">4</span>
+                    <span class="unit">MB</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.action-teaser</div>
+                  <div class="kss-modifier-description">
+                    action-teaser--in-progress
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="teaser action-teaser action-teaser--in-progress">
+    <div class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--plus"></span>
+        </div>
+        <div class="teaser__content">
+            <p class="title">
+                <span class="label">Upload Files</span>
+            </p>
+            <div class="progress-bar-wrapper progress-bar-wrapper--alt">
+                <progress class="progress-bar progress-bar--alt" value="35" max="100"></progress>
+                <p class="progress-bar-value">
+                    <span class="qty">35</span>
+                    <span>%</span>
+                </p>
+                <p class="progress-bar-file-size">
+                    <span class="size">4</span>
+                    <span class="unit">MB</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;teaser action-teaser action-teaser--in-progress&quot;&gt;
+    &lt;div class=&quot;teaser__inner&quot;&gt;
+        &lt;div class=&quot;teaser__head&quot;&gt;
+            &lt;span class=&quot;icon icon--plus&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__content&quot;&gt;
+            &lt;p class=&quot;title&quot;&gt;
+                &lt;span class=&quot;label&quot;&gt;Upload Files&lt;/span&gt;
+            &lt;/p&gt;
+            &lt;div class=&quot;progress-bar-wrapper progress-bar-wrapper--alt&quot;&gt;
+                &lt;progress class=&quot;progress-bar progress-bar--alt&quot; value=&quot;35&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;
+                &lt;p class=&quot;progress-bar-value&quot;&gt;
+                    &lt;span class=&quot;qty&quot;&gt;35&lt;/span&gt;
+                    &lt;span&gt;%&lt;/span&gt;
+                &lt;/p&gt;
+                &lt;p class=&quot;progress-bar-file-size&quot;&gt;
+                    &lt;span class=&quot;size&quot;&gt;4&lt;/span&gt;
+                    &lt;span class=&quot;unit&quot;&gt;MB&lt;/span&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section id="section-15.6" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.6</span> project teaser</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="teaser project-teaser">
+    <a href="#" class="teaser__inner">
+        <div class="teaser__actions">
+            <div class="status-label status-label--new">
+                <p class="label">New</p>
+            </div>
+        </div>
+        <div class="teaser__head">
+            <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+        </div>
+        <div class="teaser__content">
+            <div class="update-info">
+                <div class="update-info__content">
+                    <span class="icon icon--clock"></span>
+                    <p class="label">
+                        Updated: <time datetime="2015-02-22T20:00:00+01:00">22.02.2015</time>
+                    </p>
+                </div>
+            </div>
+            <progress class="progress-bar" value="10" max="100"></progress>
+            <h3 class="project-title">
+                <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+            </h3>
+            <p class="templates-info">
+                <span class="qty">29</span>
+                <span class="label">templates</span>
+            </p>
+        </div>
+    </a>
+</div>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.project-teaser</div>
+                  <div class="kss-modifier-description">
+                    project teaser
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="teaser project-teaser">
+    <a href="#" class="teaser__inner">
+        <div class="teaser__actions">
+            <div class="status-label status-label--new">
+                <p class="label">New</p>
+            </div>
+        </div>
+        <div class="teaser__head">
+            <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+        </div>
+        <div class="teaser__content">
+            <div class="update-info">
+                <div class="update-info__content">
+                    <span class="icon icon--clock"></span>
+                    <p class="label">
+                        Updated: <time datetime="2015-02-22T20:00:00+01:00">22.02.2015</time>
+                    </p>
+                </div>
+            </div>
+            <progress class="progress-bar" value="10" max="100"></progress>
+            <h3 class="project-title">
+                <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+            </h3>
+            <p class="templates-info">
+                <span class="qty">29</span>
+                <span class="label">templates</span>
+            </p>
+        </div>
+    </a>
+</div>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;teaser project-teaser&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;teaser__inner&quot;&gt;
+        &lt;div class=&quot;teaser__actions&quot;&gt;
+            &lt;div class=&quot;status-label status-label--new&quot;&gt;
+                &lt;p class=&quot;label&quot;&gt;New&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__head&quot;&gt;
+            &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__content&quot;&gt;
+            &lt;div class=&quot;update-info&quot;&gt;
+                &lt;div class=&quot;update-info__content&quot;&gt;
+                    &lt;span class=&quot;icon icon--clock&quot;&gt;&lt;/span&gt;
+                    &lt;p class=&quot;label&quot;&gt;
+                        Updated: &lt;time datetime=&quot;2015-02-22T20:00:00+01:00&quot;&gt;22.02.2015&lt;/time&gt;
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;progress class=&quot;progress-bar&quot; value=&quot;10&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;
+            &lt;h3 class=&quot;project-title&quot;&gt;
+                &lt;span class=&quot;label&quot;&gt;169_INNE_FAIRPAY_Mailing systemowy&lt;/span&gt;
+            &lt;/h3&gt;
+            &lt;p class=&quot;templates-info&quot;&gt;
+                &lt;span class=&quot;qty&quot;&gt;29&lt;/span&gt;
+                &lt;span class=&quot;label&quot;&gt;templates&lt;/span&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section id="section-15.7" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.7</span> template teaser - old version</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="teaser template-teaser">
+    <div class="teaser__inner">
+        <div class="teaser__actions">
+            <div class="action-tool" aria-label="drag and drop this template">
+                <a href="#" target="_blank" class="action-tool__content">
+                    <span class="icon icon--resize"></span>
+                </a>
+                 <div class="action-tool__info">
+                     <div class="tooltip">
+                         <h4 class="label">Drag and drop</h4>
+                     </div>
+                 </div>
+            </div>
+            <div class="status-label status-label--finished">
+                <p class="label">finished</p>
+            </div>
+        </div>
+        <div class="teaser__head">
+            <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+        </div>
+        <div class="teaser__content">
+            <h3 class="project-title">
+                <span class="label">Contact</span>
+            </h3>
+             <ul class="action-tools-list">
+                 <li class="action-tools-list__item">
+                     <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                         <a href="#" target="_blank" class="action-tool__content">
+                             <span class="icon icon--file--image"></span>
+                         </a>
+                         <div class="action-tool__info">
+                             <div class="tooltip tooltip--top">
+                                 <h4 class="label">Open template</h4>
+                             </div>
+                         </div>
+                     </div>
+                 </li>
+                 <li class="action-tools-list__item">
+                     <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                         <a href="#" target="_blank" class="action-tool__content">
+                             <span class="icon icon--file--code"></span>
+                         </a>
+                         <div class="action-tool__info">
+                             <div class="tooltip tooltip--top">
+                                 <h4 class="label">Open page</h4>
+                             </div>
+                         </div>
+                     </div>
+                 </li>
+                 <li class="action-tools-list__item">
+                     <div class="action-tool" aria-label="edit template">
+                         <a href="#" target="_blank" class="action-tool__content">
+                             <span class="icon icon--pencil"></span>
+                         </a>
+                         <div class="action-tool__info">
+                             <div class="tooltip tooltip--top">
+                                 <h4 class="label">Edit template</h4>
+                             </div>
+                         </div>
+                     </div>
+                 </li>
+                 <li class="action-tools-list__item">
+                     <div class="action-tool" aria-label="delete template">
+                         <a href="#" target="_blank" class="action-tool__content">
+                             <span class="icon icon--trash"></span>
+                         </a>
+                         <div class="action-tool__info">
+                             <div class="tooltip tooltip--top">
+                                 <h4 class="label">Delete template</h4>
+                             </div>
+                         </div>
+                     </div>
+                 </li>
+             </ul>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.template-teaser</div>
+                  <div class="kss-modifier-description">
+                    template teaser
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="teaser template-teaser">
+    <div class="teaser__inner">
+        <div class="teaser__actions">
+            <div class="action-tool" aria-label="drag and drop this template">
+                <a href="#" target="_blank" class="action-tool__content">
+                    <span class="icon icon--resize"></span>
+                </a>
+                 <div class="action-tool__info">
+                     <div class="tooltip">
+                         <h4 class="label">Drag and drop</h4>
+                     </div>
+                 </div>
+            </div>
+            <div class="status-label status-label--finished">
+                <p class="label">finished</p>
+            </div>
+        </div>
+        <div class="teaser__head">
+            <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+        </div>
+        <div class="teaser__content">
+            <h3 class="project-title">
+                <span class="label">Contact</span>
+            </h3>
+             <ul class="action-tools-list">
+                 <li class="action-tools-list__item">
+                     <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                         <a href="#" target="_blank" class="action-tool__content">
+                             <span class="icon icon--file--image"></span>
+                         </a>
+                         <div class="action-tool__info">
+                             <div class="tooltip tooltip--top">
+                                 <h4 class="label">Open template</h4>
+                             </div>
+                         </div>
+                     </div>
+                 </li>
+                 <li class="action-tools-list__item">
+                     <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                         <a href="#" target="_blank" class="action-tool__content">
+                             <span class="icon icon--file--code"></span>
+                         </a>
+                         <div class="action-tool__info">
+                             <div class="tooltip tooltip--top">
+                                 <h4 class="label">Open page</h4>
+                             </div>
+                         </div>
+                     </div>
+                 </li>
+                 <li class="action-tools-list__item">
+                     <div class="action-tool" aria-label="edit template">
+                         <a href="#" target="_blank" class="action-tool__content">
+                             <span class="icon icon--pencil"></span>
+                         </a>
+                         <div class="action-tool__info">
+                             <div class="tooltip tooltip--top">
+                                 <h4 class="label">Edit template</h4>
+                             </div>
+                         </div>
+                     </div>
+                 </li>
+                 <li class="action-tools-list__item">
+                     <div class="action-tool" aria-label="delete template">
+                         <a href="#" target="_blank" class="action-tool__content">
+                             <span class="icon icon--trash"></span>
+                         </a>
+                         <div class="action-tool__info">
+                             <div class="tooltip tooltip--top">
+                                 <h4 class="label">Delete template</h4>
+                             </div>
+                         </div>
+                     </div>
+                 </li>
+             </ul>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;teaser template-teaser&quot;&gt;
+    &lt;div class=&quot;teaser__inner&quot;&gt;
+        &lt;div class=&quot;teaser__actions&quot;&gt;
+            &lt;div class=&quot;action-tool&quot; aria-label=&quot;drag and drop this template&quot;&gt;
+                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                    &lt;span class=&quot;icon icon--resize&quot;&gt;&lt;/span&gt;
+                &lt;/a&gt;
+                 &lt;div class=&quot;action-tool__info&quot;&gt;
+                     &lt;div class=&quot;tooltip&quot;&gt;
+                         &lt;h4 class=&quot;label&quot;&gt;Drag and drop&lt;/h4&gt;
+                     &lt;/div&gt;
+                 &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;status-label status-label--finished&quot;&gt;
+                &lt;p class=&quot;label&quot;&gt;finished&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__head&quot;&gt;
+            &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__content&quot;&gt;
+            &lt;h3 class=&quot;project-title&quot;&gt;
+                &lt;span class=&quot;label&quot;&gt;Contact&lt;/span&gt;
+            &lt;/h3&gt;
+             &lt;ul class=&quot;action-tools-list&quot;&gt;
+                 &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                     &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                         &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                             &lt;span class=&quot;icon icon--file--image&quot;&gt;&lt;/span&gt;
+                         &lt;/a&gt;
+                         &lt;div class=&quot;action-tool__info&quot;&gt;
+                             &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                 &lt;h4 class=&quot;label&quot;&gt;Open template&lt;/h4&gt;
+                             &lt;/div&gt;
+                         &lt;/div&gt;
+                     &lt;/div&gt;
+                 &lt;/li&gt;
+                 &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                     &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open html page&quot;&gt;
+                         &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                             &lt;span class=&quot;icon icon--file--code&quot;&gt;&lt;/span&gt;
+                         &lt;/a&gt;
+                         &lt;div class=&quot;action-tool__info&quot;&gt;
+                             &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                 &lt;h4 class=&quot;label&quot;&gt;Open page&lt;/h4&gt;
+                             &lt;/div&gt;
+                         &lt;/div&gt;
+                     &lt;/div&gt;
+                 &lt;/li&gt;
+                 &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                     &lt;div class=&quot;action-tool&quot; aria-label=&quot;edit template&quot;&gt;
+                         &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                             &lt;span class=&quot;icon icon--pencil&quot;&gt;&lt;/span&gt;
+                         &lt;/a&gt;
+                         &lt;div class=&quot;action-tool__info&quot;&gt;
+                             &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                 &lt;h4 class=&quot;label&quot;&gt;Edit template&lt;/h4&gt;
+                             &lt;/div&gt;
+                         &lt;/div&gt;
+                     &lt;/div&gt;
+                 &lt;/li&gt;
+                 &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                     &lt;div class=&quot;action-tool&quot; aria-label=&quot;delete template&quot;&gt;
+                         &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                             &lt;span class=&quot;icon icon--trash&quot;&gt;&lt;/span&gt;
+                         &lt;/a&gt;
+                         &lt;div class=&quot;action-tool__info&quot;&gt;
+                             &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                 &lt;h4 class=&quot;label&quot;&gt;Delete template&lt;/h4&gt;
+                             &lt;/div&gt;
+                         &lt;/div&gt;
+                     &lt;/div&gt;
+                 &lt;/li&gt;
+             &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section id="section-15.8" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.8</span> template teaser - new version</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="teaser template-teaser">
+    <div class="teaser__inner">
+        <div class="teaser__actions">
+            <div class="status-label status-label--qa">
+                <p class="label">Q&amp;A</p>
+            </div>
+        </div>
+        <div class="teaser__head">
+            <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+            <ul class="action-tools-list">
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--file--image"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip ">
+                                <h4 class="label">JPG</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--file--code"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip">
+                                <h4 class="label">HTML</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="teaser__content">
+            <h3 class="project-title">
+                <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+            </h3>
+            <ul class="action-tools-list">
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--bug"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip tooltip--top">
+                                <h4 class="label">Submit bug</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--resize"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip tooltip--top">
+                                <h4 class="label">Drag and drop</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-tools-list__item">
+                    <div class="action-tool  action-tool--highlighted" aria-label="edit template">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--pencil"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip tooltip--top">
+                                <h4 class="label">Edit</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-tools-list__item">
+                    <div class="action-tool  action-tool--highlighted" aria-label="delete template">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--trash"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip tooltip--top">
+                                <h4 class="label">Delete</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.template-teaser</div>
+                  <div class="kss-modifier-description">
+                    template teaser
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="teaser template-teaser">
+    <div class="teaser__inner">
+        <div class="teaser__actions">
+            <div class="status-label status-label--qa">
+                <p class="label">Q&amp;A</p>
+            </div>
+        </div>
+        <div class="teaser__head">
+            <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+            <ul class="action-tools-list">
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--file--image"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip ">
+                                <h4 class="label">JPG</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--file--code"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip">
+                                <h4 class="label">HTML</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="teaser__content">
+            <h3 class="project-title">
+                <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+            </h3>
+            <ul class="action-tools-list">
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--bug"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip tooltip--top">
+                                <h4 class="label">Submit bug</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--resize"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip tooltip--top">
+                                <h4 class="label">Drag and drop</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-tools-list__item">
+                    <div class="action-tool  action-tool--highlighted" aria-label="edit template">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--pencil"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip tooltip--top">
+                                <h4 class="label">Edit</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-tools-list__item">
+                    <div class="action-tool  action-tool--highlighted" aria-label="delete template">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--trash"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip tooltip--top">
+                                <h4 class="label">Delete</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;teaser template-teaser&quot;&gt;
+    &lt;div class=&quot;teaser__inner&quot;&gt;
+        &lt;div class=&quot;teaser__actions&quot;&gt;
+            &lt;div class=&quot;status-label status-label--qa&quot;&gt;
+                &lt;p class=&quot;label&quot;&gt;Q&amp;amp;A&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__head&quot;&gt;
+            &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+            &lt;ul class=&quot;action-tools-list&quot;&gt;
+                &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                    &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                        &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--file--image&quot;&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;action-tool__info&quot;&gt;
+                            &lt;div class=&quot;tooltip &quot;&gt;
+                                &lt;h4 class=&quot;label&quot;&gt;JPG&lt;/h4&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                    &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open html page&quot;&gt;
+                        &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--file--code&quot;&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;action-tool__info&quot;&gt;
+                            &lt;div class=&quot;tooltip&quot;&gt;
+                                &lt;h4 class=&quot;label&quot;&gt;HTML&lt;/h4&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__content&quot;&gt;
+            &lt;h3 class=&quot;project-title&quot;&gt;
+                &lt;span class=&quot;label&quot;&gt;169_INNE_FAIRPAY_Mailing systemowy&lt;/span&gt;
+            &lt;/h3&gt;
+            &lt;ul class=&quot;action-tools-list&quot;&gt;
+                &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                    &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                        &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--bug&quot;&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;action-tool__info&quot;&gt;
+                            &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                &lt;h4 class=&quot;label&quot;&gt;Submit bug&lt;/h4&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                    &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open html page&quot;&gt;
+                        &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--resize&quot;&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;action-tool__info&quot;&gt;
+                            &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                &lt;h4 class=&quot;label&quot;&gt;Drag and drop&lt;/h4&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                    &lt;div class=&quot;action-tool  action-tool--highlighted&quot; aria-label=&quot;edit template&quot;&gt;
+                        &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--pencil&quot;&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;action-tool__info&quot;&gt;
+                            &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                &lt;h4 class=&quot;label&quot;&gt;Edit&lt;/h4&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                    &lt;div class=&quot;action-tool  action-tool--highlighted&quot; aria-label=&quot;delete template&quot;&gt;
+                        &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--trash&quot;&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;action-tool__info&quot;&gt;
+                            &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                &lt;h4 class=&quot;label&quot;&gt;Delete&lt;/h4&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section id="section-15.9" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.9</span> template teaser witheout tools - new version</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <div class="teaser template-teaser template-teaser--alt">
+    <div class="teaser__inner">
+        <div class="teaser__actions">
+            <div class="status-label status-label--new">
+                <p class="label">New</p>
+            </div>
+        </div>
+        <div class="teaser__head">
+            <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+            <ul class="action-tools-list">
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--file--image"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip ">
+                                <h4 class="label">JPG</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--file--code"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip">
+                                <h4 class="label">HTML</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="teaser__content">
+            <h3 class="project-title">
+                <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+            </h3>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.template-teaser--alt</div>
+                  <div class="kss-modifier-description">
+                    template teaser witheout tools
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <div class="teaser template-teaser template-teaser--alt">
+    <div class="teaser__inner">
+        <div class="teaser__actions">
+            <div class="status-label status-label--new">
+                <p class="label">New</p>
+            </div>
+        </div>
+        <div class="teaser__head">
+            <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+            <ul class="action-tools-list">
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--file--image"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip ">
+                                <h4 class="label">JPG</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="action-tools-list__item">
+                    <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--file--code"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip">
+                                <h4 class="label">HTML</h4>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="teaser__content">
+            <h3 class="project-title">
+                <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+            </h3>
+        </div>
+    </div>
+</div>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;div class=&quot;teaser template-teaser template-teaser--alt&quot;&gt;
+    &lt;div class=&quot;teaser__inner&quot;&gt;
+        &lt;div class=&quot;teaser__actions&quot;&gt;
+            &lt;div class=&quot;status-label status-label--new&quot;&gt;
+                &lt;p class=&quot;label&quot;&gt;New&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__head&quot;&gt;
+            &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+            &lt;ul class=&quot;action-tools-list&quot;&gt;
+                &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                    &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                        &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--file--image&quot;&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;action-tool__info&quot;&gt;
+                            &lt;div class=&quot;tooltip &quot;&gt;
+                                &lt;h4 class=&quot;label&quot;&gt;JPG&lt;/h4&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+                &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                    &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open html page&quot;&gt;
+                        &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--file--code&quot;&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;action-tool__info&quot;&gt;
+                            &lt;div class=&quot;tooltip&quot;&gt;
+                                &lt;h4 class=&quot;label&quot;&gt;HTML&lt;/h4&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;teaser__content&quot;&gt;
+            &lt;h3 class=&quot;project-title&quot;&gt;
+                &lt;span class=&quot;label&quot;&gt;169_INNE_FAIRPAY_Mailing systemowy&lt;/span&gt;
+            &lt;/h3&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section id="section-15.10" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.10</span> teasers list example 1 - old version</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <ul class="teasers-list">
+    <li class="teasers-list__item">
+        <div class="teaser action-teaser js-teaser">
+            <div href="#" class="teaser__inner">
+                <div class="teaser__head">
+                    <span class="icon icon--upload"></span>
+                </div>
+                <div class="teaser__content">
+                    <form class="project-action-form">
+                        <fieldset class="form__fieldset">
+                            <div class="field field--input">
+                                <label class="label" for="project-name">Upload Templates</label>
+                                <input type="file" name="add_file" class="input input--file">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="action-tool" aria-label="drag and drop this template">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--resize"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip">
+                                <h4 class="label">Drag and drop</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-label status-label--new">
+                        <p class="label">New</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open page</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="action-tool" aria-label="drag and drop this template">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--resize"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip">
+                                <h4 class="label">Drag and drop</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-label status-label--in-progress">
+                        <p class="label">in progress</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">Home Page</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open page</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="action-tool" aria-label="drag and drop this template">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--resize"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip">
+                                <h4 class="label">Drag and drop</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-label status-label--finished">
+                        <p class="label">finished</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">Contact</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open page</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.teasers-list</div>
+                  <div class="kss-modifier-description">
+                    teasers list
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <ul class="teasers-list">
+    <li class="teasers-list__item">
+        <div class="teaser action-teaser js-teaser">
+            <div href="#" class="teaser__inner">
+                <div class="teaser__head">
+                    <span class="icon icon--upload"></span>
+                </div>
+                <div class="teaser__content">
+                    <form class="project-action-form">
+                        <fieldset class="form__fieldset">
+                            <div class="field field--input">
+                                <label class="label" for="project-name">Upload Templates</label>
+                                <input type="file" name="add_file" class="input input--file">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="action-tool" aria-label="drag and drop this template">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--resize"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip">
+                                <h4 class="label">Drag and drop</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-label status-label--new">
+                        <p class="label">New</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open page</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="action-tool" aria-label="drag and drop this template">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--resize"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip">
+                                <h4 class="label">Drag and drop</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-label status-label--in-progress">
+                        <p class="label">in progress</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">Home Page</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open page</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="action-tool" aria-label="drag and drop this template">
+                        <a href="#" target="_blank" class="action-tool__content">
+                            <span class="icon icon--resize"></span>
+                        </a>
+                        <div class="action-tool__info">
+                            <div class="tooltip">
+                                <h4 class="label">Drag and drop</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="status-label status-label--finished">
+                        <p class="label">finished</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">Contact</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Open page</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete template</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;ul class=&quot;teasers-list&quot;&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser action-teaser js-teaser&quot;&gt;
+            &lt;div href=&quot;#&quot; class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;span class=&quot;icon icon--upload&quot;&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;form class=&quot;project-action-form&quot;&gt;
+                        &lt;fieldset class=&quot;form__fieldset&quot;&gt;
+                            &lt;div class=&quot;field field--input&quot;&gt;
+                                &lt;label class=&quot;label&quot; for=&quot;project-name&quot;&gt;Upload Templates&lt;/label&gt;
+                                &lt;input type=&quot;file&quot; name=&quot;add_file&quot; class=&quot;input input--file&quot;&gt;
+                            &lt;/div&gt;
+                        &lt;/fieldset&gt;
+                    &lt;/form&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser template-teaser&quot;&gt;
+            &lt;div class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__actions&quot;&gt;
+                    &lt;div class=&quot;action-tool&quot; aria-label=&quot;drag and drop this template&quot;&gt;
+                        &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--resize&quot;&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;action-tool__info&quot;&gt;
+                            &lt;div class=&quot;tooltip&quot;&gt;
+                                &lt;h4 class=&quot;label&quot;&gt;Drag and drop&lt;/h4&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;status-label status-label--new&quot;&gt;
+                        &lt;p class=&quot;label&quot;&gt;New&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;h3 class=&quot;project-title&quot;&gt;
+                        &lt;span class=&quot;label&quot;&gt;169_INNE_FAIRPAY_Mailing systemowy&lt;/span&gt;
+                    &lt;/h3&gt;
+                    &lt;ul class=&quot;action-tools-list&quot;&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--image&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Open template&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open html page&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--code&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Open page&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool&quot; aria-label=&quot;edit template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--pencil&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Edit template&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool&quot; aria-label=&quot;delete template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--trash&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Delete template&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser template-teaser&quot;&gt;
+            &lt;div class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__actions&quot;&gt;
+                    &lt;div class=&quot;action-tool&quot; aria-label=&quot;drag and drop this template&quot;&gt;
+                        &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--resize&quot;&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;action-tool__info&quot;&gt;
+                            &lt;div class=&quot;tooltip&quot;&gt;
+                                &lt;h4 class=&quot;label&quot;&gt;Drag and drop&lt;/h4&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;status-label status-label--in-progress&quot;&gt;
+                        &lt;p class=&quot;label&quot;&gt;in progress&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;h3 class=&quot;project-title&quot;&gt;
+                        &lt;span class=&quot;label&quot;&gt;Home Page&lt;/span&gt;
+                    &lt;/h3&gt;
+                    &lt;ul class=&quot;action-tools-list&quot;&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--image&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Open template&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open html page&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--code&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Open page&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool&quot; aria-label=&quot;edit template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--pencil&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Edit template&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool&quot; aria-label=&quot;delete template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--trash&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Delete template&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser template-teaser&quot;&gt;
+            &lt;div class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__actions&quot;&gt;
+                    &lt;div class=&quot;action-tool&quot; aria-label=&quot;drag and drop this template&quot;&gt;
+                        &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--resize&quot;&gt;&lt;/span&gt;
+                        &lt;/a&gt;
+                        &lt;div class=&quot;action-tool__info&quot;&gt;
+                            &lt;div class=&quot;tooltip&quot;&gt;
+                                &lt;h4 class=&quot;label&quot;&gt;Drag and drop&lt;/h4&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;status-label status-label--finished&quot;&gt;
+                        &lt;p class=&quot;label&quot;&gt;finished&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;h3 class=&quot;project-title&quot;&gt;
+                        &lt;span class=&quot;label&quot;&gt;Contact&lt;/span&gt;
+                    &lt;/h3&gt;
+                    &lt;ul class=&quot;action-tools-list&quot;&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--image&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Open template&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open html page&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--code&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Open page&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool&quot; aria-label=&quot;edit template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--pencil&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Edit template&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool&quot; aria-label=&quot;delete template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--trash&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Delete template&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section id="section-15.11" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.11</span> teasers list example 1 - new version</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <ul class="teasers-list">
+    <li class="teasers-list__item">
+        <div class="teaser action-teaser js-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__head">
+                    <span class="icon icon--upload"></span>
+                </div>
+                <div class="teaser__content">
+                    <form class="project-action-form">
+                        <fieldset class="form__fieldset">
+                            <div class="field field--input">
+                                <label class="label" for="project-name">Upload Templates</label>
+                                <input type="file" name="add_file" class="input input--file" id="project-name">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--new">
+                        <p class="label">New</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip ">
+                                        <h4 class="label">JPG</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip">
+                                        <h4 class="label">HTML</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--bug"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Submit bug</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted action-tool--drag-and-drop" aria-label="drag and drop this template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--resize"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Drag and drop</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--in-progress">
+                        <p class="label">in progress</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip ">
+                                        <h4 class="label">JPG</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip">
+                                        <h4 class="label">HTML</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">Home Page</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--bug"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Submit bug</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted action-tool--drag-and-drop" aria-label="drag and drop this template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--resize"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Drag and drop</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--finished">
+                        <p class="label">finished</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip ">
+                                        <h4 class="label">JPG</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip">
+                                        <h4 class="label">HTML</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">Contact</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--bug"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Submit bug</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted action-tool--drag-and-drop" aria-label="drag and drop this template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--resize"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Drag and drop</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.teasers-list</div>
+                  <div class="kss-modifier-description">
+                    teasers list
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <ul class="teasers-list">
+    <li class="teasers-list__item">
+        <div class="teaser action-teaser js-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__head">
+                    <span class="icon icon--upload"></span>
+                </div>
+                <div class="teaser__content">
+                    <form class="project-action-form">
+                        <fieldset class="form__fieldset">
+                            <div class="field field--input">
+                                <label class="label" for="project-name">Upload Templates</label>
+                                <input type="file" name="add_file" class="input input--file" id="project-name">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--new">
+                        <p class="label">New</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip ">
+                                        <h4 class="label">JPG</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip">
+                                        <h4 class="label">HTML</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--bug"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Submit bug</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted action-tool--drag-and-drop" aria-label="drag and drop this template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--resize"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Drag and drop</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--in-progress">
+                        <p class="label">in progress</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip ">
+                                        <h4 class="label">JPG</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip">
+                                        <h4 class="label">HTML</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">Home Page</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--bug"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Submit bug</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted action-tool--drag-and-drop" aria-label="drag and drop this template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--resize"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Drag and drop</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser template-teaser">
+            <div class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--finished">
+                        <p class="label">finished</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--image"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip ">
+                                        <h4 class="label">JPG</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open html page">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--file--code"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip">
+                                        <h4 class="label">HTML</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="teaser__content">
+                    <h3 class="project-title">
+                        <span class="label">Contact</span>
+                    </h3>
+                    <ul class="action-tools-list">
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="open template picture">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--bug"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Submit bug</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted action-tool--drag-and-drop" aria-label="drag and drop this template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--resize"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Drag and drop</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="edit template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--pencil"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Edit</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="action-tools-list__item">
+                            <div class="action-tool action-tool--highlighted" aria-label="delete template">
+                                <a href="#" target="_blank" class="action-tool__content">
+                                    <span class="icon icon--trash"></span>
+                                </a>
+                                <div class="action-tool__info">
+                                    <div class="tooltip tooltip--top">
+                                        <h4 class="label">Delete</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;ul class=&quot;teasers-list&quot;&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser action-teaser js-teaser&quot;&gt;
+            &lt;div class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;span class=&quot;icon icon--upload&quot;&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;form class=&quot;project-action-form&quot;&gt;
+                        &lt;fieldset class=&quot;form__fieldset&quot;&gt;
+                            &lt;div class=&quot;field field--input&quot;&gt;
+                                &lt;label class=&quot;label&quot; for=&quot;project-name&quot;&gt;Upload Templates&lt;/label&gt;
+                                &lt;input type=&quot;file&quot; name=&quot;add_file&quot; class=&quot;input input--file&quot; id=&quot;project-name&quot;&gt;
+                            &lt;/div&gt;
+                        &lt;/fieldset&gt;
+                    &lt;/form&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser template-teaser&quot;&gt;
+            &lt;div class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__actions&quot;&gt;
+                    &lt;div class=&quot;status-label status-label--new&quot;&gt;
+                        &lt;p class=&quot;label&quot;&gt;New&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+                    &lt;ul class=&quot;action-tools-list&quot;&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--image&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip &quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;JPG&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open html page&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--code&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;HTML&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;h3 class=&quot;project-title&quot;&gt;
+                        &lt;span class=&quot;label&quot;&gt;169_INNE_FAIRPAY_Mailing systemowy&lt;/span&gt;
+                    &lt;/h3&gt;
+                    &lt;ul class=&quot;action-tools-list&quot;&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--bug&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Submit bug&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted action-tool--drag-and-drop&quot; aria-label=&quot;drag and drop this template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--resize&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Drag and drop&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;edit template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--pencil&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Edit&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;delete template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--trash&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Delete&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser template-teaser&quot;&gt;
+            &lt;div class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__actions&quot;&gt;
+                    &lt;div class=&quot;status-label status-label--in-progress&quot;&gt;
+                        &lt;p class=&quot;label&quot;&gt;in progress&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+                    &lt;ul class=&quot;action-tools-list&quot;&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--image&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip &quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;JPG&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open html page&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--code&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;HTML&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;h3 class=&quot;project-title&quot;&gt;
+                        &lt;span class=&quot;label&quot;&gt;Home Page&lt;/span&gt;
+                    &lt;/h3&gt;
+                    &lt;ul class=&quot;action-tools-list&quot;&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--bug&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Submit bug&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted action-tool--drag-and-drop&quot; aria-label=&quot;drag and drop this template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--resize&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Drag and drop&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;edit template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--pencil&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Edit&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;delete template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--trash&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Delete&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser template-teaser&quot;&gt;
+            &lt;div class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__actions&quot;&gt;
+                    &lt;div class=&quot;status-label status-label--finished&quot;&gt;
+                        &lt;p class=&quot;label&quot;&gt;finished&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+                    &lt;ul class=&quot;action-tools-list&quot;&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--image&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip &quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;JPG&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open html page&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--file--code&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;HTML&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;h3 class=&quot;project-title&quot;&gt;
+                        &lt;span class=&quot;label&quot;&gt;Contact&lt;/span&gt;
+                    &lt;/h3&gt;
+                    &lt;ul class=&quot;action-tools-list&quot;&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;open template picture&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--bug&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Submit bug&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted action-tool--drag-and-drop&quot; aria-label=&quot;drag and drop this template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--resize&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Drag and drop&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;edit template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--pencil&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Edit&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                        &lt;li class=&quot;action-tools-list__item&quot;&gt;
+                            &lt;div class=&quot;action-tool action-tool--highlighted&quot; aria-label=&quot;delete template&quot;&gt;
+                                &lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;action-tool__content&quot;&gt;
+                                    &lt;span class=&quot;icon icon--trash&quot;&gt;&lt;/span&gt;
+                                &lt;/a&gt;
+                                &lt;div class=&quot;action-tool__info&quot;&gt;
+                                    &lt;div class=&quot;tooltip tooltip--top&quot;&gt;
+                                        &lt;h4 class=&quot;label&quot;&gt;Delete&lt;/h4&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+          <section id="section-15.12" class="kss-section kss-depth-2">
+            <h1 class="kss-title"><span class="kss-ref">15.12</span> teasers list example 2</h1>
+            <div class="kss-modifier-block">
+              <div class="kss-modifier kss-modifier-original">
+                <div class="kss-modifier-example">
+                  <ul class="teasers-list">
+    <li class="teasers-list__item">
+        <div class="teaser action-teaser js-teaser">
+            <div href="#" class="teaser__inner">
+                <div class="teaser__head">
+                    <span class="icon icon--plus"></span>
+                </div>
+                <div class="teaser__content">
+                    <form class="project-action-form">
+                        <fieldset class="form__fieldset">
+                            <div class="field field--input">
+                                <label class="label" for="project-name">New Project</label>
+                                <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser project-teaser">
+            <a href="/project-details.html" class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--new">
+                        <p class="label">New</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <div class="update-info">
+                        <div class="update-info__content">
+                            <span class="icon icon--clock"></span>
+                            <p class="label">
+                                Updated: <time datetime="2015-02-22T20:00:00+01:00">22.02.2015</time>
+                            </p>
+                        </div>
+                    </div>
+                    <progress class="progress-bar" value="10" max="100"></progress>
+                    <h3 class="project-title">
+                        <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+                    </h3>
+                    <p class="templates-info">
+                        <span class="qty">29</span>
+                        <span class="label">templates</span>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser project-teaser">
+            <a href="/project-details.html" class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--in-progress">
+                        <p class="label">in progress</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <div class="update-info">
+                        <div class="update-info__content">
+                            <span class="icon icon--clock"></span>
+                            <p class="label">
+                                Updated: <time datetime="2015-02-22T20:00:00+01:00">22.02.2015</time>
+                            </p>
+                        </div>
+                    </div>
+                    <progress class="progress-bar" value="60" max="100"></progress>
+                    <h3 class="project-title">
+                        <span class="label">Home Page</span>
+                    </h3>
+                    <p class="templates-info">
+                        <span class="qty">29</span>
+                        <span class="label">templates</span>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser project-teaser">
+            <a href="/project-details.html" class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--finished">
+                        <p class="label">finished</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <div class="update-info">
+                        <div class="update-info__content">
+                            <span class="icon icon--clock"></span>
+                            <p class="label">
+                                Updated: <time datetime="2015-02-22T20:00:00+01:00">22.02.2015</time>
+                            </p>
+                        </div>
+                    </div>
+                    <progress class="progress-bar" value="100" max="100"></progress>
+                    <h3 class="project-title">
+                        <span class="label">Contact</span>
+                    </h3>
+                    <p class="templates-info">
+                        <span class="qty">29</span>
+                        <span class="label">templates</span>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </li>
+</ul>
+                </div>
+              </div>
+              <div class="kss-modifier">
+                <div class="kss-modifier-head">
+                  <div class="kss-modifier-name">.teasers-list</div>
+                  <div class="kss-modifier-description">
+                    teasers list
+                  </div>
+                </div>
+                <div class="kss-modifier-example">
+                  <ul class="teasers-list">
+    <li class="teasers-list__item">
+        <div class="teaser action-teaser js-teaser">
+            <div href="#" class="teaser__inner">
+                <div class="teaser__head">
+                    <span class="icon icon--plus"></span>
+                </div>
+                <div class="teaser__content">
+                    <form class="project-action-form">
+                        <fieldset class="form__fieldset">
+                            <div class="field field--input">
+                                <label class="label" for="project-name">New Project</label>
+                                <input class="input input--text" type="text" placeholder="Project Name" name="project-name" id="project-name">
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser project-teaser">
+            <a href="/project-details.html" class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--new">
+                        <p class="label">New</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <div class="update-info">
+                        <div class="update-info__content">
+                            <span class="icon icon--clock"></span>
+                            <p class="label">
+                                Updated: <time datetime="2015-02-22T20:00:00+01:00">22.02.2015</time>
+                            </p>
+                        </div>
+                    </div>
+                    <progress class="progress-bar" value="10" max="100"></progress>
+                    <h3 class="project-title">
+                        <span class="label">169_INNE_FAIRPAY_Mailing systemowy</span>
+                    </h3>
+                    <p class="templates-info">
+                        <span class="qty">29</span>
+                        <span class="label">templates</span>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser project-teaser">
+            <a href="/project-details.html" class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--in-progress">
+                        <p class="label">in progress</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <div class="update-info">
+                        <div class="update-info__content">
+                            <span class="icon icon--clock"></span>
+                            <p class="label">
+                                Updated: <time datetime="2015-02-22T20:00:00+01:00">22.02.2015</time>
+                            </p>
+                        </div>
+                    </div>
+                    <progress class="progress-bar" value="60" max="100"></progress>
+                    <h3 class="project-title">
+                        <span class="label">Home Page</span>
+                    </h3>
+                    <p class="templates-info">
+                        <span class="qty">29</span>
+                        <span class="label">templates</span>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </li>
+    <li class="teasers-list__item">
+        <div class="teaser project-teaser">
+            <a href="/project-details.html" class="teaser__inner">
+                <div class="teaser__actions">
+                    <div class="status-label status-label--finished">
+                        <p class="label">finished</p>
+                    </div>
+                </div>
+                <div class="teaser__head">
+                    <div class="teaser__head__photo" style="background-image: url(http://placekitten.com/g/240/245)"></div>
+                </div>
+                <div class="teaser__content">
+                    <div class="update-info">
+                        <div class="update-info__content">
+                            <span class="icon icon--clock"></span>
+                            <p class="label">
+                                Updated: <time datetime="2015-02-22T20:00:00+01:00">22.02.2015</time>
+                            </p>
+                        </div>
+                    </div>
+                    <progress class="progress-bar" value="100" max="100"></progress>
+                    <h3 class="project-title">
+                        <span class="label">Contact</span>
+                    </h3>
+                    <p class="templates-info">
+                        <span class="qty">29</span>
+                        <span class="label">templates</span>
+                    </p>
+                </div>
+            </a>
+        </div>
+    </li>
+</ul>
+                </div>
+              </div>
+              <div class="kss-markup">
+                <pre><code data-language="html">&lt;ul class=&quot;teasers-list&quot;&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser action-teaser js-teaser&quot;&gt;
+            &lt;div href=&quot;#&quot; class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;span class=&quot;icon icon--plus&quot;&gt;&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;form class=&quot;project-action-form&quot;&gt;
+                        &lt;fieldset class=&quot;form__fieldset&quot;&gt;
+                            &lt;div class=&quot;field field--input&quot;&gt;
+                                &lt;label class=&quot;label&quot; for=&quot;project-name&quot;&gt;New Project&lt;/label&gt;
+                                &lt;input class=&quot;input input--text&quot; type=&quot;text&quot; placeholder=&quot;Project Name&quot; name=&quot;project-name&quot; id=&quot;project-name&quot;&gt;
+                            &lt;/div&gt;
+                        &lt;/fieldset&gt;
+                    &lt;/form&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser project-teaser&quot;&gt;
+            &lt;a href=&quot;/project-details.html&quot; class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__actions&quot;&gt;
+                    &lt;div class=&quot;status-label status-label--new&quot;&gt;
+                        &lt;p class=&quot;label&quot;&gt;New&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;div class=&quot;update-info&quot;&gt;
+                        &lt;div class=&quot;update-info__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--clock&quot;&gt;&lt;/span&gt;
+                            &lt;p class=&quot;label&quot;&gt;
+                                Updated: &lt;time datetime=&quot;2015-02-22T20:00:00+01:00&quot;&gt;22.02.2015&lt;/time&gt;
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;progress class=&quot;progress-bar&quot; value=&quot;10&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;
+                    &lt;h3 class=&quot;project-title&quot;&gt;
+                        &lt;span class=&quot;label&quot;&gt;169_INNE_FAIRPAY_Mailing systemowy&lt;/span&gt;
+                    &lt;/h3&gt;
+                    &lt;p class=&quot;templates-info&quot;&gt;
+                        &lt;span class=&quot;qty&quot;&gt;29&lt;/span&gt;
+                        &lt;span class=&quot;label&quot;&gt;templates&lt;/span&gt;
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser project-teaser&quot;&gt;
+            &lt;a href=&quot;/project-details.html&quot; class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__actions&quot;&gt;
+                    &lt;div class=&quot;status-label status-label--in-progress&quot;&gt;
+                        &lt;p class=&quot;label&quot;&gt;in progress&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;div class=&quot;update-info&quot;&gt;
+                        &lt;div class=&quot;update-info__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--clock&quot;&gt;&lt;/span&gt;
+                            &lt;p class=&quot;label&quot;&gt;
+                                Updated: &lt;time datetime=&quot;2015-02-22T20:00:00+01:00&quot;&gt;22.02.2015&lt;/time&gt;
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;progress class=&quot;progress-bar&quot; value=&quot;60&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;
+                    &lt;h3 class=&quot;project-title&quot;&gt;
+                        &lt;span class=&quot;label&quot;&gt;Home Page&lt;/span&gt;
+                    &lt;/h3&gt;
+                    &lt;p class=&quot;templates-info&quot;&gt;
+                        &lt;span class=&quot;qty&quot;&gt;29&lt;/span&gt;
+                        &lt;span class=&quot;label&quot;&gt;templates&lt;/span&gt;
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;teasers-list__item&quot;&gt;
+        &lt;div class=&quot;teaser project-teaser&quot;&gt;
+            &lt;a href=&quot;/project-details.html&quot; class=&quot;teaser__inner&quot;&gt;
+                &lt;div class=&quot;teaser__actions&quot;&gt;
+                    &lt;div class=&quot;status-label status-label--finished&quot;&gt;
+                        &lt;p class=&quot;label&quot;&gt;finished&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__head&quot;&gt;
+                    &lt;div class=&quot;teaser__head__photo&quot; style=&quot;background-image: url(http://placekitten.com/g/240/245)&quot;&gt;&lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class=&quot;teaser__content&quot;&gt;
+                    &lt;div class=&quot;update-info&quot;&gt;
+                        &lt;div class=&quot;update-info__content&quot;&gt;
+                            &lt;span class=&quot;icon icon--clock&quot;&gt;&lt;/span&gt;
+                            &lt;p class=&quot;label&quot;&gt;
+                                Updated: &lt;time datetime=&quot;2015-02-22T20:00:00+01:00&quot;&gt;22.02.2015&lt;/time&gt;
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;progress class=&quot;progress-bar&quot; value=&quot;100&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;
+                    &lt;h3 class=&quot;project-title&quot;&gt;
+                        &lt;span class=&quot;label&quot;&gt;Contact&lt;/span&gt;
+                    &lt;/h3&gt;
+                    &lt;p class=&quot;templates-info&quot;&gt;
+                        &lt;span class=&quot;qty&quot;&gt;29&lt;/span&gt;
+                        &lt;span class=&quot;label&quot;&gt;templates&lt;/span&gt;
+                    &lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+              </div>
+            </div>
+          </section>
+        </article>
+        <footer class="kss-footer">
+          <div>Developing the web in <strong>the heart of Europe.</strong></div>
+        </footer>
+      </div>
+    </div>
+    <script src="public/kss.js"></script>
+    <script src="public/jquery-1.9.1.min.js"></script>
+    <!--[if gt IE 8]><!-->
+    <script src="public/rainbow.min.js"></script>
+    <!--<![endif]-->
+    <script src="public/main.js"></script>
+    <script src="../../static/js/vendor/jquery.js?v=1437929479000"></script>
+    <script src="../../static/js/plugins.js?v=1437929479000"></script>
+    <script src="../../static/js/main.js?v=1437929479000"></script>
+  </body>
+</html>

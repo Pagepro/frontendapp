@@ -5,10 +5,19 @@ body.blocked {
     overflow: hidden;
     .popup {
         position: fixed;
+        top: $size_padding_big;
         right: 0;
         left: 0;
 
         margin: 0 auto;
+    }
+}
+
+body.blocked {
+    @include breakpoint($breakpoint_smartphone) {
+        .popup {
+            top: 20px;
+        }
     }
 }
 
@@ -170,8 +179,12 @@ body.blocked {
     }
     &__content {
         @extend %helper--flex--center--top;
-        .project-box {
+        .project-box,
+        .ticket-data-box {
             width: 100%;
+        }
+        .files-box {
+            margin-top: -18px;
         }
     }
     .subsec__head + .subsec__content {
@@ -182,6 +195,7 @@ body.blocked {
     @include breakpoint($breakpoint_tablet) {
         &__head {
             flex-wrap: wrap;
+            justify-content: center;
             .main-title {
                 margin-bottom: 34px;
             }
@@ -212,6 +226,11 @@ body.blocked {
                 margin-top: $size_padding;
             }
         }
+        &__content {
+            .comments {
+                margin-top: 2px;
+            }
+        }
         .subsec__head + .subsec__content {
             margin-top: $size_padding_medium;
         }
@@ -238,6 +257,8 @@ body.blocked {
     min-height: 100vh;
 
     background: rgba(0,0,0,.8);
+
+    @extend %helper--flex--stretch;
     &__inner {
         @extend %helper--flex--center--center;
     }

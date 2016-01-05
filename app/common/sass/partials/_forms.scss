@@ -459,31 +459,7 @@
 //
 // Styleguide 14.1
 
-.new-project-name {
-    overflow: hidden;
 
-    width: 100%;
-    padding: 0 40px;
-
-    font-family: $font-normal;
-    font-size: 48px;
-    font-weight: 100;
-
-    text-align: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-
-    border: none;
-    &,
-    &::-webkit-input-placeholder,
-    &::-moz-placeholder,
-    &:-ms-input-placeholder {
-        color: $color_default;
-    }
-}
-.project-actions {
-    @extend .project-action-form;
-}
 .project-action-form {
     width: 100%;
 

@@ -196,7 +196,7 @@ object {
 //     <li class="breadcrumbs__item">
 //         <h1 class="breadcrumb">
 //             <a href="/index.html" class="breadcrumb__content">
-//                Frontend<span class="highlighted">App</span>
+//                Frontend<span class="highlighted">App</span> 
 //             </a>
 //         </h1>
 //     </li>
@@ -758,7 +758,7 @@ h1.breadcrumb {
 
 // Main Header with page-back link
 //
-// .page-back - main header with page-back link
+// .page-back - main header with page-back link 
 //
 // Markup:
 // <h2 class="page-back">
@@ -941,8 +941,6 @@ h1.breadcrumb {
 // </div>
 //
 // Styleguide 8.2
-
-
 .extention-label {
     @extend %helper--label;
     &--psd {
@@ -953,6 +951,120 @@ h1.breadcrumb {
     }
 }
 
+// Labels selector
+//
+// .labels-choice - .labels-choice
+//
+// Markup:
+// <div class="labels-choice">
+//     <ul class="labels-choice-list js-labels-choice-list">
+//         <li class="labels-choice-list__item">
+//             <div class="status-label status-label--new">
+//                 <p class="label">new</p>
+//             </div>
+//         </li>
+//         <li class="labels-choice-list__item active">
+//             <div class="status-label status-label--in-progress">
+//                 <p class="label">in progress</p>
+//             </div>
+//         </li>
+//         <li class="labels-choice-list__item">
+//             <div class="status-label status-label--done">
+//                 <p class="label">done</p>
+//             </div>
+//         </li>
+//         <li class="labels-choice-list__item">
+//             <div class="status-label status-label--rejected">
+//                 <p class="label">rejected</p>
+//             </div>
+//         </li>
+//     </ul>
+// </div>
+//
+// Styleguide 8.3
+.labels-choice {
+    position: relative;
+
+    width: calc(#{$size_input_h} / 2 + #{$size_acces-tool_h});
+    height: $size_input_v;
+
+    @extend %helper--flex--right--top;
+    .labels-choice-list {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+
+        overflow: hidden;
+
+        width: 100%;
+        padding-right: $size_acces-tool_h;
+    }
+}
+
+.labels-choice-list {
+    max-height: $size_input_v;
+
+    @extend %helper--list;
+    @extend %helper--flex--center--top;
+    @extend %helper--transition;
+    flex-wrap: wrap;
+    &__item {
+        position: relative;
+
+        width: 100%;
+        height: $size_input_v;
+
+        cursor: pointer;
+
+        opacity: 0;
+
+        @extend %helper--transition;
+        .status-label {
+            width: 100%;
+            height: 100%;
+            .label {
+                height: 100%;
+            }
+        }
+        &.active {
+            position: relative;
+
+            opacity: 1;
+
+            order: -1;
+            &:after {
+                position: absolute;
+                top: 0;
+                right: -$size_acces-tool_h;
+
+                width: $size_acces-tool_h;
+                height: $size_input_v;
+
+                font-family: $font_ico;
+                font-size: 12px;
+
+                content: '\e81f';
+
+                color: $color_red_dark;
+                border: 1px solid $color_grey_0;
+                border-left: none;
+                background: #f9f9f9;
+
+                flex-shrink: 0;
+                @extend %helper--flex--center--center;
+            }
+        }
+    }
+    &.active {
+        max-height: 500px;
+        .labels-choice-list {
+            &__item {
+                opacity: 1;
+            }
+        }
+    }
+}
 
 /* Progress bar
    ========================================================================== */
@@ -1166,6 +1278,26 @@ h1.breadcrumb {
 //
 // Styleguide 10.1
 
+// update info alt
+//
+// .update-info--alt - update info alt
+//
+// Markup:
+// <div class="update-info update-info--alt">
+//     <div class="update-info__content">
+//         <span class="icon icon--clock"></span>
+//         <p class="label">
+//             Last update:
+//             <time datetime="2015-02-22T20:05:00+01:00">
+//                 <strong>2015-02-22</strong>,
+//                 <span>20:05:00</span>
+//             </time>
+//         </p>
+//     </div>
+// </div>
+//
+// Styleguide 10.2
+
 .update-info {
     display: inline-block;
     &__content {
@@ -1202,6 +1334,21 @@ h1.breadcrumb {
                 font-size: 18px;
 
                 @extend %helper--flex--center--center;
+            }
+        }
+    }
+}
+
+.update-info {
+    @include breakpoint($breakpoint_tablet) {
+        &--alt {
+            .label {
+                font-size: 12px;
+            }
+            .icon {
+                &--clock {
+                    font-size: 16px;
+                }
             }
         }
     }
@@ -2015,8 +2162,7 @@ h1.breadcrumb {
     &__inner {
         width: 100%;
         height: 100%;
-        &:hover,
-        .dragover & {
+        &:hover {
             text-decoration: none;
         }
     }
@@ -2094,8 +2240,7 @@ h1.breadcrumb {
             }
         }
         &__inner {
-            &:hover,
-            .dragover & {
+            &:hover {
                 .teaser {
                     &__head {
                         @extend %helper--round--after--hover;
@@ -2124,8 +2269,7 @@ h1.breadcrumb {
     }
     .teaser {
         &__inner {
-            &:hover,
-            .dragover & {
+            &:hover {
                 .teaser {
                     &__head {
                         .icon {
@@ -3295,7 +3439,7 @@ h1.breadcrumb {
 //
 // Markup:
 // <p class="file-size">
-//     <span class="size">2.5</span>
+//     <span class="size">2.5</span> 
 //     <span class="unit">MB</span>
 // </p>
 //
@@ -3365,7 +3509,7 @@ h1.breadcrumb {
 //         </div>
 //         <div class="file-data__size">
 //             <p class="file-size">
-//                 <span class="size">10.5</span>
+//                 <span class="size">10.5</span> 
 //                 <span class="unit">MB</span>
 //             </p>
 //         </div>
@@ -3973,7 +4117,7 @@ h1.breadcrumb {
 //                                 </div>
 //                                 <div class="file-data__size">
 //                                     <p class="file-size">
-//                                         <span class="size">10.5</span>
+//                                         <span class="size">10.5</span> 
 //                                         <span class="unit">MB</span>
 //                                     </p>
 //                                 </div>
@@ -4032,7 +4176,7 @@ h1.breadcrumb {
 //                                 </div>
 //                                 <div class="file-data__size">
 //                                     <p class="file-size">
-//                                         <span class="size">2.5</span>
+//                                         <span class="size">2.5</span> 
 //                                         <span class="unit">MB</span>
 //                                     </p>
 //                                 </div>
@@ -4091,7 +4235,7 @@ h1.breadcrumb {
 //                                 </div>
 //                                 <div class="file-data__size">
 //                                     <p class="file-size">
-//                                         <span class="size">2.5</span>
+//                                         <span class="size">2.5</span> 
 //                                         <span class="unit">MB</span>
 //                                     </p>
 //                                 </div>
@@ -5678,7 +5822,7 @@ h1.breadcrumb {
 //
 // .pagination-box - pagination-box
 // .prev-active - prev-active
-// .next-active - next-active
+// .next-active - next-active 
 // .prev-active.next-active - prev-active and next-active
 //
 // Markup:
@@ -6369,7 +6513,7 @@ h1.breadcrumb {
 //                                         </div>
 //                                         <div class="file-data__size">
 //                                             <p class="file-size">
-//                                                 <span class="size">10.5</span>
+//                                                 <span class="size">10.5</span> 
 //                                                 <span class="unit">MB</span>
 //                                             </p>
 //                                         </div>
@@ -6428,7 +6572,7 @@ h1.breadcrumb {
 //                                         </div>
 //                                         <div class="file-data__size">
 //                                             <p class="file-size">
-//                                                 <span class="size">2.5</span>
+//                                                 <span class="size">2.5</span> 
 //                                                 <span class="unit">MB</span>
 //                                             </p>
 //                                         </div>
@@ -6487,7 +6631,7 @@ h1.breadcrumb {
 //                                         </div>
 //                                         <div class="file-data__size">
 //                                             <p class="file-size">
-//                                                 <span class="size">2.5</span>
+//                                                 <span class="size">2.5</span> 
 //                                                 <span class="unit">MB</span>
 //                                             </p>
 //                                         </div>
@@ -6734,6 +6878,9 @@ h1.breadcrumb {
         .files-box {
             width: 100%;
         }
+        .project-time-list {
+            margin-top: 10px;
+        }
     }
     &__actions {
         @extend %helper--flex--left--top;
@@ -6845,7 +6992,7 @@ h1.breadcrumb {
 // Markup:
 // <div class="access-tool">
 //     <a href="/register.html" class="access-tool__content">
-//        <span class="icon icon--key"></span>
+//        <span class="icon icon--key"></span> 
 //     </a>
 //     <div class="access-tool__info">
 //         <div class="tooltip">
@@ -6911,7 +7058,7 @@ h1.breadcrumb {
 //     <li class="access-tools-list__item">
 //         <div class="access-tool">
 //             <a href="/register.html" class="access-tool__content">
-//                <span class="icon icon--key"></span>
+//                <span class="icon icon--key"></span> 
 //             </a>
 //             <div class="access-tool__info">
 //                 <div class="tooltip">
@@ -6923,7 +7070,7 @@ h1.breadcrumb {
 //     <li class="access-tools-list__item">
 //         <div class="access-tool">
 //             <a href="/login.html" class="access-tool__content">
-//                <span class="icon icon--lock"></span>
+//                <span class="icon icon--lock"></span> 
 //             </a>
 //             <div class="access-tool__info">
 //                 <div class="tooltip">
@@ -6957,45 +7104,6 @@ h1.breadcrumb {
     }
 }
 
-// Form info / required info
-//
-// .form-info - form info
-// .required - form info (required)
-//
-// Markup:
-// <div class="form-info {{modifier_class}}">
-//     <p>Please enter your e-mail to reset your password.</p>
-// </div>
-//
-// Styleguide 21.3
-
-.form-info {
-    overflow: hidden;
-
-    width: $size_input_h;
-
-    @extend %helper--transition;
-    > p {
-        margin: 0;
-
-        font-size: 12px;
-
-        text-align: center;
-        text-transform: uppercase;
-    }
-    &.required {
-        color: $color_red;
-    }
-}
-
-.form-info {
-    @include breakpoint($breakpoint_smartphone) {
-        width: 100%;
-        > p {
-            font-size: 11px;
-        }
-    }
-}
 
 // Access box
 //
@@ -7005,10 +7113,10 @@ h1.breadcrumb {
 // <div class="access-box">
 //     <div class="access-box__head">
 //         <ul class="access-tools-list">
-//             <li class="access-tools-list__item active">
+//             <li class="access-tools-list__item">
 //                 <div class="access-tool">
-//                     <a href="/register.html" class="access-tool__content">
-//                        <span class="icon icon--key"></span>
+//                     <a href="register.html" class="access-tool__content">
+//                        <span class="icon icon--key"></span> 
 //                     </a>
 //                     <div class="access-tool__info">
 //                         <div class="tooltip">
@@ -7017,10 +7125,10 @@ h1.breadcrumb {
 //                     </div>
 //                 </div>
 //             </li>
-//             <li class="access-tools-list__item">
+//             <li class="access-tools-list__item active">
 //                 <div class="access-tool">
-//                     <a href="/login.html" class="access-tool__content">
-//                        <span class="icon icon--lock"></span>
+//                     <a href="login.html" class="access-tool__content">
+//                        <span class="icon icon--lock"></span> 
 //                     </a>
 //                     <div class="access-tool__info">
 //                         <div class="tooltip">
@@ -7036,10 +7144,17 @@ h1.breadcrumb {
 //             <fieldset class="form__fieldset">
 //                 <div class="form__content">
 //                     <div class="form__section">
-//                         <div class="field field--input">
-//                             <input class="input input--text" type="text" placeholder="USERNAME" name="username" id="field_01">
+//                         <div class="field field--info">
+//                             <div class="form-info required">
+//                                 <p>Oops, something went wrong. Please restart your computer three times and try again.</p>
+//                             </div>
 //                         </div>
-//                     <div class="field field--info">
+//                     </div>
+//                     <div class="form__section">
+//                         <div class="field field--input">
+//                             <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="field_05">
+//                         </div>
+//                         <div class="field field--info">
 //                             <div class="form-info required">
 //                                 <p>This field is required</p>
 //                             </div>
@@ -7047,29 +7162,9 @@ h1.breadcrumb {
 //                     </div>
 //                     <div class="form__section">
 //                         <div class="field field--input">
-//                             <input class="input input--text" type="email" placeholder="E-MAIL" name="e-mail" id="field_02">
+//                             <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_06">
 //                         </div>
-//                     <div class="field field--info">
-//                             <div class="form-info required">
-//                                 <p>This field is required</p>
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div class="form__section">
-//                         <div class="field field--input">
-//                             <input class="input input--text" type="password" placeholder="PASSWORD" name="password" id="field_03">
-//                         </div>
-//                     <div class="field field--info">
-//                             <div class="form-info required">
-//                                 <p>This field is required</p>
-//                             </div>
-//                         </div>
-//                     </div>
-//                     <div class="form__section">
-//                         <div class="field field--input">
-//                             <input class="input input--text" type="password" placeholder="RE-PASSWORD" name="re-password" id="field_04">
-//                         </div>
-//                     <div class="field field--info">
+//                         <div class="field field--info">
 //                             <div class="form-info required">
 //                                 <p>This field is required</p>
 //                             </div>
@@ -7085,6 +7180,11 @@ h1.breadcrumb {
 //                             <div class="form-info required">
 //                                 <p>Login or password is incorrect</p>
 //                             </div>
+//                         </div>
+//                         <div class="field field--cta">
+//                             <a href="remind-password.html" class="forgot-password-link">
+//                                 <span class="label">Forgot password?</span>
+//                             </a>
 //                         </div>
 //                     </div>
 //                 </div>
@@ -7120,7 +7220,7 @@ h1.breadcrumb {
 // Markup:
 // <div class="dispaly-mode">
 //     <a href="#" class="dispaly-mode__content">
-//         <span class="icon icon--display-mode"></span>
+//         <span class="icon icon--display-mode"></span>   
 //     </a>
 // </div>
 //
@@ -7182,7 +7282,7 @@ h1.breadcrumb {
 //     <div class="dispaly-mode-box__content">
 //         <div class="dispaly-mode">
 //             <a href="project-details-list.html" class="dispaly-mode__content">
-//                 <span class="icon icon--display-mode"></span>
+//                 <span class="icon icon--display-mode"></span>   
 //             </a>
 //         </div>
 //     </div>
@@ -7237,17 +7337,17 @@ h1.breadcrumb {
 //     <li class="display-mode-list__item active">
 //         <div class="dispaly-mode">
 //             <a href="#" class="dispaly-mode__content">
-//                 <span class="icon icon--display-mode"></span>
+//                 <span class="icon icon--display-mode"></span>   
 //             </a>
 //         </div>
 //     </li>
 //     <li class="display-mode-list__item">
 //         <div class="dispaly-mode">
 //             <a href="#" class="dispaly-mode__content">
-//                 <span class="icon icon--display-mode--alt"></span>
+//                 <span class="icon icon--display-mode--alt"></span>   
 //             </a>
 //         </div>
-//     </li>
+//     </li> 
 // </ul>
 //
 // Styleguide 22.3
@@ -7264,7 +7364,7 @@ h1.breadcrumb {
 //             <div class="dispaly-mode-box__content">
 //                 <div class="dispaly-mode">
 //                     <a href="project-details-list.html" class="dispaly-mode__content">
-//                         <span class="icon icon--display-mode"></span>
+//                         <span class="icon icon--display-mode"></span>   
 //                     </a>
 //                 </div>
 //             </div>
@@ -7280,7 +7380,7 @@ h1.breadcrumb {
 //             <div class="dispaly-mode-box__content">
 //                 <div class="dispaly-mode">
 //                     <a href="project-details.html" class="dispaly-mode__content">
-//                         <span class="icon icon--display-mode--alt"></span>
+//                         <span class="icon icon--display-mode--alt"></span>   
 //                     </a>
 //                 </div>
 //             </div>
@@ -7290,7 +7390,7 @@ h1.breadcrumb {
 //                 </div>
 //             </div>
 //         </div>
-//     </li>
+//     </li> 
 // </ul>
 //
 // Styleguide 22.4
@@ -7324,10 +7424,11 @@ h1.breadcrumb {
 //
 // Styleguide 23
 
-// Upload box"
+// Upload box
 //
-// .upload-box" - upload-box"
+// .upload-box - upload-box
 //
+// Markup:
 // <div class="upload-box">
 //     <a class="upload-box__content" href="#">
 //         <div class="upload-box__content__head">
@@ -7436,8 +7537,559 @@ h1.breadcrumb {
     }
 }
 
+/* Comments
+   ========================================================================== */
+// Comments
+//
+//
+// Styleguide 24
+
+// Comment box
+//
+// .comment-box - comment-box
+//
+// Markup:
+// <div class="comment-box">
+//     <a class="comment-box__content" href="#">
+//         <span class="icon icon--comment"></span>
+//         <span class="qty">3</span>
+//     </a>
+// </div>
+//
+// Styleguide 24.1
+
+.helper--xyz {
+    color: red;
+}
+
+
+.comment-box {
+    width: $size_comment-box;
+    height: $size_comment-box;
+    &__content {
+        position: relative;
+
+        width: 100%;
+        height: 100%;
+
+        @extend %helper--flex--center--center;
+        .icon {
+            position: relative;
+            z-index: 1;
+
+            color: $color_red;
+
+            @extend %helper--transition;
+            &--comment {
+                width: 100%;
+                height: 100%;
+
+                font-size: 40px;
+
+                @extend %helper--flex--center--center;
+                &:before {
+                    display: block;
+
+                    height: 35px;
+                    padding-left: 1px;
+
+                    line-height: 100%;
+                }
+            }
+        }
+        .qty {
+            z-index: 2;
+
+            width: 100%;
+            height: 100%;
+
+            font-size: 11px;
+            font-weight: 600;
+
+            color: $color_white;
+
+            @extend %helper--absolute--center--center;
+            @extend %helper--flex--center--center;
+        }
+    }
+    > a {
+        &:hover {
+            text-decoration: none;
+            .icon {
+                color: $color_black;
+            }
+        }
+    }
+}
+
+// Comment author
+//
+// .comment-author - .comment-author
+//
+// Markup:
+// <span class="comment-author">Krzysztof Oszczapiński</span>
+//
+// Styleguide 24.2
+
+// Comment date
+//
+// .comment-date - .comment-date
+//
+// Markup:
+// <time class="comment-date" datetime="2015-05-22T13:13:13+01:00">22/05/2015 13:13:13</time>
+//
+// Styleguide 24.3
+
+.comment-author {
+    font-weight: 600;
+}
+
+
+// Comment (someone else's comment)
+//
+// .comment - .comment
+//
+// Markup:
+// <div class="comment">
+//     <div class="comment__ico">
+//         <span class="icon icon--comment"></span>
+//     </div>
+//     <div class="comment__info">
+//         <div class="comment__info__data">
+//             <span class="comment-author">
+//                 Krzysztof Oszczapiński
+//             </span>
+//             <time class="comment-date" datetime="2015-05-22T13:13:13+01:00">22/05/2015 13:13:13</time>
+//         </div>
+//         <div class="comment__info__content">
+//             <p>Domi czemu to na iPadize nie jest juz na środku tylko tak wysoko? <a href="http://screencast.com/t/XNOwDDz4fMN" target="_blank">http://screencast.com/t/XNOwDDz4fMN</a></p>
+//         </div>
+//     </div>
+//     <div class="comment__actions disabled">
+//         <div class="action-tool" aria-label="delete comment">
+//             <a href="#" target="_blank" class="action-tool__content">
+//                 <span class="icon icon--trash"></span>
+//             </a>
+//             <div class="action-tool__info">
+//                 <div class="tooltip tooltip--bottom">
+//                     <h4 class="label">Delete</h4>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 24.4
+
+// Comment (our comment)
+//
+// .comment - .comment
+//
+// Markup:
+// <div class="comment">
+//     <div class="comment__ico">
+//         <span class="icon icon--comment"></span>
+//     </div>
+//     <div class="comment__info">
+//         <div class="comment__info__data">
+//             <span class="comment-author">
+//                 Zalogowany użytkownik, który może usunąć swój komentarz
+//             </span>
+//             <time class="comment-date" datetime="2015-05-22T13:13:13+01:00">22/05/2015 13:13:13</time>
+//         </div>
+//         <div class="comment__info__content">
+//             <p>Jak nie zwalidują nam tego rilisu to będzie fakap i nasz tim zostanie zlistowany na losty. To się musiało wydarzyć na nocnym shifcie. Nie ma go, jest na sik liwie. <br>Zszeruj to wszystkim w timie.</p>
+//         </div>
+//     </div>
+//     <div class="comment__actions">
+//         <div class="action-tool" aria-label="delete comment">
+//             <a href="#" target="_blank" class="action-tool__content">
+//                 <span class="icon icon--trash"></span>
+//             </a>
+//             <div class="action-tool__info">
+//                 <div class="tooltip tooltip--bottom">
+//                     <h4 class="label">Delete</h4>
+//                 </div>
+//             </div>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 24.5
+.comment {
+    @extend %helper--flex--left--top;
+    &__ico {
+        width: 35px;
+
+        flex-shrink: 0;
+        .icon {
+            &--comment {
+                font-size: 20px;
+
+                color: $color_grey_1;
+            }
+        }
+    }
+    &__info {
+        flex-grow: 1;
+        &__data {
+            font-size: 14px;
+
+            color: $color_grey_4;
+            .comment-author + .comment-date {
+                margin-left: 10px;
+            }
+        }
+        &__content {
+            > p {
+                margin: 0;
+
+                font-size: 15px;
+                font-weight: 300;
+            }
+            a {
+                font-weight: 500;
+
+                color: $color_blue;
+            }
+        }
+        &__data + &__content {
+            margin-top: 6px;
+        }
+    }
+    &__actions {
+        flex-shrink: 0;
+        .action-tool {
+            &__content {
+                padding-bottom: 30px;
+
+                background: transparent;
+                .icon {
+                    color: $color_grey_1;
+                }
+                &:hover {
+                    .icon {
+                        color: $color_black;
+                    }
+                }
+            }
+        }
+        &.disabled {
+            display: none;
+        }
+    }
+}
+
+.comment {
+    @include breakpoint($breakpoint_tablet) {
+        &__info {
+            &__data {
+                font-size: 12px;
+            }
+            &__content {
+                > p {
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+    @include breakpoint($breakpoint_smartphone) {
+        position: relative;
+        &__ico {
+            width: 30px;
+            .icon {
+                &--comment {
+                    font-size: 18px;
+                }
+            }
+        }
+        &__info {
+            &__data {
+                display: flex;
+
+                flex-wrap: wrap;
+                align-items: flex-start;
+                align-content: flex-start;
+                .comment-author {
+                    width: 100%;
+                    padding-right: 50px;
+                }
+                .comment-author + .comment-date {
+                    margin-left: 0;
+                }
+            }
+        }
+        &__actions {
+            position: absolute;
+            top: 0;
+            right: 0;
+
+            height: 35px;
+            .action-tool {
+                &__content {
+                    position: relative;
+
+                    padding-bottom: 38px;
+                    &:before {
+                        position: absolute;
+                        top: -$size_padding;
+                        right: 0;
+                        left: 0;
+
+                        display: block;
+
+                        width: 100%;
+                        height: $size_padding;
+                        margin: 0 auto;
+
+                        content: '';
+                    }
+                    .icon {
+                        &--trash {
+                            font-size: 16px;
+                        }
+                    }
+                }
+                &:hover {
+                    .action-tool {
+                        &__info {
+                            opacity: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Comments list
+//
+// .comments-list - .comments-list
+//
+// Markup:
+// <ul class="comments-list">
+//     <li class="comments-list__item">
+//         <div class="comment">
+//             <div class="comment__ico">
+//                 <span class="icon icon--comment"></span>
+//             </div>
+//             <div class="comment__info">
+//                 <div class="comment__info__data">
+//                     <span class="comment-author">
+//                         Krzysztof Oszczapiński
+//                     </span>
+//                     <time class="comment-date" datetime="2015-05-22T13:13:13+01:00">22/05/2015 13:13:13</time>
+//                 </div>
+//                 <div class="comment__info__content">
+//                     <p>Domi czemu to na iPadize nie jest juz na środku tylko tak wysoko? <a href="http://screencast.com/t/XNOwDDz4fMN" target="_blank">http://screencast.com/t/XNOwDDz4fMN</a></p>
+//                 </div>
+//             </div>
+//             <div class="comment__actions disabled">
+//                 <div class="action-tool" aria-label="delete comment">
+//                     <a href="#" target="_blank" class="action-tool__content">
+//                         <span class="icon icon--trash"></span>
+//                     </a>
+//                     <div class="action-tool__info">
+//                         <div class="tooltip tooltip--bottom">
+//                             <h4 class="label">Delete</h4>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </li>
+//     <li class="comments-list__item">
+//         <div class="comment">
+//             <div class="comment__ico">
+//                 <span class="icon icon--comment"></span>
+//             </div>
+//             <div class="comment__info">
+//                 <div class="comment__info__data">
+//                     <span class="comment-author">
+//                         Krzysztof Oszczapiński
+//                     </span>
+//                     <time class="comment-date" datetime="2015-05-22T13:14:13+01:00">22/05/2015 13:14:13</time>
+//                 </div>
+//                 <div class="comment__info__content">
+//                     <p>na dev tools jest ok ale na emualcji iPad browsesrtacka jest wysoko</p>
+//                 </div>
+//             </div>
+//             <div class="comment__actions disabled">
+//                 <div class="action-tool" aria-label="delete comment">
+//                     <a href="#" target="_blank" class="action-tool__content">
+//                         <span class="icon icon--trash"></span>
+//                     </a>
+//                     <div class="action-tool__info">
+//                         <div class="tooltip tooltip--bottom">
+//                             <h4 class="label">Delete</h4>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </li>
+// </ul>
+//
+// Styleguide 24.6
+.comments-list {
+    margin-bottom: -$size_padding_medium;
+
+    @extend %helper--list;
+    &__item {
+        margin-bottom: $size_padding_medium;
+        padding-bottom: $size_padding_medium;
+
+        border-bottom: 1px solid $color_grey_0;
+        &:last-child {
+            padding-bottom: 0;
+
+            border-bottom: none;
+        }
+    }
+}
+
+
+// Comments
+//
+// .comments - .comments
+//
+// Markup:
+// <div class="comments">
+//     <div class="comments__content">
+//         <ul class="comments-list">
+//             <li class="comments-list__item">
+//                 <div class="comment">
+//                     <div class="comment__ico">
+//                         <span class="icon icon--comment"></span>
+//                     </div>
+//                     <div class="comment__info">
+//                         <div class="comment__info__data">
+//                             <span class="comment-author">
+//                                 Krzysztof Oszczapiński
+//                             </span>
+//                             <time class="comment-date" datetime="2015-05-22T13:13:13+01:00">22/05/2015 13:13:13</time>
+//                         </div>
+//                         <div class="comment__info__content">
+//                             <p>Domi czemu to na iPadize nie jest juz na środku tylko tak wysoko? <a href="http://screencast.com/t/XNOwDDz4fMN" target="_blank">http://screencast.com/t/XNOwDDz4fMN</a></p>
+//                         </div>
+//                     </div>
+//                     <div class="comment__actions disabled">
+//                         <div class="action-tool" aria-label="delete comment">
+//                             <a href="#" target="_blank" class="action-tool__content">
+//                                 <span class="icon icon--trash"></span>
+//                             </a>
+//                             <div class="action-tool__info">
+//                                 <div class="tooltip tooltip--bottom">
+//                                     <h4 class="label">Delete</h4>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </li>
+//             <li class="comments-list__item">
+//                 <div class="comment">
+//                     <div class="comment__ico">
+//                         <span class="icon icon--comment"></span>
+//                     </div>
+//                     <div class="comment__info">
+//                         <div class="comment__info__data">
+//                             <span class="comment-author">
+//                                 Krzysztof Oszczapiński
+//                             </span>
+//                             <time class="comment-date" datetime="2015-05-22T13:14:13+01:00">22/05/2015 13:14:13</time>
+//                         </div>
+//                         <div class="comment__info__content">
+//                             <p>na dev tools jest ok ale na emualcji iPad browsesrtacka jest wysoko</p>
+//                         </div>
+//                     </div>
+//                     <div class="comment__actions disabled">
+//                         <div class="action-tool" aria-label="delete comment">
+//                             <a href="#" target="_blank" class="action-tool__content">
+//                                 <span class="icon icon--trash"></span>
+//                             </a>
+//                             <div class="action-tool__info">
+//                                 <div class="tooltip tooltip--bottom">
+//                                     <h4 class="label">Delete</h4>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </li>
+//         </ul>                                    
+//     </div>
+//     <div class="comments__actions">
+//         <form class="ticket-details-comment-form">
+//             <fieldset class="form__fieldset">
+//                 <div class="form__content">
+//                     <div class="form-box">
+//                         <div class="form-box__section">
+//                             <div class="form-box__section__head">
+//                                 <label class="label" for="popup-description">New comment</label>
+//                             </div>
+//                             <div class="form-box__section__content">
+//                                 <div class="form__section">
+//                                     <div class="field field--info">
+//                                         <div class="form-info required">
+//                                             <p>Oops, something went wrong. Please restart your computer three times and try again.</p>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                                 <div class="form__section">
+//                                     <div class="field field--textarea">
+//                                         <textarea class="textarea" id="popup-description"></textarea>
+//                                     </div>
+//                                     <div class="field field--info">
+//                                         <div class="form-info required">
+//                                             <p>Komentarz nie powinien być pusty</p>
+//                                         </div>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//                 <div class="form__actions">
+//                     <button class="btn btn--submit btn--submit--small">
+//                         <span class="label">Add comment</span>
+//                     </button>
+//                 </div>
+//             </fieldset>
+//         </form>
+//     </div>
+// </div>
+//
+// Styleguide 24.7
+.comments {
+    @extend %helper--flex--left--top;
+    flex-wrap: wrap;
+    &__actions {
+        width: 100%;
+    }
+    &__content + &__actions {
+        margin-top: $size_btn_v;
+    }
+}
+
+
 /* Screenshots
    ========================================================================== */
+// Screenshots
+//
+//
+// Styleguide 25
+
+// screenshot
+//
+// .screenshot - .screenshot
+//
+// Markup:
+// <figure class="screenshot">
+//     <img src="/static/img/404.png" alt="screen">
+// </figure>
+//
+// Styleguide 25.1
 .screenshot {
     position: relative;
 
@@ -7467,7 +8119,32 @@ h1.breadcrumb {
         }
     }
 }
+.screenshot {
+    @include breakpoint($breakpoint_smartphone) {
+        &:hover {
+            img {
+                max-width: 50vw;
+            }
+        }
+    }
+}
 
+// screenshot box
+//
+// .screenshot-box - .screenshot-box
+//
+// Markup:
+// <div class="screenshot-box">
+//     <a class="screenshot-box__content" href="#" target="_blank">
+//         <span class="counter"></span>
+//         <span class="label">Screenshot_xyz_20.12.2015.png</span>
+//         <figure class="screenshot">
+//             <img src="/static/img/404.png" alt="screen">
+//         </figure>
+//     </a>
+// </div>
+//
+// Styleguide 25.2
 .screenshot-box {
     display: inline-block;
     &__content {
@@ -7516,6 +8193,48 @@ h1.breadcrumb {
     }
 }
 
+// screenshots list
+//
+// .screenshots-list - .screenshots-list
+//
+// Markup:
+// <ol class="screenshots-list">
+//     <li class="screenshots-list__item">
+//         <div class="screenshot-box">
+//             <a class="screenshot-box__content" href="#" target="_blank">
+//                 <span class="counter"></span>
+//                 <span class="label">Screenshot_xyz_20.12.2015.png</span>
+//                 <figure class="screenshot">
+//                     <img src="/static/img/404.png" alt="screen">
+//                 </figure>
+//             </a>
+//         </div>
+//     </li>
+//     <li class="screenshots-list__item">
+//         <div class="screenshot-box">
+//             <a class="screenshot-box__content" href="#" target="_blank">
+//                 <span class="counter"></span>
+//                 <span class="label">Screenshot</span>
+//                 <figure class="screenshot">
+//                     <img src="/static/img/pic_bg.jpg" alt="screen">
+//                 </figure>
+//             </a>
+//         </div>
+//     </li>
+//     <li class="screenshots-list__item">
+//         <div class="screenshot-box">
+//             <a class="screenshot-box__content" href="#" target="_blank">
+//                 <span class="counter"></span>
+//                 <span class="label">blablabla__some-screenshot_name_NAME_121249_blaBLABlaaaa.jpg</span>
+//                 <figure class="screenshot">
+//                     <img src="/static/img/pic_project-2.jpg" alt="screen">
+//                 </figure>
+//             </a>
+//         </div>
+//     </li>
+// </ol>
+//
+// Styleguide 25.3
 .screenshots-list {
     margin-bottom: -$size_padding;
 
@@ -7590,7 +8309,23 @@ h1.breadcrumb {
         }
     }
 }
-
+.screenshots-list {
+    @include breakpoint($breakpoint_smartphone) {
+        &__item {
+            .screenshot-box {
+                &__content {
+                    .screenshot {
+                        &:hover {
+                            img {
+                                right: -2px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 .screenshots-list-box-title {
     margin: 0;
 
@@ -7628,190 +8363,344 @@ h1.breadcrumb {
     }
 }
 
-/* Comment box
-   ========================================================================== */
-// Comment box
-//
-//
-// Styleguide 24
 
-// Comment box"
+/* Ticket boxes
+   ========================================================================== */
+// Tickets
 //
-// .comment-box" - comment-box"
 //
-// <div class="comment-box">
-//     <a class="comment-box__content" href="#">
-//         <span class="icon icon--comment"></span>
-//         <span class="qty">3</span>
-//     </a>
+// Styleguide 26
+
+// Ticket author
+//
+// .ticket-author - .ticket-author
+//
+// Markup:
+// <p class="ticket-author">
+//     <span>Published by: </span>
+//     <strong>Krzysztof Oszczapiński</strong>
+// </p>
+//
+// Styleguide 26.1
+
+// Ticket publish date
+//
+// .ticket-publish-date - .ticket-publish-date
+//
+// Markup:
+// <p class="ticket-publish-date">
+//     <span>on: </span>
+//     <time datetime="2015-02-22T20:00:00+01:00">
+//         <strong>2015-02-22</strong>,
+//         <span>20:00:00</span>
+//     </time>
+// </p>
+//
+// Styleguide 26.2
+
+.ticket-author,
+.ticket-publish-date {
+    margin: 0;
+
+    font-size: 14px;
+    font-weight: 300;
+}
+.ticket-author,
+.ticket-publish-date {
+    @include breakpoint($breakpoint_tablet) {
+        font-size: 12px;
+    }
+}
+
+// Ticket data box
+//
+// .ticket-data-box - .ticket-data-box
+//
+// Markup:
+// <div class="ticket-data-box">
+//     <div class="ticket-data-box__head">
+//         <div class="ticket-data-box__head__row">
+//             <div class="update-info update-info--alt">
+//                 <div class="update-info__content">
+//                     <span class="icon icon--clock"></span>
+//                     <p class="label">
+//                         Last update:
+//                         <time datetime="2015-02-22T20:05:00+01:00">
+//                             <strong>2015-02-22</strong>,
+//                             <span>20:05:00</span>
+//                         </time>
+//                     </p>
+//                 </div>
+//             </div>
+//         </div>
+//         <div class="ticket-data-box__head__row">
+//             <p class="ticket-author">
+//                 <span>Published by: </span>
+//                 <strong>Krzysztof Oszczapiński</strong>
+//             </p>
+//             <p class="ticket-publish-date">
+//                 <span>on: </span>
+//                 <time datetime="2015-02-22T20:00:00+01:00">
+//                     <strong>2015-02-22</strong>,
+//                     <span>20:00:00</span>
+//                 </time>
+//             </p>
+//         </div>
+//     </div>
+//     <div class="ticket-data-box__content">
+//         <form class="ticket-form">
+//             <fieldset class="form__fieldset">
+//                 <div class="form__content">
+//                     <div class="form-box form-box--double">
+//                         <div class="form-box__section">
+//                             <div class="form-box__section__head">
+//                                 <label class="label" for="popup-browsers">Status</label>
+//                             </div>
+//                             <div class="form-box__section__content">
+//                                 <div class="form__section">
+//                                     <div class="labels-choice">
+//                                         <ul class="labels-choice-list js-labels-choice-list">
+//                                             <li class="labels-choice-list__item">
+//                                                 <div class="status-label status-label--new">
+//                                                     <p class="label">new</p>
+//                                                 </div>
+//                                             </li>
+//                                             <li class="labels-choice-list__item active">
+//                                                 <div class="status-label status-label--in-progress">
+//                                                     <p class="label">in progress</p>
+//                                                 </div>
+//                                             </li>
+//                                             <li class="labels-choice-list__item">
+//                                                 <div class="status-label status-label--done">
+//                                                     <p class="label">done</p>
+//                                                 </div>
+//                                             </li>
+//                                             <li class="labels-choice-list__item">
+//                                                 <div class="status-label status-label--rejected">
+//                                                     <p class="label">rejected</p>
+//                                                 </div>
+//                                             </li>
+//                                         </ul>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                         <div class="form-box__section">
+//                             <div class="form-box__section__head">
+//                                 <label class="label" for="popup-template">Assigned to</label>
+//                             </div>
+//                             <div class="form-box__section__content">
+//                                 <div class="form__section">
+//                                     <div class="field field--select">
+//                                         <select id="popup-template">
+//                                             <option>Popek Król Albanii</option>
+//                                             <option>Krzysztof Oszczapiński</option>
+//                                             <option>Krzysztof Łojniewski</option>
+//                                             <option>Dominika Jaroszewicz</option>
+//                                         </select>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </fieldset>
+//         </form>
+//     </div>
 // </div>
 //
-// Styleguide 24.1
-
-.helper--xyz {
-    color: red;
-}
-
-.comment-box {
-    width: $size_comment-box;
-    height: $size_comment-box;
-    &__content {
-        position: relative;
-
-        width: 100%;
-        height: 100%;
-
-        @extend %helper--flex--center--center;
-        .icon {
-            position: relative;
-            z-index: 1;
-
-            color: $color_red;
-
-            @extend %helper--transition;
-            &--comment {
-                width: 100%;
-                height: 100%;
-
-                font-size: 40px;
-
-                @extend %helper--flex--center--center;
-                &:before {
-                    display: block;
-
-                    height: 35px;
-                    padding-left: 1px;
-
-                    line-height: 100%;
-                }
+// Styleguide 26.4
+.ticket-data-box {
+    &__head {
+        &__row {
+            @extend %helper--flex--left--top;
+            flex-wrap: wrap;
+            .ticket-author + .ticket-publish-date {
+                margin-left: 5px;
+            }
+            &:first-of-type {
+                margin-top: 3px;
             }
         }
-        .qty {
-            z-index: 2;
-
-            width: 100%;
-            height: 100%;
-
-            font-size: 11px;
-            font-weight: 600;
-
-            color: $color_white;
-
-            @extend %helper--absolute--center--center;
-            @extend %helper--flex--center--center;
+        &__row + &__row {
+            // margin-top: $size_padding;
         }
     }
-    > a {
-        &:hover {
-            text-decoration: none;
-            .icon {
-                color: $color_black;
-            }
-        }
-    }
-}
-
-
-/* Comments
-   ========================================================================== */
-.comment-author {
-    font-weight: 600;
-}
-.comment {
-    @extend %helper--flex--left--top;
-    &__ico {
-        width: 35px;
-
-        flex-shrink: 0;
-        .icon {
-            &--comment {
-                font-size: 20px;
-
-                color: $color_grey_1;
-            }
-        }
-    }
-    &__info {
-        flex-grow: 1;
-        &__data {
-            font-size: 14px;
-
-            color: $color_grey_4;
-            .comment-author + .comment-date {
-                margin-left: 10px;
-            }
-        }
-        &__content {
-            > p {
-                margin: 0;
-
-                font-size: 15px;
-                font-weight: 300;
-            }
-            a {
-                font-weight: 500;
-
-                color: $color_blue;
-            }
-        }
-        &__data + &__content {
-            margin-top: 6px;
-        }
-    }
-    &__actions {
-        flex-shrink: 0;
-        .action-tool {
-            &__content {
-                padding-bottom: 30px;
-
-                background: transparent;
-                .icon {
-                    color: $color_grey_1;
-                }
-                &:hover {
-                    .icon {
-                        color: $color_black;
-                    }
-                }
-            }
-        }
-        &.disabled {
-            display: none;
-        }
-    }
-}
-
-.comments-list {
-    margin-bottom: -$size_padding_medium;
-
-    @extend %helper--list;
-    &__item {
-        margin-bottom: $size_padding_medium;
-        padding-bottom: $size_padding_medium;
-
-        border-bottom: 1px solid $color_grey_0;
-        &:last-child {
-            padding-bottom: 0;
-
-            border-bottom: none;
-        }
-    }
-}
-
-.comments {
-    @extend %helper--flex--left--top;
-    flex-wrap: wrap;
-    &__actions {
-        width: 100%;
-    }
-    &__content + &__actions {
+    &__head + &__content {
         margin-top: $size_btn_v;
     }
 }
+.ticket-data-box {
+    @include breakpoint($breakpoint_tablet) {
+        &__head {
+            &__row {
+                &:first-of-type {
+                    margin-top: 6px;
+                }
+            }
+            &__row + &__row {
+                margin-top: 5px;
+            }
+        }
+        &__head + &__content {
+            margin-top: $size_padding_medium;
+        }
+    }
+    @include breakpoint($breakpoint_smartphone) {
+        &__head {
+            &__row {
+                .ticket-author {
+                    width: 100%;
+                    margin-left: 21px;
+                }
+                .ticket-author + .ticket-publish-date {
+                    margin-left: 21px;
+                }
+            }
+        }
+    }
+}
 
+// Ticket description
+//
+// .ticket-description - .ticket-description
+//
+// Markup:
+// <div class="ticket-description">
+//     <p>
+//         Trzeba przygotować ekran szczegółów ticketu.<br>
+//         To ekran dla klienta czyli ma nieco okrojone funkcjonalności.<br><br>
+//         Wygląda to tak:<br>
+//         - published by: dane, data dodania, data aktualizacji,<br>
+//         - ticket status: np. Done - to jest select<br>
+//         - assigned to: to jest select<br>
+//         - opis ticketu<br>
+//         - info do jakiego template przypisany jest ticket<br>
+//         - sekcja komentarzy<br><br>
+//         Każdy komentarz to:<br>
+//         - treść<br>
+//         - podpis imię i nazwisko<br>
+//         - podpis: data i czas dodania<br><br>
+//         Pod sekcją komentarzy - formularz dodawnia komentarza.
+//     </p>
+// </div>
+//
+// Styleguide 26.5
+.ticket-description {
+    > p {
+        margin: 0;
 
-/* Ticket details info
-   ========================================================================== */
+        font-size: 15px;
+        font-weight: 300;
+    }
+}
+.ticket-description {
+    @include breakpoint($breakpoint_tablet) {
+        > p {
+            font-size: 13px;
+        }
+    }
+}
+
+// Ticket details info - example 1
+//
+// .ticket-details-info - .ticket-details-info
+//
+// Markup:
+// <div class="ticket-details-info">
+//     <div class="ticket-details-info__head">
+//         <span class="icon icon--file--code"></span>
+//         <p class="label">Templates:</p>
+//     </div>
+//     <div class="ticket-details-info__content">
+//         <p class="details"><a href="#" target="_blank">Template_xyz</a></p>
+//     </div>
+// </div>
+//
+// Styleguide 26.6
+
+// Ticket details info - example 2
+//
+// .ticket-details-info - .ticket-details-info
+//
+// Markup:
+// <div class="ticket-details-info">
+//     <div class="ticket-details-info__head">
+//         <span class="icon icon--chrome"></span>
+//         <p class="label">Browsers:</p>
+//     </div>
+//     <div class="ticket-details-info__content">
+//         <p class="details">IE 11, Firefox on Windows</p>
+//     </div>
+// </div>
+//
+// Styleguide 26.7
+
+// Ticket details info (alt) - example 3
+//
+// .ticket-details-info--alt - .ticket-details-info--alt
+//
+// Markup:
+// <div class="ticket-details-info ticket-details-info--alt">
+//     <div class="ticket-details-info__head">
+//         <span class="icon icon--screen"></span>
+//         <p class="label">Screenshots:</p>
+//     </div>
+//     <div class="ticket-details-info__content">
+//         <div class="screenshots-list-box">
+//             <div class="screenshots-list-box__head">
+//                 <div class="screenshots-list-box__no">
+//                     <p class="screenshots-list-box-title">No</p>
+//                 </div>
+//                 <div class="screenshots-list-box__name">
+//                     <p class="screenshots-list-box-title">Name</p>
+//                 </div>
+//                 <div class="screenshots-list-box__preview">
+//                     <p class="screenshots-list-box-title">Preview</p>
+//                 </div>
+//             </div>
+//             <div class="screenshots-list-box__content">
+//                 <ol class="screenshots-list">
+//                     <li class="screenshots-list__item">
+//                         <div class="screenshot-box">
+//                             <a class="screenshot-box__content" href="#" target="_blank">
+//                                 <span class="counter"></span>
+//                                 <span class="label">Screenshot_xyz_20.12.2015.png</span>
+//                                 <figure class="screenshot">
+//                                     <img src="/static/img/404.png" alt="screen">
+//                                 </figure>
+//                             </a>
+//                         </div>
+//                     </li>
+//                     <li class="screenshots-list__item">
+//                         <div class="screenshot-box">
+//                             <a class="screenshot-box__content" href="#" target="_blank">
+//                                 <span class="counter"></span>
+//                                 <span class="label">Screenshot</span>
+//                                 <figure class="screenshot">
+//                                     <img src="/static/img/pic_bg.jpg" alt="screen">
+//                                 </figure>
+//                             </a>
+//                         </div>
+//                     </li>
+//                     <li class="screenshots-list__item">
+//                         <div class="screenshot-box">
+//                             <a class="screenshot-box__content" href="#" target="_blank">
+//                                 <span class="counter"></span>
+//                                 <span class="label">blablabla__some-screenshot_name_NAME_121249_blaBLABlaaaa.jpg</span>
+//                                 <figure class="screenshot">
+//                                     <img src="/static/img/pic_project-2.jpg" alt="screen">
+//                                 </figure>
+//                             </a>
+//                         </div>
+//                     </li>
+//                 </ol>
+//             </div>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 26.8
 .ticket-details-info {
     @extend %helper--flex--stretch;
     &__head {
@@ -7847,9 +8736,13 @@ h1.breadcrumb {
         @extend %helper--flex--left--center;
         .details {
             margin: 0;
+            padding-top: 5px;
 
             font-size: 15px;
-            font-weight: 300;
+            font-weight: 500;
+            > a {
+                color: $color_blue;
+            }
         }
     }
     &__head + &__content {
@@ -7869,37 +8762,149 @@ h1.breadcrumb {
         }
     }
 }
-
-
-/* Ticket boxes
-   ========================================================================== */
-.ticket-author,
-.ticket-publish-date {
-    margin: 0;
-
-    font-size: 15px;
-    font-weight: 300;
-}
-.ticket-data-box {
-    &__head {
-        &__row {
-            @extend %helper--flex--left--top;
-            .ticket-author + .ticket-publish-date {
-                margin-left: 5px;
+.ticket-details-info {
+    @include breakpoint($breakpoint_tablet) {
+        &__head {
+            .label {
+                font-size: 15px;
             }
-            &:first-of-type {
-                margin-top: 3px;
+            .icon {
+                width: $size_padding_big;
+                &--chrome {
+                    padding-bottom: 3px;
+
+                    font-size: 16px;
+                }
+                &--file {
+                    &--code {
+                        padding-bottom: 2px;
+
+                        font-size: 16px;
+                    }
+                }
+                &--screen {
+                    padding-top: 0;
+
+                    font-size: 15px;
+                }
             }
         }
-        &__row + &__row {
-            margin-top: $size_padding;
+        &__content {
+            .details {
+                padding-top: 0;
+
+                font-size: 13px;
+            }
         }
     }
-    &__head + &__content {
-        margin-top: $size_btn_v;
+    @include breakpoint($breakpoint_smartphone) {
+        flex-wrap: wrap;
+        &__head {
+            width: 100%;
+        }
+        &__head + &__content {
+            margin-left: $size_padding_big;
+        }
+        &--alt {
+            .ticket-details-info__head + .ticket-details-info__content {
+                margin-left: 0;
+            }
+        }
     }
 }
 
+
+// Ticket details info list
+//
+// .ticket-details-info-list - .ticket-details-info-list
+//
+// Markup:
+// <ul class="ticket-details-info-list">
+//     <li class="ticket-details-info-list__item ticket-details-info-list__item--alt">
+//         <div class="ticket-details-info ticket-details-info--alt">
+//             <div class="ticket-details-info__head">
+//                 <span class="icon icon--screen"></span>
+//                 <p class="label">Screenshots:</p>
+//             </div>
+//             <div class="ticket-details-info__content">
+//                 <div class="screenshots-list-box">
+//                     <div class="screenshots-list-box__head">
+//                         <div class="screenshots-list-box__no">
+//                             <p class="screenshots-list-box-title">No</p>
+//                         </div>
+//                         <div class="screenshots-list-box__name">
+//                             <p class="screenshots-list-box-title">Name</p>
+//                         </div>
+//                         <div class="screenshots-list-box__preview">
+//                             <p class="screenshots-list-box-title">Preview</p>
+//                         </div>
+//                     </div>
+//                     <div class="screenshots-list-box__content">
+//                         <ol class="screenshots-list">
+//                             <li class="screenshots-list__item">
+//                                 <div class="screenshot-box">
+//                                     <a class="screenshot-box__content" href="#" target="_blank">
+//                                         <span class="counter"></span>
+//                                         <span class="label">Screenshot_xyz_20.12.2015.png</span>
+//                                         <figure class="screenshot">
+//                                             <img src="/static/img/404.png" alt="screen">
+//                                         </figure>
+//                                     </a>
+//                                 </div>
+//                             </li>
+//                             <li class="screenshots-list__item">
+//                                 <div class="screenshot-box">
+//                                     <a class="screenshot-box__content" href="#" target="_blank">
+//                                         <span class="counter"></span>
+//                                         <span class="label">Screenshot</span>
+//                                         <figure class="screenshot">
+//                                             <img src="/static/img/pic_bg.jpg" alt="screen">
+//                                         </figure>
+//                                     </a>
+//                                 </div>
+//                             </li>
+//                             <li class="screenshots-list__item">
+//                                 <div class="screenshot-box">
+//                                     <a class="screenshot-box__content" href="#" target="_blank">
+//                                         <span class="counter"></span>
+//                                         <span class="label">blablabla__some-screenshot_name_NAME_121249_blaBLABlaaaa.jpg</span>
+//                                         <figure class="screenshot">
+//                                             <img src="/static/img/pic_project-2.jpg" alt="screen">
+//                                         </figure>
+//                                     </a>
+//                                 </div>
+//                             </li>
+//                         </ol>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     </li>                                        
+//     <li class="ticket-details-info-list__item">
+//         <div class="ticket-details-info">
+//             <div class="ticket-details-info__head">
+//                 <span class="icon icon--file--code"></span>
+//                 <p class="label">Templates:</p>
+//             </div>
+//             <div class="ticket-details-info__content">
+//                 <p class="details"><a href="#" target="_blank">Template_xyz</a></p>
+//             </div>
+//         </div>
+//     </li>
+//     <li class="ticket-details-info-list__item">
+//         <div class="ticket-details-info">
+//             <div class="ticket-details-info__head">
+//                 <span class="icon icon--chrome"></span>
+//                 <p class="label">Browsers:</p>
+//             </div>
+//             <div class="ticket-details-info__content">
+//                 <p class="details">IE 11, Firefox on Windows</p>
+//             </div>
+//         </div>
+//     </li>
+// </ul>
+//
+// Styleguide 26.9
 .ticket-details-info-list {
     margin-bottom: -20px;
 
@@ -7915,15 +8920,129 @@ h1.breadcrumb {
     }
 }
 
-.ticket-description {
-    > p {
-        margin: 0;
-
-        font-size: 15px;
-        font-weight: 300;
-    }
-}
-
+// Ticket box
+//
+// .ticket-box - .ticket-box
+//
+// Markup:
+// <div class="ticket-box">
+//     <div class="ticket-box__content">
+//         <div class="ticket-description">
+//             <p>
+//                 Trzeba przygotować ekran szczegółów ticketu.<br>
+//                 To ekran dla klienta czyli ma nieco okrojone funkcjonalności.<br><br>
+//                 Wygląda to tak:<br>
+//                 - published by: dane, data dodania, data aktualizacji,<br>
+//                 - ticket status: np. Done - to jest select<br>
+//                 - assigned to: to jest select<br>
+//                 - opis ticketu<br>
+//                 - info do jakiego template przypisany jest ticket<br>
+//                 - sekcja komentarzy<br><br>
+//                 Każdy komentarz to:<br>
+//                 - treść<br>
+//                 - podpis imię i nazwisko<br>
+//                 - podpis: data i czas dodania<br><br>
+//                 Pod sekcją komentarzy - formularz dodawnia komentarza.
+//             </p>
+//         </div>
+//     </div>
+//     <div class="ticket-box__details">
+//         <ul class="ticket-details-info-list">
+//             <li class="ticket-details-info-list__item ticket-details-info-list__item--alt">
+//                 <div class="ticket-details-info ticket-details-info--alt">
+//                     <div class="ticket-details-info__head">
+//                         <span class="icon icon--screen"></span>
+//                         <p class="label">Screenshots:</p>
+//                     </div>
+//                     <div class="ticket-details-info__content">
+//                         <div class="screenshots-list-box">
+//                             <div class="screenshots-list-box__head">
+//                                 <div class="screenshots-list-box__no">
+//                                     <p class="screenshots-list-box-title">No</p>
+//                                 </div>
+//                                 <div class="screenshots-list-box__name">
+//                                     <p class="screenshots-list-box-title">Name</p>
+//                                 </div>
+//                                 <div class="screenshots-list-box__preview">
+//                                     <p class="screenshots-list-box-title">Preview</p>
+//                                 </div>
+//                             </div>
+//                             <div class="screenshots-list-box__content">
+//                                 <ol class="screenshots-list">
+//                                     <li class="screenshots-list__item">
+//                                         <div class="screenshot-box">
+//                                             <a class="screenshot-box__content" href="#" target="_blank">
+//                                                 <span class="counter"></span>
+//                                                 <span class="label">Screenshot_xyz_20.12.2015.png</span>
+//                                                 <figure class="screenshot">
+//                                                     <img src="/static/img/404.png" alt="screen">
+//                                                 </figure>
+//                                             </a>
+//                                         </div>
+//                                     </li>
+//                                     <li class="screenshots-list__item">
+//                                         <div class="screenshot-box">
+//                                             <a class="screenshot-box__content" href="#" target="_blank">
+//                                                 <span class="counter"></span>
+//                                                 <span class="label">Screenshot</span>
+//                                                 <figure class="screenshot">
+//                                                     <img src="/static/img/pic_bg.jpg" alt="screen">
+//                                                 </figure>
+//                                             </a>
+//                                         </div>
+//                                     </li>
+//                                     <li class="screenshots-list__item">
+//                                         <div class="screenshot-box">
+//                                             <a class="screenshot-box__content" href="#" target="_blank">
+//                                                 <span class="counter"></span>
+//                                                 <span class="label">blablabla__some-screenshot_name_NAME_121249_blaBLABlaaaa.jpg</span>
+//                                                 <figure class="screenshot">
+//                                                     <img src="/static/img/pic_project-2.jpg" alt="screen">
+//                                                 </figure>
+//                                             </a>
+//                                         </div>
+//                                     </li>
+//                                 </ol>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//             </li>                                        
+//             <li class="ticket-details-info-list__item">
+//                 <div class="ticket-details-info">
+//                     <div class="ticket-details-info__head">
+//                         <span class="icon icon--file--code"></span>
+//                         <p class="label">Templates:</p>
+//                     </div>
+//                     <div class="ticket-details-info__content">
+//                         <p class="details"><a href="#" target="_blank">Template_xyz</a></p>
+//                     </div>
+//                 </div>
+//             </li>
+//             <li class="ticket-details-info-list__item">
+//                 <div class="ticket-details-info">
+//                     <div class="ticket-details-info__head">
+//                         <span class="icon icon--chrome"></span>
+//                         <p class="label">Browsers:</p>
+//                     </div>
+//                     <div class="ticket-details-info__content">
+//                         <p class="details">IE 11, Firefox on Windows</p>
+//                     </div>
+//                 </div>
+//             </li>
+//         </ul>
+//     </div>
+//     <div class="ticket-box__actions">
+//         <a href="#" class="action-btn">
+//             <span class="action-btn__content">
+//                 <span class="label">Edit description</span>
+//                 <span class="icon icon--pencil"></span>
+//             </span>
+//         </a>
+//     </div>
+// </div>
+//
+// Styleguide 26.10
 .ticket-box {
     &__details {
         @extend %helper--flex--left--top;
@@ -7937,75 +9056,29 @@ h1.breadcrumb {
     }
 }
 
-
-/* Labels list-select
-   ========================================================================== */
-.labels-choice {
-    position: relative;
-
-    width: calc(#{$size_input_h} / 2 + #{$size_acces-tool_h});
-    height: $size_input_v;
-
-    @extend %helper--flex--right--top;
-    .labels-choice-list {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        left: 0;
-
-        width: calc(100% - #{$size_acces-tool_h});
-    }
-}
-
-.labels-choice-list {
-    @extend %helper--list;
-    @extend %helper--flex--center--top;
-    flex-wrap: wrap;
-    &__item {
-        display: none;
-
-        width: 100%;
-        height: $size_input_v;
-        .status-label {
-            width: 100%;
-            height: 100%;
-            .label {
-                height: 100%;
-            }
+.ticket-box {
+    @include breakpoint($breakpoint_tablet) {
+        .ticket-description {
+            margin-top: 8px;
         }
-        &.active {
-            position: relative;
+        &__actions {
+            display: flex;
 
-            display: list-item;
-
-            order: -1;
-            &:after {
-                position: absolute;
-                top: 0;
-                right: -$size_acces-tool_h;
-
-                width: $size_acces-tool_h;
-                height: $size_input_v;
-
-                font-family: $font_ico;
-                font-size: 12px;
-
-                content: '\e81f';
-
-                color: $color_red_dark;
-                border: 1px solid $color_grey_0;
-                border-left: none;
-                background: #f9f9f9;
-
-                flex-shrink: 0;
-                @extend %helper--flex--center--center;
-            }
+            justify-content: center;
+            align-items: flex-start;
+            align-content: flex-start;
+        }
+        .ticket-box__content + .ticket-box__details {
+            margin-top: 22px;
+        }
+        .ticket-box__details + .ticket-box__actions {
+            margin-top: 38px;
         }
     }
-    &.active {
-        .labels-choice-list {
-            &__item {
-                display: list-item;
+    @include breakpoint($breakpoint_smartphone) {
+        &__actions {
+            .action-btn {
+                width: 100%;
             }
         }
     }
@@ -8061,8 +9134,10 @@ h1.breadcrumb {
 .popup {
     @include breakpoint($breakpoint_tablet) {
         width: 100%;
+        max-width: calc(100vw - 2 * #{$size_padding_medium});
     }
     @include breakpoint($breakpoint_smartphone) {
+        max-width: calc(100vw - 2 * #{$size_padding});
         .popup {
             &__inner {
                 padding: calc(#{$size_padding} * 1.2) $size_padding;

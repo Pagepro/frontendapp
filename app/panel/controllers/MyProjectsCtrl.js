@@ -1,7 +1,9 @@
 (function() {
   'use strict';
-  var MyProjectsCtrl = function($scope, projectsService, spinnerService) {
+  var MyProjectsCtrl = function($scope, projectsService, spinnerService, appSettings) {
     $scope.myProjects = null;
+    $scope.screenshotRoot = appSettings.screenshotRoot(239, 242);
+
     $scope.init = function() {
       spinnerService.show('my-projects');
       projectsService.getProjects(null, 'active')
@@ -15,7 +17,7 @@
     };
   };
 
-  MyProjectsCtrl.$inject = ['$scope', 'projectsService', 'spinnerService'];
+  MyProjectsCtrl.$inject = ['$scope', 'projectsService', 'spinnerService', 'appSettings'];
   angular.module('panelModule').controller('MyProjectsCtrl', MyProjectsCtrl);
 
 }());

@@ -192,9 +192,9 @@
                                         </p>
                                     </div>
                                 </li>
-                                <li class="project-time-list__item">
+                                <li class="project-time-list__item" ng-if="project.suggested_delivery_date">
                                     <div class="project-time">
-                                        <time class="project-time__head" datetime="{{ project.suggested_delivery_date | date:'dd/MM/yyyy' }}">{{ project.suggested_delivery_date | date:'dd/MM/yyyy' }}</time>
+                                        <time class="project-time__head" datetime="{{ project.suggested_delivery_date | date:'dd/MM/yyyy' }}">{{ project.suggested_delivery_date | date:'dd/MM/yyyy'}}</time>
                                         <p class="project-time__info-add">
                                             Date of delivery
                                         </p>

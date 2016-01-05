@@ -8,6 +8,7 @@ var eslint = require('gulp-eslint');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var cssmin = require('gulp-cssmin');
+var run = require('gulp-run');
 
 var spawn = require('child_process').spawn;
 var node;
@@ -21,8 +22,6 @@ gulp.task('server', function() {
     }
   });
 });
-
-
 
 gulp.task('js', function() {
   gulp.src([
@@ -83,6 +82,11 @@ gulp.task('autoprefixer', function() {
       cascade: false
     }))
     .pipe(gulp.dest('app/common/css/'));
+});
+
+gulp.task('styleguide', function () {
+  run('kss-node app/common/sass/ styleguide/out --template styleguide/template').exec()
+    .pipe(gulp.dest('styleguide/output'))
 });
 
 gulp.task('default', ['sass', 'watch', 'server', 'serve']);

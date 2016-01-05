@@ -10,12 +10,12 @@
         $scope.removeFile = function () {
           filesService.removeFile($stateParams.projectId, $scope.file.id)
           .success(function () {
-            toaster.pop('success', 'File removed!', 'You have successfully removed the file.')
+            toaster.pop('success', 'File removed!', 'You have successfully removed the file.');
           })
           .error(function () {
             toaster.pop('error', 'An error occured.', 'Unfortunately we couldn\'t remove the file. Please, try again');
           });
-        }
+        };
       }
     };
   };

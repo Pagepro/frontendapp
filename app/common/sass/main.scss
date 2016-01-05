@@ -6,7 +6,7 @@
    ========================================================================== */
 @import "partials/normalize";
 @import "sprites";
-@import "../../../app/lib/breakpoint-sass/stylesheets/breakpoint";
+@import "app/lib/breakpoint-sass/stylesheets/breakpoint";
 
 /* External fonts
    ========================================================================== */
@@ -55,7 +55,3 @@
 /* Print Styles
    ========================================================================== */
 @import "partials/print";
-
-/* Anim
-   ========================================================================== */
-@import "../animate";
