@@ -25,9 +25,20 @@ gulp.task('server', function() {
 
 gulp.task('js', function() {
   gulp.src([
-    'app/**/module.js',
-    'app/**/*.js',
-    '!app/lib{,/**}' // don't load unnecessary libs!
+    'libs/jquery/dist/jquery.js',
+    'libs/jquery-ui/jquery-ui.js',
+    'libs/angular/angular.js',
+    'libs/angular-ui-sortable/sortable.js',
+    'libs/angular-ui-router/release/angular-ui-router.js',
+    'libs/angular-animate/angular-animate.js',
+    'libs/angular-off-click/offClick.js',
+    'libs/angular-ellipsis/src/angular-ellipsis.js',
+    'libs/ng-file-upload/ng-file-upload.js',
+    'libs/angularJS-Toaster/toaster.js',
+    'libs/jquery.customSelect/jquery.customSelect.js',
+    'libs/jquery-nicefileinput/jquery.nicefileinput.js',
+    'libs/lodash/lodash.js',
+    'app/**/*.js'
     ])
     .pipe(concat('app.js'))
     .pipe(gulp.dest('dist'))
@@ -55,9 +66,9 @@ gulp.task('prod', function() {
   gulp.src(['app/common/fonts/*']).pipe(gulp.dest('dist/fonts'));
 
   gulp.src(['dist/app.js'])
-    .pipe(sourcemaps.init())
+    //.pipe(sourcemaps.init())
     .pipe(uglify())
-    .pipe(sourcemaps.write())
+    //.pipe(sourcemaps.write())
     .pipe(gulp.dest('dist'));
 
   gulp.src('app/common/css/*.css')
@@ -90,7 +101,7 @@ gulp.task('styleguide', function () {
 });
 
 gulp.task('default', ['sass', 'watch', 'server', 'serve']);
-gulp.task('compile', ['sass', 'prod']);
+gulp.task('compile', ['sass', 'js', 'prod']);
 
 process.on('exit', function() {
     if (node) node.kill()
