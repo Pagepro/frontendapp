@@ -10,7 +10,7 @@
         return 'http://frontendapp.com/uploads/';
       },
       fileRoot: 'http://frontendapp.com/projects/download/file/',
-      apiRoot: 'http://localhost:1234/'
-      // apiRoot: 'http://api.frontendapp.com/'
+      // apiRoot: 'http://localhost:1234/'
+      apiRoot: 'http://api.frontendapp.com/'
   });
 }());
