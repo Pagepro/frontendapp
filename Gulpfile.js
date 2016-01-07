@@ -12,6 +12,22 @@ var run = require('gulp-run');
 
 var spawn = require('child_process').spawn;
 var node;
+var jsFiles = [
+  'libs/jquery/dist/jquery.js',
+  'libs/jquery-ui/jquery-ui.js',
+  'libs/angular/angular.js',
+  'libs/angular-ui-sortable/sortable.js',
+  'libs/angular-ui-router/release/angular-ui-router.js',
+  'libs/angular-animate/angular-animate.js',
+  'libs/angular-off-click/offClick.js',
+  'libs/angular-ellipsis/src/angular-ellipsis.js',
+  'libs/ng-file-upload/ng-file-upload.js',
+  'libs/AngularJS-Toaster/toaster.js',
+  'libs/jquery.customSelect/jquery.customSelect.js',
+  'libs/jquery-nicefileinput/jquery.nicefileinput.js',
+  'libs/lodash/lodash.js',
+  'app/**/*.js'
+];
 
 gulp.task('server', function() {
   if (node) node.kill()
@@ -24,22 +40,7 @@ gulp.task('server', function() {
 });
 
 gulp.task('js', function() {
-  gulp.src([
-    'libs/jquery/dist/jquery.js',
-    'libs/jquery-ui/jquery-ui.js',
-    'libs/angular/angular.js',
-    'libs/angular-ui-sortable/sortable.js',
-    'libs/angular-ui-router/release/angular-ui-router.js',
-    'libs/angular-animate/angular-animate.js',
-    'libs/angular-off-click/offClick.js',
-    'libs/angular-ellipsis/src/angular-ellipsis.js',
-    'libs/ng-file-upload/ng-file-upload.js',
-    'libs/angularJS-Toaster/toaster.js',
-    'libs/jquery.customSelect/jquery.customSelect.js',
-    'libs/jquery-nicefileinput/jquery.nicefileinput.js',
-    'libs/lodash/lodash.js',
-    'app/**/*.js'
-    ])
+  gulp.src(jsFiles)
     .pipe(concat('app.js'))
     .pipe(gulp.dest('dist'))
 });
@@ -65,11 +66,27 @@ gulp.task('prod', function() {
   gulp.src(['app/common/img/*', 'app/common/img/**/*']).pipe(gulp.dest('dist/img'));
   gulp.src(['app/common/fonts/*']).pipe(gulp.dest('dist/fonts'));
 
-  gulp.src(['dist/app.js'])
-    //.pipe(sourcemaps.init())
-    .pipe(uglify())
-    //.pipe(sourcemaps.write())
+
+  // gulp.task('uglify', function() {
+  //   gulp.src('public/js/*.js')
+  //     .pipe(uglify('app.min.js', {
+  //       outSourceMap: true
+  //     }))
+  //     .pipe(gulp.dest('dist/js'))
+  // });
+
+  gulp.src(jsFiles)
+    .pipe(concat('app.js'))
+    .pipe(uglify({
+      outSourceMap: true
+    }))
     .pipe(gulp.dest('dist'));
+
+  // gulp.src(['dist/app.js'])
+  //   //.pipe(sourcemaps.init())
+  //   .pipe(uglify())
+  //   //.pipe(sourcemaps.write())
+  //   .pipe(gulp.dest('dist'));
 
   gulp.src('app/common/css/*.css')
     .pipe(cssmin())
@@ -101,7 +118,7 @@ gulp.task('styleguide', function () {
 });
 
 gulp.task('default', ['sass', 'watch', 'server', 'serve']);
-gulp.task('compile', ['sass', 'js', 'prod']);
+gulp.task('compile', ['sass', 'prod']);
 
 process.on('exit', function() {
     if (node) node.kill()
