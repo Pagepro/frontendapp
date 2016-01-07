@@ -5,6 +5,15 @@
   panelModule
     .config(['$stateProvider', function($stateProvider) {
       $stateProvider
+        // temp
+        .state('forceLogin', {
+          url: '/token/:token',
+          controller: 'forceLoginCtrl',
+          params: {
+            'token': null
+          }
+        })
+        // endtemp
         .state('newProjectState', {
           url: '/new-project',
           templateUrl: 'app/panel/templates/newProject.html',

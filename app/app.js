@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'authModule', 'panelModule',
+  var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'panelModule',
     'dibari.angular-ellipsis', 'ui.sortable', 'angularSpinners', 'toaster', 'ngFileUpload'
   ]);
   frontendApp
@@ -10,7 +10,8 @@
       '$locationProvider',
       function($urlRouterProvider, $httpProvider) {
         $httpProvider.interceptors.push('authInterceptor');
-        $urlRouterProvider.otherwise('/auth/login');
+        // $urlRouterProvider.otherwise('/auth/login');
+        $urlRouterProvider.otherwise('/my-projects');
       }
     ])
     .run(['$state',

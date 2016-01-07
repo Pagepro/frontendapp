@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var authInterceptor = function($q, $window, $location, spinnerService, toaster) {
+  var authInterceptor = function($q, $window, $location) {
     return {
       request: function(config) {
         config.headers = config.headers || {};
@@ -13,7 +13,9 @@
         if (response.status === 401 || response.status === 403) {
           $window.localStorage.removeItem('token');
           $window.localStorage.removeItem('username');
-          $location.path('/');
+          // temp
+          $window.location.href = 'http://frontendapp.com/';
+          // $location.path('/');
           return;
         }
         if (response.status === 404) {
@@ -31,7 +33,7 @@
     };
   };
 
-  authInterceptor.$inject = ['$q', '$window', '$location', 'spinnerService', 'toaster'];
+  authInterceptor.$inject = ['$q', '$window', '$location'];
   angular.module('frontendApp').factory('authInterceptor', authInterceptor);
 
 }());
