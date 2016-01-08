@@ -4,7 +4,7 @@
     return {
       restrict: 'E',
       templateUrl: function (el, attr) {
-        return 'app/panel/directives/templatePreview/' + attr.type + 'templatePreview.html';
+        return 'app/panel/directives/templatePreview/' + attr.type + 'TemplatePreview.html';
       },
       link: function (scope) {
         scope.projectStatus = statusService.getStatus(scope.template.status);
