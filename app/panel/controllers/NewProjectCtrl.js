@@ -1,56 +1,53 @@
 (function() {
   'use strict';
-  var NewProjectCtrl = function($scope, $state, $stateParams, Upload, appSettings) {
-    // if (!$stateParams.projectId) {
-    //   $state.go('myProjectsState');
-    // } else {
-    angular.element('.input--file').nicefileinput();
+  var NewProjectCtrl = function($scope, $state, $stateParams, Upload, appSettings, toaster, spinnerService) {
+    if (!$stateParams.projectId) {
+      $state.go('myProjectsState');
+    } else {
+      angular.element('.input--file').nicefileinput();
 
-    $scope.filesInProgress = [];
-    $scope.name = $stateParams.projectName;
-    $scope.id = $stateParams.projectName;
+      $scope.filesProcessing = false;
+      $scope.name = $stateParams.projectName;
+      $scope.id = $stateParams.projectId;
 
-    $scope.$watch('files', function() {
-      $scope.upload($scope.files);
-    });
-    $scope.$watch('file', function() {
-      if ($scope.file != null) {
-        $scope.files = [$scope.file];
-      }
-    });
-
-    $scope.upload = function(files) {
-      if (files && files.length) {
-        _.each(files, function(file) {
-          if (!file.$error) {
-            $scope.filesInProgress.push(file);
+      $scope.uploadFiles = function(files) {
+        $scope.files = files;
+        if (files && files.length && !$scope.filesProcessing) {
+          if (!files.$error) {
+            $scope.filesProcessing = true;
             Upload.upload({
-                url: appSettings.apiRoot + 'projects/' + 4 + '/templates/',
+                url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/templates/',
                 data: {
-                  file: file,
+                  files: files,
                   projectId: $stateParams.projectId,
                   name: $scope.name
                 }
               })
               .progress(function(event) {
-                file.progress = _.round((event.loaded / event.total) * 100);
-
+                files.progress = _.round((event.loaded / event.total) * 100);
                 if (event.total > 1024 * 1024) {
-                  file.sizeTotal = _.round((event.total / 1024 / 1024), 2);
-                  file.unit = 'MB';
+                  files.sizeTotal = _.round((event.total / 1024 / 1024), 2);
+                  files.unit = 'MB';
                 } else {
-                  file.sizeTotal = _.round((event.total / 1024), 2);
-                  file.unit = 'KB';
+                  files.sizeTotal = _.round((event.total / 1024), 2);
+                  files.unit = 'KB';
                 }
+              })
+              .success(function () {
+                spinnerService.show('new-project');
+                $scope.filesProcessing = true;
+                toaster.pop('success', 'Files added!', 'You have successfully added templates to your project.');
+                $state.go('projectState', {
+                  projectId: $scope.id
+                });
               });
           }
-        });
-      }
-    };
-    // }
+        }
+      };
+    }
   };
 
-  NewProjectCtrl.$inject = ['$scope', '$state', '$stateParams', 'Upload', 'appSettings'];
+  NewProjectCtrl.$inject = ['$scope', '$state', '$stateParams', 'Upload', 'appSettings', 'toaster', 'spinnerService'];
   angular.module('panelModule').controller('NewProjectCtrl', NewProjectCtrl);
 
 }());

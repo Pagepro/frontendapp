@@ -1,3 +1,4 @@
+<spinner name="new-project" group="full-page" on-loaded="init()"></spinner>
 <div class="sec--main__head">
     <div class="sec--main__inner">
         <div class="status-label status-label--done">
@@ -7,56 +8,51 @@
 </div>
 <div class="sec--main__content">
     <section class="subsec">
-        <form class="subsec__inner">
+        <div class="subsec__inner">
             <div class="subsec__head">
-                <input type="text" name="name" id="name" class="new-project-name" placeholder="New project name" model="name" value="{{name}}" autocomplete="off" required ng-model-options="{updateOn: 'blur'}">
+                <h2 class="main-title">
+                    <span class="label">{{name}}</span>
+                </h2>
             </div>
             <div class="subsec__content"
-            ngf-drop class="drop-box" ng-model="files"
+            ngf-drop="uploadFiles($files)" class="drop-box" ng-model="files"
             ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
             accept="image/*,application/pdf,.psd,.zip,.rar,.7z,.tar" ngf-pattern="'image/*,application/pdf,.psd,.zip,.rar,.7z,.tar'">
                 <div class="project-box">
                     <div class="project-box__content">
-                        <ul class="teasers-list teasers-list--alt">
+                        <ul class="teasers-list teasers-list--alt" ng-class="{'action-teaser--in-progress' : files.length }">
                             <li class="teasers-list__item">
                                 <div class="teaser action-teaser js-teaser uploader">
                                     <div class="teaser__inner">
                                         <div class="teaser__head">
                                             <span class="icon icon--upload"></span>
                                         </div>
-                                        <div class="teaser__content">
-                                            <div class="project-actions">
+                                        <div class="teaser__content" ng-hide="files">
+                                            <form class="project-action-form">
                                                 <fieldset class="form__fieldset">
                                                     <div class="field field--input">
                                                         <label class="label" for="project-name">Upload Files</label>
-                                                        <input type="file" name="add_file" class="input input--file" id="project-name" ngf-select ng-model="file"
+                                                        <input type="file" name="add_file" class="input input--file" id="project-name"
+                                                        ngf-select="uploadFiles($files)" ng-model="files"  ngf-multiple="true"
                                                         accept="image/*,application/pdf,.psd,.zip,.rar,.7z,.tar" ngf-pattern="'image/*,application/pdf,.psd,.zip,.rar,.7z,.tar'">
                                                     </div>
                                                 </fieldset>
-                                            </div>
+                                            </form>
                                         </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="teasers-list__item" ng-repeat="file in filesInProgress">
-                                <div class="teaser action-teaser action-teaser--in-progress" ng-class="file.finished ? 'action-teaser--done' : 'action-teaser--in-progress'">
-                                    <div class="teaser__inner">
-                                        <div class="teaser__head">
-                                            <span class="icon" ng-class="file.finished ? 'icon--check' : 'icon--plus'"></span>
-                                        </div>
-                                        <div class="teaser__content">
+
+                                        <div class="teaser__content" ng-if="files && files.length > 0">
                                             <p class="title">
-                                                <span class="label">{{file.name}}</span>
+                                                <span class="label">Upload Files</span>
                                             </p>
                                             <div class="progress-bar-wrapper progress-bar-wrapper--alt">
-                                                <progress class="progress-bar progress-bar--alt" value="{{file.progress}}" max="100"></progress>
+                                                <progress class="progress-bar progress-bar--alt" value="{{files.progress}}" max="100"></progress>
                                                 <p class="progress-bar-value">
-                                                    <span class="qty">{{file.progress}}</span>
+                                                    <span class="qty">{{files.progress}}</span>
                                                     <span>%</span>
                                                 </p>
                                                 <p class="progress-bar-file-size">
-                                                    <span class="size">{{file.sizeTotal || '-'}}</span>
-                                                    <span class="unit">{{file.unit}}</span>
+                                                    <span class="size">{{files.sizeTotal}}</span>
+                                                    <span class="unit">{{files.unit}}</span>
                                                 </p>
                                             </div>
                                         </div>

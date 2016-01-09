@@ -95,10 +95,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-box__actions">
+                    <div class="project-box__actions" ng-if="tickets.length && (tickets.total - tickets.length) > 0">
                         <a href="#" class="action-btn js-rotate">
                             <span class="action-btn__content">
-                                <span class="label"><span class="qty">7</span> more tickets</span>
+                                <span class="label"><span class="qty">{{ tickets.total - tickets.length }}</span> more tickets</span>
                                 <span class="icon icon--reload"></span>
                             </span>
                         </a>
@@ -149,7 +149,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="project-box__actions">
+                    <div class="project-box__actions" ng-if="files.length">
                         <a href="#" class="action-btn">
                             <span class="action-btn__content">
                                 <span class="label">Download all files (<span class="qty">{{files.length}}</span>)</span>

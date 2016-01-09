@@ -57,6 +57,9 @@
           controllerAs: 'PC',
           pageName: 'Project Details',
           module: 'panel',
+          params: {
+            'projectId': null
+          },
           trails: [{
             name: 'My Projects',
             link: '#/my-projects'
