@@ -200,7 +200,7 @@
                         </ul>
                     </div>
                     <div class="ticket-box__actions">
-                        <a href="#" class="action-btn">
+                        <a ui-sref="null" class="action-btn">
                             <span class="action-btn__content">
                                 <span class="label">Edit description</span>
                                 <span class="icon icon--pencil"></span>
@@ -250,7 +250,7 @@
                                     </div>
                                     <div class="comment__actions">
                                         <div class="action-tool" aria-label="delete comment">
-                                            <a href="#" target="_blank" class="action-tool__content">
+                                            <a target="_blank" class="action-tool__content" ng-click="removeComment(comment.id)">
                                                 <span class="icon icon--trash"></span>
                                             </a>
                                             <div class="action-tool__info">
@@ -265,7 +265,7 @@
                         </ul>
                     </div>
                     <div class="comments__actions">
-                        <form class="ticket-details-comment-form">
+                        <form class="ticket-details-comment-form" ng-submit="addComment(comment)">
                             <fieldset class="form__fieldset">
                                 <div class="form__content">
                                     <div class="form-box">
@@ -276,7 +276,7 @@
                                             <div class="form-box__section__content">
                                                 <div class="form__section">
                                                     <div class="field field--textarea">
-                                                        <textarea class="textarea" id="popup-description"></textarea>
+                                                        <textarea class="textarea" id="popup-description" ng-model="comment.content" ng-required></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -284,7 +284,7 @@
                                     </div>
                                 </div>
                                 <div class="form__actions">
-                                    <button class="btn btn--submit btn--submit--small">
+                                    <button class="btn btn--submit btn--submit--small" ng-disabled="processing">
                                         <span class="label">Add comment</span>
                                     </button>
                                 </div>

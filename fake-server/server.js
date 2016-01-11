@@ -70,6 +70,8 @@ app.put('/projects/:id/templates/:templateId', function(req, res) {
   }
 });
 
+
+
 app.get('/projects/:id/files', function(req, res) {
   if (req.headers.authorization) {
     res.json(files);
@@ -104,6 +106,25 @@ app.get('/projects/:id/tickets/:ticketId', function(req, res) {
 app.get('/projects/:id/tickets/:ticketId/comments', function(req, res) {
   if (req.headers.authorization) {
     res.json(comments);
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
+});
+
+app.post('/projects/:id/tickets/:ticketId/comments', function(req, res) {
+  if (req.headers.authorization) {
+    res.status(200).json(comments);
+  } else {
+    res.json(401, { error: 'An error has occurred!' });
+  }
+});
+
+app.delete('/projects/:id/tickets/:ticketId/comments/:commentId', function(req, res) {
+  if (req.headers.authorization) {
+
+    res.status(200).json(_.filter(comments, function (comment) {
+      return comment.id !== req.params.commentId;
+    }));
   } else {
     res.json(401, { error: 'An error has occurred!' });
   }

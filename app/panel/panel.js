@@ -98,10 +98,21 @@
           },
           {
             name: 'Project Details',
-            // fixme
-            link: '#/my-projects/'
+            link: '#/my-projects/:projectId'
           }]
-        });
+        })
+          .state('ticketState.editDetails', {
+            url: '/edit-description',
+            templateUrl: 'app/panel/templates/editTemplate.html',
+            controller: 'EditDescriptionCtrl',
+            controllerAs: 'EDC',
+            pageName: 'Edit Description',
+            module: 'panel',
+            params: {
+              'projectId': null,
+              'templateId': null
+            }
+          });
     }]);
 
 }());

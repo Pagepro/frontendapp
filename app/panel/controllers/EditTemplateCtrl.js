@@ -1,6 +1,7 @@
 (function() {
   'use strict';
   var EditTemplateCtrl = function($scope, $state, $stateParams, templatesService, toaster, Upload, appSettings) {
+
     $scope.title = null;
     $scope.image = null;
     $scope.comment = null;
@@ -21,6 +22,7 @@
     var init = function () {
       angular.element('.input--file').nicefileinput();
       fillFields();
+      console.log('hello');
     };
 
     init();
