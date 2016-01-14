@@ -25,18 +25,12 @@
               })
               .progress(function(event) {
                 files.progress = _.round((event.loaded / event.total) * 100);
-                if (event.total > 1024 * 1024) {
-                  files.sizeTotal = _.round((event.total / 1024 / 1024), 2);
-                  files.unit = 'MB';
-                } else {
-                  files.sizeTotal = _.round((event.total / 1024), 2);
-                  files.unit = 'KB';
-                }
+                files.sizeTotal = event.total;
               })
               .success(function () {
                 spinnerService.show('new-project');
                 $scope.filesProcessing = true;
-                toaster.pop('success', 'Files added!', 'You have successfully added templates to your project.');
+                toaster.pop('success', 'Files added!', 'You have successfully added files to your project.');
                 $state.go('projectState', {
                   projectId: $scope.id
                 });
