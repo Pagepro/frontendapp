@@ -1,10 +1,10 @@
 (function() {
   'use strict';
 
-  var projectFile = function ($stateParams, appSettings, toaster, filesService) {
+  var projectInlineFile = function ($stateParams, appSettings, toaster, filesService) {
     return {
       restrict: 'A',
-      templateUrl: 'app/panel/directives/projectFile/projectFile.html',
+      templateUrl: 'app/panel/directives/projectInlineFile/projectInlineFile.html',
       link: function ($scope) {
         $scope.fileRoot = appSettings.fileRoot;
         $scope.removeFile = function () {
@@ -20,7 +20,7 @@
     };
   };
 
-  projectFile.$inject = ['$stateParams', 'appSettings', 'toaster', 'filesService'];
-  angular.module('panelModule').directive('projectFile', projectFile);
+  projectInlineFile.$inject = ['$stateParams', 'appSettings', 'toaster', 'filesService'];
+  angular.module('panelModule').directive('projectInlineFile', projectInlineFile);
 
 }());
