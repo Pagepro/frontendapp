@@ -65,46 +65,7 @@
                     <span class="label">Project Tickets</span>
                 </h3>
             </div>
-            <div class="subsec__content">
-                <div class="project-box">
-                    <div class="project-box__content">
-                        <div class="files-box files-box--tickets">
-                            <div class="files-box__head">
-                                <div class="files-box__id">
-                                    <p class="filebox-title">Id</p>
-                                </div>
-                                <div class="files-box__name">
-                                    <p class="filebox-title">Short ticket description</p>
-                                </div>
-                                <div class="files-box__status">
-                                    <p class="filebox-title">Status</p>
-                                </div>
-                                <div class="files-box__comments">
-                                    <p class="filebox-title">Comments</p>
-                                </div>
-                                <div class="files-box__ticket-date">
-                                    <p class="filebox-title">Date</p>
-                                </div>
-                            </div>
-                            <div class="files-box__content">
-                                <div class="files-box__number">
-                                </div>
-                                <ol class="files-list">
-                                    <li class="files-list__item" inline-ticket ng-repeat="ticket in tickets"></li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-box__actions" ng-if="tickets.length && (tickets.total - tickets.length) > 0">
-                        <a href="#" class="action-btn js-rotate">
-                            <span class="action-btn__content">
-                                <span class="label"><span class="qty">{{ tickets.total - tickets.length }}</span> more tickets</span>
-                                <span class="icon icon--reload"></span>
-                            </span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <div class="subsec__content" project-tickets></div>
         </div>
     </section>
     <section class="subsec">
@@ -164,4 +125,5 @@
         </div>
     </section>
 </div>
-<div ui-view></div>
+<!-- place for popups -->
+<div ui-view ></div>

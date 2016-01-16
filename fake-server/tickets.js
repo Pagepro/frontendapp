@@ -13,7 +13,7 @@ function Comments() {
 
 function Tickets() {
     var tickets = [];
-    while (tickets.length < _.random(10, 20)) {
+    while (tickets.length < _.random(20, 40)) {
       tickets.push({
         'id': _.uniqueId(),
         'name': chance.name(),
@@ -26,7 +26,10 @@ function Tickets() {
         'comments': new Comments()
       });
     }
-    return tickets;
+    return {
+      count: tickets.length,
+      results: tickets
+    };
 }
 
 module.exports = new Tickets();

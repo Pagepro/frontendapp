@@ -1,4 +1,4 @@
-<div class="project-box" ng-if="files.length">
+<div class="project-box" ng-if="files">
     <div class="project-box__content">
         <div class="files-box">
             <div class="files-box__head">
@@ -32,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="project-box__actions" ng-if="files.length">
+    <div class="project-box__actions">
         <a href="#" class="action-btn">
             <span class="action-btn__content">
                 <span class="label">Download all files (<span class="qty">{{files.length}}</span>)</span>
@@ -42,16 +42,4 @@
     </div>
 </div>
 
-<div class="upload-box" ng-if="!files.length">
-    <div class="upload-box__content">
-        <div class="upload-box__content__head">
-            <div class="icon-wrapper">
-                <span class="icon icon--folder--alt"></span>
-                <span class="qty">0</span>
-            </div>
-        </div>
-        <div class="upload-box__content__info-add">
-            <p><span class="qty">No</span> files uploaded to this project</p>
-        </div>
-    </div>
-</div>
+<projects-placeholder placeholding="files" ng-if="!files">

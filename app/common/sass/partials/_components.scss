@@ -7516,21 +7516,6 @@ h1.breadcrumb {
                 text-transform: uppercase;
             }
         }
-        &:hover {
-            text-decoration: none;
-            .upload-box__content {
-                &__head {
-                    .icon {
-                        color: $color_black;
-                    }
-                    .icon-wrapper {
-                        .qty {
-                            color: $color_black;
-                        }
-                    }
-                }
-            }
-        }
     }
     .upload-box__content__head + .upload-box__content__info-add {
         margin-top: $size_padding;

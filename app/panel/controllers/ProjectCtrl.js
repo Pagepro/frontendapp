@@ -60,11 +60,19 @@
 
       ticketsPromise = ticketsService.getTickets($stateParams.projectId);
       ticketsPromise.success(function(tickets) {
-        $scope.tickets = tickets;
+        $scope.tickets = tickets.results;
+        $scope.ticketsLeft = (tickets.count - $scope.tickets.length);
       });
 
       $q.all([projectPromise, filesPromise, templatesPromise, ticketsPromise]).then(function() {
         spinnerService.hide('project-details');
+      });
+    };
+    $scope.loadRemainingTickets = function () {
+      ticketsService.getTickets($stateParams.projectId, 'all')
+      .success(function (tickets) {
+        $scope.tickets = tickets.results;
+        $scope.ticketsLeft = (tickets.count - $scope.tickets.length);
       });
     };
   };

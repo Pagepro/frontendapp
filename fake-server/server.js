@@ -81,8 +81,16 @@ app.get('/projects/:id/files', function(req, res) {
 });
 
 app.get('/projects/:id/tickets', function(req, res) {
+
   if (req.headers.authorization) {
-    res.json(tickets);
+    if (req.query.status === 'all') {
+      res.json(tickets);
+    } else {
+      res.json({
+        count: tickets.count,
+        results: _.take(tickets.results, 10)
+      });
+    }
   } else {
     res.json(401, { error: 'An error has occurred!' });
   }

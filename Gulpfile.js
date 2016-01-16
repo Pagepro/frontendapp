@@ -58,7 +58,7 @@ gulp.task('serve', ['sass'], function() {
 
 gulp.task('watch', ['js'], function() {
   gulp.watch('app/common/**/*.scss', ['sass']);
-  gulp.watch(['app/**/templates/*.html', 'app/**/directives/*.html'], reload);
+  gulp.watch(['app/**/templates/*.html', 'app/**/directives/**/*.html'], reload);
   gulp.watch(['app/**/*.js'], ['js']);
 });
 
@@ -66,27 +66,12 @@ gulp.task('prod', function() {
   gulp.src(['app/common/img/*', 'app/common/img/**/*']).pipe(gulp.dest('dist/img'));
   gulp.src(['app/common/fonts/*']).pipe(gulp.dest('dist/fonts'));
 
-
-  // gulp.task('uglify', function() {
-  //   gulp.src('public/js/*.js')
-  //     .pipe(uglify('app.min.js', {
-  //       outSourceMap: true
-  //     }))
-  //     .pipe(gulp.dest('dist/js'))
-  // });
-
   gulp.src(jsFiles)
     .pipe(concat('app.js'))
     .pipe(uglify({
       outSourceMap: true
     }))
     .pipe(gulp.dest('dist'));
-
-  // gulp.src(['dist/app.js'])
-  //   //.pipe(sourcemaps.init())
-  //   .pipe(uglify())
-  //   //.pipe(sourcemaps.write())
-  //   .pipe(gulp.dest('dist'));
 
   gulp.src('app/common/css/*.css')
     .pipe(cssmin())
