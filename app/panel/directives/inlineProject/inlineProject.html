@@ -14,10 +14,16 @@
                 </div>
             </div>
             <div class="file-data__create-date">
-                <time class="file-date" datetime="{{project.created_on | date:'dd/MM/yyyy hh:mm'}}">{{project.created_on | date:'dd/MM/yyyy'}}</time>
+                <time ng-if="project.crteated_on"
+                class="file-date" datetime="{{project.created_on | date:'dd/MM/yyyy hh:mm'}}">{{project.created_on | date:'dd/MM/yyyy'}}</time>
+                <div ng-if="!project.crteated_on"
+                class="file-date">--/--/----</div>
             </div>
             <div class="file-data__finish-date">
-                <time class="file-date" datetime="{{project.finished_date | date:'dd/MM/yyyy hh:mm'}}">{{project.finished_date | date:'dd/MM/yyyy'}}</time>
+                <time ng-if="project.finished_date"
+                class="file-date" datetime="{{project.finished_date | date:'dd/MM/yyyy hh:mm'}}">{{project.finished_date | date:'dd/MM/yyyy'}}</time>
+                <div ng-if="!project.finished_date"
+                class="file-date">--/--/----</div>
             </div>
         </div>
     </div>

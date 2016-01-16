@@ -93,8 +93,8 @@
                                 <li class="project-time-list__item">
                                     <div class="project-time">
                                         <p class="project-time__head">
-                                            <span class="hours">20</span>
-                                            <span>h</span>
+                                            <span class="hours">{{project.eta || '-'}}</span>
+                                            <span ng-if="project.eta">h</span>
                                         </p>
                                         <p class="project-time__info-add">
                                             ETA
@@ -103,15 +103,21 @@
                                 </li>
                                 <li class="project-time-list__item">
                                     <div class="project-time">
-                                        <time class="project-time__head" datetime="{{ project.created_on | date:'dd/MM/yyyy' }}">{{ project.created_on | date:'dd/MM/yyyy' }}</time>
+                                        <time ng-if="project.created_on"
+                                        class="project-time__head" datetime="{{ project.created_on | date:'dd/MM/yyyy' }}">{{ project.created_on | date:'dd/MM/yyyy' }}</time>
+                                        <div ng-if="!project.created_on"
+                                        class="project-time__head">--/--/----</div>
                                         <p class="project-time__info-add">
                                             Start date
                                         </p>
                                     </div>
                                 </li>
-                                <li class="project-time-list__item" ng-if="project.suggested_delivery_date">
+                                <li class="project-time-list__item">
                                     <div class="project-time">
-                                        <time class="project-time__head" datetime="{{ project.suggested_delivery_date | date:'dd/MM/yyyy' }}">{{ project.suggested_delivery_date | date:'dd/MM/yyyy'}}</time>
+                                        <time ng-if="project.suggested_delivery_date"
+                                        class="project-time__head" datetime="{{ project.suggested_delivery_date | date:'dd/MM/yyyy' }}">{{ project.suggested_delivery_date | date:'dd/MM/yyyy'}}</time>
+                                        <div ng-if="!project.suggested_delivery_date"
+                                        class="project-time__head">--/--/----</div>
                                         <p class="project-time__info-add">
                                             Date of delivery
                                         </p>
