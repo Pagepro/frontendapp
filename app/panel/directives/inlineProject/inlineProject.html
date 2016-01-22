@@ -14,9 +14,9 @@
                 </div>
             </div>
             <div class="file-data__create-date">
-                <time ng-if="project.crteated_on"
+                <time ng-if="project.created_on"
                 class="file-date" datetime="{{project.created_on | date:'dd/MM/yyyy hh:mm'}}">{{project.created_on | date:'dd/MM/yyyy'}}</time>
-                <div ng-if="!project.crteated_on"
+                <div ng-if="!project.created_on"
                 class="file-date">--/--/----</div>
             </div>
             <div class="file-data__finish-date">
