@@ -51,14 +51,16 @@
 
     };
     $scope.removeComment = function (commentId) {
-      commentsService.removeComment($stateParams.projectId, $stateParams.ticketId, commentId)
-      .success(function (comments) {
-        $scope.comments = comments;
-        toaster.pop('success', 'Comment deleted.');
-      })
-      .error(function () {
-        toaster.pop('error', 'Couldn\'t remove the comment.');
-      });
+      if(confirm('Are you sure you want to remove this comment?')) {
+        commentsService.removeComment($stateParams.projectId, $stateParams.ticketId, commentId)
+        .success(function (comments) {
+          $scope.comments = comments;
+          toaster.pop('success', 'Comment deleted.');
+        })
+        .error(function () {
+          toaster.pop('error', 'Couldn\'t remove the comment.');
+        });
+      }
     };
     $scope.addComment = function (comment) {
       $scope.processing = true;

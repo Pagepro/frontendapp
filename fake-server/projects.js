@@ -26,6 +26,7 @@ while (projects.length < _.random(10, 20)) {
     'suggested_delivery_date': chance.birthday(),
     'repository': _.uniqueId('git@git.prvsrv.com:front-end/_') + '.git',
     'status': _.random(0, 4),
+    'templates_count': _.random(10, 100),
     'templates': _.random(3, 15)
   });
 }

@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   var ProjectCtrl = function($scope, $q, $stateParams, projectsService, templatesService, filesService,
-    ticketsService, statusService, spinnerService) {
+    ticketsService, statusService, spinnerService, toaster) {
     var projectPromise;
     var templatesPromise;
     var filesPromise;
@@ -52,7 +52,7 @@
       templatesPromise = templatesService.getTemplates($stateParams.projectId);
       templatesPromise.success(function(templates) {
         $scope.templates = templates;
-        $scope.deleteTemplate = templatesService.deleteTemplate;
+
         $scope.templates = templates.sort(function(item, nextItem) {
           return item.order > nextItem.order;
         });
@@ -68,6 +68,17 @@
         spinnerService.hide('project-details');
       });
     };
+    $scope.deleteTemplate = function (templateId) {
+      if(confirm('Are you sure you want to remove the template?')) {
+        templatesService.deleteTemplate($stateParams.projectId, templateId)
+        .success(function () {
+          toaster.pop('success', 'Template deleted.');
+        })
+        .error(function () {
+          toaster.pop('error', 'Couldn\'t remove the template', 'If the error happens again, please contact us.');
+        });
+      }
+    };
     $scope.loadRemainingTickets = function () {
       ticketsService.getTickets($stateParams.projectId, 'all')
       .success(function (tickets) {
@@ -79,7 +90,7 @@
 
 
   ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsService', 'templatesService', 'filesService',
-  'ticketsService', 'statusService', 'spinnerService'];
+  'ticketsService', 'statusService', 'spinnerService', 'toaster'];
   angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
 
 }());
