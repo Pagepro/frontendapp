@@ -1,4 +1,5 @@
-<div class="project-box" ng-if="files">
+<!-- silly condition because of type of response from API -->
+<div class="project-box" ng-if="files.length > 0">
     <div class="project-box__content">
         <div class="files-box">
             <div class="files-box__head">
@@ -41,5 +42,5 @@
         </a>
     </div>
 </div>
-
-<projects-placeholder placeholding="files" ng-if="!files">
+<!-- silly condition because of type of response from API -->
+<projects-placeholder placeholding="files" ng-if="files.length === 0">
