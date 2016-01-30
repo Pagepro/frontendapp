@@ -83,7 +83,7 @@ app.get('/projects/:id/files', function(req, res) {
 app.get('/projects/:id/tickets', function(req, res) {
 
   if (req.headers.authorization) {
-    if (req.query.status === 'all') {
+    if (req.query.filter === 'all') {
       res.json(tickets);
     } else {
       res.json({

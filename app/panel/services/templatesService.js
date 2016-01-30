@@ -17,7 +17,7 @@
       return $http.delete(appSettings.apiRoot + 'projects/' + projectId + '/templates/' + templateId + '/');
     };
     this.updateOrder = function (sortedArray) {
-      return $http.post(appSettings.apiRoot + 'projects/' + self.projectId + '/templates', sortedArray);
+      return $http.post(appSettings.apiRoot + 'projects/' + self.projectId + '/set_order/', sortedArray);
     };
   };
 

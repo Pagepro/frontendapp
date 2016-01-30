@@ -10,7 +10,7 @@
         requestUrl += ('?page=' + pageNo);
       }
       if (projectStatus) {
-        requestUrl += ('?status=' + projectStatus);
+        requestUrl += ('?filter=' + projectStatus);
       }
       return $http.get(requestUrl);
     };

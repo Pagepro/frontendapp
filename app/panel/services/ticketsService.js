@@ -5,7 +5,7 @@
     var self = this;
     this.getTickets = function(projectId, statusParam) {
       self.projectId = projectId;
-      return $http.get(appSettings.apiRoot + 'projects/' + self.projectId + '/tickets/' + ( statusParam ? ('?status=' + statusParam) : ''));
+      return $http.get(appSettings.apiRoot + 'projects/' + self.projectId + '/tickets/' + ( statusParam ? ('?filter=' + statusParam) : ''));
     };
     this.getTicketDetails = function (projectId, ticketId) {
       return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + ticketId);

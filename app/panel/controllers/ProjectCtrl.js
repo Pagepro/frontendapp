@@ -72,6 +72,9 @@
       if(confirm('Are you sure you want to remove the template?')) {
         templatesService.deleteTemplate($stateParams.projectId, templateId)
         .success(function () {
+          $scope.templates = _.filter($scope.templates, function (item) {
+            return item.id !== templateId;
+          });
           toaster.pop('success', 'Template deleted.');
         })
         .error(function () {
