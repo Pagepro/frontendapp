@@ -1,5 +1,5 @@
 <div class="project-box__content" ng-switch-when="grid">
-    <li class="teasers-list__item js-item-disabled">
+    <div class="teasers-list__item js-item-disabled">
         <div class="teaser action-teaser js-teaser" ng-click="toggleInput()"  ng-class="{active: activeInput}">
             <div class="teaser__inner">
                 <div class="teaser__head">
@@ -17,7 +17,7 @@
                 </div>
             </div>
         </div>
-    </li>
+    </div>
     <ul class="teasers-list" ui-sortable="sortableOptions" ng-model="templates">
         <li class="teasers-list__item" ng-repeat="template in templates" order="order">
             <template-preview type="grid"></template-preview>
