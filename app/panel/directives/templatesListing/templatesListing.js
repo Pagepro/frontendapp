@@ -1,18 +1,22 @@
 (function () {
   'use strict';
-  var templatesListing = function () {
+  var templatesListing = function (appSettings) {
     return {
       restrict: 'EA',
       scope: '=',
       templateUrl: 'app/panel/directives/templatesListing/templatesListing.html',
-      link: function (scope) {
-        scope.activeInput = false;
-        scope.toggleInput = function () {
-          scope.activeInput = !scope.activeInput;
+      link: function ($scope) {
+        $scope.activeInput = false;
+        $scope.toggleInput = function () {
+          $scope.activeInput = !$scope.activeInput;
         };
+        $scope.downloadAllLink = function (projectId) {
+          return appSettings.templatesSrc + projectId;
+        }
       }
     };
   };
 
+  templatesListing.$inject = ['appSettings'];
   angular.module('panelModule').directive('templatesListing', templatesListing);
 }());

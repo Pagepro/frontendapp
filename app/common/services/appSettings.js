@@ -1,16 +1,38 @@
 (function () {
   'use strict';
-  angular.module('frontendApp').value('appSettings', {
-      title: 'Fronted App',
-      verion: '0.0.2',
-      screenshotRoot: function (width, height) {
-        if (width && height) {
-          return 'http://frontendapp.com/imagefly/w' + width + '-h' + height + '-c/uploads/';
-        }
-        return 'http://frontendapp.com/uploads/';
-      },
-      fileRoot: 'http://frontendapp.com/projects/download/file/',
+
+  var urlSettings = {
+    local: {
+      baseUrl: '#',
       apiRoot: 'http://localhost:1234/'
-      // apiRoot: 'http://api.frontendapp.com/'
+    },
+    dev: {
+      baseUrl: 'http://dev.frontendapp.com/',
+      apiRoot: 'http://dev.api.frontendapp.com/'
+    },
+    prod: {
+      baseUrl: 'http://frontendapp.com/',
+      apiRoot: 'http://api.frontendapp.com/'
+    }
+  };
+
+  var environment = urlSettings.local;
+
+  angular.module('frontendApp').value('appSettings', {
+    title: 'Fronted App',
+    verion: '0.0.2',
+    apiRoot: environment.apiRoot,
+
+    fileRoot: environment.baseUrl + 'projects/download/file/',
+    redirectionUrl: environment.baseUrl,
+    templatesSrc: environment.baseUrl + 'projects/download/templates/',
+    filesSrc: environment.baseUrl + 'projects/download/files/',
+    screenshotRoot: function (width, height) {
+      if (width && height) {
+        return environment.baseUrl + 'imagefly/w' + width + '-h' + height + '-c/uploads/';
+      }
+      return environment.baseUrl + 'uploads/';
+    }
   });
+
 }());

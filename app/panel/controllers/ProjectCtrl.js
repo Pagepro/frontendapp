@@ -20,14 +20,16 @@
     };
 
     $scope.sortableOptions = {
-      update: function() {
+      stop: function() {
         // set new order after update
-        for (var index in $scope.templates) {
-          $scope.templates[index].order = index;
-        }
+        // for (var index in $scope.templates) {
+        //   debugger;
+        //   $scope.templates[index].order = index;
+        // }
+
         // push all items to array with newly ordered ids
         templatesService.updateOrder($scope.templates.map(function(item) {
-          return item.id;
+          return item.order;
         }));
       },
       placeholder: 'drag-and-drop-placeholder',
