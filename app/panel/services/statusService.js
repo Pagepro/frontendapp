@@ -10,8 +10,8 @@
       };
       switch (statusCode) {
         case 1:
-          projectStatus.className = 'finished';
-          projectStatus.labelContent = 'Complete';
+          projectStatus.className = 'new';
+          projectStatus.labelContent = 'New';
           break;
         case 2:
           projectStatus.className = 'in-progress';
@@ -26,8 +26,8 @@
           projectStatus.labelContent = 'Rejected';
           break;
         case 5:
-          projectStatus.className = 'new';
-          projectStatus.labelContent = 'New';
+          projectStatus.className = 'finished';
+          projectStatus.labelContent = 'Complete';
           break;
       }
       return projectStatus;
