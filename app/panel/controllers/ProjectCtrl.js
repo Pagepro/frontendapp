@@ -43,6 +43,7 @@
       spinnerService.show('project-details');
       projectPromise = projectsService.getProject($stateParams.projectId);
       projectPromise.success(function(project) {
+        console.log(project)
         $scope.project = project;
       });
 

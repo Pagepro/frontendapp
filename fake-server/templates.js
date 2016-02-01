@@ -26,7 +26,9 @@ function Templates() {
       'size': _.random(10, 400),
       'order': _.uniqueId(),
       'status': _.random(0, 4),
-      'uploaded_date': chance.birthday()
+      'uploaded_date': chance.birthday(),
+      'fullimage_url': 'http://localhost:1234/uploads' + chance.hash() + '.png',
+      'html_url': 'http://login:frontend@rmd.ddeevv.pl/player.html'
     });
   }
   return templates;

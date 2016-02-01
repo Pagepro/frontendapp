@@ -20,7 +20,7 @@ while (projects.length < _.random(10, 20)) {
     'client_id': _.uniqueId(),
     'updated_on': chance.birthday(),
     'created_on': chance.birthday(),
-    'finished': _.random(0, 100),
+    'progress': _.random(0, 100),
     'finished_date': chance.birthday(),
     'deadline_date': chance.birthday(),
     'suggested_delivery_date': chance.birthday(),
