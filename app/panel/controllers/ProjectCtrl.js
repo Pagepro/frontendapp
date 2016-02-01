@@ -54,8 +54,8 @@
 
       templatesPromise = templatesService.getTemplates($stateParams.projectId);
       templatesPromise.success(function(templates) {
+        console.log(templates);
         $scope.templates = templates;
-
         $scope.templates = templates.sort(function(item, nextItem) {
           return item.order > nextItem.order;
         });
@@ -71,32 +71,33 @@
         spinnerService.hide('project-details');
       });
     };
-    $scope.deleteTemplate = function (templateId) {
-      if(confirm('Are you sure you want to remove the template?')) {
+    $scope.deleteTemplate = function(templateId) {
+      if (confirm('Are you sure you want to remove the template?')) {
         templatesService.deleteTemplate($stateParams.projectId, templateId)
-        .success(function () {
-          $scope.templates = _.filter($scope.templates, function (item) {
-            return item.id !== templateId;
+          .success(function() {
+            $scope.templates = _.filter($scope.templates, function(item) {
+              return item.id !== templateId;
+            });
+            toaster.pop('success', 'Template deleted.');
+          })
+          .error(function() {
+            toaster.pop('error', 'Couldn\'t remove the template', 'If the error happens again, please contact us.');
           });
-          toaster.pop('success', 'Template deleted.');
-        })
-        .error(function () {
-          toaster.pop('error', 'Couldn\'t remove the template', 'If the error happens again, please contact us.');
-        });
       }
     };
-    $scope.loadRemainingTickets = function () {
+    $scope.loadRemainingTickets = function() {
       ticketsService.getTickets($stateParams.projectId, 'all')
-      .success(function (tickets) {
-        $scope.tickets = tickets.results;
-        $scope.ticketsLeft = (tickets.count - $scope.tickets.length);
-      });
+        .success(function(tickets) {
+          $scope.tickets = tickets.results;
+          $scope.ticketsLeft = (tickets.count - $scope.tickets.length);
+        });
     };
   };
 
 
   ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsService', 'templatesService', 'filesService',
-  'ticketsService', 'statusService', 'spinnerService', 'toaster'];
+    'ticketsService', 'statusService', 'spinnerService', 'toaster'
+  ];
   angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
 
 }());
