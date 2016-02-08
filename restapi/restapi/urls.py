@@ -28,10 +28,10 @@ router.register(r'accounts', views.UserViewSet, 'list')
 project_router = routers.NestedSimpleRouter(router, r'projects', lookup='project')
 project_router.register(r'files', views.ProjectFileViewSet, base_name='projectfile')
 project_router.register(r'templates', views.ProjectTemplateViewSet, base_name='projecttemplate')
-project_router.register(r'tickets', views.ProjectTemplateTicketViewSet, base_name='projectticket')
+project_router.register(r'tickets', views.ProjectTicketViewSet, base_name='projectticket')
 
 comments_router = routers.NestedSimpleRouter(project_router, r'tickets', lookup='ticket')
-comments_router.register(r'comments', views.ProjectTemplateTicketCommentViewSet, base_name='comments')
+comments_router.register(r'comments', views.ProjectTicketCommentViewSet, base_name='comments')
 
 urlpatterns = [
     url(r'^', include(router.urls)),
