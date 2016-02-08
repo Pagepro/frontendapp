@@ -1,18 +1,19 @@
-(function () {
+(function() {
   'use strict';
-  var templatesListing = function (appSettings) {
+  var templatesListing = function(appSettings) {
     return {
       restrict: 'EA',
       scope: '=',
       templateUrl: 'app/panel/directives/templatesListing/templatesListing.html',
-      link: function ($scope) {
+      link: function($scope) {
+        $scope.screenshotRoot = appSettings.screenshotRoot(239, 242);
         $scope.activeInput = false;
-        $scope.toggleInput = function () {
+        $scope.toggleInput = function() {
           $scope.activeInput = !$scope.activeInput;
         };
-        $scope.downloadAllLink = function (projectId) {
+        $scope.downloadAllLink = function(projectId) {
           return appSettings.templatesSrc + projectId;
-        }
+        };
       }
     };
   };

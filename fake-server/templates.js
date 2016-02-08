@@ -25,8 +25,10 @@ function Templates() {
       'extension': getExtension(_.random(0, 2)),
       'size': _.random(10, 400),
       'order': _.uniqueId(),
-      'status': _.random(0, 4),
-      'uploaded_date': chance.birthday()
+      'status': _.random(1, 5),
+      'uploaded_date': chance.birthday(),
+      'fullimage_url': 'http://localhost:1234/uploads' + chance.hash() + '.png',
+      'html_url': 'http://login:frontend@rmd.ddeevv.pl/player.html'
     });
   }
   return templates;

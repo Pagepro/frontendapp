@@ -1,4 +1,4 @@
-(function () {
+(function() {
   'use strict';
 
   var urlSettings = {
@@ -27,7 +27,7 @@
     redirectionUrl: environment.baseUrl,
     templatesSrc: environment.baseUrl + 'projects/download/templates/',
     filesSrc: environment.baseUrl + 'projects/download/files/',
-    screenshotRoot: function (width, height) {
+    screenshotRoot: function(width, height) {
       if (width && height) {
         return environment.baseUrl + 'imagefly/w' + width + '-h' + height + '-c/uploads/';
       }
