@@ -42,13 +42,12 @@
       if(file) {
         $scope.isUploading = true;
         file.upload = Upload.upload({
-          'url': appSettings.apiRoot + 'project/' + $stateParams.projectId + '/tickets/',
-          'data': {
-            'file': file,
-            'template': {
-              'template_name': $scope.title
-            },
-            'comments': $scope.comment
+          url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/tickets/',
+          data: {
+            file: file,
+            browsers: $scope.browsers,
+            description: $scope.description,
+            person: 'temp'
           }
         }).success(function () {
           toaster.pop('success', 'Success!', 'Your ticket has been added.');
