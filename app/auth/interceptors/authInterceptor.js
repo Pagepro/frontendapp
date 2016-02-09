@@ -14,7 +14,7 @@
           $window.localStorage.removeItem('token');
           $window.localStorage.removeItem('username');
           // temp
-          $window.location.href = 'http://dev.frontendapp.com/';
+          // $window.location.href = 'http://dev.frontendapp.com/';
           // $location.path('/');
           return;
         }

@@ -1,62 +1,82 @@
 (function () {
   'use strict';
-  var templateUploader = function (Upload, toaster, appSettings, $stateParams, templateUploaderFactory) {
+  var templateUploader = function ($q, Upload, toaster, appSettings, $stateParams, templateUploaderFactory) {
     return {
       templateUrl: 'app/panel/directives/templateUploader/templateUploader.html',
       scope: {
+        name: '@',
         id: '@?',
         filesUploadSuccess: '@?'
       },
       restrict: 'AE',
-      link: function ($scope, element) {
-        angular.element('.input--file').nicefileinput();
+      link: function ($scope) {
+        var uploadFiles;
 
         $scope.filesProcessing = false;
         $scope.filesUploadSuccess = false;
         $scope.name = $stateParams.projectName;
         $scope.id = $stateParams.projectId;
+        $scope.sizeTotal = 0;
+        $scope.progressArr = [];
 
-        $scope.uploadFiles = function(files) {
+        angular.element('.input--file').nicefileinput();
+
+        uploadFiles = function uploadFiles (file, index) {
+          var dfd = $q.defer();
+
+          Upload.upload({
+              url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/templates/',
+              data: {
+                files: file,
+                projectId: $stateParams.projectId,
+                name: file.filename
+              }
+            })
+            .progress(function(event) {
+              $scope.progressArr[index] = event.loaded;
+              // forcing change on a scope variable for $watch
+              $scope.triggerChange = !$scope.triggerChange;
+            })
+            .success(function () {
+              dfd.resolve();
+            });
+
+            return dfd.promise;
+        };
+
+        $scope.uploadFiles = function(files, index) {
           $scope.filesUploadSuccess = false;
           $scope.files = files;
           if (files && files.length && !$scope.filesProcessing) {
             if (!files.$error) {
               $scope.filesProcessing = true;
-              Upload.upload({
-                  url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/templates/',
-                  data: {
-                    files: files,
-                    projectId: $stateParams.projectId,
-                    name: $scope.name
-                  }
-                })
-                .progress(function(event) {
-                  files.progress = _.round((event.loaded / event.total) * 100);
-                  files.sizeTotal = event.total;
-                })
-                .success(function () {
-                  $scope.filesProcessing = true;
-                  $scope.filesUploadSuccess = true;
-                  toaster.pop('success', 'Files added!', 'You have successfully added files to your project.');
-                  templateUploaderFactory.setUploaderData({
-                    id: $scope.id,
-                    success: true
-                  });
-                })
-                .error(function () {
-                  templateUploaderFactory.setUploaderData({
-                    id: $scope.id,
-                    success: false
-                  });
+
+              var filesDfd = _.map(files, function (file, index) {
+                $scope.sizeTotal += file.size;
+                return uploadFiles(file, index);
+              });
+
+              $q.all(filesDfd).then(function (item) {
+                toaster.pop('success', 'Files added!', 'You have successfully added files to your project.');
+                templateUploaderFactory.setUploaderData({
+                  id: $scope.id,
+                  success: true
                 });
+              });
             }
           }
         };
+
+        $scope.$watch('triggerChange', function (item) {
+          var loaded = _.sum($scope.progressArr);
+          $scope.progress = _.round((loaded / $scope.sizeTotal) * 100);
+        });
+
       }
     };
   };
 
-  templateUploader.$inject = ['Upload', 'toaster', 'appSettings', '$stateParams', 'templateUploaderFactory'];
+  templateUploader.$inject = ['$q', 'Upload', 'toaster', 'appSettings', '$stateParams', 'templateUploaderFactory'];
   angular.module('panelModule').directive('templateUploader', templateUploader);
 
 

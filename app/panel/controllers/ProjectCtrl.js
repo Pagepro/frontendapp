@@ -20,7 +20,7 @@
     };
 
     $scope.sortableOptions = {
-      stop: function() {
+      stop: function(dupa, dupa2) {
         // set new order after update
         // for (var index in $scope.templates) {
         //   debugger;
@@ -39,11 +39,11 @@
       opacity: 0.8,
       tolerance: 'pointer'
     };
+
     $scope.init = function() {
       spinnerService.show('project-details');
       projectPromise = projectsService.getProject($stateParams.projectId);
       projectPromise.success(function(project) {
-        console.log(project)
         $scope.project = project;
       });
 

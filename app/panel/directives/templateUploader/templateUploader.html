@@ -1,22 +1,3 @@
-<!-- <div class="teaser action-teaser">
-    <div class="teaser__inner">
-        <div class="teaser__head">
-            <span class="icon icon--upload"></span>
-        </div>
-        <div class="teaser__content">
-            <form class="project-action-form" ng-class="{active: activeInput}">
-                <fieldset class="form__fieldset">
-                    <div class="field field--input">
-                        <label class="label" for="project-name">Upload Templates</label>
-                        <input type="file" name="add_file" class="input input--file" id="project-name" ng-model="templatesUp"
-                        ngf-select="uploadTemplates($templatesUp)" ngf-multiple="true" ngf-allow-dir="true"
-                        accept="image/*" ngf-pattern="'image/*'">
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </div>
-</div> -->
 <div class="teaser action-teaser js-teaser uploader" ng-class="{'action-teaser--in-progress' : files.length }"
 ngf-drop="uploadFiles($files)"
 ngf-drop="uploadFiles($files)" class="drop-box" ng-model="files"
@@ -44,13 +25,13 @@ accept="image/*,application/pdf,.psd,.zip,.rar,.7z,.tar" ngf-pattern="'image/*,a
                 <span class="label">Upload Files</span>
             </p>
             <div class="progress-bar-wrapper progress-bar-wrapper--alt">
-                <progress class="progress-bar progress-bar--alt" value="{{files.progress}}" max="100"></progress>
+                <progress class="progress-bar progress-bar--alt" value="{{progress}}" max="100"></progress>
                 <p class="progress-bar-value">
-                    <span class="qty">{{files.progress}}</span>
+                    <span class="qty">{{progress}}</span>
                     <span>%</span>
                 </p>
                 <p class="progress-bar-file-size">
-                    <span class="size">{{files.sizeTotal | bytes}}</span>
+                    <span class="size">{{sizeTotal | bytes}}</span>
                 </p>
             </div>
         </div>
