@@ -12,11 +12,16 @@ var templates = require('./templates');
 var tickets = require('./tickets');
 var ticketDetails = require('./ticketDetails');
 var comments = require('./comments');
+var account = require('./account');
 
 app.use(cors());
 
 app.post('/auth', function (req, res) {
   res.json(auth.token);
+});
+
+app.get('/accounts/my', function (req, res) {
+  res.json(account);
 });
 
 app.post('/projects/', function(req, res) {

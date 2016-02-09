@@ -1,13 +1,16 @@
 (function() {
   'use strict';
   var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService) {
-    var userData = accountService.getUserData();
+    var userData;
 
     $scope.image = null;
     $scope.description = null;
     $scope.isUploading = false;
     $scope.file = null;
 
+    accountService.getUserData().success(function (user) {
+      userData = user;
+    });
 
     var init = function () {
       angular.element('.input--file').nicefileinput();
@@ -49,7 +52,7 @@
             file: file,
             browsers: $scope.browsers,
             description: $scope.description,
-            person: userDataaccountService.getUserData();.id
+            person: userData.id
           }
         }).success(function () {
           toaster.pop('success', 'Success!', 'Your ticket has been added.');
