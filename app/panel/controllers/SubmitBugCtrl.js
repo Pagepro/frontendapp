@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings) {
+  var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService) {
     $scope.image = null;
     $scope.description = null;
     $scope.isUploading = false;
@@ -47,7 +47,7 @@
             file: file,
             browsers: $scope.browsers,
             description: $scope.description,
-            person: 'temp'
+            person: accountService.getUserData().id
           }
         }).success(function () {
           toaster.pop('success', 'Success!', 'Your ticket has been added.');
@@ -72,7 +72,7 @@
     };
   };
 
-  SubmitBugCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'templatesService', 'appSettings'];
+  SubmitBugCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'templatesService', 'appSettings', 'accountService'];
   angular.module('panelModule').controller('SubmitBugCtrl', SubmitBugCtrl);
 
 }());

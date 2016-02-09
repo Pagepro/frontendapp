@@ -2,11 +2,15 @@
   'use strict';
 
   var accountService = function ($http, appSettings) {
-    this.getUserData = function () {
-      return $http.get(appSettings.apiRoot + 'accounts/my/');
-    };
+    var user = $http.get(appSettings.apiRoot + 'accounts/my/');
+    return {
+      getUserData: function () {
+        return user;
+      }
+    }
+
   };
 
   accountService.$inject = ['$http', 'appSettings'];
-  angular.module('frontendApp').service('accountService', accountService);
+  angular.module('frontendApp').factory('accountService', accountService);
 }());
