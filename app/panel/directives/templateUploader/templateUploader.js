@@ -23,13 +23,11 @@
 
         uploadFiles = function uploadFiles (file, index) {
           var dfd = $q.defer();
-
           Upload.upload({
               url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/templates/',
               data: {
                 files: file,
-                projectId: $stateParams.projectId,
-                name: file.filename
+                name: file.name
               }
             })
             .progress(function(event) {
