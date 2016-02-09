@@ -1,26 +1,25 @@
-(function () {
+(function() {
   'use strict';
-  var templateUploader = function ($q, Upload, toaster, appSettings, $stateParams, templateUploaderFactory) {
+  var templateUploader = function($q, Upload, toaster, appSettings, $stateParams, templateUploaderFactory) {
     return {
       templateUrl: 'app/panel/directives/templateUploader/templateUploader.html',
       scope: {
-        progress: '&',
-        files: '&'
+        sizeTotal: '&'
       },
+      transclude: true,
       restrict: 'AE',
-      link: function ($scope) {
-        var uploadFiles;
-
+      link: function($scope) {
         $scope.filesProcessing = false;
         $scope.filesUploadSuccess = false;
         $scope.name = $stateParams.projectName;
         $scope.id = $stateParams.projectId;
         $scope.sizeTotal = 0;
+        $scope.progress = 0;
         $scope.progressArr = [];
 
         angular.element('.input--file').nicefileinput();
 
-        uploadFiles = function uploadFiles (file, index) {
+        var uploadFiles = function uploadFiles(file, index) {
           var dfd = $q.defer();
           Upload.upload({
               url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/templates/',
@@ -34,12 +33,28 @@
               // forcing change on a scope variable for $watch
               $scope.triggerChange = !$scope.triggerChange;
             })
-            .success(function () {
+            .success(function() {
               dfd.resolve();
             });
 
-            return dfd.promise;
+          return dfd.promise;
         };
+
+        templateUploaderFactory._register({
+          progress: $scope.progress,
+          size: $scope.sizeTotal,
+          id: $scope.id,
+          files: $scope.files
+        });
+
+        $scope.$watch('triggerChange', function() {
+          var loaded = _.sum($scope.progressArr);
+          if ($scope.progress < 100) {
+            $scope.progress = _.round((loaded / $scope.sizeTotal) * 100);
+          } else {
+            $scope.progress = 100;
+          }
+        });
 
         $scope.uploadFiles = function(files) {
           $scope.filesUploadSuccess = false;
@@ -48,29 +63,18 @@
             if (!files.$error) {
               $scope.filesProcessing = true;
 
-              var filesDfd = _.map(files, function (file, index) {
+              var filesDfd = _.map(files, function(file, index) {
                 $scope.sizeTotal += file.size;
                 return uploadFiles(file, index);
               });
 
-              $q.all(filesDfd).then(function () {
+              $q.all(filesDfd).then(function() {
                 toaster.pop('success', 'Files added!', 'You have successfully added files to your project.');
-                templateUploaderFactory.setUploaderData({
-                  id: $scope.id,
-                  success: true
-                });
+                templateUploaderFactory.setSuccess($scope.id);
               });
             }
           }
         };
-
-        $scope.$watch('triggerChange', function () {
-          var loaded = _.sum($scope.progressArr);
-          if ($scope.progress < 100) {
-            $scope.progress = _.round((loaded / $scope.sizeTotal) * 100);
-          }
-        });
-
       }
     };
   };

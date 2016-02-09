@@ -92,16 +92,13 @@
         });
     };
 
-    $scope.$on('templateUploader:updated', function () {
-      var api = templateUploaderFactory.getUploaderData();
-      if (api.success) {
-        $scope.files = null;
-        $scope.progress = null;
-
+    $scope.$on('templateUploader:updated', function (data, id) {
+      if ($stateParams.projectId === id) {
+        templateUploaderFactory.resetUploader();
+        debugger;
         templatesService.getTemplates($stateParams.projectId)
-        .success(function(tickets) {
-          $scope.tickets = tickets.results;
-          $scope.ticketsLeft = (tickets.count - $scope.tickets.length);
+        .success(function(templates) {
+          $scope.templates = templates;
         });
       }
     });

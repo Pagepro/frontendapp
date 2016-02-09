@@ -4,13 +4,11 @@
     if (!$state.params.projectId) {
       $state.go('myProjectsState');
     }
-    $scope.$on('templateUploader:updated', function () {
-      var api = templateUploaderFactory.getUploaderData();
-      if (api.success) {
-        $state.go('projectState', {
-          projectId: api.id
-        });
-      }
+    $scope.$on('templateUploader:updated', function (data, id) {
+      templateUploaderFactory.resetUploader();
+      $state.go('projectState', {
+        projectId: id
+      });
     });
   };
 
