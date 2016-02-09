@@ -42,7 +42,7 @@
       if(file) {
         $scope.isUploading = true;
         file.upload = Upload.upload({
-          'url': appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/',
+          'url': appSettings.apiRoot + 'project/' + $stateParams.projectId + '/tickets/',
           'data': {
             'file': file,
             'template': {
