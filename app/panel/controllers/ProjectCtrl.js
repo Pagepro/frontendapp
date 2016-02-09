@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   var ProjectCtrl = function($scope, $q, $stateParams, projectsService, templatesService, filesService,
-    ticketsService, statusService, spinnerService, toaster) {
+    ticketsService, statusService, spinnerService, toaster, templateUploaderFactory) {
     var projectPromise;
     var templatesPromise;
     var filesPromise;
@@ -20,7 +20,7 @@
     };
 
     $scope.sortableOptions = {
-      stop: function(dupa, dupa2) {
+      stop: function() {
         // set new order after update
         // for (var index in $scope.templates) {
         //   debugger;
@@ -91,11 +91,26 @@
           $scope.ticketsLeft = (tickets.count - $scope.tickets.length);
         });
     };
+
+    $scope.$on('templateUploader:updated', function () {
+      var api = templateUploaderFactory.getUploaderData();
+      if (api.success) {
+        $scope.files = null;
+        $scope.progress = null;
+
+        templatesService.getTemplates($stateParams.projectId)
+        .success(function(tickets) {
+          $scope.tickets = tickets.results;
+          $scope.ticketsLeft = (tickets.count - $scope.tickets.length);
+        });
+      }
+    });
+
   };
 
 
   ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsService', 'templatesService', 'filesService',
-    'ticketsService', 'statusService', 'spinnerService', 'toaster'
+    'ticketsService', 'statusService', 'spinnerService', 'toaster', 'templateUploaderFactory'
   ];
   angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
 

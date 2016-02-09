@@ -4,9 +4,8 @@
     return {
       templateUrl: 'app/panel/directives/templateUploader/templateUploader.html',
       scope: {
-        name: '@',
-        id: '@?',
-        filesUploadSuccess: '@?'
+        progress: '&',
+        files: '&'
       },
       restrict: 'AE',
       link: function ($scope) {
@@ -42,7 +41,7 @@
             return dfd.promise;
         };
 
-        $scope.uploadFiles = function(files, index) {
+        $scope.uploadFiles = function(files) {
           $scope.filesUploadSuccess = false;
           $scope.files = files;
           if (files && files.length && !$scope.filesProcessing) {
@@ -54,7 +53,7 @@
                 return uploadFiles(file, index);
               });
 
-              $q.all(filesDfd).then(function (item) {
+              $q.all(filesDfd).then(function () {
                 toaster.pop('success', 'Files added!', 'You have successfully added files to your project.');
                 templateUploaderFactory.setUploaderData({
                   id: $scope.id,
@@ -65,9 +64,11 @@
           }
         };
 
-        $scope.$watch('triggerChange', function (item) {
+        $scope.$watch('triggerChange', function () {
           var loaded = _.sum($scope.progressArr);
-          $scope.progress = _.round((loaded / $scope.sizeTotal) * 100);
+          if ($scope.progress < 100) {
+            $scope.progress = _.round((loaded / $scope.sizeTotal) * 100);
+          }
         });
 
       }
