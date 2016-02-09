@@ -7,8 +7,7 @@
       getUserData: function () {
         return user;
       }
-    }
-
+    };
   };
 
   accountService.$inject = ['$http', 'appSettings'];

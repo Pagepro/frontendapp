@@ -1,6 +1,8 @@
 (function() {
   'use strict';
   var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService) {
+    var userData = accountService.getUserData();
+
     $scope.image = null;
     $scope.description = null;
     $scope.isUploading = false;
@@ -47,7 +49,7 @@
             file: file,
             browsers: $scope.browsers,
             description: $scope.description,
-            person: accountService.getUserData().id
+            person: userDataaccountService.getUserData();.id
           }
         }).success(function () {
           toaster.pop('success', 'Success!', 'Your ticket has been added.');
