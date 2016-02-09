@@ -95,7 +95,6 @@
     $scope.$on('templateUploader:updated', function (data, id) {
       if ($stateParams.projectId === id) {
         templateUploaderFactory.resetUploader();
-        debugger;
         templatesService.getTemplates($stateParams.projectId)
         .success(function(templates) {
           $scope.templates = templates;
