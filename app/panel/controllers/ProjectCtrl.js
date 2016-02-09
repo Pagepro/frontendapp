@@ -54,7 +54,6 @@
 
       templatesPromise = templatesService.getTemplates($stateParams.projectId);
       templatesPromise.success(function(templates) {
-        console.log(templates);
         $scope.templates = templates;
         $scope.templates = templates.sort(function(item, nextItem) {
           return item.order > nextItem.order;

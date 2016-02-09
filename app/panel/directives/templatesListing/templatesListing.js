@@ -8,9 +8,6 @@
       link: function($scope) {
         $scope.screenshotRoot = appSettings.screenshotRoot(239, 242);
         $scope.activeInput = false;
-        $scope.toggleInput = function() {
-          $scope.activeInput = !$scope.activeInput;
-        };
         $scope.downloadAllLink = function(projectId) {
           return appSettings.templatesSrc + projectId;
         };

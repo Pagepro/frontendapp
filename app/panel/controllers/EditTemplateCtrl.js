@@ -22,7 +22,6 @@
     var init = function () {
       angular.element('.input--file').nicefileinput();
       fillFields();
-      console.log('hello');
     };
 
     init();

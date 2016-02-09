@@ -17,7 +17,6 @@
 
       templatesService.getTemplates($stateParams.projectId)
       .success(function (templates) {
-        console.log(templates);
         if (templates.length) {
             $scope.templates = _.map(templates, function (template) {
               var selected;

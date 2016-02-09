@@ -1,23 +1,5 @@
 <div class="project-box__content" ng-switch-when="grid">
-    <div class="teasers-list__item js-item-disabled">
-        <div class="teaser action-teaser js-teaser" ng-click="toggleInput()"  ng-class="{active: activeInput}">
-            <div class="teaser__inner">
-                <div class="teaser__head">
-                    <span class="icon icon--upload"></span>
-                </div>
-                <div class="teaser__content">
-                    <form class="project-action-form" ng-class="{active: activeInput}">
-                        <fieldset class="form__fieldset">
-                            <div class="field field--input">
-                                <label class="label" for="project-name">Upload Templates</label>
-                                <input type="file" name="add_file" class="input input--file" id="project-name" ng-class="{active: activeInput}">
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <template-uploader class="teasers-list__item js-item-disabled"></template-uploader>
     <ul class="teasers-list" ui-sortable="sortableOptions" ng-model="templates">
         <li class="teasers-list__item" ng-repeat="template in templates" order="order">
             <template-preview type="grid"></template-preview>
