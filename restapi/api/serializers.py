@@ -27,41 +27,95 @@ class UserSerializer(serializers.ModelSerializer):
 class ProjectSerializer(serializers.ModelSerializer):
 	thumbnail = serializers.SerializerMethodField()
 	templates_count = serializers.SerializerMethodField()
+	progress = serializers.SerializerMethodField()
 
 	class Meta:
 		model = Project
 		fields = ('id', 'name', 'short_description', 'long_description',
-			'repository', 'status', 'thumbnail', 'templates_count', 'created_on', 'updated_on', 'user', 'client')
+			'repository', 'status', 'created_on', 'updated_on', 'user', 'client',
+			 'thumbnail', 'templates_count', 'progress')
 		read_only_fields = ('user', 'client',)
 
 	def get_thumbnail(self, obj):
-		return ProjectTemplateSerializer(ProjectTemplate.objects.filter(project=obj.pk).order_by('uploaded_date').first()).data
+		return ProjectTemplateSerializer(obj.get_thumbnail()).data
 
 	def get_templates_count(self, obj):
-		return ProjectTemplate.objects.filter(project=obj.pk).count()
+		return obj.get_templates_count()
+
+	def get_progress(self, obj):
+		return obj.get_progress()
 
 class ProjectTemplateSerializer(serializers.ModelSerializer):
+	fullimage_url = serializers.SerializerMethodField()	
+	html_url = serializers.SerializerMethodField()
+	status = serializers.SerializerMethodField()
+	work = serializers.SerializerMethodField()
+
 	class Meta:
 		model = ProjectTemplate
+		read_only_fields = ('original_filename', 'size', 'order', 'extension', 'filename', 'project',
+			'fullimage_url', 'html_url', 'status', 'work')
+
+	def get_fullimage_url(self, obj):
+		return obj.get_fullimage_url()
+
+	def get_html_url(self, obj):
+		return obj.work.get_login_password_url()
+
+	def get_status(self, obj):
+		return obj.work.work_status
+
+	def get_work(self, obj):
+		return ProjectTemplateWorkSerializer(obj.work).data
 
 class ProjectFileSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = ProjectFile
 
-class ProjectTemplateTicketSerializer(serializers.ModelSerializer):
+class ProjectTemplateWorkSerializer(serializers.ModelSerializer):
+	class Meta:
+		model = ProjectTemplateWork
+
+class ProjectTicketSerializer(serializers.ModelSerializer):
 	comments_count = serializers.SerializerMethodField()
+	author = serializers.SerializerMethodField()
+	assignee = serializers.SerializerMethodField()
+	template = serializers.SerializerMethodField()
 
 	class Meta:
-		model = ProjectTemplateTicket
-		fields = ('id', 'template', 'user', 'person', 'description', 'attachment', 'screenshot_url', 'status', 'created_on', 'comments_count')
+		model = ProjectTicket
+		fields = ('id', 'created_on', 'updated_on', 'author', 'assignee', 'status', 'description', 'browsers',
+			'comments_count', 'attachment', 'screenshot_url', 'template', 'person')
+		extra_kwargs = {
+			'person': {
+				'write_only': True,
+			},
+		}  
 
 	def get_comments_count(self, obj):
-		return ProjectTemplateTicketComment.objects.filter(ticket=obj.pk).count()
+		return ProjectTicketComment.objects.filter(ticket=obj.pk).count()
 
-class ProjectTemplateTicketCommentSerializer(serializers.ModelSerializer):
+	def get_author(self, obj):
+		return UserSerializer(obj.user).data
+
+	def get_assignee(self, obj):
+		try:
+			assignee = User.objects.get(pk=obj.person.pk)
+			return UserSerializer(assignee).data
+		except User.DoesNotExist:
+			return None
+
+	def get_template(self, obj):
+		try:
+			template = ProjectTemplate.objects.get(pk=obj.template.pk)
+			return ProjectTemplateSerializer(template).data
+		except ProjectTemplate.DoesNotExist:
+			return None
+
+class ProjectTicketCommentSerializer(serializers.ModelSerializer):
 	user = serializers.StringRelatedField()
 	
 	class Meta:
-		model = ProjectTemplateTicketComment
+		model = ProjectTicketComment
 		fields = ('id', 'date', 'content', 'ticket', 'user')
 		read_only_fields = ('ticket', 'user',)
