@@ -94,10 +94,14 @@
 
     $scope.$on('templateUploader:updated', function (data, id) {
       if ($stateParams.projectId === id) {
+        spinnerService.show('project-details');
         templateUploaderFactory.resetUploader();
         templatesService.getTemplates($stateParams.projectId)
         .success(function(templates) {
           $scope.templates = templates;
+        })
+        .finally(function () {
+          spinnerService.hide('project-details');
         });
       }
     });
