@@ -1522,6 +1522,7 @@ h1.breadcrumb {
             }
         }
         &.disabled {
+            pointer-events: none;
             border-color: none;
             a {
                 background: $color_grey_5;
@@ -2439,6 +2440,7 @@ h1.breadcrumb {
                     }
                 }
                 &.disabled {
+                    pointer-events: none;
                     border-color: none;
                     .action-tool__content {
                         background: $color_grey_5;
@@ -7774,6 +7776,7 @@ h1.breadcrumb {
             }
         }
         &.disabled {
+            pointer-events: none;
             border-color: none;
             display: none;
         }
