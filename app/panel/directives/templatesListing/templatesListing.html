@@ -1,10 +1,10 @@
 <div class="project-box__content" ng-switch-when="grid">
-    <template-uploader class="teasers-list__item js-item-disabled"></template-uploader>
-    <ul class="teasers-list" ui-sortable="sortableOptions" ng-model="templates">
-        <li class="teasers-list__item" ng-repeat="template in templates" order="order">
+    <template-uploader class="js-item-disabled"></template-uploader>
+    <div class="teasers-list" ui-sortable="sortableOptions" ng-model="templates">
+        <div class="teasers-list__item" ng-repeat="template in templates" order="order">
             <template-preview type="grid"></template-preview>
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>
 <div class="project-box__content" ng-switch-when="inline">
     <div class="files-box files-box--templates-complexe">
