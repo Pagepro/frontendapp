@@ -11,6 +11,7 @@
     $scope.files = null;
     $scope.templates = null;
     $scope.tickets = null;
+    $scope.finishedFetching = false;
     $scope.projectId = $stateParams.projectId;
 
     $scope.displayType = 'grid';
@@ -61,6 +62,7 @@
       });
 
       $q.all([projectPromise, filesPromise, templatesPromise, ticketsPromise]).then(function() {
+        $scope.finishedFetching = true;
         spinnerService.hide('project-details');
       });
     };

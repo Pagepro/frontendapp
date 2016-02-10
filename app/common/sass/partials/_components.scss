@@ -3417,11 +3417,14 @@ h1.breadcrumb {
         margin-right: $size_padding;
         margin-bottom: $size_padding;
     }
-    &__item {
-        &:nth-child(1) {
-            margin-left: $size_teaser_h + $size_padding;
+    &--templates {
+        .teasers-list__item {
+            &:nth-child(1) {
+                margin-left: $size_teaser_h + $size_padding;
+            }
         }
     }
+
     .drag-and-drop-placeholder {
         width: $size_teaser_h;
         height: $size_teaser_v;
@@ -3443,10 +3446,12 @@ h1.breadcrumb {
     }
     @include breakpoint($breakpoint_smartphone-medium) {
         width: calc(#{$size_teaser_h} + #{$size_padding});
-        &__item {
-            &:nth-child(1) {
-                margin-left: 0;
-                margin-top: $size_teaser_v + 20px;
+        &--templates {
+            .teasers-list__item {
+                &:nth-child(1) {
+                    margin-left: 0;
+                    margin-top: $size_teaser_v + 20px;
+                }
             }
         }
     }
