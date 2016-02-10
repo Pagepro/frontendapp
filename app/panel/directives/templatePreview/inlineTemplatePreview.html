@@ -32,7 +32,7 @@
                             </div>
                         </li>
                         <li class="action-tools-list__item">
-                            <div class="action-tool action-tool--highlighted" ng-class="{'disabled': template.html_url.length < 1}">
+                            <div class="action-tool action-tool--highlighted" ng-class="{'disabled': !template.html_url}">
                                 <a href="{{template.html_url}}" target="_blank" class="action-tool__content">
                                     <span class="icon icon--file--code"></span>
                                 </a>

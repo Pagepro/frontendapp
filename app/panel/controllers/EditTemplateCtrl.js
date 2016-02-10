@@ -8,18 +8,18 @@
     $scope.isUploading = false;
     $scope.file = null;
 
-    var fillFields = function () {
+    var fillFields = function() {
       templatesService.getTemplate($stateParams.projectId, $stateParams.templateId)
-      .success(function (template) {
-        $scope.title = template.name;
-        $scope.image = template.filename;
-        $scope.comment = template.comment;
+        .success(function(template) {
+          $scope.title = template.name;
+          $scope.image = template.filename;
+          $scope.comment = template.comment;
 
-        $scope.updateNameValue(template.filename);
-      });
+          $scope.updateNameValue(template.filename);
+        });
     };
 
-    var init = function () {
+    var init = function() {
       angular.element('.input--file').nicefileinput();
       fillFields();
     };
@@ -27,35 +27,38 @@
     init();
 
     $scope.uploadFiles = function(file) {
-      if(file) {
-        $scope.isUploading = true;
-        file.upload = Upload.upload({
-          'url': appSettings.apiRoot + 'uploads/',
-          'data': {
-            'file': file,
-            'template': {
-              'template_name': $scope.title
-            },
-            'comments': $scope.comment
-          }
-        }).success(function () {
+      $scope.isUploading = true;
+      var tmpfile = file || {};
+
+      // workaround for not submitting empty file
+      var data = {
+        title: $scope.title,
+        comment: $scope.comment
+      };
+      if (file) data.file = tmpfile;
+      // workaround for not submitting empty file
+
+      tmpfile = Upload.upload({
+          url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/tickets/',
+          method: 'PUT',
+          data: data
+        }).success(function() {
           toaster.pop('success', 'Success!', 'You have successfully updated the template.');
+          $scope.returnToProject();
         })
-        .error(function () {
+        .error(function() {
           toaster.pop('error', 'Ooops!', 'Something went wrong. Please do not give up and try again! :)');
         })
-        .finally(function () {
+        .finally(function() {
           $scope.isUploading = false;
-          // $scope.returnToProject();
         });
-      }
     };
 
-    $scope.returnToProject = function () {
+    $scope.returnToProject = function() {
       $state.go('projectState', $state.projectId);
     };
 
-    $scope.updateNameValue = function (filename) {
+    $scope.updateNameValue = function(filename) {
       // fixme? Not sure, brute force value changing, since I can't access the element being created by nicefileinput
       angular.element('.NFI-filename').attr('value', filename);
     };

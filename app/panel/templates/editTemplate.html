@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="popup__content">
-                    <form class="ticket-form">
+                    <form class="ticket-form" ng-submit="uploadFiles(file)">
                         <fieldset class="form__fieldset">
                             <div class="form__content">
                                 <div class="form-box">
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="form__actions">
-                                <button class="btn btn--submit btn--submit--small" type="submit" ng-click="uploadFiles(file)" ng-disabled="isUploading || !file">
+                                <button class="btn btn--submit btn--submit--small" type="submit" ng-click="uploadFiles(file)" ng-disabled="isUploading">
                                     <span class="label">Save</span>
                                 </button>
                             </div>
