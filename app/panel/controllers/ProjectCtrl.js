@@ -21,12 +21,6 @@
 
     $scope.sortableOptions = {
       stop: function() {
-        // set new order after update
-        // for (var index in $scope.templates) {
-        //   debugger;
-        //   $scope.templates[index].order = index;
-        // }
-
         // push all items to array with newly ordered ids
         templatesService.updateOrder($scope.templates.map(function(item) {
           return item.order;
@@ -92,7 +86,7 @@
         });
     };
 
-    $scope.$on('templateUploader:updated', function (data, id) {
+    $scope.$on('templateUploader:updated', function (params, id) {
       if ($stateParams.projectId === id) {
         spinnerService.show('project-details');
         templateUploaderFactory.resetUploader();
@@ -106,8 +100,19 @@
       }
     });
 
+    $scope.$on('template:updated', function (params, data) {
+      if (data.changed) {
+        templatesService.getTemplate($stateParams.projectId, data.id)
+        .success(function (newTemplate) {
+          _.each($scope.templates, function (template) {
+            if (template.id === data.id) {
+              template = newTemplate;
+            }
+          });
+        });
+      }
+    });
   };
-
 
   ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsService', 'templatesService', 'filesService',
     'ticketsService', 'statusService', 'spinnerService', 'toaster', 'templateUploaderFactory'
