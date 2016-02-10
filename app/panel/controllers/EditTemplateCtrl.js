@@ -35,11 +35,11 @@
         title: $scope.title,
         comment: $scope.comment
       };
-      if (file) data.file = tmpfile;
+      if (file) { data.file = tmpfile };
       // workaround for not submitting empty file
 
       tmpfile = Upload.upload({
-          url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/tickets/',
+          url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/templates/' + $stateParams.templateId,
           method: 'PUT',
           data: data
         }).success(function() {
