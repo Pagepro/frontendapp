@@ -105,8 +105,7 @@
         templatesService.getTemplate($stateParams.projectId, data.id)
         .success(function (newTemplate) {
           var newList = _.map($scope.templates, function (template) {
-            console.log(template);
-            if (template.id === data.id) {
+            if (template.id == data.id) {
               template = newTemplate;
             }
             return template;
