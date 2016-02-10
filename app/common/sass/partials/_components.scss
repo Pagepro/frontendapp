@@ -3418,13 +3418,13 @@ h1.breadcrumb {
         margin-bottom: $size_padding;
     }
     &--templates {
+        min-height: $size_teaser_v;
         .teasers-list__item {
             &:nth-child(1) {
                 margin-left: $size_teaser_h + $size_padding;
             }
         }
     }
-
     .drag-and-drop-placeholder {
         width: $size_teaser_h;
         height: $size_teaser_v;

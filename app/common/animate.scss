@@ -1,6 +1,9 @@
 .project-box__content template-uploader {
   position: absolute;
   z-index: 10;
+  &.alone {
+    margin-left: -115px;
+  }
 }
 .dragover {
   background: #FCFCFC;
