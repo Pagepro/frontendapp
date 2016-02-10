@@ -33,7 +33,7 @@
 
       // workaround for not submitting empty file
       var data = {
-        title: $scope.title,
+        name: $scope.title,
         comment: $scope.comment
       };
       if (file) {
