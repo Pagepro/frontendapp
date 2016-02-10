@@ -104,11 +104,12 @@
       if (data.changed) {
         templatesService.getTemplate($stateParams.projectId, data.id)
         .success(function (newTemplate) {
-          _.each($scope.templates, function (template) {
+          var newList = _.map($scope.templates, function (template) {
             if (template.id === data.id) {
               template = newTemplate;
             }
           });
+          $scope.templates = newList;
         });
       }
     });
