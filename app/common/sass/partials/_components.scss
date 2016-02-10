@@ -1521,6 +1521,15 @@ h1.breadcrumb {
                 background: $color_red_dark;
             }
         }
+        &.disabled {
+            border-color: none;
+            a {
+                background: $color_grey_5;
+                &:before {
+                    content: none;
+                }
+            }
+        }
     }
     &--drag-and-drop {
         .action-tool {
@@ -2427,6 +2436,12 @@ h1.breadcrumb {
                 .action-tool {
                     &__content {
                         background: $color_black;
+                    }
+                }
+                &.disabled {
+                    border-color: none;
+                    .action-tool__content {
+                        background: $color_grey_5;
                     }
                 }
             }
@@ -7759,6 +7774,7 @@ h1.breadcrumb {
             }
         }
         &.disabled {
+            border-color: none;
             display: none;
         }
     }
