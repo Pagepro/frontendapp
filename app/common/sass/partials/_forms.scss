@@ -56,6 +56,13 @@
     &.required {
         color: $color_white;
         background: $color_red;
+        .popup & {
+            color: $color_red;
+            background: none;
+            p {
+                padding-left: 0;
+            }
+        }
     }
 }
 
@@ -838,6 +845,9 @@
 .ticket-form {
     .form-box + .form-box {
         margin-top: $size_padding_medium;
+    }
+    .form-box {
+        align-items: flex-start;
     }
 }
 .ticket-details-comment-form {

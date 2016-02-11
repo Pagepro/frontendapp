@@ -13,6 +13,9 @@
 }
 .btn--default[disabled] {
   background: #B2B2B2;
+  &:hover {
+    background: #B2B2B2;
+  }
 }
 .files-list__item template-preview {
   width: 100%

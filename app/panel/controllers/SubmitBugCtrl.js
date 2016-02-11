@@ -44,6 +44,8 @@
     init();
 
     $scope.uploadFiles = function(file) {
+
+      debugger;
       if (file) {
         $scope.isUploading = true;
         file.upload = Upload.upload({
