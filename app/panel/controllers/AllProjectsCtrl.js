@@ -3,6 +3,7 @@
   var AllProjectsCtrl = function($scope, projectsService, spinnerService) {
     $scope.allProjects = null;
     $scope.pageNo = null;
+    $scope.finishedFetching = false;
     $scope.service = projectsService.getProjects;
 
     $scope.init = function() {
@@ -18,6 +19,7 @@
         })
         .error(function() {})
         .finally(function() {
+          $scope.finishedFetching = true;
           spinnerService.hide('all-projects');
         });
     };

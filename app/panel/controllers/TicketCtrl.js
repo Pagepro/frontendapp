@@ -32,7 +32,7 @@
       commentsPromise = commentsService.getComments($stateParams.projectId, $stateParams.ticketId);
       commentsPromise
       .success(function (comments) {
-        $scope.comments = comments;
+        $scope.comments = comments.results;
       })
       .error(function () {
         // @todo, add some sort of error handling
@@ -48,13 +48,16 @@
       $scope.statusListVisible = !$scope.statusListVisible;
     };
     $scope.changeTicketStatus = function () {
-
+      // @todo - some content pls
     };
+
     $scope.removeComment = function (commentId) {
       if(confirm('Are you sure you want to remove this comment?')) {
         commentsService.removeComment($stateParams.projectId, $stateParams.ticketId, commentId)
-        .success(function (comments) {
-          $scope.comments = comments;
+        .success(function () {
+          $scope.comments = _.filter($scope.comments, function (comment) {
+            return comment.id !== commentId;
+          });
           toaster.pop('success', 'Comment deleted.');
         })
         .error(function () {
@@ -65,9 +68,11 @@
     $scope.addComment = function (comment) {
       $scope.processing = true;
       commentsService.addComment(comment, $stateParams.projectId, $stateParams.ticketId)
-      .success(function (comments) {
-        $scope.comments = comments;
+      .success(function (newComment) {
+        // clear comment field
         $scope.comment = null;
+
+        $scope.comments.push(newComment);
         toaster.pop('success', 'Comment added.');
       })
       .error(function () {

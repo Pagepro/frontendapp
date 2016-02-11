@@ -7,7 +7,7 @@
     </div>
 </div>
 <div class="project-box__content" ng-switch-when="inline">
-    <div class="files-box files-box--templates-complexe">
+    <div class="files-box files-box--templates-complexe" ng-show="finishedFetching">
         <div class="files-box__head">
             <div class="files-box__number">
                 <p class="filebox-title">No</p>
@@ -36,7 +36,7 @@
         </div>
     </div>
 </div>
-<div class="project-box__actions">
+<div class="project-box__actions" ng-show="finishedFetching">
     <a href="{{downloadAllLink(projectId)}}" class="action-btn">
         <span class="action-btn__content">
             <span class="label">Download all templates (<span class="qty">{{templates.length}}</span>)</span>

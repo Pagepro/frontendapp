@@ -44,7 +44,7 @@
                         <div class="ticket-data-box__head__row">
                             <p class="ticket-author">
                                 <span>Published by: </span>
-                                <strong>{{ticket.author}}</strong>
+                                <strong>{{ticket.author.username}}</strong>
                             </p>
                             <p class="ticket-publish-date">
                                 <span>on: </span>
@@ -182,7 +182,7 @@
                                         <p class="label">Templates:</p>
                                     </div>
                                     <div class="ticket-details-info__content">
-                                        <p class="details" ng-repeat="template in ticket.templates"><a ui-sref="projectState({projectId: {{template.template_id}}})" target="_blank">{{template.template_name}}</a></p>
+                                        <p class="details" ng-repeat="template in ticket.templates"><a ui-sref="projectState({projectId: {{template.template_id}}})" target="_blank">{{template.template}}</a></p>
                                     </div>
                                 </div>
                             </li>
@@ -230,7 +230,7 @@
                 <div class="comments">
                     <div class="comments__content">
                         <ul class="comments-list">
-                            <li class="comments-list__item" ng-repeat="comment in comments">
+                            <li class="comments-list__item" ng-repeat="comment in comments | orderBy: 'date'">
                                 <div class="comment">
                                     <div class="comment__ico">
                                         <span class="icon icon--comment"></span>

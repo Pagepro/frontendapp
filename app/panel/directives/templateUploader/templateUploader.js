@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var templateUploader = function($q, Upload, toaster, appSettings, $stateParams) {
+  var templateUploader = function($q, Upload, toaster, appSettings, $stateParams, $rootScope) {
     return {
       templateUrl: 'app/panel/directives/templateUploader/templateUploader.html',
       scope: {},
@@ -84,7 +84,7 @@
     };
   };
 
-  templateUploader.$inject = ['$q', 'Upload', 'toaster', 'appSettings', '$stateParams'];
+  templateUploader.$inject = ['$q', 'Upload', 'toaster', 'appSettings', '$stateParams', '$rootScope'];
   angular.module('panelModule').directive('templateUploader', templateUploader);
 
 

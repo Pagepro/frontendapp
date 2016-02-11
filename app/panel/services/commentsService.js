@@ -2,11 +2,14 @@
   'use strict';
 
   var commentsService = function($http, appSettings) {
-    this.getComments = function(projectId, templateId) {
-      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + templateId + '/comments/');
+    this.getComments = function(projectId, templateId, filter) {
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + templateId + '/comments' + (filter ? ('?filter=' + filter) : ('')) + '/' );
+    };
+    this.getComment = function(projectId, templateId, commentId) {
+      return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + templateId + '/comments/' + commentId + '/');
     };
     this.addComment = function (comment, projectId, templateId) {
-      return $http.post(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + templateId + '/comments/', {comment: comment.content});
+      return $http.post(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + templateId + '/comments/', {content: comment.content});
     };
     this.removeComment = function (projectId, templateId, commentId) {
       return $http.delete(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + templateId + '/comments/' + commentId + '/');
