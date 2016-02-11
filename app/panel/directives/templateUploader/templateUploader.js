@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var templateUploader = function($q, Upload, toaster, appSettings, $stateParams, templateUploaderFactory) {
+  var templateUploader = function($q, Upload, toaster, appSettings, $stateParams) {
     return {
       templateUrl: 'app/panel/directives/templateUploader/templateUploader.html',
       scope: {},
@@ -11,7 +11,6 @@
         angular.element('.input--file').nicefileinput();
 
         var progressArr = [];
-        var uploader;
         var uploadFiles;
         var clearScopeData;
         var filesDfd;
@@ -26,10 +25,6 @@
         });
 
         $scope.uploadFiles = function(files) {
-          uploader = templateUploaderFactory._register({
-            id: $stateParams.projectId
-          });
-
           $scope.progress = 0;
           $scope.sizeTotal = 0;
 
@@ -47,7 +42,7 @@
 
               $q.all(filesDfd).then(function() {
                 toaster.pop('success', 'Files added!', 'You have successfully added files to your project.');
-                templateUploaderFactory.setSuccess($stateParams.projectId);
+                $rootScope.$broadcast('templateUploader:updated', $stateParams.projectId);
 
                 clearScopeData();
               });
@@ -82,7 +77,6 @@
           $scope.files = null;
           $scope.filesUploadSuccess = false;
           $scope.filesProcessing = false;
-          templateUploaderFactory.resetUploader();
           filesDfd = [];
           progressArr = [];
         };
@@ -90,7 +84,7 @@
     };
   };
 
-  templateUploader.$inject = ['$q', 'Upload', 'toaster', 'appSettings', '$stateParams', 'templateUploaderFactory'];
+  templateUploader.$inject = ['$q', 'Upload', 'toaster', 'appSettings', '$stateParams'];
   angular.module('panelModule').directive('templateUploader', templateUploader);
 
 

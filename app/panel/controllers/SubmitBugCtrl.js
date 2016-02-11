@@ -1,7 +1,8 @@
 (function() {
   'use strict';
-  var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService) {
+  var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService, $rootScope) {
     var userData;
+    var submitted = false;
 
     $scope.image = null;
     $scope.description = null;
@@ -44,8 +45,6 @@
     init();
 
     $scope.uploadFiles = function(file) {
-
-      debugger;
       if (file) {
         $scope.isUploading = true;
         file.upload = Upload.upload({
@@ -58,6 +57,7 @@
             }
           }).success(function() {
             toaster.pop('success', 'Success!', 'Your ticket has been added.');
+            submitted = true;
             $scope.returnToProject();
           })
           .error(function() {
@@ -65,13 +65,17 @@
           })
           .finally(function() {
             $scope.isUploading = false;
-            // $scope.returnToProject();
+            $scope.returnToProject();
           });
       }
     };
 
     $scope.returnToProject = function() {
       $state.go('projectState', $stateParams.projectId);
+      $rootScope.$broadcast('ticket:submitted', {
+        id: $stateParams.templateId,
+        submitted: submitted
+      });
     };
 
     $scope.updateNameValue = function(filename) {
@@ -80,7 +84,7 @@
     };
   };
 
-  SubmitBugCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'templatesService', 'appSettings', 'accountService'];
+  SubmitBugCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'templatesService', 'appSettings', 'accountService', '$rootScope'];
   angular.module('panelModule').controller('SubmitBugCtrl', SubmitBugCtrl);
 
 }());

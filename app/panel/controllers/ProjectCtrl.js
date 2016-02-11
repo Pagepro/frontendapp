@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   var ProjectCtrl = function($scope, $q, $stateParams, projectsService, templatesService, filesService,
-    ticketsService, statusService, spinnerService, toaster, templateUploaderFactory) {
+    ticketsService, statusService, spinnerService, toaster, $window) {
     var projectPromise;
     var templatesPromise;
     var filesPromise;
@@ -14,12 +14,15 @@
     $scope.finishedFetching = false;
     $scope.projectId = $stateParams.projectId;
 
-    $scope.displayType = 'grid';
+    $scope.displayType = $window.localStorage.getItem('displayType') || 'grid';
 
     $scope.getStatus = function(code) {
       return statusService.getStatus(code);
     };
-
+    $scope.setDisplayType = function (type) {
+      $window.localStorage.setItem('displayType', type);
+      $scope.displayType = type;
+    };
     $scope.sortableOptions = {
       stop: function() {
         // push all items to array with newly ordered ids
@@ -88,38 +91,48 @@
         });
     };
 
-    $scope.$on('templateUploader:updated', function (params, id) {
+    $scope.$on('templateUploader:updated', function(params, id) {
       if ($stateParams.projectId === id) {
         spinnerService.show('project-details');
-        templateUploaderFactory.resetUploader();
         templatesService.getTemplates($stateParams.projectId)
-        .success(function(templates) {
-          $scope.templates = templates;
-        })
-        .finally(function () {
-          spinnerService.hide('project-details');
-        });
+          .success(function(templates) {
+            $scope.templates = templates;
+          })
+          .finally(function() {
+            spinnerService.hide('project-details');
+          });
       }
     });
 
-    $scope.$on('template:updated', function (params, data) {
+    $scope.$on('template:updated', function(params, data) {
       if (data.changed) {
         templatesService.getTemplate($stateParams.projectId, data.id)
-        .success(function (newTemplate) {
-          var newList = _.map($scope.templates, function (template) {
-            if (template.id == data.id) {
-              template = newTemplate;
-            }
-            return template;
+          .success(function(newTemplate) {
+            var newList = _.map($scope.templates, function(template) {
+              if (template.id == data.id) {
+                template = newTemplate;
+              }
+              return template;
+            });
+            $scope.templates = newList;
           });
-          $scope.templates = newList;
+      }
+    });
+    $scope.$on('ticket:submitted', function (params, data) {
+      if (data.submitted) {
+        ticketsService.getTickets($stateParams.projectId)
+        .success(function (tickets) {
+          $scope.tickets = tickets.results;
+        })
+        .error(function (error) {
+          toaster.pop('error', 'Couldn\'t get the updated tickets list.', 'Please try refreshing the page, if the error occurs again, let us know!');
         });
       }
     });
   };
 
   ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsService', 'templatesService', 'filesService',
-    'ticketsService', 'statusService', 'spinnerService', 'toaster', 'templateUploaderFactory'
+    'ticketsService', 'statusService', 'spinnerService', 'toaster', '$window'
   ];
   angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
 
