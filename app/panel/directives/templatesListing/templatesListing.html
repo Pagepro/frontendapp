@@ -1,4 +1,4 @@
-<div class="project-box__content" ng-switch-when="grid">
+<div class="project-box__content project-box__content--listing" ng-switch-when="grid">
     <template-uploader class="js-item-disabled" ng-show="finishedFetching" ng-class="{'alone': templates.length < 1}"></template-uploader>
     <div class="teasers-list teasers-list--templates" ui-sortable="sortableOptions" ng-model="templates">
         <div class="teasers-list__item" ng-repeat="template in templates" order="order">
