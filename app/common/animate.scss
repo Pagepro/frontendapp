@@ -1,9 +1,7 @@
 .project-box__content--listing template-uploader {
-  position: absolute;
-  z-index: 10;
-  &.alone {
-    margin-left: -115px;
-  }
+  // position: absolute;
+  // z-index: 10;
+  margin-right: 15px;
 }
 .dragover {
   background: #FCFCFC;

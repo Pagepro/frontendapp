@@ -16,7 +16,7 @@ var jsFiles = [
   'libs/jquery/dist/jquery.js',
   'libs/jquery-ui/jquery-ui.js',
   'libs/angular/angular.js',
-  'libs/angular-ui-sortable/sortable.js',
+  'libs/ng-sortable/dist/ng-sortable.js',
   'libs/angular-ui-router/release/angular-ui-router.js',
   'libs/angular-animate/angular-animate.js',
   'libs/angular-off-click/offClick.js',

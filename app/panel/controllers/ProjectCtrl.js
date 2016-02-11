@@ -6,6 +6,7 @@
     var templatesPromise;
     var filesPromise;
     var ticketsPromise;
+    var order = [];
 
     $scope.project = null;
     $scope.files = null;
@@ -19,23 +20,26 @@
     $scope.getStatus = function(code) {
       return statusService.getStatus(code);
     };
-    $scope.setDisplayType = function (type) {
+    $scope.setDisplayType = function(type) {
       $window.localStorage.setItem('displayType', type);
       $scope.displayType = type;
     };
-    $scope.sortableOptions = {
-      stop: function() {
-        // push all items to array with newly ordered ids
-        templatesService.updateOrder($scope.templates.map(function(item) {
-          return item.order;
-        }));
+    $scope.dragControlListeners = {
+      accept: function(sourceItemHandleScope, destSortableScope) {
+        return true;
       },
-      placeholder: 'drag-and-drop-placeholder',
-      cancel: '.js-no-drop-item',
-      handle: '.action-tool--drag-and-drop',
-      cursor: 'move',
-      opacity: 0.8,
-      tolerance: 'pointer'
+      itemMoved: function(event) {
+        console.log(event);
+      },
+      additionalPlaceholderClass: 'js-item-disabled',
+      orderChanged: function(event) {
+        var newOrder = _.map(event.dest.sortableScope.modelValue, function(value) {
+          return value.order;
+        });
+        if (order !== newOrder) {
+          templatesService.updateOrder(newOrder);
+        }
+      }
     };
 
     $scope.init = function() {
@@ -53,8 +57,8 @@
       templatesPromise = templatesService.getTemplates($stateParams.projectId);
       templatesPromise.success(function(templates) {
         $scope.templates = templates;
-        $scope.templates = templates.sort(function(item, nextItem) {
-          return item.order > nextItem.order;
+        order = _.map(templates, function(template) {
+          return template.order;
         });
       });
 
@@ -118,15 +122,15 @@
           });
       }
     });
-    $scope.$on('ticket:submitted', function (params, data) {
+    $scope.$on('ticket:submitted', function(params, data) {
       if (data.submitted) {
         ticketsService.getTickets($stateParams.projectId)
-        .success(function (tickets) {
-          $scope.tickets = tickets.results;
-        })
-        .error(function (error) {
-          toaster.pop('error', 'Couldn\'t get the updated tickets list.', 'Please try refreshing the page, if the error occurs again, let us know!');
-        });
+          .success(function(tickets) {
+            $scope.tickets = tickets.results;
+          })
+          .error(function() {
+            toaster.pop('error', 'Couldn\'t get the updated tickets list.', 'Please try refreshing the page, if the error occurs again, let us know!');
+          });
       }
     });
   };

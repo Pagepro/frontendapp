@@ -3414,13 +3414,11 @@ h1.breadcrumb {
     }
     &--templates {
         min-height: $size_teaser_v;
-        .teasers-list__item {
-            &:nth-child(1) {
-                margin-left: $size_teaser_h + $size_padding;
-            }
-        }
     }
-    .drag-and-drop-placeholder {
+    .drag-and-drop-placeholder,
+    .as-sortable-placeholder {
+        margin-right: $size_padding;
+        margin-bottom: $size_padding;
         width: $size_teaser_h;
         height: $size_teaser_v;
 
@@ -3441,14 +3439,6 @@ h1.breadcrumb {
     }
     @include breakpoint($breakpoint_smartphone-medium) {
         width: calc(#{$size_teaser_h} + #{$size_padding});
-        &--templates {
-            .teasers-list__item {
-                &:nth-child(1) {
-                    margin-left: 0;
-                    margin-top: $size_teaser_v + 20px;
-                }
-            }
-        }
     }
 }
 
@@ -5453,7 +5443,8 @@ h1.breadcrumb {
             }
         }
     }
-    .drag-and-drop-placeholder {
+    .drag-and-drop-placeholder,
+    .as-sortable-placeholder {
         width: 100%;
         height: $size_btn_v;
 
