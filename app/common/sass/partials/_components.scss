@@ -618,6 +618,9 @@ h1.breadcrumb {
         padding: 0 $size_padding;
 
         @extend %helper--flex--center--center;
+        .ticket-box & {
+            height: 48px;
+        }
     }
     .label {
         padding-top: 1px;
@@ -664,6 +667,16 @@ h1.breadcrumb {
         background: $color_black;
         &:hover {
             background: $color_red;
+        }
+    }
+    &--grey {
+        margin-left: 15px;
+        background: $color_grey_4;
+        line-height: 48px;
+        height: 48px;
+
+        &:hover {
+            background: $color_grey_5;
         }
     }
 }
@@ -984,8 +997,11 @@ h1.breadcrumb {
 // Styleguide 8.3
 .labels-choice {
     position: relative;
+    .ticket-box & {
+        float: left;
+    }
 
-    width: calc(#{$size_input_h} / 2 + #{$size_acces-tool_h});
+    width: calc(#{$size_input_h} / 2 + #{$size_acces-tool_h} + 30px);
     height: $size_input_v;
 
     @extend %helper--flex--right--top;
@@ -7938,6 +7954,7 @@ h1.breadcrumb {
 //
 // Styleguide 24.6
 .comments-list {
+    width: 100%;
     margin-bottom: -$size_padding_medium;
 
     @extend %helper--list;
@@ -8070,7 +8087,8 @@ h1.breadcrumb {
 .comments {
     @extend %helper--flex--left--top;
     flex-wrap: wrap;
-    &__actions {
+    &__actions,
+    &__content {
         width: 100%;
     }
     &__content + &__actions {
@@ -8521,11 +8539,12 @@ h1.breadcrumb {
         &__row {
             @extend %helper--flex--left--top;
             flex-wrap: wrap;
+            color: $color_grey_6;
             .ticket-author + .ticket-publish-date {
                 margin-left: 5px;
             }
             &:first-of-type {
-                margin-top: 3px;
+                margin-top: 20px;
             }
         }
         &__row + &__row {

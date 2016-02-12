@@ -671,8 +671,7 @@
                     flex-grow: 0;
                 }
                 &:last-of-type {
-                    max-width: calc(100% - #{$size_input_h} - #{$size_padding_medium});
-                    margin-left: $size_padding_medium;
+                    max-width: calc(100%);
                 }
             }
         }
