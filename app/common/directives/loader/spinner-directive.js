@@ -38,7 +38,7 @@
           },
           hide: function() {
             // temp solution to work on loaders
-            $timeout(function() {
+            $timeout(function () {
               $scope.show = false;
             }, 1000);
 

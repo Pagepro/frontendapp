@@ -9,13 +9,13 @@
         password: password
       });
     };
-    this.setAuthToken = function(token) {
+    this.setAuthToken = function (token) {
       $window.localStorage.token = token;
     };
-    this.registerUser = function(user) {
+    this.registerUser = function (user) {
       return $http.post(baseApiUrl + 'accounts/', user);
     };
-    this.logout = function() {
+    this.logout = function () {
       $window.localStorage.removeItem('token');
     };
   };

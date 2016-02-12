@@ -20,6 +20,6 @@
   };
 
   RegistrationCtrl.$inject = ['$scope', 'authService', 'toaster'];
-  angular.module('authModule').controller('RegistrationCtrl', RegistrationCtrl);
+  angular.module('frontendApp').controller('RegistrationCtrl', RegistrationCtrl);
 
 }());

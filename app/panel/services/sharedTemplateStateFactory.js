@@ -1,12 +1,11 @@
-(function() {
+(function () {
   'use strict';
-  var templatesFactory = function() {
+  var templatesFactory = function () {
     var templates = null;
 
     function setTemplates(data) {
       templates = data;
     }
-
     function getTemplates() {
       return templates;
     }

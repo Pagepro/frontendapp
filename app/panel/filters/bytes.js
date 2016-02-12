@@ -1,8 +1,8 @@
-(function() {
+(function () {
   'use strict';
 
   // https://gist.github.com/thomseddon/3511330
-  var bytes = function() {
+  var bytes = function () {
     return function(bytes, precision) {
       if (isNaN(parseFloat(bytes)) || !isFinite(bytes)) {
         return '-';

@@ -1,14 +1,14 @@
 (function() {
   'use strict';
 
-  var frontendApp = angular.module('frontendApp', ['panelModule', 'ui.router', 'ngAnimate', 'offClick',
+  var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'panelModule',
     'dibari.angular-ellipsis', 'as.sortable', 'angularSpinners', 'toaster', 'ngFileUpload'
   ]);
   frontendApp
     .config(['$urlRouterProvider',
       '$httpProvider',
       '$locationProvider',
-      function($urlRouterProvider, $httpProvider, $locationProvider) {
+      function($urlRouterProvider, $httpProvider) {
         $httpProvider.interceptors.push('authInterceptor');
         // $urlRouterProvider.otherwise('/auth/login');
         $urlRouterProvider.otherwise('/my-projects');

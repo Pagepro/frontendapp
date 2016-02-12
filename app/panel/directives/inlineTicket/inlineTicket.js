@@ -1,11 +1,11 @@
-(function() {
+(function () {
   'use strict';
 
-  var inlineTicket = function($location, statusService) {
+  var inlineTicket = function ($location, statusService) {
     return {
       restrict: 'AE',
       templateUrl: 'app/panel/directives/inlineTicket/inlineTicket.html',
-      link: function(scope) {
+      link: function (scope) {
         scope.status = statusService.getStatus(scope.ticket.status);
         scope.location = $location.path();
       }
