@@ -1,9 +1,15 @@
 (function() {
   'use strict';
   var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService, $rootScope) {
+    $scope.staticContent = {
+      title: 'Submit Bug',
+      button: 'Create Ticket'
+    };
+
     var userData;
     var submitted = false;
 
+    $scope.submitted = false;
     $scope.image = null;
     $scope.description = null;
     $scope.isUploading = false;
@@ -37,7 +43,7 @@
             });
           } else {
             toaster.pop('error', 'No templates yet.', 'There are no templates yet added to the project you\'re trying to add a ticket to. Please, first add a template, then add a ticket to it.');
-            $scope.returnToProject();
+            $scope.returnToParent();
           }
         });
     };
@@ -45,6 +51,7 @@
     init();
 
     $scope.uploadFiles = function(file) {
+      $scope.submitted = true;
       if (file) {
         $scope.isUploading = true;
         file.upload = Upload.upload({
@@ -58,19 +65,19 @@
           }).success(function() {
             toaster.pop('success', 'Success!', 'Your ticket has been added.');
             submitted = true;
-            $scope.returnToProject();
+            $scope.returnToParent();
           })
           .error(function() {
             toaster.pop('error', 'Ooops!', 'Something went wrong. Please do not give up and try again! :)');
           })
           .finally(function() {
             $scope.isUploading = false;
-            $scope.returnToProject();
+            $scope.returnToParent();
           });
       }
     };
 
-    $scope.returnToProject = function() {
+    $scope.returnToParent = function() {
       $state.go('projectState', $stateParams.projectId);
       $rootScope.$broadcast('ticket:submitted', {
         id: $stateParams.templateId,

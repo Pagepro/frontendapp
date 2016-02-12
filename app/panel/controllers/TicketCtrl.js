@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var TicketCtrl = function($scope, $q, $stateParams, commentsService, ticketsService, spinnerService, toaster) {
+  var TicketCtrl = function($scope, $rootScope, $q, $stateParams, commentsService, ticketsService, spinnerService, toaster) {
     var ticketPromise;
     var commentsPromise;
 
@@ -10,6 +10,15 @@
     $scope.projectId = $stateParams.projectId;
     $scope.ticketId = null;
     $scope.processing = false;
+
+    /* to change link in trail(breadcrumbs link)
+    ugly hack, I know, but I'm not smart enough to figure out
+    anything better */
+    _.each($rootScope.trails, function (trail) {
+      if (trail.name === 'Project Details') {
+        trail.link = '#/project/' + $scope.projectId;
+      }
+    });
 
     $scope.init = function() {
       spinnerService.show('project-details');
@@ -75,7 +84,7 @@
         });
     };
   };
-  TicketCtrl.$inject = ['$scope', '$q', '$stateParams', 'commentsService', 'ticketsService', 'spinnerService', 'toaster'];
+  TicketCtrl.$inject = ['$scope', '$rootScope', '$q', '$stateParams', 'commentsService', 'ticketsService', 'spinnerService', 'toaster'];
   angular.module('panelModule').controller('TicketCtrl', TicketCtrl);
 
 }());

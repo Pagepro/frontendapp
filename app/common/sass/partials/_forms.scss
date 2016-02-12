@@ -56,13 +56,6 @@
     &.required {
         color: $color_white;
         background: $color_red;
-        .popup & {
-            color: $color_red;
-            background: none;
-            p {
-                padding-left: 0;
-            }
-        }
     }
 }
 
