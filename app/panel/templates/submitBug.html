@@ -80,17 +80,12 @@
                                         </div>
                                         <div class="form-box__section__content">
                                             <div class="form__section">
-                                                <div class="field field--select" ng-class="{'error-message': !template.id && submitted}">
+                                                <div class="field field--select">
                                                     <select id="template" class="customSelect" required>
-                                                        <option ng-if="!currentTemplateId" selected disabled>Chose a template...</option>
+                                                        <option model="template.id" selected="{{!currentTemplateId}}">All Templates</option>
                                                         <option
                                                         ng-repeat="template in templates" model="template.id" ng-selected="template.selected">{{template.name}}</option>
                                                     </select>
-                                                </div>
-                                                <div class="field field--info" ng-show="!template.id && submitted">
-                                                    <div class="form-info required">
-                                                        <p>This field is required</p>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
