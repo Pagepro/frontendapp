@@ -9144,6 +9144,7 @@ h1.breadcrumb {
 
     background: $color_white;
     &__inner {
+        position: relative;
         padding: calc(#{$size_padding_medium} * 1.2) $size_padding_medium;
     }
     &__head {

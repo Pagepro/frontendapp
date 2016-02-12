@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService, $rootScope) {
+  var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService, $rootScope, spinnerService) {
     $scope.staticContent = {
       title: 'Submit Bug',
       button: 'Create Ticket'
@@ -52,6 +52,7 @@
 
     $scope.uploadFiles = function(file) {
       if ($scope.description.length) {
+        spinnerService.show('ticket-spinner');
         var data = {
           browsers: $scope.browsers,
           description: $scope.description,
@@ -97,7 +98,7 @@
     };
   };
 
-  SubmitBugCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'templatesService', 'appSettings', 'accountService', '$rootScope'];
+  SubmitBugCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'templatesService', 'appSettings', 'accountService', '$rootScope', 'spinnerService'];
   angular.module('panelModule').controller('SubmitBugCtrl', SubmitBugCtrl);
 
 }());
