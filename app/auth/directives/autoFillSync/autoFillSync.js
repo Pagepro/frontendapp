@@ -15,5 +15,5 @@
        };
   };
   autoFillSync.$inject = ['$timeout'];
-  angular.module('frontendApp').directive('autoFillSync', autoFillSync);
+  angular.module('authModule').directive('autoFillSync', autoFillSync);
 }());

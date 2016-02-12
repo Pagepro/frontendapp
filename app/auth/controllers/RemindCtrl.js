@@ -3,6 +3,6 @@
   var RemindCtrl = function($scope) {};
 
   RemindCtrl.$inject = ['$scope'];
-  angular.module('frontendApp').controller('RemindCtrl', RemindCtrl);
+  angular.module('authModule').controller('RemindCtrl', RemindCtrl);
 
 }());

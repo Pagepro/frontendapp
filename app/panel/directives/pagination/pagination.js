@@ -9,9 +9,9 @@
         getterService: '=service'
       },
       transclude: true,
-      controller: function ($scope) {
+      controller: function($scope) {
         $scope.currentPage = 0;
-        $scope.setPage = function (page) {
+        $scope.setPage = function(page) {
           if (page >= 0) {
             // @fixme $parent??
             //                     '
@@ -27,8 +27,7 @@
             // jgs   )))( |
             //        (()
             //         ))
-            console.log($scope.$parent.pagination);
-            $scope.getterService(page).success(function (resp) {
+            $scope.getterService(page).success(function(resp) {
               $scope.$parent.allProjects = resp.results;
             });
             $scope.currentPage = page;

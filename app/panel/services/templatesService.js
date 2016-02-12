@@ -22,6 +22,6 @@
   };
 
   templatesService.$inject = ['$http', 'appSettings'];
-  angular.module('frontendApp').service('templatesService', templatesService);
+  angular.module('panelModule').service('templatesService', templatesService);
 
 }());

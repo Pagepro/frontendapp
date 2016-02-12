@@ -1,9 +1,9 @@
-(function () {
+(function() {
   'use strict';
 
-  var projectsService = function ($http, appSettings) {
+  var projectsService = function($http, appSettings) {
     var baseUrl = appSettings.apiRoot + 'projects/';
-    this.getProjects = function (pageNo, projectStatus) {
+    this.getProjects = function(pageNo, projectStatus) {
       var requestUrl = baseUrl;
 
       if (pageNo) {
@@ -14,10 +14,10 @@
       }
       return $http.get(requestUrl);
     };
-    this.getProject = function (projectId) {
+    this.getProject = function(projectId) {
       return $http.get(baseUrl + projectId + '/');
     };
-    this.createNewProject = function (projectName) {
+    this.createNewProject = function(projectName) {
       return $http.post(baseUrl, {
         name: projectName
       });

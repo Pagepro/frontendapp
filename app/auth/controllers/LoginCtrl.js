@@ -12,6 +12,6 @@
   };
 
   LoginCtrl.$inject = ['$scope', '$state', 'authService'];
-  angular.module('frontendApp').controller('LoginCtrl', LoginCtrl);
+  angular.module('authModule').controller('LoginCtrl', LoginCtrl);
 
 }());

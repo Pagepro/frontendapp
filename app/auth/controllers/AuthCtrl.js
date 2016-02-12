@@ -9,6 +9,6 @@
   };
 
   AuthCtrl.$inject = ['$scope', '$state'];
-  angular.module('frontendApp').controller('AuthCtrl', AuthCtrl);
+  angular.module('authModule').controller('AuthCtrl', AuthCtrl);
 
 }());

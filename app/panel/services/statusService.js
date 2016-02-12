@@ -1,8 +1,8 @@
-(function () {
+(function() {
   'use strict';
 
-  var statusService = function () {
-    this.getStatus = function (statusCode) {
+  var statusService = function() {
+    this.getStatus = function(statusCode) {
       var projectStatus = {
         code: statusCode,
         className: '',

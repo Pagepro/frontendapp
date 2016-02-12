@@ -1,8 +1,8 @@
-(function () {
+(function() {
   'use strict';
 
-  var accountService = function ($http, appSettings) {
-    this.getUserData = function () {
+  var accountService = function($http, appSettings) {
+    this.getUserData = function() {
       return $http.get(appSettings.apiRoot + 'accounts/my/');
     };
   };

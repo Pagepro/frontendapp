@@ -1,12 +1,12 @@
-(function () {
+(function() {
   'use strict';
 
-  var projectFiles = function (appSettings) {
+  var projectFiles = function(appSettings) {
     return {
       restrict: 'EA',
       templateUrl: 'app/panel/directives/projectFiles/projectFiles.html',
-      link: function ($scope) {
-        $scope.filesSrc = function (projectId) {
+      link: function($scope) {
+        $scope.filesSrc = function(projectId) {
           return appSettings.filesSrc + projectId;
         };
       }

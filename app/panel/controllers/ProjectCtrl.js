@@ -24,10 +24,8 @@
       $window.localStorage.setItem('displayType', type);
       $scope.displayType = type;
     };
+
     $scope.dragControlListeners = {
-      accept: function(sourceItemHandleScope, destSortableScope) {
-        return true;
-      },
       additionalPlaceholderClass: 'js-item-disabled',
       dragEnd: function(event) {
         var newOrder = _.map(event.dest.sortableScope.modelValue, function(value) {
