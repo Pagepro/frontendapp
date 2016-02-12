@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var templateUploader = function($q, Upload, toaster, appSettings, $stateParams, $rootScope) {
+  var templateUploader = function($q, Upload, toaster, appSettings, $stateParams, $rootScope, spinnerService) {
     return {
       templateUrl: 'app/panel/directives/templateUploader/templateUploader.html',
       scope: {},
@@ -65,6 +65,7 @@
               $scope.triggerChange = !$scope.triggerChange;
             })
             .success(function() {
+              spinnerService.showGroup('full-page');
               dfd.resolve();
             });
 
@@ -84,7 +85,7 @@
     };
   };
 
-  templateUploader.$inject = ['$q', 'Upload', 'toaster', 'appSettings', '$stateParams', '$rootScope'];
+  templateUploader.$inject = ['$q', 'Upload', 'toaster', 'appSettings', '$stateParams', '$rootScope', 'spinnerService'];
   angular.module('panelModule').directive('templateUploader', templateUploader);
 
 
