@@ -716,6 +716,9 @@
         font-weight: 600;
 
         text-transform: uppercase;
+        .required {
+            color: $color_red;
+        }
     }
     .form {
         &__fieldset {
