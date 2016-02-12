@@ -3,6 +3,7 @@
   var windowScroll = function($window) {
     return {
       link: function(scope, element, attrs) {
+        var prevDistance;
 
         angular.element($window).bind('scroll', function() {
           var distance = this.pageYOffset;
@@ -13,10 +14,17 @@
             scope.scrollClass = '';
           }
           if (distance > 50) {
-            scope.scrollClass += ' hidden';
+            if (prevDistance > distance) {
+            // if scrolling up
+              scope.scrollClass += ' small';
+            } else {
+            // if scrolling down
+              scope.scrollClass += ' hidden';
+            }
           } else {
             scope.scrollClass = '';
           }
+          prevDistance = distance;
 
           scope.$apply();
         });

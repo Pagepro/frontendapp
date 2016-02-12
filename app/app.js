@@ -7,7 +7,6 @@
   frontendApp
     .config(['$urlRouterProvider',
       '$httpProvider',
-      '$locationProvider',
       function($urlRouterProvider, $httpProvider) {
         $httpProvider.interceptors.push('authInterceptor');
         // $urlRouterProvider.otherwise('/auth/login');
