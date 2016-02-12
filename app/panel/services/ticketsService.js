@@ -3,9 +3,9 @@
 
   var ticketsService = function($http, appSettings) {
     var self = this;
-    this.getTickets = function(projectId, statusParam) {
+    this.getTickets = function(projectId, ticketsPage) {
       self.projectId = projectId;
-      return $http.get(appSettings.apiRoot + 'projects/' + self.projectId + '/tickets/' + (statusParam ? ('?filter=' + statusParam) : ''));
+      return $http.get(appSettings.apiRoot + 'projects/' + self.projectId + '/tickets/' + ((ticketsPage > 1)? ('?page=' + ticketsPage) : ''));
     };
     this.setTicketStatus = function(projectId, ticketId, statusId) {
       return $http.put(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + ticketId + '/', {

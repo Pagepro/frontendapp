@@ -7,11 +7,12 @@
     var filesPromise;
     var ticketsPromise;
     var order = [];
+    var ticketsPage = 1;
 
     $scope.project = null;
     $scope.files = null;
     $scope.templates = null;
-    $scope.tickets = null;
+    $scope.tickets = [];
     $scope.finishedFetching = false;
     $scope.projectId = $stateParams.projectId;
 
@@ -60,7 +61,7 @@
       ticketsPromise = ticketsService.getTickets($stateParams.projectId);
       ticketsPromise.success(function(tickets) {
         $scope.tickets = tickets.results;
-        $scope.ticketsLeft = (tickets.count - $scope.tickets.length);
+        $scope.ticketsLeft = tickets.count - $scope.tickets.length;
       });
 
       $q.all([projectPromise, filesPromise, templatesPromise, ticketsPromise]).then(function() {
@@ -83,10 +84,13 @@
       }
     };
     $scope.loadRemainingTickets = function() {
-      ticketsService.getTickets($stateParams.projectId, 'all')
+      ticketsPage++;
+      ticketsService.getTickets($stateParams.projectId, ticketsPage)
         .success(function(tickets) {
-          $scope.tickets = tickets.results;
-          $scope.ticketsLeft = (tickets.count - $scope.tickets.length);
+          _.each(tickets.results, function (ticket) {
+            $scope.tickets.push(ticket);
+          });
+          $scope.ticketsLeft = tickets.count - $scope.tickets.length;
         });
     };
 
@@ -119,9 +123,11 @@
     });
     $scope.$on('ticket:submitted', function(params, data) {
       if (data.submitted) {
+        ticketsPage = 1;
         ticketsService.getTickets($stateParams.projectId)
           .success(function(tickets) {
             $scope.tickets = tickets.results;
+            $scope.ticketsLeft = tickets.count - $scope.tickets.length;
           })
           .error(function() {
             toaster.pop('error', 'Couldn\'t get the updated tickets list.', 'Please try refreshing the page, if the error occurs again, let us know!');

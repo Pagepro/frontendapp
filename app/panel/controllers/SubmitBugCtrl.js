@@ -11,7 +11,7 @@
 
     $scope.submitted = false;
     $scope.image = null;
-    $scope.description = null;
+    $scope.description = '';
     $scope.isUploading = false;
     $scope.file = null;
 
@@ -51,17 +51,21 @@
     init();
 
     $scope.uploadFiles = function(file) {
-      $scope.submitted = true;
-      if (file) {
+      if ($scope.description.length) {
+        var data = {
+          browsers: $scope.browsers,
+          description: $scope.description,
+          person: userData.id
+        }
+        if (file) {
+          data.file = file;
+        }
+
         $scope.isUploading = true;
-        file.upload = Upload.upload({
+
+        Upload.upload({
             url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/tickets/',
-            data: {
-              file: file,
-              browsers: $scope.browsers,
-              description: $scope.description,
-              person: userData.id
-            }
+            data: data
           }).success(function() {
             toaster.pop('success', 'Success!', 'Your ticket has been added.');
             submitted = true;
@@ -74,6 +78,8 @@
             $scope.isUploading = false;
             $scope.returnToParent();
           });
+      } else {
+        $scope.submitted = true;
       }
     };
 

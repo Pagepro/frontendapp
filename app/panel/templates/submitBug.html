@@ -19,7 +19,7 @@
                     </div>
                 </div>
                 <div class="popup__content">
-                    <form class="ticket-form" name="bug" ng-submit="uploadFiles(file)">
+                    <form class="ticket-form" ng-model="bug" name="bug" ng-submit="uploadFiles(file)">
                         <fieldset class="form__fieldset">
                             <div class="form__content">
                                 <div class="form-box">
@@ -28,11 +28,11 @@
                                             <label class="label" for="description">Description</label>
                                         </div>
                                         <div class="form-box__section__content">
-                                            <div class="form__section" ng-class="{'error-message': bug.description.$invalid && submitted}">
+                                            <div class="form__section" ng-class="{'error-message': submitted}">
                                                 <div class="field field--textarea">
-                                                    <textarea class="textarea" id="description" name="description" ng-model="description" required></textarea>
+                                                    <textarea class="textarea" id="description" name="description" ng-model="description"></textarea>
                                                 </div>
-                                                <div class="field field--info" ng-show="bug.description.$invalid && submitted">
+                                                <div class="field field--info" ng-show="submitted">
                                                     <div class="form-info required">
                                                         <p>This field is required</p>
                                                     </div>
@@ -109,7 +109,7 @@
                                 </div>
                             </div>
                             <div class="form__actions">
-                                <button class="btn btn--submit btn--submit--small" type="submit" ng-click="uploadFiles(file)" ng-disabled="isUploading">
+                                <button class="btn btn--submit btn--submit--small" type="submit" ng-disabled="isUploading">
                                     <span class="label">{{staticContent.button}}</span>
                                 </button>
                             </div>
