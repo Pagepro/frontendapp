@@ -56,7 +56,7 @@
           browsers: $scope.browsers,
           description: $scope.description,
           person: userData.id
-        }
+        };
         if (file) {
           data.file = file;
         }
