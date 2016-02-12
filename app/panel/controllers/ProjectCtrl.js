@@ -28,11 +28,8 @@
       accept: function(sourceItemHandleScope, destSortableScope) {
         return true;
       },
-      itemMoved: function(event) {
-        console.log(event);
-      },
       additionalPlaceholderClass: 'js-item-disabled',
-      orderChanged: function(event) {
+      dragEnd: function(event) {
         var newOrder = _.map(event.dest.sortableScope.modelValue, function(value) {
           return value.order;
         });
@@ -57,8 +54,9 @@
       templatesPromise = templatesService.getTemplates($stateParams.projectId);
       templatesPromise.success(function(templates) {
         $scope.templates = templates;
-        order = _.map(templates, function(template) {
-          return template.order;
+        order = _.map($scope.templates, function(template) {
+          template.order = template.id;
+          return template.id;
         });
       });
 
