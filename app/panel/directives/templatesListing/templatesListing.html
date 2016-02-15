@@ -1,13 +1,13 @@
 <div class="project-box__content project-box__content--listing" ng-switch-when="grid">
     <div class="teasers-list" data-as-sortable="dragControlListeners" data-ng-model="templates">
-        <template-uploader class="js-item-disabled" ng-if="templates" ng-class="{'alone': templates.length < 1}"></template-uploader>
+        <template-uploader class="js-item-disabled" ng-show="templates" ng-class="{'alone': templates.length < 1}"></template-uploader>
         <div class="teasers-list__item" data-ng-repeat="template in templates" data-as-sortable-item>
             <template-preview type="grid" data-as-sortable-handle></template-preview>
         </div>
     </div>
 </div>
 <div class="project-box__content" ng-switch-when="inline">
-    <div class="files-box files-box--templates-complexe" ng-show="finishedFetching">
+    <div class="files-box files-box--templates-complexe" ng-show="templates">
         <div class="files-box__head">
             <div class="files-box__number">
                 <p class="filebox-title">No</p>
