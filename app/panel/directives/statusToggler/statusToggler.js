@@ -7,16 +7,16 @@
       replace: true,
       scope: false,
       templateUrl: 'app/panel/directives/statusToggler/statusToggler.html',
-      link: function($scope) {
-        $scope.currentStatus = 0;
-        $scope.availableStatuses = [1, 2, 3, 5];
+      link: function(scope) {
+        scope.currentStatus = 0;
+        scope.availableStatuses = [1, 2, 3, 5];
 
-        $scope.getStatus = statusService.getStatus;
-        $scope.statusListVisible = false;
-        $scope.setTicketStatus = function(newStatus) {
-          var statusHolder = $scope.currentStatus;
+        scope.getStatus = statusService.getStatus;
+        scope.statusListVisible = false;
+        scope.setTicketStatus = function(newStatus) {
+          var statusHolder = scope.currentStatus;
           if (statusHolder !== newStatus) {
-            ticketsService.setTicketStatus($scope.projectId, $scope.ticketId, newStatus)
+            ticketsService.setTicketStatus(scope.projectId, scope.ticketId, newStatus)
               .success(function() {
                 toaster.pop('success', 'Successfully updated the status.');
                 statusHolder = newStatus;
@@ -25,15 +25,15 @@
                 toaster.pop('error', 'Couldn\'t update status.');
               })
               .finally(function () {
-                $scope.currentStatus = statusHolder;
+                scope.currentStatus = statusHolder;
               });
           }
         };
-        $scope.toggleStatusList = function() {
-          $scope.statusListVisible = !$scope.statusListVisible;
+        scope.toggleStatusList = function() {
+          scope.statusListVisible = !scope.statusListVisible;
         };
-        $scope.hideStatusList = function () {
-          $scope.statusListVisible = false;
+        scope.hideStatusList = function () {
+          scope.statusListVisible = false;
         };
       }
     };

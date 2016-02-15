@@ -8,7 +8,7 @@
       },
       transclude: true,
       restrict: 'AE',
-      link: function($scope) {
+      link: function(scope) {
         angular.element('.input--file').nicefileinput();
 
         var progressArr = [];
@@ -17,19 +17,19 @@
         var filesDfd;
         var fileUploaded = false;
         var imageUploaded = false;
-        $scope.uploadFiles = function(files) {
-          $scope.progress = 0;
-          $scope.sizeTotal = 0;
+        scope.uploadFiles = function(files) {
+          scope.progress = 0;
+          scope.sizeTotal = 0;
 
-          $scope.filesUploadSuccess = false;
-          $scope.files = files;
+          scope.filesUploadSuccess = false;
+          scope.files = files;
 
-          if (files && files.length && !$scope.filesProcessing) {
+          if (files && files.length && !scope.filesProcessing) {
             if (!files.$error) {
-              $scope.filesProcessing = true;
+              scope.filesProcessing = true;
 
               filesDfd = _.map(files, function(file, index) {
-                $scope.sizeTotal += file.size;
+                scope.sizeTotal += file.size;
                 return uploadFiles(file, index);
               });
 
@@ -68,7 +68,7 @@
             })
             .progress(function(event) {
               progressArr[index] = event.loaded;
-              $scope.$broadcast('progress:updated');
+              scope.$broadcast('progress:updated');
             })
             .success(function() {
               dfd.resolve();
@@ -78,27 +78,27 @@
         };
 
         clearScopeData = function clearScopeData() {
-          $scope.progress = 0;
-          $scope.sizeTotal = 0;
-          $scope.files = null;
-          $scope.filesUploadSuccess = false;
-          $scope.filesProcessing = false;
+          scope.progress = 0;
+          scope.sizeTotal = 0;
+          scope.files = null;
+          scope.filesUploadSuccess = false;
+          scope.filesProcessing = false;
           filesDfd = [];
           progressArr = [];
         };
 
-        $scope.$on('progress:updated', function() {
+        scope.$on('progress:updated', function() {
           var loaded = _.sum(progressArr);
-          if ($scope.progress < 100) {
-            $scope.progress = _.round((loaded / $scope.sizeTotal) * 100);
+          if (scope.progress < 100) {
+            scope.progress = _.round((loaded / scope.sizeTotal) * 100);
           } else {
-            if ($scope.withLoader) {
+            if (scope.withLoader) {
               // fixme???
               // I'm just hoping the spinner is being cleared by the directive properly even despite
               // I don't do it by hand
               spinnerService.show('template-uploader-spinner');
             }
-            $scope.progress = 100;
+            scope.progress = 100;
           }
         });
       }

@@ -9,7 +9,7 @@
         getterService: '=service'
       },
       transclude: true,
-      controller: function ($scope) {
+      controller: ['$scope', function ($scope) {
         $scope.currentPage = 0;
         $scope.setPage = function (page) {
           if (page >= 0) {
@@ -36,7 +36,7 @@
             return false;
           }
         };
-      }
+      }]
     };
   };
 
