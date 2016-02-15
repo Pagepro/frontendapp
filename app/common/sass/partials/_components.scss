@@ -607,6 +607,7 @@ h1.breadcrumb {
 // Styleguide 6.8
 
 .action-btn {
+    cursor: pointer;
     display: inline-block;
 
     color: $color_white;
@@ -999,6 +1000,10 @@ h1.breadcrumb {
     position: relative;
     .ticket-box & {
         float: left;
+        @include breakpoint($breakpoint_smartphone) {
+            float: none;
+            width: 100%;
+        }
     }
 
     width: calc(#{$size_input_h} / 2 + #{$size_acces-tool_h} + 30px);
@@ -1705,6 +1710,7 @@ h1.breadcrumb {
 .user-box {
     position: relative;
     &__content {
+        cursor: pointer;
         outline: none;
 
         @extend %helper--flex--center--center;
@@ -3519,9 +3525,19 @@ h1.breadcrumb {
 
 .ticket-desc {
     > p {
+        display: flex;
+
+        height: 40px;
+
+        line-height: 20px;
+
         text-transform: uppercase;
+
+        flex-flow: column nowrap;
+        justify-content: center;
     }
 }
+
 
 // file-data
 //
@@ -8576,10 +8592,6 @@ h1.breadcrumb {
             &__row {
                 .ticket-author {
                     width: 100%;
-                    margin-left: 21px;
-                }
-                .ticket-author + .ticket-publish-date {
-                    margin-left: 21px;
                 }
             }
         }
@@ -9087,7 +9099,7 @@ h1.breadcrumb {
             margin-top: 8px;
         }
         &__actions {
-            display: flex;
+            // display: flex;
 
             justify-content: center;
             align-items: flex-start;
@@ -9102,8 +9114,13 @@ h1.breadcrumb {
     }
     @include breakpoint($breakpoint_smartphone) {
         &__actions {
+            width: 100%;
+            margin-top: 22px;
             .action-btn {
                 width: 100%;
+                &--grey {
+                    margin-left: 0;
+                }
             }
         }
     }

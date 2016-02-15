@@ -15,15 +15,6 @@
         var clearScopeData;
         var filesDfd;
 
-        $scope.$watch('triggerChange', function() {
-          var loaded = _.sum(progressArr);
-          if ($scope.progress < 100) {
-            $scope.progress = _.round((loaded / $scope.sizeTotal) * 100);
-          } else {
-            $scope.progress = 100;
-          }
-        });
-
         $scope.uploadFiles = function(files) {
           $scope.progress = 0;
           $scope.sizeTotal = 0;
@@ -61,11 +52,9 @@
             })
             .progress(function(event) {
               progressArr[index] = event.loaded;
-              // forcing change on a scope variable for $watch
-              $scope.triggerChange = !$scope.triggerChange;
+              $scope.$broadcast('progress:updated');
             })
             .success(function() {
-              spinnerService.showGroup('full-page');
               dfd.resolve();
             });
 
@@ -81,6 +70,16 @@
           filesDfd = [];
           progressArr = [];
         };
+
+        $scope.$on('progress:updated', function() {
+          var loaded = _.sum(progressArr);
+          if ($scope.progress < 100) {
+            $scope.progress = _.round((loaded / $scope.sizeTotal) * 100);
+          } else {
+            spinnerService.showGroup('full-page');
+            $scope.progress = 100;
+          }
+        });
       }
     };
   };

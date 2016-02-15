@@ -1,7 +1,6 @@
 (function() {
   'use strict';
-  var EditDescriptionController = function($scope, $state, $stateParams, toaster, Upload, appSettings, $rootScope) {
-    var userData;
+  var EditDescriptionController = function($scope, $state, $stateParams, toaster, Upload, appSettings, $rootScope, spinnerService) {
     var updated = false;
 
     $scope.staticContent = {
@@ -9,40 +8,42 @@
       button: 'Save'
     };
 
-    $scope.submitted = false;
-
     $scope.description = $scope.$parent.ticket.description;
     $scope.url = $scope.$parent.ticket.screenshot_url;
+    $scope.templates = $scope.$parent.ticket.templates;
     $scope.filename = $scope.$parent.attachment;
     $scope.templates = $scope.$parent.templates;
     $scope.browsers = $scope.$parent.ticket.browsers;
 
+    $scope.submitted = false;
     $scope.isUploading = false;
     $scope.file = null;
 
     angular.element('.input--file').nicefileinput();
 
     $scope.uploadFiles = function(file) {
-      $scope.submitted = true;
-      if (file) {
+      if ($scope.description.length) {
+        spinnerService.show('ticket-spinner');
+        $scope.submitted = true;
         $scope.isUploading = true;
-        file.upload = Upload.upload({
+        Upload.upload({
             url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/tickets/',
+            method: 'PUT',
             data: {
               file: file,
               browsers: $scope.browsers,
-              description: $scope.description,
-              person: userData.id
+              description: $scope.description
             }
           }).success(function() {
             toaster.pop('success', 'Success!', 'Your ticket has been added.');
             updated = true;
             $scope.returnToParent();
           })
-          .error(function() {
-            toaster.pop('error', 'Ooops!', 'Something went wrong. Please do not give up and try again! :)');
+          .error(function(response) {
+            toaster.pop('error', 'Ooops!', 'Something went wrong. We could\'t update the ticket. \n' + response.detail);
           })
           .finally(function() {
+            spinnerService.hide('ticket-spinner');
             $scope.isUploading = false;
             $scope.returnToParent();
           });
@@ -61,7 +62,7 @@
     };
   };
 
-  EditDescriptionController.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'appSettings', '$rootScope'];
+  EditDescriptionController.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'appSettings', '$rootScope', 'spinnerService'];
   angular.module('panelModule').controller('EditDescriptionController', EditDescriptionController);
 
 }());

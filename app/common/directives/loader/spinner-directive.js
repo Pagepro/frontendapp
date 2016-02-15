@@ -40,7 +40,7 @@
             // temp solution to work on loaders
             $timeout(function () {
               $scope.show = false;
-            }, 1000);
+            }, 10);
 
             // $scope.show = false;
           },
