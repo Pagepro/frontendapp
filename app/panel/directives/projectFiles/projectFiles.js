@@ -30,7 +30,6 @@
         });
 
         scope.removeFile = function(fileId) {
-          console.log(fileId);
           if (confirm('Are you sure you want to remove this file?')) {
             filesService.removeFile($stateParams.projectId, fileId)
               .success(function() {

@@ -3,11 +3,12 @@
   var templateUploader = function($q, Upload, toaster, appSettings, $stateParams, $rootScope, spinnerService) {
     return {
       templateUrl: 'app/panel/directives/templateUploader/templateUploader.html',
-      scope: {},
+      scope: {
+        withLoader: '='
+      },
       transclude: true,
       restrict: 'AE',
       link: function($scope) {
-
         angular.element('.input--file').nicefileinput();
 
         var progressArr = [];
@@ -16,7 +17,6 @@
         var filesDfd;
         var fileUploaded = false;
         var imageUploaded = false;
-
         $scope.uploadFiles = function(files) {
           $scope.progress = 0;
           $scope.sizeTotal = 0;
@@ -43,7 +43,6 @@
                 if (fileUploaded) {
                   $rootScope.$broadcast('files:added', $stateParams.projectId);
                 }
-
                 clearScopeData();
               });
             }
@@ -93,6 +92,12 @@
           if ($scope.progress < 100) {
             $scope.progress = _.round((loaded / $scope.sizeTotal) * 100);
           } else {
+            if ($scope.withLoader) {
+              // fixme???
+              // I'm just hoping the spinner is being cleared by the directive properly even despite
+              // I don't do it by hand
+              spinnerService.show('template-uploader-spinner');
+            }
             $scope.progress = 100;
           }
         });
