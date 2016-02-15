@@ -14,7 +14,7 @@
         .success(function(template) {
           $scope.title = template.name;
           $scope.image = template.filename;
-          $scope.comment = template.comment;
+          $scope.comment = template.work.comments;
 
           $scope.updateNameValue(template.filename);
         });
@@ -34,7 +34,7 @@
       // workaround for not submitting empty file
       var data = {
         name: $scope.title,
-        comment: $scope.comment
+        comments: $scope.comment
       };
       if (file) {
         data.files = tmpfile;

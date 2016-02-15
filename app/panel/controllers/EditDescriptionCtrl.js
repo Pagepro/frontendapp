@@ -51,12 +51,8 @@
     };
 
     $scope.returnToParent = function() {
-      $state.go('ticketState', {
-        projectId: $stateParams.projectId,
-        ticketId: $stateParams.ticketId
-      });
       $rootScope.$broadcast('ticket:updated', {
-        id: $stateParams.templateId,
+        id: $scope.$parent.ticketId,
         updated: updated
       });
     };

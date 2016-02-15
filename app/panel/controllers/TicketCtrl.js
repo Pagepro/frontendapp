@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var TicketCtrl = function($scope, $rootScope, $q, $stateParams, commentsService, ticketsService, spinnerService, toaster) {
+  var TicketCtrl = function($scope, $rootScope, $q, $state, $stateParams, commentsService, ticketsService, spinnerService, toaster) {
     var ticketPromise;
     var commentsPromise;
 
@@ -83,8 +83,25 @@
           $scope.processing = false;
         });
     };
+    $scope.$on('ticket:updated', function (params, data) {
+      if (data.updated) {
+        ticketsService.getTicketDetails($stateParams.projectId, data.id)
+          .success(function (updatedTicket) {
+            $scope.ticket = updatedTicket;
+            $state.go('ticketState', {
+              projectId: $stateParams.projectId,
+              ticketId: $stateParams.ticketId
+            });
+          });
+      } else {
+        $state.go('ticketState', {
+          projectId: $stateParams.projectId,
+          ticketId: $stateParams.ticketId
+        });
+      }
+    });
   };
-  TicketCtrl.$inject = ['$scope', '$rootScope', '$q', '$stateParams', 'commentsService', 'ticketsService', 'spinnerService', 'toaster'];
+  TicketCtrl.$inject = ['$scope', '$rootScope', '$q', '$state', '$stateParams', 'commentsService', 'ticketsService', 'spinnerService', 'toaster'];
   angular.module('panelModule').controller('TicketCtrl', TicketCtrl);
 
 }());
