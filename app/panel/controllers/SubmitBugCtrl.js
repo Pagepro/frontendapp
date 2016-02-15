@@ -5,8 +5,6 @@
       title: 'Submit Bug',
       button: 'Create Ticket'
     };
-
-    var userData;
     var submitted = false;
 
     $scope.submitted = false;
@@ -15,9 +13,6 @@
     $scope.isUploading = false;
     $scope.file = null;
 
-    accountService.getUserData().success(function(user) {
-      userData = user;
-    });
 
     var init = function() {
       angular.element('.input--file').nicefileinput();
@@ -55,8 +50,7 @@
         spinnerService.show('ticket-spinner');
         var data = {
           browsers: $scope.browsers,
-          description: $scope.description,
-          person: userData.id
+          description: $scope.description
         };
         if (file) {
           data.file = file;

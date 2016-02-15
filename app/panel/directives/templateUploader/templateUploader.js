@@ -14,6 +14,8 @@
         var uploadFiles;
         var clearScopeData;
         var filesDfd;
+        var fileUploaded = false;
+        var imageUploaded = false;
 
         $scope.uploadFiles = function(files) {
           $scope.progress = 0;
@@ -32,8 +34,15 @@
               });
 
               $q.all(filesDfd).then(function() {
-                toaster.pop('success', 'Files added!', 'You have successfully added files to your project.');
+                var whatWasUploaded = (imageUploaded && !fileUploaded) ? 'images' : 'files';
+                toaster.pop('success', whatWasUploaded + ' uploaded!', 'You have successfully added ' + whatWasUploaded + ' to your project.');
                 $rootScope.$broadcast('templateUploader:updated', $stateParams.projectId);
+                if (imageUploaded) {
+                  $rootScope.$broadcast('images:added', $stateParams.projectId);
+                }
+                if (fileUploaded) {
+                  $rootScope.$broadcast('files:added', $stateParams.projectId);
+                }
 
                 clearScopeData();
               });
@@ -43,8 +52,16 @@
 
         uploadFiles = function uploadFiles(file, index) {
           var dfd = $q.defer();
+          var directory;
+          if (file.type === 'image/png' || file.type === 'image/jpeg') {
+            directory = 'templates';
+            imageUploaded = true;
+          } else {
+            directory = 'files';
+            fileUploaded = true;
+          }
           Upload.upload({
-              url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/templates/',
+              url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/' + directory + '/',
               data: {
                 files: file,
                 name: file.name
@@ -76,7 +93,6 @@
           if ($scope.progress < 100) {
             $scope.progress = _.round((loaded / $scope.sizeTotal) * 100);
           } else {
-            spinnerService.showGroup('full-page');
             $scope.progress = 100;
           }
         });

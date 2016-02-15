@@ -8,7 +8,7 @@
       return $http.get(appSettings.apiRoot + 'projects/' + self.projectId + '/tickets/' + ((ticketsPage > 1)? ('?page=' + ticketsPage) : ''));
     };
     this.setTicketStatus = function(projectId, ticketId, statusId) {
-      return $http.put(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + ticketId + '/', {
+      return $http.patch(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + ticketId + '/', {
         status: statusId
       });
     };

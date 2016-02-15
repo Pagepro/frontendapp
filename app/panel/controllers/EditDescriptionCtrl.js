@@ -27,7 +27,7 @@
         $scope.submitted = true;
         $scope.isUploading = true;
         Upload.upload({
-            url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/tickets/',
+            url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/tickets/' + $scope.$parent.ticketId + '/',
             method: 'PUT',
             data: {
               file: file,

@@ -6924,6 +6924,10 @@ h1.breadcrumb {
 // Styleguide 19.4
 
 .project-box {
+    &--empty {
+        display: flex;
+        justify-content: center;
+    }
     &__content {
         .files-box {
             width: 100%;

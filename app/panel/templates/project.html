@@ -1,4 +1,4 @@
-<spinner name="project-details" group="full-page" on-loaded="init()"></spinner>
+<!-- <spinner name="project-details" group="full-page" on-loaded="init()"></spinner> -->
 <div class="sec--main__head">
     <div class="sec--main__inner">
         <div class="project-essential-box">
@@ -53,7 +53,8 @@
                     </li>
                 </ul>
             </div>
-            <div class="subsec__content">
+            <div class="subsec__content subsec__content--w-spinner">
+                <spinner name="templates-listing" group="local"></spinner>
                 <templates-listing ng-switch on="displayType" class="project-box"></templates-listing>
             </div>
         </div>
@@ -75,7 +76,10 @@
                     <span class="label">Project Files</span>
                 </h3>
             </div>
-            <div class="subsec__content" project-files></div>
+            <div class="subsec__content">
+                <spinner name="files-spinner" group="local"></spinner>
+                <project-files></project-files>
+            </div>
         </div>
     </section>
     <section class="subsec">

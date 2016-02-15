@@ -23,9 +23,11 @@
               })
               .error(function() {
                 toaster.pop('error', 'Couldn\'t update status.');
+              })
+              .finally(function () {
+                $scope.currentStatus = statusHolder;
               });
           }
-          $scope.currentStatus = statusHolder;
         };
         $scope.toggleStatusList = function() {
           $scope.statusListVisible = !$scope.statusListVisible;

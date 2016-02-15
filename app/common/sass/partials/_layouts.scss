@@ -186,6 +186,9 @@ body.blocked {
         .files-box {
             margin-top: -18px;
         }
+        &--w-spinner {
+            position: relative;
+        }
     }
     .subsec__head + .subsec__content {
         margin-top: $size_padding_big;
