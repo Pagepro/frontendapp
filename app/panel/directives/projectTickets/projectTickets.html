@@ -1,4 +1,4 @@
-<div class="project-box" ng-if="tickets.length > 0">
+<div class="project-box" ng-if="tickets.length">
     <div class="project-box__content">
         <div class="files-box files-box--tickets">
             <div class="files-box__head">
@@ -38,4 +38,4 @@
 </div>
 
 
-<projects-placeholder placeholding="tickets" ng-if="tickets.length < 1">
+<projects-placeholder placeholding="tickets" ng-if="!tickets.length">

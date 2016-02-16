@@ -1,17 +1,17 @@
 (function() {
   'use strict';
 
-  var statusToggler = function(ticketsService, statusService, toaster) {
+  var statusToggler = function(ticketsService, ticketStatusService, toaster) {
     return {
       restrict: 'E',
       replace: true,
       scope: false,
       templateUrl: 'app/panel/directives/statusToggler/statusToggler.html',
       link: function(scope) {
-        scope.currentStatus = 0;
-        scope.availableStatuses = [1, 2, 3, 5];
+        scope.currentStatus = 1;
+        scope.availableStatuses = [1, 2, 3, 4];
 
-        scope.getStatus = statusService.getStatus;
+        scope.getStatus = ticketStatusService.getStatus;
         scope.statusListVisible = false;
         scope.setTicketStatus = function(newStatus) {
           var statusHolder = scope.currentStatus;
@@ -39,6 +39,6 @@
     };
   };
 
-  statusToggler.$inject = ['ticketsService', 'statusService', 'toaster'];
+  statusToggler.$inject = ['ticketsService', 'ticketStatusService', 'toaster'];
   angular.module('panelModule').directive('statusToggler', statusToggler);
 }());

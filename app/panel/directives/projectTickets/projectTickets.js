@@ -1,12 +1,14 @@
 (function () {
   'use strict';
 
-  var projectTickets = {
-    isolate: false,
-    restrict: 'EA',
-    templateUrl: 'app/panel/directives/projectTickets/projectTickets.html'
+  var projectTickets = function () {
+    return {
+      isolate: false,
+      restrict: 'EA',
+      templateUrl: 'app/panel/directives/projectTickets/projectTickets.html'
+    };
   };
 
-  angular.module('panelModule').component('projectTickets', projectTickets);
+  angular.module('panelModule').directive('projectTickets', projectTickets);
 
 }());
