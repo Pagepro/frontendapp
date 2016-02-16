@@ -664,8 +664,7 @@
                     flex-grow: 0;
                 }
                 &:last-of-type {
-                    max-width: calc(100% - #{$size_input_h} - #{$size_padding_medium});
-                    margin-left: $size_padding_medium;
+                    max-width: calc(100%);
                 }
             }
         }
@@ -717,6 +716,9 @@
         font-weight: 600;
 
         text-transform: uppercase;
+        .required {
+            color: $color_red;
+        }
     }
     .form {
         &__fieldset {
@@ -838,6 +840,9 @@
 .ticket-form {
     .form-box + .form-box {
         margin-top: $size_padding_medium;
+    }
+    .form-box {
+        align-items: flex-start;
     }
 }
 .ticket-details-comment-form {

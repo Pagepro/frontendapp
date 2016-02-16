@@ -1,3 +1,6 @@
+.project-box__content--listing template-uploader {
+  margin-right: 15px;
+}
 .dragover {
   background: #FCFCFC;
 }
@@ -6,6 +9,9 @@
 }
 .btn--default[disabled] {
   background: #B2B2B2;
+  &:hover {
+    background: #B2B2B2;
+  }
 }
 .files-list__item template-preview {
   width: 100%
@@ -16,13 +22,13 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(255, 255, 255, .3);
+  background: rgba(255, 255, 255, .4);
   z-index: 100;
 
   display: flex;
   justify-content: center;
   align-items: center;
-  &.c-sectional {
+  &--local {
     position: absolute;
   }
 }
@@ -120,7 +126,17 @@
    NG animations temp
    ========================================================================== */
 // temp
-
+.opacity-animation {
+}
+.opacity-animation.ng-enter, .slide-animation.ng-leave {
+  transition: 1s all;
+}
+.opacity-animation.ng-enter {
+  opacity: 0;
+}
+.opacity-animation.ng-enter-active {
+  opacity: 1;
+}
 .slide-animation.ng-enter, .slide-animation.ng-leave {
     -webkit-transition: 0.5s linear all;
     -moz-transition: 0.5s linear all;
@@ -156,20 +172,17 @@
 .repeat-animation.ng-enter,
 .repeat-animation.ng-leave,
 .repeat-animation.ng-move {
-  -webkit-transition: 0.5s linear all;
-  -moz-transition: 0.5s linear all;
-  -o-transition: 0.5s linear all;
-  transition: 0.5s linear all;
-  position:relative;
+  transition: .3s linear all;
+  position: relative;
 }
 
 .repeat-animation.ng-enter {
-  left:10px;
-  opacity:0;
+  left: -1000px;
+  opacity: 0;
 }
 .repeat-animation.ng-enter.ng-enter-active {
-  left:0;
-  opacity:1;
+  left: 0;
+  opacity: 1;
 }
 
 .repeat-animation.ng-leave {
@@ -182,7 +195,7 @@
 }
 
 .repeat-animation.ng-move {
-  opacity:0.5;
+  opacity:0;
 }
 .repeat-animation.ng-move.ng-move-active {
   opacity:1;
@@ -481,3 +494,7 @@ button.toast-close-button {
     opacity: 0;
 }
 
+/* ng-sortable css
+   ========================================================================== */
+/* ng-sortable css file */
+.as-sortable-item,.as-sortable-placeholder{display:block}.as-sortable-item{-ms-touch-action:none;touch-action:none}.as-sortable-item-handle{cursor:move;cursor:-webkit-grab;cursor:-moz-grab}.as-sortable-drag{position:absolute;pointer-events:none;z-index:9999}.as-sortable-hidden{display:none!important}.as-sortable-un-selectable{-webkit-touch-callout:none;-webkit-user-select:none;-khtml-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}

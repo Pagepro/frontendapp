@@ -1,27 +1,20 @@
 <!doctype html>
-<!--[if IE 8]>         <html lang="" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="" class="no-js"> <!--<![endif]-->
+<html lang="" class="no-js" ng-app="frontendApp">
     <head>
         <meta charset="utf-8">
-        <title>FrontendApp</title>
-        <!-- <base href="/"> -->
+        <title ng-bind="'FrontendApp - ' + pageName">FrontendApp</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="app/common/css/main.css">
         <link rel="stylesheet" href="app/common/css/sprites.css">
-        <!--[if lt IE 9]>
-            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-            <script>window.html5 || document.write('<script src="static/js/vendor/html5shiv.js"><\/script>')</script>
-        <![endif]-->
     </head>
-    <body ng-app="frontendApp" ng-class="{'login': isAuth}" window-scroll>
+    <body ng-class="{'login': isAuth}" window-scroll>
         <header-section></header-section>
-        <ui-view class="sec--main"></ui-view>
+        <ui-view class="sec--main opacity-animation"></ui-view>
         <toaster-container></toaster-container>
         <confirmation-popup-container></confirmation-popup-container>
 
         <!--  App -->
-        <script src="dist/app.js"></script>
-
+        <script type="text/javascript" src="dist/app.js"></script>
     </body>
 </html>

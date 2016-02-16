@@ -1,6 +1,5 @@
-<!-- silly condition because of type of response from API -->
-<div class="project-box" ng-if="files.length > 0">
-    <div class="project-box__content">
+<div class="project-box" ng-class="{'project-box--empty': !files.length}">
+    <div class="project-box__content" ng-if="files.length">
         <div class="files-box">
             <div class="files-box__head">
                 <div class="files-box__number">
@@ -33,7 +32,7 @@
             </div>
         </div>
     </div>
-    <div class="project-box__actions">
+    <div class="project-box__actions" ng-if="files.length">
         <a href="{{filesSrc(projectId)}}" class="action-btn">
             <span class="action-btn__content">
                 <span class="label">Download all files (<span class="qty">{{files.length}}</span>)</span>
@@ -41,6 +40,5 @@
             </span>
         </a>
     </div>
+    <projects-placeholder placeholding="files" ng-if="!files.length">
 </div>
-<!-- silly condition because of type of response from API -->
-<projects-placeholder placeholding="files" ng-if="files.length === 0">

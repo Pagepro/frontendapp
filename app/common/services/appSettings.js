@@ -16,7 +16,7 @@
     }
   };
 
-  var environment = urlSettings.local;
+  var environment = urlSettings.dev;
 
   angular.module('frontendApp').value('appSettings', {
     title: 'Fronted App',

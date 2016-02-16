@@ -186,6 +186,9 @@ body.blocked {
         .files-box {
             margin-top: -18px;
         }
+        &--w-spinner {
+            position: relative;
+        }
     }
     .subsec__head + .subsec__content {
         margin-top: $size_padding_big;
@@ -246,7 +249,7 @@ body.blocked {
 }
 
 .sec--popup {
-    position: fixed;
+    position: absolute;
     z-index: 30;
     top: 0;
     right: 0;
@@ -261,5 +264,9 @@ body.blocked {
     @extend %helper--flex--stretch;
     &__inner {
         @extend %helper--flex--center--center;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
     }
 }

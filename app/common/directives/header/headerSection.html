@@ -25,8 +25,8 @@
                 </li>
             </ul>
         </div>
-        <div class="sec--head__box" ng-if="module === 'panel'" class="menu" off-click="hideMenu()" off-click-if="menuVisible">
-            <div class="user-box" ng-class="{active: menuVisible}">
+        <div class="sec--head__box" ng-if="module === 'panel'" class="menu">
+            <div class="user-box" ng-class="{active: menuVisible}" off-click-if="menuVisible" off-click="hideMenu()">
                 <span class="user-box__content js-trigger-user-box" aria-label="open user tool box" ng-click="toggleMenu()">
                     <span class="user-btn">
                         <span class="label">{{ letter }}</span>

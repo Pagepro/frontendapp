@@ -1,0 +1,40 @@
+<spinner name="template-uploader-spinner" ng-if="withLoader" group="full-page"></spinner>
+<div class="teaser action-teaser js-teaser uploader" ng-class="{'action-teaser--in-progress' : files.length }"
+ngf-drop="uploadFiles($files)"
+ngf-drop="uploadFiles($files)" class="drop-box" ng-model="files"
+ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"
+accept="image/*,application/pdf,.psd,.zip,.rar,.7z,.tar" ngf-pattern="'image/*,application/pdf,.psd,.zip,.rar,.7z,.tar'">
+    <div class="teaser__inner">
+        <div class="teaser__head">
+            <span class="icon icon--upload"></span>
+        </div>
+        <div class="teaser__content" ng-hide="files">
+            <form class="project-action-form">
+                <fieldset class="form__fieldset">
+                    <div class="field field--input">
+                        <label class="label" for="project-name">Upload Files</label>
+                        <input type="file" name="add_file" class="input input--file" id="project-name"
+                        ngf-select="uploadFiles($files)" ng-model="files"  ngf-multiple="true"
+                        accept="image/*,application/pdf,.psd,.zip,.rar,.7z,.tar" ngf-pattern="'image/*,application/pdf,.psd,.zip,.rar,.7z,.tar'">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="teaser__content" ng-if="files && files.length > 0">
+            <p class="title">
+                <span class="label">Upload Files</span>
+            </p>
+            <div class="progress-bar-wrapper progress-bar-wrapper--alt">
+                <progress class="progress-bar progress-bar--alt" value="{{progress}}" max="100"></progress>
+                <p class="progress-bar-value">
+                    <span class="qty">{{progress}}</span>
+                    <span>%</span>
+                </p>
+                <p class="progress-bar-file-size">
+                    <span class="size">{{sizeTotal | bytes}}</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,7 +19,7 @@
         onHide: '&?'
       },
       templateUrl: 'app/common/directives/loader/loader.html',
-      controller: function($scope, spinnerService) {
+      controller: ['$scope', 'spinnerService', function($scope, spinnerService) {
 
         // register should be true by default if not specified.
         if (!$scope.hasOwnProperty('register')) {
@@ -40,7 +40,7 @@
             // temp solution to work on loaders
             $timeout(function () {
               $scope.show = false;
-            }, 1000);
+            }, 10);
 
             // $scope.show = false;
           },
@@ -84,7 +84,7 @@
         $scope.$on('$destroy', function() {
           spinnerService._unregister($scope.name);
         });
-      }
+      }]
     };
   };
 

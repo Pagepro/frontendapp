@@ -98,13 +98,12 @@
           },
           {
             name: 'Project Details',
-            link: '#/my-projects/:projectId'
+            link: '4'
           }]
         })
           .state('ticketState.editDetails', {
-            url: '/edit-description',
-            templateUrl: 'app/panel/templates/editTemplate.html',
-            controller: 'EditDescriptionCtrl',
+            templateUrl: 'app/panel/templates/submitBug.html',
+            controller: 'EditDescriptionController',
             controllerAs: 'EDC',
             pageName: 'Edit Description',
             module: 'panel',

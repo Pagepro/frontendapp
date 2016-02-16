@@ -1,6 +1,5 @@
 (function() {
   'use strict';
-
   var authService = function($http, $window, appSettings) {
     var baseApiUrl = appSettings.apiRoot;
 

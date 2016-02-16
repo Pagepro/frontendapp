@@ -16,7 +16,7 @@ var jsFiles = [
   'libs/jquery/dist/jquery.js',
   'libs/jquery-ui/jquery-ui.js',
   'libs/angular/angular.js',
-  'libs/angular-ui-sortable/sortable.js',
+  'libs/ng-sortable/dist/ng-sortable.js',
   'libs/angular-ui-router/release/angular-ui-router.js',
   'libs/angular-animate/angular-animate.js',
   'libs/angular-off-click/offClick.js',
@@ -62,16 +62,16 @@ gulp.task('watch', ['js'], function() {
   gulp.watch(['app/**/*.js'], ['js']);
 });
 
-gulp.task('prod', function() {
+
+gulp.task('prod', ['js'], function() {
   gulp.src(['app/common/img/*', 'app/common/img/**/*']).pipe(gulp.dest('dist/img'));
   gulp.src(['app/common/fonts/*']).pipe(gulp.dest('dist/fonts'));
 
-  gulp.src(jsFiles)
-    .pipe(concat('app.js'))
-    .pipe(uglify({
-      outSourceMap: true
-    }))
+  gulp.src('dist/app.js')
+    .pipe(concat('app.min.js'))
+    .pipe(uglify())
     .pipe(gulp.dest('dist'));
+
 
   gulp.src('app/common/css/*.css')
     .pipe(cssmin())

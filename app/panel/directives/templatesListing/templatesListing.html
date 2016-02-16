@@ -1,31 +1,13 @@
-<div class="project-box__content" ng-switch-when="grid">
-    <div class="teasers-list__item js-item-disabled">
-        <div class="teaser action-teaser js-teaser" ng-click="toggleInput()"  ng-class="{active: activeInput}">
-            <div class="teaser__inner">
-                <div class="teaser__head">
-                    <span class="icon icon--upload"></span>
-                </div>
-                <div class="teaser__content">
-                    <form class="project-action-form" ng-class="{active: activeInput}">
-                        <fieldset class="form__fieldset">
-                            <div class="field field--input">
-                                <label class="label" for="project-name">Upload Templates</label>
-                                <input type="file" name="add_file" class="input input--file" id="project-name" ng-class="{active: activeInput}">
-                            </div>
-                        </fieldset>
-                    </form>
-                </div>
-            </div>
+<div class="project-box__content project-box__content--listing" ng-switch-when="grid">
+    <div class="teasers-list" data-as-sortable="dragControlListeners" data-ng-model="templates">
+        <template-uploader class="js-item-disabled" ng-show="templates" bulk="false" ng-class="{'alone': templates.length < 1}"></template-uploader>
+        <div class="teasers-list__item" data-ng-repeat="template in templates" data-as-sortable-item>
+            <template-preview type="grid" data-as-sortable-handle></template-preview>
         </div>
     </div>
-    <ul class="teasers-list" ui-sortable="sortableOptions" ng-model="templates">
-        <li class="teasers-list__item" ng-repeat="template in templates" order="order">
-            <template-preview type="grid"></template-preview>
-        </li>
-    </ul>
 </div>
 <div class="project-box__content" ng-switch-when="inline">
-    <div class="files-box files-box--templates-complexe">
+    <div class="files-box files-box--templates-complexe" ng-show="templates">
         <div class="files-box__head">
             <div class="files-box__number">
                 <p class="filebox-title">No</p>
@@ -46,15 +28,15 @@
         <div class="files-box__content">
             <div class="files-box__number">
             </div>
-            <ol class="files-list js-drag-and-drop-list" ui-sortable="sortableOptions" ng-model="templates">
-                <li class="files-list__item" ng-repeat="template in templates">
+            <ol class="files-list" data-as-sortable="dragControlListeners" data-ng-model="templates">
+                <li class="files-list__item" data-ng-repeat="template in templates" data-as-sortable-item>
                     <template-preview type="inline"></template-preview>
                 </li>
             </ol>
         </div>
     </div>
 </div>
-<div class="project-box__actions">
+<div class="project-box__actions" ng-show="finishedFetching">
     <a href="{{downloadAllLink(projectId)}}" class="action-btn">
         <span class="action-btn__content">
             <span class="label">Download all templates (<span class="qty">{{templates.length}}</span>)</span>
@@ -62,4 +44,3 @@
         </span>
     </a>
 </div>
-

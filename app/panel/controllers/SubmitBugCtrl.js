@@ -1,13 +1,20 @@
 (function() {
   'use strict';
-  var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings) {
+  var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService, $rootScope, spinnerService) {
+    $scope.staticContent = {
+      title: 'Submit Bug',
+      button: 'Create Ticket'
+    };
+    var submitted = false;
+
+    $scope.submitted = false;
     $scope.image = null;
-    $scope.description = null;
+    $scope.description = '';
     $scope.isUploading = false;
     $scope.file = null;
 
 
-    var init = function () {
+    var init = function() {
       angular.element('.input--file').nicefileinput();
 
       // this may be a number or null, depending on whether user enters
@@ -16,10 +23,9 @@
       $scope.currentTemplateId = $stateParams.templateId;
 
       templatesService.getTemplates($stateParams.projectId)
-      .success(function (templates) {
-        console.log(templates);
-        if (templates.length) {
-            $scope.templates = _.map(templates, function (template) {
+        .success(function(templates) {
+          if (templates.length) {
+            $scope.templates = _.map(templates, function(template) {
               var selected;
               if ($stateParams.templateId) {
                 selected = (template.id === $stateParams.templateId);
@@ -32,7 +38,7 @@
             });
           } else {
             toaster.pop('error', 'No templates yet.', 'There are no templates yet added to the project you\'re trying to add a ticket to. Please, first add a template, then add a ticket to it.');
-            $scope.returnToProject();
+            $scope.returnToParent();
           }
         });
     };
@@ -40,41 +46,53 @@
     init();
 
     $scope.uploadFiles = function(file) {
-      if(file) {
+      if ($scope.description.length) {
+        spinnerService.show('ticket-spinner');
+        var data = {
+          browsers: $scope.browsers,
+          description: $scope.description
+        };
+        if (file) {
+          data.file = file;
+        }
+
         $scope.isUploading = true;
-        file.upload = Upload.upload({
-          'url': appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/',
-          'data': {
-            'file': file,
-            'template': {
-              'template_name': $scope.title
-            },
-            'comments': $scope.comment
-          }
-        }).success(function () {
-          toaster.pop('success', 'Success!', 'Your ticket has been added.');
-        })
-        .error(function () {
-          toaster.pop('error', 'Ooops!', 'Something went wrong. Please do not give up and try again! :)');
-        })
-        .finally(function () {
-          $scope.isUploading = false;
-          // $scope.returnToProject();
-        });
+
+        Upload.upload({
+            url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/tickets/',
+            data: data
+          }).success(function() {
+            toaster.pop('success', 'Success!', 'Your ticket has been added.');
+            submitted = true;
+            $scope.returnToParent();
+          })
+          .error(function() {
+            toaster.pop('error', 'Ooops!', 'Something went wrong. Please do not give up and try again! :)');
+          })
+          .finally(function() {
+            $scope.isUploading = false;
+            $scope.returnToParent();
+          });
+      } else {
+        $scope.submitted = true;
       }
     };
 
-    $scope.returnToProject = function () {
+    $scope.returnToParent = function() {
       $state.go('projectState', $stateParams.projectId);
+      $rootScope.$broadcast('ticket:submitted', {
+        id: $stateParams.templateId,
+        submitted: submitted
+      });
     };
 
-    $scope.updateNameValue = function (filename) {
+    $scope.updateNameValue = function(filename) {
       // fixme? Not sure, brute force value changing, since I can't access the element being created by nicefileinput
       angular.element('.NFI-filename').attr('value', filename);
     };
   };
 
-  SubmitBugCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'templatesService', 'appSettings'];
+  SubmitBugCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'templatesService', 'appSettings', 'accountService', '$rootScope', 'spinnerService'];
   angular.module('panelModule').controller('SubmitBugCtrl', SubmitBugCtrl);
 
 }());

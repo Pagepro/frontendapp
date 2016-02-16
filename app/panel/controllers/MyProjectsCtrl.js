@@ -2,6 +2,7 @@
   'use strict';
   var MyProjectsCtrl = function($scope, projectsService, spinnerService, appSettings) {
     $scope.myProjects = null;
+    $scope.finishedFetching = false;
     $scope.screenshotRoot = appSettings.screenshotRoot(239, 242);
 
     $scope.init = function() {
@@ -12,6 +13,7 @@
         })
         .error(function() {})
         .finally(function() {
+          $scope.finishedFetching = true;
           spinnerService.hide('my-projects');
         });
     };

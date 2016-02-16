@@ -607,6 +607,7 @@ h1.breadcrumb {
 // Styleguide 6.8
 
 .action-btn {
+    cursor: pointer;
     display: inline-block;
 
     color: $color_white;
@@ -618,6 +619,9 @@ h1.breadcrumb {
         padding: 0 $size_padding;
 
         @extend %helper--flex--center--center;
+        .ticket-box & {
+            height: 48px;
+        }
     }
     .label {
         padding-top: 1px;
@@ -664,6 +668,16 @@ h1.breadcrumb {
         background: $color_black;
         &:hover {
             background: $color_red;
+        }
+    }
+    &--grey {
+        margin-left: 15px;
+        background: $color_grey_4;
+        line-height: 48px;
+        height: 48px;
+
+        &:hover {
+            background: $color_grey_5;
         }
     }
 }
@@ -984,8 +998,15 @@ h1.breadcrumb {
 // Styleguide 8.3
 .labels-choice {
     position: relative;
+    .ticket-box & {
+        float: left;
+        @include breakpoint($breakpoint_smartphone) {
+            float: none;
+            width: 100%;
+        }
+    }
 
-    width: calc(#{$size_input_h} / 2 + #{$size_acces-tool_h});
+    width: calc(#{$size_input_h} / 2 + #{$size_acces-tool_h} + 30px);
     height: $size_input_v;
 
     @extend %helper--flex--right--top;
@@ -1521,6 +1542,13 @@ h1.breadcrumb {
                 background: $color_red_dark;
             }
         }
+        &.disabled {
+            pointer-events: none;
+            border-color: none;
+            a {
+                opacity: .5;
+            }
+        }
     }
     &--drag-and-drop {
         .action-tool {
@@ -1682,6 +1710,7 @@ h1.breadcrumb {
 .user-box {
     position: relative;
     &__content {
+        cursor: pointer;
         outline: none;
 
         @extend %helper--flex--center--center;
@@ -2428,6 +2457,11 @@ h1.breadcrumb {
                     &__content {
                         background: $color_black;
                     }
+                }
+                &.disabled {
+                    opacity: .5;
+                    pointer-events: none;
+                    border-color: none;
                 }
             }
         }
@@ -3389,7 +3423,6 @@ h1.breadcrumb {
 // </ul>
 //
 // Styleguide 15.12
-
 .teasers-list {
     margin-right: -$size_padding;
     margin-bottom: -$size_padding;
@@ -3401,7 +3434,13 @@ h1.breadcrumb {
         margin-right: $size_padding;
         margin-bottom: $size_padding;
     }
-    .drag-and-drop-placeholder {
+    &--templates {
+        min-height: $size_teaser_v;
+    }
+    .drag-and-drop-placeholder,
+    .as-sortable-placeholder {
+        margin-right: $size_padding;
+        margin-bottom: $size_padding;
         width: $size_teaser_h;
         height: $size_teaser_v;
 
@@ -3486,9 +3525,19 @@ h1.breadcrumb {
 
 .ticket-desc {
     > p {
+        display: flex;
+
+        height: 40px;
+
+        line-height: 20px;
+
         text-transform: uppercase;
+
+        flex-flow: column nowrap;
+        justify-content: center;
     }
 }
+
 
 // file-data
 //
@@ -5426,7 +5475,8 @@ h1.breadcrumb {
             }
         }
     }
-    .drag-and-drop-placeholder {
+    .drag-and-drop-placeholder,
+    .as-sortable-placeholder {
         width: 100%;
         height: $size_btn_v;
 
@@ -6874,6 +6924,10 @@ h1.breadcrumb {
 // Styleguide 19.4
 
 .project-box {
+    &--empty {
+        display: flex;
+        justify-content: center;
+    }
     &__content {
         .files-box {
             width: 100%;
@@ -6881,6 +6935,7 @@ h1.breadcrumb {
         .project-time-list {
             margin-top: 10px;
         }
+        position: relative;
     }
     &__actions {
         @extend %helper--flex--left--top;
@@ -7760,6 +7815,8 @@ h1.breadcrumb {
             }
         }
         &.disabled {
+            pointer-events: none;
+            border-color: none;
             display: none;
         }
     }
@@ -7917,6 +7974,7 @@ h1.breadcrumb {
 //
 // Styleguide 24.6
 .comments-list {
+    width: 100%;
     margin-bottom: -$size_padding_medium;
 
     @extend %helper--list;
@@ -8049,7 +8107,8 @@ h1.breadcrumb {
 .comments {
     @extend %helper--flex--left--top;
     flex-wrap: wrap;
-    &__actions {
+    &__actions,
+    &__content {
         width: 100%;
     }
     &__content + &__actions {
@@ -8500,11 +8559,12 @@ h1.breadcrumb {
         &__row {
             @extend %helper--flex--left--top;
             flex-wrap: wrap;
+            color: $color_grey_6;
             .ticket-author + .ticket-publish-date {
                 margin-left: 5px;
             }
             &:first-of-type {
-                margin-top: 3px;
+                margin-top: 20px;
             }
         }
         &__row + &__row {
@@ -8536,10 +8596,6 @@ h1.breadcrumb {
             &__row {
                 .ticket-author {
                     width: 100%;
-                    margin-left: 21px;
-                }
-                .ticket-author + .ticket-publish-date {
-                    margin-left: 21px;
                 }
             }
         }
@@ -9047,7 +9103,7 @@ h1.breadcrumb {
             margin-top: 8px;
         }
         &__actions {
-            display: flex;
+            // display: flex;
 
             justify-content: center;
             align-items: flex-start;
@@ -9062,8 +9118,13 @@ h1.breadcrumb {
     }
     @include breakpoint($breakpoint_smartphone) {
         &__actions {
+            width: 100%;
+            margin-top: 22px;
             .action-btn {
                 width: 100%;
+                &--grey {
+                    margin-left: 0;
+                }
             }
         }
     }
@@ -9104,6 +9165,7 @@ h1.breadcrumb {
 
     background: $color_white;
     &__inner {
+        position: relative;
         padding: calc(#{$size_padding_medium} * 1.2) $size_padding_medium;
     }
     &__head {

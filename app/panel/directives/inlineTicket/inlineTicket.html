@@ -9,8 +9,7 @@
             <div class="file-data__inner">
                 <div class="file-data__name">
                     <div class="ticket-desc">
-                        <!-- TODO -->
-                        <p data-ellipsis data-ng-bind="ticket.description" data-ellipsis-symbol="..." style="height: 40px; line-height: 20px; display: flex; flex-flow: column nowrap; justify-content: center;">{{ticket.description}}</p>
+                        <p data-ellipsis data-ng-bind="ticket.description" data-ellipsis-symbol="...">{{ticket.description}}</p>
                     </div>
                 </div>
                 <div class="file-data__status">
@@ -22,7 +21,7 @@
                     <div class="comment-box">
                         <div class="comment-box__content">
                             <span class="icon icon--comment"></span>
-                            <span class="qty">{{tickets.length}}</span>
+                            <span class="qty">{{ticket.comments_count || 0}}</span>
                         </div>
                     </div>
                 </div>

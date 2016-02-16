@@ -1,0 +1,9 @@
+<div class="labels-choice" off-click="hideStatusList()">
+    <ul class="labels-choice-list js-labels-choice-list" ng-class="{active: statusListVisible}" ng-click="toggleStatusList();">
+        <li class="labels-choice-list__item" ng-repeat="status in availableStatuses" ng-class="{'active': status === currentStatus}">
+            <div class="status-label status-label--{{getStatus(status).className}}" ng-click="setTicketStatus(status)">
+                <p class="label"><span ng-if="status === currentStatus">Status:&nbsp;</span>{{getStatus(status).labelContent}}</p>
+            </div>
+        </li>
+    </ul>
+</div>

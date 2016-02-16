@@ -19,113 +19,6 @@
 <div class="sec--main__content">
     <section class="subsec">
         <div class="subsec__inner">
-            <div class="subsec__head">
-                <h3 class="subtitle">
-                    <span class="label">Info</span>
-                </h3>
-            </div>
-            <div class="subsec__content">
-                <div class="ticket-data-box" style="width: 100%;">
-                    <div class="ticket-data-box__head">
-                        <div class="ticket-data-box__head__row">
-                            <div class="update-info update-info--alt">
-                                <div class="update-info__content">
-                                    <span class="icon icon--clock"></span>
-                                    <p class="label">
-                                        Last update:
-                                        <time datetime="{{ticket.updated_on | date:'dd/MM/yyyy hh:mm:ss'}}+01:00">
-                                            <strong>{{ticket.updated_on | date:'dd/MM/yyyy'}}</strong>,
-                                            <span>{{ticket.updated_on | date:'hh:mm'}}</span>
-                                        </time>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="ticket-data-box__head__row">
-                            <p class="ticket-author">
-                                <span>Published by: </span>
-                                <strong>{{ticket.author}}</strong>
-                            </p>
-                            <p class="ticket-publish-date">
-                                <span>on: </span>
-                                <time datetime="{{ticket.created_on | date:'dd/MM/yyyy hh:mm:ss'}}+01:00">
-                                    <strong>{{ticket.created_on | date:'dd/MM/yyyy'}}</strong>,
-                                    <span>{{ticket.created_on | date:'hh:mm'}}</span>
-                                </time>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="ticket-data-box__content">
-                        <form class="ticket-form">
-                            <fieldset class="form__fieldset">
-                                <div class="form__content">
-                                    <div class="form-box form-box--double">
-                                        <div class="form-box__section">
-                                            <div class="form-box__section__head">
-                                                <label class="label" for="popup-browsers">Status</label>
-                                            </div>
-                                            <div class="form-box__section__content">
-                                                <div class="form__section">
-                                                    <div class="labels-choice">
-                                                        <ul class="labels-choice-list js-labels-choice-list" ng-class="{active: statusListVisible}" ng-click="toggleStatusList();">
-                                                            <li class="labels-choice-list__item">
-                                                                <div class="status-label status-label--new">
-                                                                    <p class="label">new</p>
-                                                                </div>
-                                                            </li>
-                                                            <li class="labels-choice-list__item active">
-                                                                <div class="status-label status-label--in-progress">
-                                                                    <p class="label">in progress</p>
-                                                                </div>
-                                                            </li>
-                                                            <li class="labels-choice-list__item">
-                                                                <div class="status-label status-label--done">
-                                                                    <p class="label">done</p>
-                                                                </div>
-                                                            </li>
-                                                            <li class="labels-choice-list__item">
-                                                                <div class="status-label status-label--rejected">
-                                                                    <p class="label">rejected</p>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-box__section">
-                                            <div class="form-box__section__head">
-                                                <label class="label" for="popup-template">Assigned to</label>
-                                            </div>
-                                            <div class="form-box__section__content">
-                                                <div class="form__section">
-                                                    <div class="field field--select">
-                                                        <select id="popup-template">
-                                                            <option>Popek Król Albanii</option>
-                                                            <option>Krzysztof Oszczapiński</option>
-                                                            <option>Krzysztof Łojniewski</option>
-                                                            <option>Dominika Jaroszewicz</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="subsec">
-        <div class="subsec__inner">
-            <div class="subsec__head">
-                <h3 class="subtitle">
-                    <span class="label">Description</span>
-                </h3>
-            </div>
             <div class="subsec__content">
                 <div class="ticket-box">
                     <div class="ticket-box__content">
@@ -135,46 +28,34 @@
                             </p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="subsec__content">
+                <div class="ticket-data-box" style="width: 100%;">
+                    <div class="ticket-data-box__head">
+                        <div class="ticket-data-box__head__row">
+                            <p class="ticket-author">
+                                <span>Published by: </span>
+                                <strong>{{ticket.author.first_name}} {{ticket.author.last_name}}</strong>
+                            </p>
+                            <p class="ticket-publish-date">
+                                <span>on: </span>
+                                <time datetime="{{ticket.created_on | date:'dd/MM/yyyy hh:mm:ss'}}+01:00">
+                                    <span><strong>{{ticket.created_on | date:'dd/MM/yyyy'}}</strong>, {{ticket.created_on | date: 'hh:mm'}}</span>
+                                </time>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="subsec">
+        <div class="subsec__inner">
+            <div class="subsec__content">
+                <div class="ticket-box">
                     <div class="ticket-box__details">
                         <ul class="ticket-details-info-list">
-                            <li class="ticket-details-info-list__item ticket-details-info-list__item--alt">
-                                <div class="ticket-details-info ticket-details-info--alt">
-                                    <div class="ticket-details-info__head">
-                                        <span class="icon icon--screen"></span>
-                                        <p class="label">Screenshots:</p>
-                                    </div>
-                                    <div class="ticket-details-info__content">
-                                        <div class="screenshots-list-box">
-                                            <div class="screenshots-list-box__head">
-                                                <div class="screenshots-list-box__no">
-                                                    <p class="screenshots-list-box-title">No</p>
-                                                </div>
-                                                <div class="screenshots-list-box__name">
-                                                    <p class="screenshots-list-box-title">Name</p>
-                                                </div>
-                                                <div class="screenshots-list-box__preview">
-                                                    <p class="screenshots-list-box-title">Preview</p>
-                                                </div>
-                                            </div>
-                                            <div class="screenshots-list-box__content">
-                                                <ol class="screenshots-list">
-                                                    <li class="screenshots-list__item" ng-repeat="screenshot in ticket.screenshots">
-                                                        <div class="screenshot-box">
-                                                            <a class="screenshot-box__content" href="#" target="_blank">
-                                                                <span class="counter"></span>
-                                                                <span class="label">{{screenshot}}</span>
-                                                                <figure class="screenshot">
-                                                                    <img src="screenshot" alt="screen">
-                                                                </figure>
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                </ol>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
                             <li class="ticket-details-info-list__item">
                                 <div class="ticket-details-info">
                                     <div class="ticket-details-info__head">
@@ -182,7 +63,8 @@
                                         <p class="label">Templates:</p>
                                     </div>
                                     <div class="ticket-details-info__content">
-                                        <p class="details" ng-repeat="template in ticket.templates"><a ui-sref="projectState({projectId: {{template.template_id}}})" target="_blank">{{template.template_name}}</a></p>
+                                        <p class="details" ng-if="ticket.template" ng-repeat="template in ticket.templates"><a ui-sref="projectState({projectId: {{template.template_id}}})" target="_blank">{{template.template}}</a></p>
+                                        <p class="details" ng-if="!ticket.template">none</p>
                                     </div>
                                 </div>
                             </li>
@@ -193,20 +75,63 @@
                                         <p class="label">Browsers:</p>
                                     </div>
                                     <div class="ticket-details-info__content">
-                                        <p class="details">{{ticket.browsers}}</p>
+                                        <p class="details">{{ticket.browsers || 'none'}}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="ticket-details-info-list__item">
+                                <div class="ticket-details-info">
+                                    <div class="ticket-details-info__head">
+                                        <span class="icon icon--screen"></span>
+                                        <p class="label">Screenshot:</p>
+                                    </div>
+                                    <div class="ticket-details-info__content">
+                                        <a class="details" ng-if="ticket.screenshot_url" href="{{ticket.screenshot_url}}">{{ticket.screenshot_url}}</a></p>
+                                        <p class="details" ng-if="!ticket.screenshot_url">none</p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="ticket-details-info-list__item">
+                                <div class="ticket-details-info">
+                                    <div class="ticket-details-info__head">
+                                        <span class="icon icon--screen"></span>
+                                        <p class="label">Attachment:</p>
+                                    </div>
+                                    <div class="ticket-details-info__content">
+                                        <p class="details">{{ticket.attachment || 'none'}}</p>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <div class="ticket-box__actions">
-                        <a ui-sref="null" class="action-btn">
-                            <span class="action-btn__content">
-                                <span class="label">Edit description</span>
-                                <span class="icon icon--pencil"></span>
-                            </span>
-                        </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="subsec">
+        <div class="subsec__inner">
+            <div class="subsec__content">
+                <div class="ticket-data-box ticket-box">
+                    <div class="ticket-data-box__content">
+                        <status-toggler></status-toggler>
+                        <div class="ticket-box__actions">
+                            <a ui-sref="ticketState.editDetails" class="action-btn action-btn--grey">
+                                <span class="action-btn__content">
+                                    <span class="label">Edit ticket</span>
+                                    <span class="icon icon--pencil"></span>
+                                </span>
+                            </a>
+                        </div>
                     </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="subsec">
+        <div class="subsec__inner">
+            <div class="subsec__content">
+                <div class="ticket-box">
                 </div>
             </div>
         </div>
@@ -221,7 +146,7 @@
                     <div class="comment-box">
                         <div class="comment-box__content">
                             <span class="icon icon--comment"></span>
-                            <span class="qty">{{comments.length}}</span>
+                            <span class="qty">{{comments.length || 0}}</span>
                         </div>
                     </div>
                 </div>
@@ -230,7 +155,7 @@
                 <div class="comments">
                     <div class="comments__content">
                         <ul class="comments-list">
-                            <li class="comments-list__item" ng-repeat="comment in comments">
+                            <li class="comments-list__item" ng-repeat="comment in comments | orderBy: 'date'">
                                 <div class="comment">
                                     <div class="comment__ico">
                                         <span class="icon icon--comment"></span>
@@ -296,3 +221,5 @@
         </div>
     </section>
 </div>
+<!-- place for popups -->
+<div ui-view></div>
