@@ -163,7 +163,7 @@
                                     <div class="comment__info">
                                         <div class="comment__info__data">
                                             <span class="comment-author">
-                                                {{comment.author}}
+                                                {{comment.user}}
                                             </span>
                                             <time class="comment-date" datetime="{{comment.date}}">{{comment.date | date:'dd-MM-yyyy HH:mm'}}</time>
                                         </div>
@@ -174,7 +174,7 @@
                                         </div>
                                     </div>
                                     <div class="comment__actions">
-                                        <div class="action-tool" aria-label="delete comment">
+                                        <div class="action-tool" aria-label="delete comment" ng-if="comment.can_delete">
                                             <a target="_blank" class="action-tool__content" ng-click="removeComment(comment.id)">
                                                 <span class="icon icon--trash"></span>
                                             </a>
