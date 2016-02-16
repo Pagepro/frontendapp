@@ -4,7 +4,8 @@
     return {
       templateUrl: 'app/panel/directives/templateUploader/templateUploader.html',
       scope: {
-        withLoader: '='
+        withLoader: '=',
+        bulk: '='
       },
       transclude: true,
       restrict: 'AE',
@@ -17,6 +18,10 @@
         var filesDfd;
         var fileUploaded = false;
         var imageUploaded = false;
+        var isImage = function (file) {
+          return (file.type === 'image/png' || file.type === 'image/jpeg');
+        };
+
         scope.uploadFiles = function(files) {
           scope.progress = 0;
           scope.sizeTotal = 0;
@@ -37,7 +42,7 @@
                 var whatWasUploaded = (imageUploaded && !fileUploaded) ? 'images' : 'files';
                 toaster.pop('success', whatWasUploaded + ' uploaded!', 'You have successfully added ' + whatWasUploaded + ' to your project.');
                 $rootScope.$broadcast('templateUploader:updated', $stateParams.projectId);
-                if (imageUploaded) {
+                if (imageUploaded && scope.bulk) {
                   $rootScope.$broadcast('images:added', $stateParams.projectId);
                 }
                 if (fileUploaded) {
@@ -52,7 +57,7 @@
         uploadFiles = function uploadFiles(file, index) {
           var dfd = $q.defer();
           var directory;
-          if (file.type === 'image/png' || file.type === 'image/jpeg') {
+          if (isImage(file)) {
             directory = 'templates';
             imageUploaded = true;
           } else {
@@ -70,7 +75,10 @@
               progressArr[index] = event.loaded;
               scope.$broadcast('progress:updated');
             })
-            .success(function() {
+            .success(function(response) {
+              if (!scope.bulk && isImage(file)) {
+                $rootScope.$broadcast('image:added', response);
+              }
               dfd.resolve();
             });
 

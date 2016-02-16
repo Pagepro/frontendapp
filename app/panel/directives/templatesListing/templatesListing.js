@@ -58,6 +58,7 @@
           }
         });
 
+        // bulk
         scope.$on('images:added', function(params, id) {
           if ($stateParams.projectId === id) {
             spinnerService.show('templates-listing');
@@ -73,6 +74,21 @@
                 spinnerService.hideAll();
               });
           }
+        });
+
+        scope.$on('image:added', function(params, image) {
+          scope.templates.push(image);
+          // templatesService.getTemplates($stateParams.projectId)
+          //   .success(function(templates) {
+          //     scope.templates = templates;
+          //     order = _.map(scope.templates, function(template) {
+          //       template.order = template.id;
+          //       return template.id;
+          //     });
+          //   })
+          //   .finally(function() {
+          //     spinnerService.hideAll();
+          //   });
         });
 
         scope.deleteTemplate = function(templateId) {
