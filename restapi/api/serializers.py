@@ -60,17 +60,27 @@ class ProjectTemplateSerializer(serializers.ModelSerializer):
 		return obj.get_fullimage_url()
 
 	def get_html_url(self, obj):
-		return obj.work.get_login_password_url()
+		try:
+			return obj.work.get_login_password_url()
+		except ProjectTemplateWork.DoesNotExist:
+			return None
 
 	def get_status(self, obj):
-		return obj.work.work_status
+		try:
+			return obj.work.work_status
+		except ProjectTemplateWork.DoesNotExist:
+			return None
 
 	def get_work(self, obj):
-		return ProjectTemplateWorkSerializer(obj.work).data
+		try:
+			return ProjectTemplateWorkSerializer(obj.work).data
+		except ProjectTemplateWork.DoesNotExist:
+			return None
 
 class ProjectFileSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = ProjectFile
+		read_only_fields = ('original_filename', 'size', 'order', 'extension', 'filename', 'project','status')
 
 class ProjectTemplateWorkSerializer(serializers.ModelSerializer):
 	class Meta:
@@ -114,8 +124,13 @@ class ProjectTicketSerializer(serializers.ModelSerializer):
 
 class ProjectTicketCommentSerializer(serializers.ModelSerializer):
 	user = serializers.StringRelatedField()
+	can_delete = serializers.SerializerMethodField()
 	
 	class Meta:
 		model = ProjectTicketComment
-		fields = ('id', 'date', 'content', 'ticket', 'user')
+		fields = ('id', 'date', 'content', 'ticket', 'user', 'can_delete')
 		read_only_fields = ('ticket', 'user',)
+
+	def get_can_delete(self, obj):
+		request = self.context['request']
+		return request.user.is_staff or request.user.is_superuser or request.user == obj.user

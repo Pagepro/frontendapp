@@ -59,10 +59,30 @@ class ProjectFile(models.Model):
 	filename = models.CharField(max_length=255)
 	original_filename = models.CharField(max_length=255)
 	extension =models.CharField(max_length=10)
-	size = models.IntegerField()
-	order = models.IntegerField()
-	status = models.PositiveSmallIntegerField()
+	size = models.IntegerField(default=0)
+	order = models.IntegerField(default=0)
+	status = models.PositiveSmallIntegerField(default=1)
 	uploaded_date = models.DateTimeField(auto_now_add=True)
+
+	def upload_file(self, uploaded_file):
+		filename = base64.urlsafe_b64encode(uuid.uuid4().bytes).replace('=', '')
+ 		try:
+ 			extension = mimetypes.MimeTypes().types_map_inv[1][
+ 				magic.from_buffer(uploaded_file.read(), mime=True)
+			][0]
+		except:
+			extension = os.path.splitext(uploaded_file.name)[1]
+
+ 		self.original_filename = uploaded_file.name
+		self.size = uploaded_file.size
+		self.filename = filename + extension
+		self.extension = extension[1:]
+
+		with open('/var/www/frontendapp/uploads/' + filename + extension, 'wb+') as destination:
+			for chunk in uploaded_file.chunks():
+				destination.write(chunk)
+
+		self.save()
 
 # Templatki uploadowane do projektu
 class ProjectTemplate(models.Model):
@@ -76,7 +96,7 @@ class ProjectTemplate(models.Model):
 	extension = models.CharField(max_length=10)
 	size = models.IntegerField(default=0)
 	order = models.IntegerField(default=0)
-	status = models.PositiveSmallIntegerField(default=0)
+	status = models.PositiveSmallIntegerField(default=1)
 	uploaded_date = models.DateTimeField(auto_now_add=True)
 
 	def get_fullimage_url(self):
@@ -111,8 +131,8 @@ class ProjectTemplateWork(models.Model):
     )
 	public_url = models.CharField(max_length=255)
 	estimation = models.IntegerField(default=0)
-	date_start = models.DateTimeField()
-	date_end = models.DateTimeField()
+	date_start = models.DateTimeField(auto_now_add=True)
+	date_end = models.DateTimeField(auto_now_add=True)
 	work_status = models.PositiveSmallIntegerField(default=1)
 	comments = models.TextField(blank=True, null=True)
 
@@ -139,9 +159,9 @@ class ProjectTicket(models.Model):
 	project = models.ForeignKey(Project)
 	template = models.ForeignKey(ProjectTemplate, default=-1)
 	user = models.ForeignKey(User, related_name='ticket_author')
-	person = models.ForeignKey(User, related_name='ticket_assignee')
+	person = models.ForeignKey(User, related_name='ticket_assignee', blank=True, null=True)
 	#browsers = models.ManyToManyField(ProjectTicketBrowser, through='BrowserTicket')
-	browsers = models.TextField()
+	browsers = models.TextField(blank=True, null=True)
 	description = models.TextField()
 	attachment = models.TextField(blank=True, null=True)
 	screenshot_url = models.TextField(blank=True, null=True)
