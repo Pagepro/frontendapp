@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var authInterceptor = function($q, $window, $location) {
+  var authInterceptor = function($q, $window, $location, appSettings) {
     return {
       request: function(config) {
         config.headers = config.headers || {};
@@ -14,7 +14,8 @@
           $window.localStorage.removeItem('token');
           $window.localStorage.removeItem('username');
           // temp
-          // $window.location.href = 'http://dev.frontendapp.com/';
+
+          $window.location.href = appSettings.redirectionUrl || 'http://frontendapp.com/';
           // $location.path('/');
           return;
         }
@@ -33,7 +34,7 @@
     };
   };
 
-  authInterceptor.$inject = ['$q', '$window', '$location'];
+  authInterceptor.$inject = ['$q', '$window', '$location', 'appSettings'];
   angular.module('frontendApp').factory('authInterceptor', authInterceptor);
 
 }());
