@@ -2224,8 +2224,8 @@ h1.breadcrumb {
     background: #000; }
 
 .action-btn {
-  cursor: pointer;
   display: inline-block;
+  cursor: pointer;
   color: #fff;
   background: #e65962; }
   .action-btn__content {
@@ -2262,10 +2262,10 @@ h1.breadcrumb {
     .action-btn--alt:hover {
       background: #e65962; }
   .action-btn--grey {
+    height: 48px;
     margin-left: 15px;
-    background: #7f7f7f;
     line-height: 48px;
-    height: 48px; }
+    background: #7f7f7f; }
     .action-btn--grey:hover {
       background: #121212; }
 
@@ -2858,8 +2858,8 @@ h1.breadcrumb {
   .template-teaser .action-tool--highlighted:hover .action-tool__content {
     background: #000; }
   .template-teaser .action-tool--highlighted:hover.disabled {
-    opacity: .5;
     pointer-events: none;
+    opacity: .5;
     border-color: none; }
   .template-teaser .tooltip .label {
     background: #d64650; }
@@ -2987,10 +2987,10 @@ h1.breadcrumb {
     min-height: 378px; }
   .teasers-list .drag-and-drop-placeholder,
   .teasers-list .as-sortable-placeholder {
-    margin-right: 15px;
-    margin-bottom: 15px;
     width: 245px;
     height: 378px;
+    margin-right: 15px;
+    margin-bottom: 15px;
     border: 3px dotted #d64650;
     background: rgba(214, 70, 80, 0.5); }
   .teasers-list--alt {
@@ -3022,7 +3022,6 @@ h1.breadcrumb {
   display: flex;
   height: 40px;
   line-height: 20px;
-  text-transform: uppercase;
   flex-flow: column nowrap;
   -webkit-box-pack: center;
   justify-content: center; }
@@ -3724,9 +3723,9 @@ h1.breadcrumb {
     .comment__actions .action-tool__content:hover .icon {
       color: #000; }
   .comment__actions.disabled {
+    display: none;
     pointer-events: none;
-    border-color: none;
-    display: none; }
+    border-color: none; }
 
 @media (max-width: 1100px) {
   .comment__info__data {
@@ -3923,8 +3922,8 @@ h1.breadcrumb {
     font-size: 12px; } }
 
 .ticket-data-box__head__row {
-  flex-wrap: wrap;
-  color: #A0A0A0; }
+  color: #A0A0A0;
+  flex-wrap: wrap; }
   .ticket-data-box__head__row .ticket-author + .ticket-publish-date {
     margin-left: 5px; }
   .ticket-data-box__head__row:first-of-type {

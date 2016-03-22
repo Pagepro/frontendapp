@@ -607,8 +607,9 @@ h1.breadcrumb {
 // Styleguide 6.8
 
 .action-btn {
-    cursor: pointer;
     display: inline-block;
+
+    cursor: pointer;
 
     color: $color_white;
     background: $color_red;
@@ -671,11 +672,12 @@ h1.breadcrumb {
         }
     }
     &--grey {
-        margin-left: 15px;
-        background: $color_grey_4;
-        line-height: 48px;
         height: 48px;
+        margin-left: 15px;
 
+        line-height: 48px;
+
+        background: $color_grey_4;
         &:hover {
             background: $color_grey_5;
         }
@@ -998,18 +1000,20 @@ h1.breadcrumb {
 // Styleguide 8.3
 .labels-choice {
     position: relative;
-    .ticket-box & {
-        float: left;
-        @include breakpoint($breakpoint_smartphone) {
-            float: none;
-            width: 100%;
-        }
-    }
 
     width: calc(#{$size_input_h} / 2 + #{$size_acces-tool_h} + 30px);
     height: $size_input_v;
 
     @extend %helper--flex--right--top;
+    .ticket-box & {
+        float: left;
+
+        @include breakpoint($breakpoint_smartphone) {
+            float: none;
+
+            width: 100%;
+        }
+    }
     .labels-choice-list {
         position: absolute;
         z-index: 10;
@@ -1544,6 +1548,7 @@ h1.breadcrumb {
         }
         &.disabled {
             pointer-events: none;
+
             border-color: none;
             a {
                 opacity: .5;
@@ -1711,6 +1716,7 @@ h1.breadcrumb {
     position: relative;
     &__content {
         cursor: pointer;
+
         outline: none;
 
         @extend %helper--flex--center--center;
@@ -2459,8 +2465,9 @@ h1.breadcrumb {
                     }
                 }
                 &.disabled {
-                    opacity: .5;
                     pointer-events: none;
+
+                    opacity: .5;
                     border-color: none;
                 }
             }
@@ -3439,10 +3446,10 @@ h1.breadcrumb {
     }
     .drag-and-drop-placeholder,
     .as-sortable-placeholder {
-        margin-right: $size_padding;
-        margin-bottom: $size_padding;
         width: $size_teaser_h;
         height: $size_teaser_v;
+        margin-right: $size_padding;
+        margin-bottom: $size_padding;
 
         border: 3px dotted $color_red_dark;
         background: rgba(214,70,80,.5);
@@ -3530,8 +3537,6 @@ h1.breadcrumb {
         height: 40px;
 
         line-height: 20px;
-
-        text-transform: uppercase;
 
         flex-flow: column nowrap;
         justify-content: center;
@@ -6926,16 +6931,17 @@ h1.breadcrumb {
 .project-box {
     &--empty {
         display: flex;
+
         justify-content: center;
     }
     &__content {
+        position: relative;
         .files-box {
             width: 100%;
         }
         .project-time-list {
             margin-top: 10px;
         }
-        position: relative;
     }
     &__actions {
         @extend %helper--flex--left--top;
@@ -7815,9 +7821,11 @@ h1.breadcrumb {
             }
         }
         &.disabled {
-            pointer-events: none;
-            border-color: none;
             display: none;
+
+            pointer-events: none;
+
+            border-color: none;
         }
     }
 }
@@ -8557,9 +8565,10 @@ h1.breadcrumb {
 .ticket-data-box {
     &__head {
         &__row {
+            color: $color_grey_6;
+
             @extend %helper--flex--left--top;
             flex-wrap: wrap;
-            color: $color_grey_6;
             .ticket-author + .ticket-publish-date {
                 margin-left: 5px;
             }
@@ -9104,7 +9113,6 @@ h1.breadcrumb {
         }
         &__actions {
             // display: flex;
-
             justify-content: center;
             align-items: flex-start;
             align-content: flex-start;
@@ -9166,6 +9174,7 @@ h1.breadcrumb {
     background: $color_white;
     &__inner {
         position: relative;
+
         padding: calc(#{$size_padding_medium} * 1.2) $size_padding_medium;
     }
     &__head {
