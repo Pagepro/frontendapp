@@ -17,6 +17,57 @@
             outline: none;
         }
     }
+    .field--select {
+        position: relative;
+        &:after,
+        &:before {
+            right: -1px;
+
+            width: $size_acces-tool_h;
+            height: 100%;
+
+            @extend %helper--absolute--center-vertical;
+        }
+        &:after {
+            z-index: 1;
+
+            background: #f9f9f9;
+
+            @extend %helper--after;
+        }
+        &:before {
+            z-index: 2;
+
+            font-family: $font_ico;
+            font-size: 12px;
+
+            content: '\e81f';
+
+            color: $color_red_dark;
+
+            @extend %helper--flex--center--center;
+        }
+        select {
+            position: relative;
+            z-index: 3;
+
+            width: $size_input_h;
+            height: $size_input_v;
+            padding: 0 $size_acces-tool_h 0 $size_padding;
+
+            font-family: $font_normal;
+            font-size: 15px;
+            font-weight: 300;
+            line-height: 1;
+
+            color: $color_default;
+            border: 1px solid $color_grey_0;
+            border-radius: 0;
+            background: transparent;
+
+            -webkit-appearance: none;
+        }
+    }
     *::-ms-clear {
         display: none;
     }
@@ -667,6 +718,9 @@
                     max-width: calc(100%);
                 }
             }
+        }
+        .form-box__section + .form-box__section {
+            margin-left: $size_padding_medium;
         }
     }
 }

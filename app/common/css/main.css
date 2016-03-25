@@ -1166,7 +1166,9 @@ The `sprites` mixin generates identical output to the CSS template
   background: transparent;
   box-shadow: none; }
 
-.sec--main__inner .action-btn {
+.sec--main__inner .action-btn, .access-form .field--select:after, .project-action-form .field--select:after, .ticket-form .field--select:after,
+.ticket-details-comment-form .field--select:after, .access-form .field--select:before, .project-action-form .field--select:before, .ticket-form .field--select:before,
+.ticket-details-comment-form .field--select:before {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -1201,7 +1203,8 @@ The `sprites` mixin generates identical output to the CSS template
 
 .project-action-form .form__fieldset .field .label:before,
 .project-action-form .form__fieldset .NFI-wrapper .label:before, .icon--close:before, .icon--close:after, .page-back__content .main-title:before, .action-tools-list__item .action-tool__content:before, .action-teaser .teaser__head:after,
-.project-teaser .teaser__head:after, .files-list__item__id .ticket-id-link:after, .files-list > li__id .ticket-id-link:after, .files-list__item__counter:after, .files-list > li__counter:after, .pagination__content:after, .screenshots-list__item .screenshot-box__content .counter:after {
+.project-teaser .teaser__head:after, .files-list__item__id .ticket-id-link:after, .files-list > li__id .ticket-id-link:after, .files-list__item__counter:after, .files-list > li__counter:after, .pagination__content:after, .screenshots-list__item .screenshot-box__content .counter:after, .access-form .field--select:after, .project-action-form .field--select:after, .ticket-form .field--select:after,
+.ticket-details-comment-form .field--select:after {
   display: block;
   content: ''; }
 
@@ -1212,7 +1215,8 @@ The `sprites` mixin generates identical output to the CSS template
 .sec--head,
 .sec--main,
 .sec--popup,
-.subsec, .sec--main__head, .sec--main__content, body, .access-form .form__content, .access-form .form__actions, .subsec__content, .page-back__info, .labels-choice-list, .progress-bar-wrapper, .project-box__content, .project-box__actions, .access-box__head, .access-box__content, .dispaly-mode-box__info, .upload-box__content, .upload-box__content__head, .upload-box__content__info-add, .status-label .label, .extention-label .label, .icheckbox:before, .customSelect:after, .project-action-form .form__fieldset .field .label,
+.subsec, .sec--main__head, .sec--main__content, body, .access-form .form__content, .access-form .form__actions, .subsec__content, .page-back__info, .labels-choice-list, .progress-bar-wrapper, .project-box__content, .project-box__actions, .access-box__head, .access-box__content, .dispaly-mode-box__info, .upload-box__content, .upload-box__content__head, .upload-box__content__info-add, .status-label .label, .extention-label .label, .access-form .field--select:before, .project-action-form .field--select:before, .ticket-form .field--select:before,
+.ticket-details-comment-form .field--select:before, .icheckbox:before, .customSelect:after, .project-action-form .form__fieldset .field .label,
 .project-action-form .form__fieldset .NFI-wrapper .label, .ticket-form .form__fieldset .NFI-wrapper .NFI-button,
 .ticket-details-comment-form .form__fieldset .NFI-wrapper .NFI-button, .ticket-form .form__fieldset .field .label--special,
 .ticket-details-comment-form .form__fieldset .field .label--special, .sec--main__inner, .sec--popup__inner, .icon:before, .tooltip .label, .tooltip:before, .cloud-tooltip__icon, .cloud-tooltip__icon .icon, .cloud-tooltip__icon .icon:before, .btn, .user-btn, .action-btn__content, .page-back__content, .labels-choice-list__item.active:after, .update-info .label, .update-info--alt .icon--clock, .action-tool__content, .user-box__content, .teaser__head, .teaser__content, .project-teaser .teaser__content .project-title, .template-teaser .teaser__content .project-title, .template-teaser .teaser__content .action-tools-list__item, .file-data--template-complexe .file-data__actions .icon, .ticket-id-link, .files-list__item__counter:before, .files-list > li__counter:before, .pagination__content, .pagination-list, .pagination-box, .project-time-list, .access-tool__content, .access-tools-list, .dispaly-mode__content, .dispaly-mode .icon, .upload-box__content__head .icon, .upload-box__content__head .icon--folder--alt, .upload-box__content__head .icon--folder--alt:before, .upload-box__content__head .icon-wrapper, .upload-box__content__head .icon-wrapper .qty, .comment-box__content, .comment-box__content .icon--comment, .comment-box__content .qty, .screenshots-list__item .screenshot-box__content .counter, .screenshots-list-box__no, .trigger-close-popup, .sec--head__inner, .subsec__head, .popup__head, .teasers-list, .display-mode-list, .comment, .comments, .ticket-data-box__head__row, .ticket-details-info-list, .ticket-box__details, .customSelect, .form-box, .checkboxes-list, .checkboxes-list .field, .ticket-form .form__actions,
@@ -1228,7 +1232,8 @@ The `sprites` mixin generates identical output to the CSS template
   align-items: flex-start;
   align-content: flex-start; }
 
-.status-label .label, .extention-label .label, .icheckbox:before, .customSelect:after, .project-action-form .form__fieldset .field .label,
+.status-label .label, .extention-label .label, .access-form .field--select:before, .project-action-form .field--select:before, .ticket-form .field--select:before,
+.ticket-details-comment-form .field--select:before, .icheckbox:before, .customSelect:after, .project-action-form .form__fieldset .field .label,
 .project-action-form .form__fieldset .NFI-wrapper .label, .ticket-form .form__fieldset .NFI-wrapper .NFI-button,
 .ticket-details-comment-form .form__fieldset .NFI-wrapper .NFI-button, .ticket-form .form__fieldset .field .label--special,
 .ticket-details-comment-form .form__fieldset .field .label--special, .sec--main__inner, .sec--popup__inner, .icon:before, .tooltip .label, .tooltip:before, .cloud-tooltip__icon, .cloud-tooltip__icon .icon, .cloud-tooltip__icon .icon:before, .btn, .user-btn, .action-btn__content, .page-back__content, .labels-choice-list__item.active:after, .update-info .label, .update-info--alt .icon--clock, .action-tool__content, .user-box__content, .teaser__head, .teaser__content, .project-teaser .teaser__content .project-title, .template-teaser .teaser__content .project-title, .template-teaser .teaser__content .action-tools-list__item, .file-data--template-complexe .file-data__actions .icon, .ticket-id-link, .files-list__item__counter:before, .files-list > li__counter:before, .pagination__content, .pagination-list, .pagination-box, .project-time-list, .access-tool__content, .access-tools-list, .dispaly-mode__content, .dispaly-mode .icon, .upload-box__content__head .icon, .upload-box__content__head .icon--folder--alt, .upload-box__content__head .icon--folder--alt:before, .upload-box__content__head .icon-wrapper, .upload-box__content__head .icon-wrapper .qty, .comment-box__content, .comment-box__content .icon--comment, .comment-box__content .qty, .screenshots-list__item .screenshot-box__content .counter, .screenshots-list-box__no, .trigger-close-popup, .sec--head__inner, .subsec__head, .popup__head, .customSelect, .form-box, .checkboxes-list, .checkboxes-list .field, .ticket-form .form__actions,
@@ -1240,7 +1245,8 @@ The `sprites` mixin generates identical output to the CSS template
 .sec--head,
 .sec--main,
 .sec--popup,
-.subsec, .sec--main__head, .sec--main__content, body, .access-form .form__content, .access-form .form__actions, .subsec__content, .page-back__info, .labels-choice-list, .progress-bar-wrapper, .project-box__content, .project-box__actions, .access-box__head, .access-box__content, .dispaly-mode-box__info, .upload-box__content, .upload-box__content__head, .upload-box__content__info-add, .status-label .label, .extention-label .label, .icheckbox:before, .customSelect:after, .project-action-form .form__fieldset .field .label,
+.subsec, .sec--main__head, .sec--main__content, body, .access-form .form__content, .access-form .form__actions, .subsec__content, .page-back__info, .labels-choice-list, .progress-bar-wrapper, .project-box__content, .project-box__actions, .access-box__head, .access-box__content, .dispaly-mode-box__info, .upload-box__content, .upload-box__content__head, .upload-box__content__info-add, .status-label .label, .extention-label .label, .access-form .field--select:before, .project-action-form .field--select:before, .ticket-form .field--select:before,
+.ticket-details-comment-form .field--select:before, .icheckbox:before, .customSelect:after, .project-action-form .form__fieldset .field .label,
 .project-action-form .form__fieldset .NFI-wrapper .label, .ticket-form .form__fieldset .NFI-wrapper .NFI-button,
 .ticket-details-comment-form .form__fieldset .NFI-wrapper .NFI-button, .ticket-form .form__fieldset .field .label--special,
 .ticket-details-comment-form .form__fieldset .field .label--special, .sec--main__inner, .sec--popup__inner, .icon:before, .tooltip .label, .tooltip:before, .cloud-tooltip__icon, .cloud-tooltip__icon .icon, .cloud-tooltip__icon .icon:before, .btn, .user-btn, .action-btn__content, .page-back__content, .labels-choice-list__item.active:after, .update-info .label, .update-info--alt .icon--clock, .action-tool__content, .user-box__content, .teaser__head, .teaser__content, .project-teaser .teaser__content .project-title, .template-teaser .teaser__content .project-title, .template-teaser .teaser__content .action-tools-list__item, .file-data--template-complexe .file-data__actions .icon, .ticket-id-link, .files-list__item__counter:before, .files-list > li__counter:before, .pagination__content, .pagination-list, .pagination-box, .project-time-list, .access-tool__content, .access-tools-list, .dispaly-mode__content, .dispaly-mode .icon, .upload-box__content__head .icon, .upload-box__content__head .icon--folder--alt, .upload-box__content__head .icon--folder--alt:before, .upload-box__content__head .icon-wrapper, .upload-box__content__head .icon-wrapper .qty, .comment-box__content, .comment-box__content .icon--comment, .comment-box__content .qty, .screenshots-list__item .screenshot-box__content .counter, .screenshots-list-box__no, .trigger-close-popup {
@@ -1377,6 +1383,43 @@ a {
   .ticket-details-comment-form input:focus, .access-form textarea:focus, .project-action-form textarea:focus, .ticket-form textarea:focus,
   .ticket-details-comment-form textarea:focus {
     outline: none; }
+
+.access-form .field--select, .project-action-form .field--select, .ticket-form .field--select,
+.ticket-details-comment-form .field--select {
+  position: relative; }
+  .access-form .field--select:after, .project-action-form .field--select:after, .ticket-form .field--select:after,
+  .ticket-details-comment-form .field--select:after, .access-form .field--select:before, .project-action-form .field--select:before, .ticket-form .field--select:before,
+  .ticket-details-comment-form .field--select:before {
+    right: -1px;
+    width: 40px;
+    height: 100%; }
+  .access-form .field--select:after, .project-action-form .field--select:after, .ticket-form .field--select:after,
+  .ticket-details-comment-form .field--select:after {
+    z-index: 1;
+    background: #f9f9f9; }
+  .access-form .field--select:before, .project-action-form .field--select:before, .ticket-form .field--select:before,
+  .ticket-details-comment-form .field--select:before {
+    z-index: 2;
+    font-family: "fontello";
+    font-size: 12px;
+    content: '\e81f';
+    color: #d64650; }
+  .access-form .field--select select, .project-action-form .field--select select, .ticket-form .field--select select,
+  .ticket-details-comment-form .field--select select {
+    position: relative;
+    z-index: 3;
+    width: 330px;
+    height: 48px;
+    padding: 0 40px 0 15px;
+    font-family: "Roboto", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1;
+    color: #404040;
+    border: 1px solid #e5e5e5;
+    border-radius: 0;
+    background: transparent;
+    -webkit-appearance: none; }
 
 .access-form *::-ms-clear, .project-action-form *::-ms-clear, .ticket-form *::-ms-clear,
 .ticket-details-comment-form *::-ms-clear {
@@ -1655,6 +1698,9 @@ a {
 
 .form-box--double .form-box__section:last-of-type {
   max-width: calc(100%); }
+
+.form-box--double .form-box__section + .form-box__section {
+  margin-left: 25px; }
 
 @media (max-width: 767px) {
   .form-box--double {
