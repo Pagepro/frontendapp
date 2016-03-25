@@ -961,10 +961,14 @@ The `sprites` mixin generates identical output to the CSS template
   content: '\e804'; }
 
 /* '' */
-.icon--bug:before {
+.icon--bug--prev:before {
   content: '\e806'; }
 
 /* '' */
+.icon--bug:before {
+  content: '\e82a'; }
+
+/* '' */
 .icon--display-mode:before {
   content: '\e808'; }
 
