@@ -14,8 +14,8 @@
           ticketStatus.labelContent = 'New';
           break;
         case 2:
-          ticketStatus.className = 'done';
-          ticketStatus.labelContent = 'Done';
+          ticketStatus.className = 'qa';
+          ticketStatus.labelContent = 'QA';
           break;
         case 3:
           ticketStatus.className = 'rejected';
@@ -24,6 +24,10 @@
         case 4:
           ticketStatus.className = 'finished';
           ticketStatus.labelContent = 'Finished';
+          break;
+        case 5:
+          ticketStatus.className = 'in-progress';
+          ticketStatus.labelContent = 'In Progress';
           break;
       }
       return ticketStatus;

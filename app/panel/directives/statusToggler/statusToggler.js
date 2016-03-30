@@ -9,7 +9,7 @@
       templateUrl: 'app/panel/directives/statusToggler/statusToggler.html',
       link: function(scope) {
         scope.currentStatus = 1;
-        scope.availableStatuses = [1, 2, 3, 4];
+        scope.availableStatuses = [1, 2, 3, 4, 5];
 
         scope.getStatus = ticketStatusService.getStatus;
         scope.statusListVisible = false;
