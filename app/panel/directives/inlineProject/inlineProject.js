@@ -11,7 +11,7 @@
     };
   };
 
-  angular.$inject = ['statusService'];
+  inlineProject.$inject = ['statusService'];
   angular.module('panelModule').directive('inlineProject', inlineProject);
 
 }());
