@@ -32,5 +32,4 @@ function Tickets() {
     };
 }
 
-// module.exports = null;
 module.exports = new Tickets();

@@ -5509,7 +5509,9 @@ h1.breadcrumb {
     &__actions,
     &__status,
     &__create-date,
-    &__finish-date {
+    &__finish-date,
+    &__comments,
+    &__tickets-date {
         height: 100%;
 
         @extend %helper--flex--left--center;
@@ -5638,6 +5640,44 @@ h1.breadcrumb {
 }
 
 .files-box {
+    &__sortable {
+        cursor: pointer;
+        height: 100%;
+        line-height: 44px;
+
+        &.desc,
+        &.asc {
+            position: relative;
+
+            &:before {
+                right: 0;
+
+                width: 10px;
+                height: 100%;
+
+                z-index: 2;
+
+                font-family: $font_ico;
+                font-size: 12px;
+
+                color: $color_red_dark;
+
+                @extend %helper--absolute--center-vertical;
+                @extend %helper--flex--center--center;
+            }
+        }
+        &.desc {
+            &:before {
+                content: '\e81f';
+            }
+        }
+        &.asc {
+            &:before {
+                content: '\e81e';
+            }
+        }
+    }
+
     @include breakpoint($breakpoint_tablet-special) {
         &--templates-complexe {
             overflow-x: scroll !important;
