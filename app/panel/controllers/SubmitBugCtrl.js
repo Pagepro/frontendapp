@@ -50,7 +50,8 @@
         spinnerService.show('ticket-spinner');
         var data = {
           browsers: $scope.browsers,
-          description: $scope.description
+          description: $scope.description,
+          screenshot_url: $scope.url
         };
         if (file) {
           data.file = file;
