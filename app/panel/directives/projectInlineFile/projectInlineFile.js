@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var projectInlineFile = function ($stateParams, appSettings, toaster, filesService) {
+  var projectInlineFile = function (appSettings) {
     return {
       restrict: 'A',
       templateUrl: 'app/panel/directives/projectInlineFile/projectInlineFile.html',
@@ -11,7 +11,7 @@
     };
   };
 
-  projectInlineFile.$inject = ['$stateParams', 'appSettings', 'toaster', 'filesService'];
+  projectInlineFile.$inject = ['appSettings'];
   angular.module('panelModule').directive('projectInlineFile', projectInlineFile);
 
 }());
