@@ -2286,7 +2286,35 @@ h1.breadcrumb {
         }
     }
 }
+.dragover {
+    .teaser__inner {
+        .teaser {
+            &__head {
+                .icon {
+                    position: relative;
+                    z-index: 2;
 
+                    color: $color_white;
+                }
+                &:after {
+                    top: -25%;
+                        right: -25%;
+                        bottom: -25%;
+                        left: -25%;
+                        width: 150%;
+                        height: 150%;
+                    z-index: 1;
+
+                    background: $color_red;
+                }
+            }
+            &__content {
+                position: relative;
+                z-index: 3;
+            }
+        }
+    }
+}
 .action-teaser {
     overflow: hidden;
 
@@ -2305,7 +2333,7 @@ h1.breadcrumb {
     }
     .teaser {
         &__inner {
-            &:hover {
+            &:hover{
                 .teaser {
                     &__head {
                         .icon {
@@ -7341,6 +7369,9 @@ h1.breadcrumb {
             text-decoration: none;
 
             color: $color_black;
+        }
+        span {
+            cursor: pointer;
         }
     }
     .icon {

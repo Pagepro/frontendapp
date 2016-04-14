@@ -103,7 +103,7 @@
         })
           .state('ticketState.editDetails', {
             templateUrl: 'app/panel/templates/submitBug.html',
-            controller: 'EditDescriptionController',
+            controller: 'EditDescriptionCtrl',
             controllerAs: 'EDC',
             pageName: 'Edit Description',
             module: 'panel',

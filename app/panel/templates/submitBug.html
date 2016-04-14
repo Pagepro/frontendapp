@@ -81,10 +81,10 @@
                                         <div class="form-box__section__content">
                                             <div class="form__section">
                                                 <div class="field field--select">
-                                                    <select id="template" class="customSelect" required>
-                                                        <option model="template.id" selected="{{!currentTemplateId}}">All Templates</option>
+                                                    <select id="template" name="template" class="customSelect" ng-model="template" required>
+                                                        <option selected="{{!currentTemplateId}}" value="null">All Templates</option>
                                                         <option
-                                                        ng-repeat="template in templates" model="template.id" ng-selected="template.selected">{{template.name}}</option>
+                                                        ng-repeat="tpl in templates" selected="tpl.selected" value="{{tpl.id}}">{{tpl.name}}</option>
                                                     </select>
                                                 </div>
                                             </div>

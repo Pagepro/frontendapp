@@ -23,9 +23,9 @@ var ticketDetails = {
         'screenshot3'
     ],
     // just one or multiple templates may have the same ticket assigned to them??
-    templates: [{
-        'template_id': _.random(3, 100),
-        'template_name': chance.name()
+    available_templates: [{
+        'id': _.random(3, 100),
+        'name': chance.name()
     }],
     // they are being added as a text field, so lets not complicate things with browser codes, especially with systems being there too
     'browsers': 'IE8, IE9 - windows 7, Safari - OSX 10.11.1'

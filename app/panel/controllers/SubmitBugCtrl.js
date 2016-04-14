@@ -13,7 +13,6 @@
     $scope.isUploading = false;
     $scope.file = null;
 
-
     var init = function() {
       angular.element('.input--file').nicefileinput();
 
@@ -29,6 +28,7 @@
               var selected;
               if ($stateParams.templateId) {
                 selected = (template.id === $stateParams.templateId);
+                console.log(selected);
               }
               return {
                 id: template.id,
@@ -47,11 +47,13 @@
 
     $scope.uploadFiles = function(file) {
       if ($scope.description.length) {
+        debugger;
         spinnerService.show('ticket-spinner');
         var data = {
           browsers: $scope.browsers,
           description: $scope.description,
-          screenshot_url: $scope.url
+          screenshot_url: $scope.url,
+          template: $scope.template
         };
         if (file) {
           data.file = file;

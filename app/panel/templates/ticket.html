@@ -98,7 +98,8 @@
                                         <p class="label">Attachment:</p>
                                     </div>
                                     <div class="ticket-details-info__content">
-                                        <p class="details">{{ticket.attachment || 'none'}}</p>
+                                        <a class="details" ng-if="ticket.attachment" target="_blank" href="{{ticket.attachment}}">{{ticket.attachment}}</a></p>
+                                        <p class="details" ng-if="!ticket.attachment">none</p>
                                     </div>
                                 </div>
                             </li>
