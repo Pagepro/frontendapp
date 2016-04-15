@@ -12,30 +12,21 @@
     $scope.description = '';
     $scope.isUploading = false;
     $scope.file = null;
+    $scope.template = null;
 
     var init = function() {
       angular.element('.input--file').nicefileinput();
-
       // this may be a number or null, depending on whether user enters
       // the view from url or from clicking a link with parameter
       // if it's clicked, it simply adds additional feature of selecting propper template for him
-      $scope.currentTemplateId = $stateParams.templateId;
 
       templatesService.getTemplates($stateParams.projectId)
         .success(function(templates) {
           if (templates.length) {
-            $scope.templates = _.map(templates, function(template) {
-              var selected;
-              if ($stateParams.templateId) {
-                selected = (template.id === $stateParams.templateId);
-                console.log(selected);
-              }
-              return {
-                id: template.id,
-                name: template.name,
-                selected: selected
-              };
+            $scope.template = _.find(templates, function (template) {
+              return template.id === $stateParams.templateId;
             });
+            $scope.templates = templates;
           } else {
             toaster.pop('error', 'No templates yet.', 'There are no templates yet added to the project you\'re trying to add a ticket to. Please, first add a template, then add a ticket to it.');
             $scope.returnToParent();
@@ -47,13 +38,12 @@
 
     $scope.uploadFiles = function(file) {
       if ($scope.description.length) {
-        debugger;
         spinnerService.show('ticket-spinner');
         var data = {
           browsers: $scope.browsers,
           description: $scope.description,
           screenshot_url: $scope.url,
-          template: $scope.template
+          template: $scope.template ? $scope.template.id : null
         };
         if (file) {
           data.file = file;

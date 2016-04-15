@@ -4,12 +4,6 @@
 .dragover {
   background: #FCFCFC;
   .teaser__head:after {
-    top: -25%;
-    right: -25%;
-    bottom: -25%;
-    left: -25%;
-    width: 150%;
-    height: 150%;
     z-index: 1;
     background: #e65962;
   }

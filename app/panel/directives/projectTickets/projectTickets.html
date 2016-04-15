@@ -5,7 +5,7 @@
                 <div class="files-box__id files-box__sortable" ng-click="order('id');" ng-class="{asc: reverse && ticketsOrderBy === 'id', desc: !reverse && ticketsOrderBy === 'id'}">
                     <p class="filebox-title">Id</p>
                 </div>
-                <div class="files-box__name">
+                <div class="files-box__name files-box__sortable" ng-click="order('description');" ng-class="{asc: reverse && ticketsOrderBy === 'description', desc: !reverse && ticketsOrderBy === 'description'}">
                     <p class="filebox-title">Short ticket description</p>
                 </div>
                 <div class="files-box__status files-box__sortable" ng-click="order('status');" ng-class="{asc: reverse && ticketsOrderBy === 'status', desc: !reverse && ticketsOrderBy === 'status'}">
@@ -38,4 +38,4 @@
 </div>
 
 
-<projects-placeholder placeholding="tickets" ng-if="!tickets.length">
+<projects-placeholder placeholding="tickets" icon="box" ng-if="!tickets.length">

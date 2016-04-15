@@ -25,7 +25,7 @@
                 <div class="files-box__number">
                 </div>
                 <ol class="files-list">
-                    <li class="files-list__item" ng-repeat="file in files">
+                    <li class="files-list__item" ng-repeat="file in files | orderBy: 'uploaded_date'">
                         <div class="files-list__item__inner" project-inline-file></div>
                     </li>
                 </ol>
@@ -40,5 +40,5 @@
             </span>
         </a>
     </div>
-    <projects-placeholder placeholding="files" ng-if="!files.length">
+    <projects-placeholder placeholding="files" icon="folder--alt" ng-if="!files.length">
 </div>

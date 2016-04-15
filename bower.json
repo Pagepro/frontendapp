@@ -20,7 +20,7 @@
     "angular-off-click": "~0.0.8",
     "angular-ui-router": "~0.2.14",
     "breakpoint-sass": "~2.5.0",
-    "lodash": "~3.10.1",
+    "lodash": "~4.11.1",
     "moment": "~2.10.3",
     "compass-breakpoint": "breakpoint-sass#~2.6.1",
     "angular-mocks": "~1.4.7",

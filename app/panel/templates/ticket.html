@@ -63,8 +63,9 @@
                                         <p class="label">Templates:</p>
                                     </div>
                                     <div class="ticket-details-info__content">
-                                        <p class="details" ng-if="ticket.template" ng-repeat="template in ticket.templates"><a ui-sref="projectState({projectId: {{template.template_id}}})" target="_blank">{{template.template}}</a></p>
-                                        <p class="details" ng-if="!ticket.template">none</p>
+                                        <!-- <p class="details" ng-if="ticket.template" ng-repeat="template in ticket.templates"><a ui-sref="projectState({projectId: {{template.template_id}}})" target="_blank">{{template.template.}}</a></p> -->
+                                        <p class="details" ng-if="ticket.related_template.name">{{ticket.related_template.name}}</p>
+                                        <p class="details" ng-if="!ticket.related_template">none</p>
                                     </div>
                                 </div>
                             </li>

@@ -13,6 +13,7 @@
     $scope.ticketId = _.parseInt($scope.$parent.ticketId);
     $scope.filename = $scope.$parent.attachment;
     $scope.browsers = $scope.$parent.ticket.browsers;
+    $scope.template = $scope.$parent.ticket.related_template || null;
 
     $scope.submitted = false;
     $scope.isUploading = false;
@@ -36,7 +37,7 @@
               browsers: $scope.browsers,
               description: $scope.description,
               screenshot_url: $scope.url,
-              template: $scope.template
+              template: _.parseInt($scope.template.id)
             }
           }).success(function() {
             toaster.pop('success', 'Success!', 'Your ticket has been added.');
@@ -64,18 +65,7 @@
     var init = function () {
       angular.element('.input--file').nicefileinput();
       $scope.updateNameValue($scope.$parent.ticket.attachment);
-
-      $scope.templates = _.map($scope.$parent.ticket.available_templates, function(template) {
-        var selected;
-        if ($scope.ticketId) {
-          selected = (template.id === 4);//$scope.template.id
-        }
-        return {
-          id: template.id,
-          name: template.name,
-          selected: selected
-        };
-      });
+      $scope.templates = $scope.$parent.ticket.available_templates;
     };
     init();
   };
