@@ -517,6 +517,8 @@ h1.breadcrumb {
     width: $size_acces-tool_v;
     height: $size_acces-tool_v;
 
+    text-transform: uppercase;
+
     border-radius: 50%;
     background: $color_red;
 
@@ -535,6 +537,7 @@ h1.breadcrumb {
         background: $color_black;
     }
 }
+
 
 // Action button - example 1
 //
