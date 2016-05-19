@@ -64,7 +64,7 @@
                                     </div>
                                     <div class="ticket-details-info__content">
                                         <!-- <p class="details" ng-if="ticket.template" ng-repeat="template in ticket.templates"><a ui-sref="projectState({projectId: {{template.template_id}}})" target="_blank">{{template.template.}}</a></p> -->
-                                        <p class="details" ng-if="ticket.related_template.name">{{ticket.related_template.name}}</p>
+                                        <a class="details" ng-if="ticket.related_template.name" target="_blank" href="{{ticket.related_template.fullimage_url}}">{{ticket.related_template.name}}</a>
                                         <p class="details" ng-if="!ticket.related_template">none</p>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                                         <p class="label">Screenshot:</p>
                                     </div>
                                     <div class="ticket-details-info__content">
-                                        <a class="details" ng-if="ticket.screenshot_url" target="_blank" href="{{ticket.screenshot_url}}">{{ticket.screenshot_url}}</a></p>
+                                        <a class="details" ng-if="ticket.screenshot_url" target="_blank" href="{{ticket.screenshot_url}}">{{ticket.screenshot_url}}</a>
                                         <p class="details" ng-if="!ticket.screenshot_url">none</p>
                                     </div>
                                 </div>
