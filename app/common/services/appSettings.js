@@ -16,7 +16,6 @@
     }
   };
 
-  // var environment = urlSettings.dev;
   var environment = urlSettings.dev;
 
   angular.module('frontendApp').value('appSettings', {
