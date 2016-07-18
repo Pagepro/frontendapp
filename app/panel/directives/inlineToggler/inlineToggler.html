@@ -1,0 +1,6 @@
+<div class="status-label status-label--{{status.className}}">
+  <p class="label" ng-click="toggleStatusList()">{{status.labelContent}}</p>
+  <select class="statuses" ng-model="status" ng-options="stat as stat.labelContent for stat in statuses track by stat.code" ng-change="setTicketStatus(status.code)">
+  <option value="" selected="selected" hidden>Select Option</option>
+  </select>
+</div>

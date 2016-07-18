@@ -7,7 +7,6 @@
       restrict: 'EA',
       templateUrl: 'app/panel/directives/projectTickets/projectTickets.html',
       controller: ['$scope', function ($scope) {
-
         $scope.ticketsOrderBy = '';
         $scope.reverse = false;
 
