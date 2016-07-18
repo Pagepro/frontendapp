@@ -147,7 +147,7 @@
                         <span class="label">Comments</span>
                     </h3>
                     <div class="comment-box">
-                        <div class="comment-box__content">
+                        <div class="comment-box__content" ng-class="{hascomments: comments.length}">
                             <span class="icon icon--comment"></span>
                             <span class="qty">{{comments.length || 0}}</span>
                         </div>

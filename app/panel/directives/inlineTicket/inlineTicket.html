@@ -19,7 +19,7 @@
                 </div>
                 <div class="file-data__comments">
                     <div class="comment-box">
-                        <div class="comment-box__content">
+                        <div class="comment-box__content" ng-class="{hascomments: ticket.comments_count}">
                             <span class="icon icon--comment"></span>
                             <span class="qty">{{ticket.comments_count || 0}}</span>
                         </div>

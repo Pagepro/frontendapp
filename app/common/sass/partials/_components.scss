@@ -7691,11 +7691,16 @@ h1.breadcrumb {
         height: 100%;
 
         @extend %helper--flex--center--center;
+        &.hascomments .icon {
+            color: $color_red;
+        }
         .icon {
             position: relative;
             z-index: 1;
 
-            color: $color_red;
+            color: $color_grey_3;
+
+
 
             @extend %helper--transition;
             &--comment {
