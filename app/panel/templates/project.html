@@ -66,6 +66,10 @@
                     <span class="label">Project Tickets</span>
                 </h3>
             </div>
+            <ul class="tickets-filter">
+                <li class="tickets-filter__option"><a href="#" class="tickets-filter__trigger" ng-click="filterStatus('active', $event)">Active</a></li>
+                <li class="tickets-filter__option active"><a href="#" class="tickets-filter__trigger" ng-click="filterStatus('finished', $event)">Finished</a></li>
+            </ul>
             <div class="subsec__content" project-tickets></div>
         </div>
     </section>

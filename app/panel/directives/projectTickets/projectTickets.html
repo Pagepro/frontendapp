@@ -22,7 +22,7 @@
                 <div class="files-box__number">
                 </div>
                 <ol class="files-list">
-                    <li class="files-list__item repeat-animation" inline-ticket ng-repeat="ticket in tickets | orderBy: ticketsOrderBy:reverse "></li>
+                    <li class="files-list__item repeat-animation" inline-ticket ng-repeat="ticket in tickets | orderBy: ticketsOrderBy:reverse | status:filteredBy"></li>
                 </ol>
             </div>
         </div>

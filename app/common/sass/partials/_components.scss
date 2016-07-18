@@ -9274,6 +9274,30 @@ h1.breadcrumb {
     }
 }
 
-
+.tickets-filter {
+    width: 100%;
+    padding: 0;
+    margin: $size_padding_small 0 $size_padding_medium 0;
+    list-style: none;
+    display: flex;
+    &__option:not(:first-child) {
+        left: -1px;
+        position: relative;
+    }
+    &__option {
+        border: solid 1px $color_grey_3;
+    }
+    &__trigger {
+        font-weight: 700;
+        padding: $size_padding_small $size_padding_medium;
+        width: auto;
+        float: left;
+        .active &, &:hover {
+            text-decoration: none;
+            background: $color_black;
+            color: $color_white;
+        }
+    }
+}
 
 //

@@ -7,14 +7,18 @@
       restrict: 'EA',
       templateUrl: 'app/panel/directives/projectTickets/projectTickets.html',
       controller: ['$scope', function ($scope) {
-
         $scope.ticketsOrderBy = '';
         $scope.reverse = false;
+        $scope.filteredBy = '';
+
+        $scope.filterStatus = function (status, $event) {
+          $event.preventDefault();
+          $scope.filteredBy = status;
+        };
 
         $scope.order = function (ticketsOrderBy) {
           // starting from reverse = false, so the 2nd click will toggle it to true
           // 3rd click will turn off the orderBy filter
-
           if (ticketsOrderBy !== $scope.ticketsOrderBy) {
             $scope.ticketsOrderBy = ticketsOrderBy;
             // here's a reset on changing filter name

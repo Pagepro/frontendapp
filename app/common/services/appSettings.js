@@ -16,11 +16,11 @@
     }
   };
 
-  var environment = urlSettings.dev;
+  var environment = urlSettings.local;
 
   angular.module('frontendApp').value('appSettings', {
     title: 'Fronted App',
-    verion: '0.0.2',
+    verion: '1.0.1',
     apiRoot: environment.apiRoot,
 
     fileRoot: environment.baseUrl + 'projects/download/file/',
