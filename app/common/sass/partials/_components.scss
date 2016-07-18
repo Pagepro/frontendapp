@@ -405,8 +405,6 @@ h1.breadcrumb {
         width: 7px;
         height: 6px;
 
-        background: $color_white;
-
         @extend %helper--flex--center--center;
         .icon {
             color: $color_grey_3;
@@ -417,11 +415,30 @@ h1.breadcrumb {
                 height: 6px;
                 margin: 0;
                 padding-left: 1px;
+                z-index: 2;
+
 
                 font-size: 16px;
 
                 @extend %helper--flex--center--center;
             }
+            &:after {
+                position: absolute;
+                z-index: 1;
+                top: 4px;
+                left: -1px;
+
+                display: block;
+
+                width: 10px;
+                height: 10px;
+
+                content: '';
+                transform: rotate(45deg);
+
+                background: $color_white;
+            }
+
         }
     }
     &__content {
