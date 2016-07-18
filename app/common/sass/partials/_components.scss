@@ -9241,6 +9241,8 @@ h1.breadcrumb {
     width: $size_padding_big;
     height: $size_padding_big;
 
+    cursor: pointer;
+
     @extend %helper--flex--center--center;
     .icon {
         font-size: 16px;
