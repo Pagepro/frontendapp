@@ -22,7 +22,7 @@ function Tickets() {
         }),
         'user_id': _.uniqueId(),
         'created_on': chance.birthday(),
-        'status': _.random(0, 4),
+        'status': _.random(1, 5),
         'comments': new Comments()
       });
     }

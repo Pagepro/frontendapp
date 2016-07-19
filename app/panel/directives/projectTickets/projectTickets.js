@@ -1,15 +1,26 @@
 (function () {
   'use strict';
 
-  var projectTickets = function () {
+  var projectTickets = function ($window, $filter) {
     return {
       isolate: false,
       restrict: 'EA',
       templateUrl: 'app/panel/directives/projectTickets/projectTickets.html',
       controller: ['$scope', function ($scope) {
-
         $scope.ticketsOrderBy = '';
         $scope.reverse = false;
+        $scope.filteredBy = $window.localStorage.ticketsFilter ? $window.localStorage.ticketsFilter : '';
+
+        $scope.filterStatus = function (status, $event) {
+          $event.preventDefault();
+          if ($scope.filteredBy !== status) {
+            $window.localStorage.ticketsFilter = status;
+            $scope.filteredBy = status;
+          } else {
+            $window.localStorage.ticketsFilter = '';
+            $scope.filteredBy = '';
+          }
+        };
 
         $scope.order = function (ticketsOrderBy) {
           // starting from reverse = false, so the 2nd click will toggle it to true
@@ -30,6 +41,7 @@
     };
   };
 
+  projectTickets.$inject  = ['$window', '$filter'];
   angular.module('panelModule').directive('projectTickets', projectTickets);
 
 }());

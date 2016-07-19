@@ -5536,6 +5536,26 @@ h1.breadcrumb {
                 }
             }
         }
+        &--empty  {
+            justify-content: center;
+            height: 4rem;
+            line-height: 4rem;
+            font-size: 14px;
+            text-transform: uppercase;
+            display: table;
+            white-space: nowrap;
+            &:before,
+            &:after {
+              border-top: 1px solid $color_grey_1;
+              content: '';
+              display: table-cell;
+              position: relative;
+              width: 45%;
+            }
+
+            &:before { right: 1.5%; }
+            &:after { left: 1.5%; }
+        }
     }
     .drag-and-drop-placeholder,
     .as-sortable-placeholder {
@@ -9313,7 +9333,36 @@ h1.breadcrumb {
         }
     }
 }
-
-
+.tickets-filter-label {
+    padding: $size_padding_small $size_padding_small $size_padding_small 0;
+    width: 58px;
+    float: left;
+}
+.tickets-filter {
+    width: calc(100% - 58px);
+    padding: 0;
+    margin: $size_padding_small 0 $size_padding_medium 0;
+    list-style: none;
+    display: flex;
+    &__option:not(:first-child) {
+        left: -1px;
+        position: relative;
+    }
+    &__option {
+        border: solid 1px $color_grey_3;
+    }
+    &__trigger,
+    .tickets-filter-label  {
+        font-weight: 700;
+        padding: $size_padding_small $size_padding_medium;
+        width: auto;
+        float: left;
+        .active &, &:hover {
+            text-decoration: none;
+            background: $color_black;
+            color: $color_white;
+        }
+    }
+}
 
 //
