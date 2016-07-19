@@ -9336,7 +9336,7 @@ h1.breadcrumb {
     }
 }
 .tickets-filter-label {
-    padding: $size_padding_small $size_padding_small $size_padding_small 0;
+    padding: $size_padding_display-mode $size_padding_display-mode $size_padding_display-mode 0;
     width: 58px;
     float: left;
 }
@@ -9352,16 +9352,30 @@ h1.breadcrumb {
     }
     &__option {
         border: solid 1px $color_grey_3;
+        &:hover,
+        &.active {
+            border-color: darken($color_red_dark, 12%);
+        }
     }
     &__trigger,
     .tickets-filter-label  {
-        font-weight: 700;
-        padding: $size_padding_small $size_padding_medium;
+        padding: $size_padding_display-mode $size_padding_medium;
         width: auto;
         float: left;
+        &:after {
+            display:block;
+            content:attr(title);
+            font-weight:bold;
+            height:1px;
+            color:transparent;
+            overflow:hidden;
+            visibility:hidden;
+            margin-bottom:-1px;
+        }
         .active &, &:hover {
+            font-weight: 700;
             text-decoration: none;
-            background: $color_black;
+            background: $color_red_dark;
             color: $color_white;
         }
     }
