@@ -1063,8 +1063,6 @@ h1.breadcrumb {
         cursor: pointer;
 
         opacity: 0;
-
-        @extend %helper--transition;
         .status-label {
             width: 100%;
             height: 100%;
@@ -8884,7 +8882,6 @@ h1.breadcrumb {
 //
 // Styleguide 26.8
 .ticket-details-info {
-    @extend %helper--flex--stretch;
     &__head {
         @extend %helper--flex--left--center;
         .label {
@@ -8915,20 +8912,26 @@ h1.breadcrumb {
         }
     }
     &__content {
-        @extend %helper--flex--left--center;
         .details {
             margin: 0;
             padding-top: 5px;
 
             font-size: 15px;
             font-weight: 500;
+            display: inline-block;
+            white-space: normal;
+            word-wrap: break-word;
+            width: 100%;
             > a {
                 color: $color_blue;
             }
         }
     }
     &__head + &__content {
-        margin-left: $size_padding;
+        overflow: hidden;
+        padding-right: 30px;
+        white-space: nowrap;
+        margin-left: 35px;
     }
     &--alt {
         flex-wrap: wrap;
@@ -9094,10 +9097,17 @@ h1.breadcrumb {
     @extend %helper--flex--left--top;
     flex-wrap: wrap;
     &__item {
-        width: 100%;
+        width: 50%;
         margin-bottom: 20px;
         &--alt {
             margin-bottom: $size_padding_big;
+        }
+    }
+}
+.ticket-details-info-list {
+    @include breakpoint($breakpoint_smartphone) {
+        &__item {
+            width: 100%;
         }
     }
 }
