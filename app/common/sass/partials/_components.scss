@@ -2471,9 +2471,10 @@ h1.breadcrumb {
 
             @extend %helper--flex--vertical-space-between;
             .project-title {
-                height: 40px;
+                height: auto;
+                max-height: 4rem;
 
-                @extend %helper--flex--center--center;
+                // @extend %helper--flex--center--center;
             }
         }
         &__inner {
