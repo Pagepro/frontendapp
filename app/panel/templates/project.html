@@ -66,8 +66,8 @@
                     <span class="label">Project Tickets</span>
                 </h3>
             </div>
-            <p class="tickets-filter-label">Filter by: </p>
-            <ul class="tickets-filter">
+            <p class="tickets-filter-label" ng-if="tickets.length">Filter by: </p>
+            <ul class="tickets-filter" ng-if="tickets.length">
                 <li class="tickets-filter__option" ng-class="{active: filteredBy === 'active'}"><a href="#" class="tickets-filter__trigger" ng-click="filterStatus('active', $event)">Active</a></li>
                 <li class="tickets-filter__option" ng-class="{active: filteredBy === 'finished' }"><a href="#" class="tickets-filter__trigger" ng-click="filterStatus('finished', $event)">Finished</a></li>
             </ul>
