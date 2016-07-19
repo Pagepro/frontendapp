@@ -8926,6 +8926,15 @@ h1.breadcrumb {
                 color: $color_blue;
             }
         }
+        .link {
+            color: $color_blue;
+            text-transform: uppercase;
+            &:visited {
+                color: darken($color_purple, 20%);
+                text-decoration: underline;
+                text-decoration-style: dashed;
+            }
+        }
     }
     &__head + &__content {
         overflow: hidden;
