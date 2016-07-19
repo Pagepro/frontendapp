@@ -88,12 +88,14 @@
         ticketsService.getTicketDetails($stateParams.projectId, data.id)
           .success(function (updatedTicket) {
             $scope.ticket = updatedTicket;
+            $rootScope.preventAutoScroll = true;
             $state.go('ticketState', {
               projectId: $stateParams.projectId,
               ticketId: $stateParams.ticketId
             });
           });
       } else {
+        $rootScope.preventAutoScroll = true;
         $state.go('ticketState', {
           projectId: $stateParams.projectId,
           ticketId: $stateParams.ticketId

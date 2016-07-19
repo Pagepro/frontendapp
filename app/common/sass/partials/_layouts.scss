@@ -249,7 +249,7 @@ body.blocked {
 }
 
 .sec--popup {
-    position: absolute;
+    position: fixed;
     z-index: 30;
     top: 0;
     right: 0;

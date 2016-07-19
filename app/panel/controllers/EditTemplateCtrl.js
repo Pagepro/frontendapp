@@ -59,6 +59,7 @@
     };
 
     $scope.returnToProject = function() {
+      $rootScope.preventAutoScroll = true;
       $state.go('projectState');
       $rootScope.$broadcast('template:updated', {
         id: $stateParams.templateId,

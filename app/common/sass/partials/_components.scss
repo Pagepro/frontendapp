@@ -1629,6 +1629,7 @@ h1.breadcrumb {
     &__item {
         position: relative;
         .action-tool {
+            cursor: pointer;
             &__content {
                 position: relative;
                 &:before {

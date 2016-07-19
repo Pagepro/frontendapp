@@ -83,7 +83,7 @@
             controller: 'EditTemplateCtrl',
             controllerAs: 'ETC',
             pageName: 'Edit Template',
-            module: 'panel'
+            module: 'panel',
           })
         .state('ticketState', {
           url: '/project/:projectId/ticket/:ticketId',

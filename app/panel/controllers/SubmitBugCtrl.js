@@ -72,6 +72,7 @@
     };
 
     $scope.returnToParent = function() {
+      $rootScope.preventAutoScroll = true;
       $state.go('projectState', $stateParams.projectId);
       $rootScope.$broadcast('ticket:submitted', {
         id: $stateParams.templateId,
