@@ -25,6 +25,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="file-data__template">
+                    <div class="ticket-desc">
+                        <p data-ellipsis data-ng-bind="ticket.related_template.name" data-ellipsis-symbol="...">{{ticket.related_template.name || 'No template assigned' }}</p>
+                    </div>
+                </div>
                 <div class="file-data__ticket-date">
                     <time class="file-date" datetime="{{ticket.created_on | date:'dd/MM/yyyy hh:mm'}}">{{ticket.created_on | date:'dd/MM/yyyy'}}</time>
                 </div>

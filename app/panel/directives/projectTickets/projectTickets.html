@@ -14,6 +14,9 @@
                 <div class="files-box__comments files-box__sortable" ng-click="order('comments_count');" ng-class="{asc: reverse && ticketsOrderBy === 'comments_count', desc: !reverse && ticketsOrderBy === 'comments_count'}">
                     <p class="filebox-title">Comments</p>
                 </div>
+                <div class="files-box__template files-box__sortable" ng-click="order('related_template.name');" ng-class="{asc: reverse && ticketsOrderBy === 'related_template.name', desc: !reverse && ticketsOrderBy === 'related_template.name'}">
+                    <p class="filebox-title">Template</p>
+                </div>
                 <div class="files-box__ticket-date files-box__sortable" ng-click="order('created_on');" ng-class="{asc: reverse && ticketsOrderBy === 'created_on', desc: !reverse && ticketsOrderBy === 'created_on'}">
                     <p class="filebox-title">Date</p>
                 </div>

@@ -3894,7 +3894,8 @@ h1.breadcrumb {
     &__create-date,
     &__finish-date,
     &__comments,
-    &__ticket-date {
+    &__ticket-date,
+    &__template {
         height: 100%;
 
         background-color: $color_white;
@@ -3917,7 +3918,8 @@ h1.breadcrumb {
     &__create-date,
     &__finish-date,
     &__comments,
-    &__ticket-date {
+    &__ticket-date,
+    &__template {
         padding: 0 $size_padding;
 
         border: 1px solid $color_grey_3;
@@ -3926,7 +3928,8 @@ h1.breadcrumb {
     &__size,
     &__uploaded-date,
     &__create-date,
-    &__comments {
+    &__comments,
+    &__template {
         border-right: none;
     }
     &__size,
@@ -3934,7 +3937,8 @@ h1.breadcrumb {
     &__create-date,
     &__finish-date,
     &__comments,
-    &__ticket-date {
+    &__ticket-date,
+    &__template {
         border-left: none;
     }
     &__status,
@@ -3968,6 +3972,10 @@ h1.breadcrumb {
                 text-overflow: ellipsis;
             }
         }
+    }
+    &__template {
+        width: 185px;
+        min-width: 185px;
     }
     &__extention {
         width: $size_filename_extention_h;
@@ -4124,7 +4132,7 @@ h1.breadcrumb {
                 padding: 10px $size_padding 13px;
             }
             &__name {
-                max-width: calc(100% - #{$size_filename_status_h} - #{$size_filename_status_h} - #{$size_filename_status_h});
+                max-width: calc(100% - #{$size_filename_status_h} - #{$size_filename_status_h} - #{$size_filename_status_h} - 185px);
             }
         }
     }
@@ -5560,7 +5568,8 @@ h1.breadcrumb {
     &__create-date,
     &__finish-date,
     &__comments,
-    &__tickets-date {
+    &__tickets-date,
+    &__template {
         height: 100%;
 
         @extend %helper--flex--left--center;
@@ -5583,7 +5592,8 @@ h1.breadcrumb {
     &__finish-date,
     &__status,
     &__comments,
-    &__ticket-date {
+    &__ticket-date,
+    &__template {
         padding: 0 $size_padding;
     }
     &__extention,
@@ -5617,6 +5627,10 @@ h1.breadcrumb {
 
         flex-grow: 1;
     }
+    &__template {
+        min-width: 185px;
+        width: 185px;
+    }
     &__extention {
         width: $size_filename_extention_h;
     }
@@ -5633,6 +5647,9 @@ h1.breadcrumb {
     &__comments,
     &__ticket-date {
         width: $size_filename_status_h;
+    }
+    &__comments {
+        min-width: $size_filename_status_h;
     }
     &__uploaded-date {
         width: $size_filename_uploaded-date_h;
@@ -5714,7 +5731,7 @@ h1.breadcrumb {
             }
         }
     }
-    @include breakpoint($breakpoint_tablet-mini) {
+    @include breakpoint($breakpoint_tablet) {
         margin-bottom: -$size_padding;
         padding-bottom: $size_padding;
         &::-webkit-scrollbar {
@@ -5735,21 +5752,20 @@ h1.breadcrumb {
             background: linear-gradient(to bottom, #d9d9d9 0%,#e4e4e4 100%);
         }
     }
+    @include breakpoint($breakpoint_tablet-special-0) {
+        &--tickets {
+            overflow-x: scroll;
+        }
+    }
     @include breakpoint($breakpoint_smartphone-big) {
         overflow-x: scroll;
         &--projects,
-        &--templates,
-        &--tickets {
+        &--templates {
             overflow-x: hidden;
         }
     }
     @include breakpoint($breakpoint_smartphone-special) {
         &--projects {
-            overflow-x: scroll;
-        }
-    }
-    @include breakpoint($breakpoint_smartphone-special-alt-0) {
-        &--tickets {
             overflow-x: scroll;
         }
     }

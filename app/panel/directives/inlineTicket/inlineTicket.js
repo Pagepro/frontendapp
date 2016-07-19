@@ -8,6 +8,15 @@
       link: function (scope) {
         scope.status = ticketStatusService.getStatus(scope.ticket.status);
         scope.location = $location.path();
+
+        // Data-ellipsis hack, can't set else in html template,
+        // data is being read from a model
+        if (!scope.ticket.related_template) {
+          scope.ticket.related_template = {
+            name: 'Not assigned'
+          }
+        }
+
       }
     };
   };

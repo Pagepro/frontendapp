@@ -14,7 +14,6 @@
         $scope.order = function (ticketsOrderBy) {
           // starting from reverse = false, so the 2nd click will toggle it to true
           // 3rd click will turn off the orderBy filter
-
           if (ticketsOrderBy !== $scope.ticketsOrderBy) {
             $scope.ticketsOrderBy = ticketsOrderBy;
             // here's a reset on changing filter name
