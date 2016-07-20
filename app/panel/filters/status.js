@@ -3,13 +3,19 @@
 
   var status = function () {
     return function(tickets, statusName, lol, kek) {
-
+      /*
+      *  1 - NEW
+      *  2 - Q&A
+      *  3 - REJECTED
+      *  4 - FINISHED
+      *  5 - IN PROGRESS
+      */
       var statusMap = {
-        active: [1, 2, 5],
-        finished: [3, 4]
+        active: [1, 2, 3, 5],
+        finished: [4]
       };
 
-      if (statusName) {
+      if (statusName && statusName !== 'none') {
 
         var allowedStatuses = _.find(statusMap, function (value, key) {
           if (_.lowerCase(key) === _.lowerCase(statusName)) {

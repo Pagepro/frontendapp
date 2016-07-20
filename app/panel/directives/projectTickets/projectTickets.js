@@ -9,7 +9,8 @@
       controller: ['$scope', function ($scope) {
         $scope.ticketsOrderBy = '';
         $scope.reverse = false;
-        $scope.filteredBy = $window.localStorage.ticketsFilter ? $window.localStorage.ticketsFilter : '';
+
+        $scope.filteredBy = $window.localStorage.ticketsFilter ? $window.localStorage.ticketsFilter : 'active';
 
         $scope.filterStatus = function (status, $event) {
           $event.preventDefault();
@@ -17,8 +18,8 @@
             $window.localStorage.ticketsFilter = status;
             $scope.filteredBy = status;
           } else {
-            $window.localStorage.ticketsFilter = '';
-            $scope.filteredBy = '';
+            $window.localStorage.ticketsFilter = 'none';
+            $scope.filteredBy = 'none';
           }
         };
 
