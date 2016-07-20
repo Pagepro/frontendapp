@@ -73,6 +73,7 @@ body.blocked {
         border-bottom: 1px solid $color_grey_0;
         background: rgba(255,255,255,.9);
         &.hidden {
+            visibility: hidden;
             opacity: 0;
             .sec--head {
                 &__inner {
