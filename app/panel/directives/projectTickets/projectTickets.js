@@ -10,7 +10,8 @@
         $scope.ticketsOrderBy = '';
         $scope.reverse = false;
 
-        $scope.filteredBy = $window.localStorage.ticketsFilter ? $window.localStorage.ticketsFilter : 'active';
+        // $scope.filteredBy = '$window.localStorage.ticketsFilter ? $window.localStorage.ticketsFilter : 'active';
+        $scope.filteredBy = 'active';
 
         $scope.filterStatus = function (status, $event) {
           $event.preventDefault();
@@ -18,8 +19,8 @@
             $window.localStorage.ticketsFilter = status;
             $scope.filteredBy = status;
           } else {
-            $window.localStorage.ticketsFilter = 'none';
-            $scope.filteredBy = 'none';
+            // $window.localStorage.ticketsFilter = 'none';
+            $scope.filteredBy = '';
           }
         };
 
