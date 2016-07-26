@@ -68,7 +68,7 @@
               url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/' + directory + '/',
               data: {
                 files: file,
-                name: file.name
+                name: file.name.replace(/\.[^/.]+$/, '')
               }
             })
             .progress(function(event) {
