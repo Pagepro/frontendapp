@@ -16,25 +16,23 @@
     .run(['$state',
       '$rootScope',
       'spinnerService',
-      function($state, $rootScope, spinnerService) {
-        $rootScope.global = function () {
-          console.log('dummy-text');
-          spinnerService.show('global');
-        };
-
-        $state.go('myProjectsState');
-
-        $rootScope.$on('$stateChangeStart', function () {
-          spinnerService.show('global');
+      '$timeout',
+      function($state, $rootScope, spinnerService, $timeout) {
+        // $state.go('myProjectsState');
+        $rootScope.$on('$stateChangeStart', function (data, data2, data3) {
+          // no "global" spinner registered hack
+          $timeout(function () {
+            spinnerService.show('global');
+          }, 0);
         });
-
         $rootScope.$on('$stateChangeSuccess', function(event, data) {
           if (!$rootScope.preventAutoScroll) {
-            // cross-browser scroll top hack
+            // cross-browser hack
             document.body.scrollTop = document.documentElement.scrollTop = 0;
           } else {
             $rootScope.preventAutoScroll = false;
           }
+
           $rootScope.pageName = data.pageName;
           $rootScope.module = data.module;
           $rootScope.trails = data.trails;
@@ -42,6 +40,7 @@
 
           $rootScope.displayTitle = data.displayTitle;
           spinnerService.hide('global');
+
         });
       }
     ]);

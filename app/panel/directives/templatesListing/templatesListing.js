@@ -9,9 +9,11 @@
         var templatesPromise;
         var order = [];
 
+
         scope.templates = null;
         scope.screenshotRoot = appSettings.screenshotRoot(239, 242);
         scope.activeInput = false;
+        scope.projectsFetched = false;
 
         spinnerService.show('templates-listing');
 
@@ -23,6 +25,7 @@
         };
 
         templatesService.getTemplates($stateParams.projectId).success(function(templates) {
+          scope.projectsFetched = true;
           scope.templates = templates;
           order = _.map(scope.templates, function(template) {
             template.order = template.id;

@@ -36,7 +36,7 @@
         </div>
     </div>
 </div>
-<div class="project-box__actions" ng-show="finishedFetching">
+<div class="project-box__actions" ng-if="projectsFetched">
     <a href="{{downloadAllLink(projectId)}}" class="action-btn">
         <span class="action-btn__content">
             <span class="label">Download all templates (<span class="qty">{{templates.length}}</span>)</span>

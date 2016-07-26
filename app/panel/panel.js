@@ -36,7 +36,12 @@
           controller: 'MyProjectsCtrl',
           controllerAs: 'MPC',
           pageName: 'My Projects',
-          module: 'panel'
+          module: 'panel',
+          resolve: {
+            projects: function(projectsService) {
+              return projectsService.getProjects(null, 'active');
+            }
+          }
         })
         .state('allProjectsState', {
           url: '/all-projects',
@@ -85,6 +90,16 @@
             params: {
               'projectId': null,
               'templateId': null
+            },
+            resolve: {
+              templates: function (templatesService, $stateParams) {
+                return templatesService.getTemplates($stateParams.projectId);
+              },
+              template: function (templates, $stateParams) {
+                return _.find(templates.data, function (template) {
+                  return template.id === $stateParams.templateId;
+                });
+              }
             }
           })
           .state('projectState.editTemplate', {
@@ -94,6 +109,11 @@
             controllerAs: 'ETC',
             pageName: 'Edit Template',
             module: 'panel',
+            resolve: {
+              template: function (templatesService, $stateParams) {
+                return templatesService.getTemplate($stateParams.projectId, $stateParams.templateId);
+              }
+            }
           })
         .state('ticketState', {
           url: '/project/:projectId/ticket/:ticketId',
@@ -109,7 +129,15 @@
           {
             name: 'Project Details',
             link: '4'
-          }]
+          }],
+          resolve: {
+            ticket: function (ticketsService, $stateParams) {
+              return ticketsService.getTicketDetails($stateParams.projectId, $stateParams.ticketId);
+            },
+            comments: function (commentsService, $stateParams) {
+              return commentsService.getComments($stateParams.projectId, $stateParams.ticketId);
+            }
+          }
         })
           .state('ticketState.editDetails', {
             templateUrl: 'app/panel/templates/submitBug.html',

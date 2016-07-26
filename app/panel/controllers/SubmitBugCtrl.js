@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService, $rootScope, spinnerService) {
+  var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService, $rootScope, spinnerService, templates, template) {
     $scope.staticContent = {
       title: 'Submit Bug',
       button: 'Create Ticket'
@@ -12,29 +12,12 @@
     $scope.description = '';
     $scope.isUploading = false;
     $scope.file = null;
-    $scope.template = null;
 
-    var init = function() {
-      angular.element('.input--file').nicefileinput();
-      // this may be a number or null, depending on whether user enters
-      // the view from url or from clicking a link with parameter
-      // if it's clicked, it simply adds additional feature of selecting propper template for him
+    $scope.templates = templates.data;
+    $scope.template = template;
 
-      templatesService.getTemplates($stateParams.projectId)
-        .success(function(templates) {
-          if (templates.length) {
-            $scope.template = _.find(templates, function (template) {
-              return template.id === $stateParams.templateId;
-            });
-            $scope.templates = templates;
-          } else {
-            toaster.pop('error', 'No templates yet.', 'There are no templates yet added to the project you\'re trying to add a ticket to. Please, first add a template, then add a ticket to it.');
-            $scope.returnToParent();
-          }
-        });
-    };
+    angular.element('.input--file').nicefileinput();
 
-    init();
 
     $scope.uploadFiles = function(file) {
       if ($scope.description.length) {
@@ -81,12 +64,11 @@
     };
 
     $scope.updateNameValue = function(filename) {
-      // fixme? Not sure, brute force value changing, since I can't access the element being created by nicefileinput
       angular.element('.NFI-filename').attr('value', filename);
     };
   };
 
-  SubmitBugCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'templatesService', 'appSettings', 'accountService', '$rootScope', 'spinnerService'];
+  SubmitBugCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'templatesService', 'appSettings', 'accountService', '$rootScope', 'spinnerService', 'templates', 'template'];
   angular.module('panelModule').controller('SubmitBugCtrl', SubmitBugCtrl);
 
 }());

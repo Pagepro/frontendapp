@@ -12,8 +12,8 @@
     <body ng-class="{'login': isAuth}" window-scroll>
         <header-section></header-section>
         <ui-view class="sec--main opacity-animation"></ui-view>
-        <spinner name="global" group="full-page" on-loaded="global()"></spinner>
         <toaster-container></toaster-container>
+        <spinner name="global" group="full-page" on-loaded="global()"></spinner>
         <confirmation-popup-container></confirmation-popup-container>
 
         <noscript>
