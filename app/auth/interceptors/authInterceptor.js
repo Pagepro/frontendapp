@@ -4,7 +4,6 @@
     return {
       request: function(config) {
         config.headers = config.headers || {};
-        config.unique = true;
         if ($window.localStorage.token) {
           config.headers.Authorization = 'Token ' + $window.localStorage.token;
         }

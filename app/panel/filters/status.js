@@ -2,7 +2,7 @@
   'use strict';
 
   var status = function () {
-    return function(tickets, statusName, lol, kek) {
+    return function(tickets, statusName) {
       /*
       *  1 - NEW
       *  2 - Q&A

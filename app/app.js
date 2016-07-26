@@ -15,8 +15,19 @@
     ])
     .run(['$state',
       '$rootScope',
-      function($state, $rootScope) {
+      'spinnerService',
+      function($state, $rootScope, spinnerService) {
+        $rootScope.global = function () {
+          console.log('dummy-text');
+          spinnerService.show('global');
+        };
+
         $state.go('myProjectsState');
+
+        $rootScope.$on('$stateChangeStart', function () {
+          spinnerService.show('global');
+        });
+
         $rootScope.$on('$stateChangeSuccess', function(event, data) {
           if (!$rootScope.preventAutoScroll) {
             // cross-browser scroll top hack
@@ -30,6 +41,7 @@
           $rootScope.isAuth = (data.module === 'auth');
 
           $rootScope.displayTitle = data.displayTitle;
+          spinnerService.hide('global');
         });
       }
     ]);

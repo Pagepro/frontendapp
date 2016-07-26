@@ -25,9 +25,10 @@
                 <div class="files-box__number">
                 </div>
                 <ol class="files-list">
-                    <li class="files-list__item" inline-ticket ng-repeat="ticket in tickets | orderBy: ticketsOrderBy:reverse | status:filteredBy"></li>
+                    <li class="files-list__item" inline-ticket ng-repeat="ticket in tickets | orderBy: ticketsOrderBy:reverse | status:filteredBy as filtered"></li>
                     <li class="files-list__item files-list__item--empty" ng-if="(tickets | status:filteredBy).length == 0">No tickets labeled as {{filteredBy}}</li>
                 </ol>
+                <p class="files-box__info" ng-if="filteredBy.length">Displaying {{filtered.length}} of {{tickets.length}} loaded tickets.</p>
             </div>
         </div>
     </div>
@@ -41,4 +42,4 @@
     </div>
 </div>
 
-<projects-placeholder placeholding="tickets" icon="box" ng-if="!tickets.length">
+<projects-placeholder placeholding="tickets" icon="box" ng-if="!tickets.length && ticketsFetched">

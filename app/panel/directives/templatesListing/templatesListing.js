@@ -13,9 +13,10 @@
         scope.screenshotRoot = appSettings.screenshotRoot(239, 242);
         scope.activeInput = false;
 
+        spinnerService.show('templates-listing');
+
         scope.displayType = $window.localStorage.getItem('displayType') || 'grid';
 
-        spinnerService.show('templates-listing');
 
         scope.downloadAllLink = function(projectId) {
           return appSettings.templatesSrc + projectId;

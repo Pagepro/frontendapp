@@ -48,7 +48,12 @@
           trails: [{
             name: 'My Projects',
             link: '#/my-projects'
-          }]
+          }],
+          resolve: {
+            allProjects: function (projectsService) {
+              return projectsService.getProjects(null, 'all');
+            }
+          }
         })
         .state('projectState', {
           url: '/project/:projectId',
@@ -63,7 +68,12 @@
           trails: [{
             name: 'My Projects',
             link: '#/my-projects'
-          }]
+          }],
+          resolve: {
+            project: function (projectsService, $stateParams) {
+              return projectsService.getProject($stateParams.projectId);
+            }
+          }
         })
           .state('projectState.submitBug', {
             url: '/new-ticket',

@@ -71,7 +71,10 @@
                 <li class="tickets-filter__option" ng-class="{active: filteredBy === 'active'}"><a href="#" class="tickets-filter__trigger" ng-click="filterStatus('active', $event)" title="Active">Active</a></li>
                 <li class="tickets-filter__option" ng-class="{active: filteredBy === 'finished' }"><a href="#" class="tickets-filter__trigger" ng-click="filterStatus('finished', $event)" title="Finished">Finished</a></li>
             </ul>
-            <div class="subsec__content" project-tickets></div>
+            <div class="subsec__content subsec__content--w-spinner">
+                <spinner name="tickets-spinner" group="local" on-loaded="init()"></spinner>
+                <project-tickets></project-tickets>
+            </div>
         </div>
     </section>
     <section class="subsec">
@@ -81,8 +84,8 @@
                     <span class="label">Project Files</span>
                 </h3>
             </div>
-            <div class="subsec__content">
-                <spinner name="files-spinner" group="local"></spinner>
+            <div class="subsec__content subsec__content--w-spinner">
+                <spinner name="files-spinner" group="local" on-loaded="init()"></spinner>
                 <project-files></project-files>
             </div>
         </div>

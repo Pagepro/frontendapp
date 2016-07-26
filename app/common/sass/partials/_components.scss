@@ -5579,6 +5579,14 @@ h1.breadcrumb {
 
         @extend %helper--flex--left--center;
     }
+    &__info {
+    margin-top: 30px;
+    margin-bottom: -15px;
+
+    font-size: 11px;
+
+    text-align: right;
+    }
     &__name,
     &__extention,
     &__size,

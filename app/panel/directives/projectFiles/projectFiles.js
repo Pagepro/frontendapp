@@ -7,13 +7,18 @@
       replace: true,
       templateUrl: 'app/panel/directives/projectFiles/projectFiles.html',
       link: function (scope) {
-        scope.files = null;
+        scope.files = [];
+        scope.filesFetched = false;
         scope.filesSrc = function (projectId) {
           return appSettings.filesSrc + projectId;
         };
 
         filesService.getFiles($stateParams.projectId).success(function(files) {
           scope.files = files;
+        })
+        .finally(function () {
+          scope.filesFetched = true;
+          spinnerService.hide('files-spinner');
         });
 
         scope.$on('files:added', function (params, id) {
@@ -24,10 +29,12 @@
                 scope.files = files;
               })
               .finally(function() {
-                spinnerService.hideAll();
+                spinnerService.hide('files-spinner');
               });
           }
         });
+
+        spinnerService.show('files-spinner');
 
         scope.removeFile = function(fileId) {
           if (confirm('Are you sure you want to remove this file?')) {
