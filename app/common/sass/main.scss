@@ -5,7 +5,6 @@
 /* Normalize
    ========================================================================== */
 @import "partials/normalize";
-@import "../animate";
 @import "sprites";
 @import "libs/breakpoint-sass/stylesheets/breakpoint";
 
@@ -17,6 +16,7 @@
    ========================================================================== */
 @import "partials/variables";
 
+@import "../animate";
 /* Mixins
    ========================================================================== */
 @import "partials/mixins";

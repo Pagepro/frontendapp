@@ -25,6 +25,7 @@ var jsFiles = [
   'libs/AngularJS-Toaster/toaster.js',
   'libs/jquery.customSelect/jquery.customSelect.js',
   'libs/jquery-nicefileinput/jquery.nicefileinput.js',
+  'libs/imagesloaded/imagesloaded.pkgd.js',
   'libs/lodash/lodash.js',
   'app/**/*.js'
 ];
