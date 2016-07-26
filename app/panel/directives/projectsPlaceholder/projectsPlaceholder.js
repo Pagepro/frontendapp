@@ -6,6 +6,7 @@
       templateUrl: 'app/panel/directives/projectsPlaceholder/projectsPlaceholder.html',
       link: function (scope, el, attr) {
         scope.thing = attr.placeholding;
+        scope.verb = attr.verb;
         scope.icon = attr.icon;
       }
     };
