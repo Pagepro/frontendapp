@@ -1764,7 +1764,8 @@ h1.breadcrumb {
                 background: $color_black;
             }
         }
-        &:focus {
+        &:focus,
+        &:active {
             outline: none;
         }
     }
@@ -3985,6 +3986,7 @@ h1.breadcrumb {
             }
         }
         &--link {
+            cursor: pointer;
             &:hover {
                 text-decoration: none;
             }
@@ -5431,6 +5433,7 @@ h1.breadcrumb {
 // Styleguide 16.14
 
 .ticket-id-link {
+    cursor: pointer;
     @extend %helper--flex--center--center;
 }
 
