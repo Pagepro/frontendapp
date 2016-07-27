@@ -26,7 +26,7 @@
                 <div class="file-data__template">
                     <div class="ticket-desc">
                         <p ng-if="!ticket.related_template.html_url" data-ellipsis data-ng-bind="ticket.related_template.name" data-ellipsis-symbol="..."></p>
-                        <a ng-if="ticket.related_template.name && ticket.related_template.html_url" data-ellipsis data-ng-bind="ticket.related_template.name" data-ellipsis-symbol="..." target="_blank" href="ticket.related_template.html_url"></a>
+                        <a ng-if="ticket.related_template.name && ticket.related_template.html_url" data-ellipsis data-ng-bind="ticket.related_template.name" data-ellipsis-symbol="..." target="_blank" href="{{ticket.related_template.html_url}}"></a>
                     </div>
                 </div>
                 <div class="file-data__ticket-date">
