@@ -33,8 +33,13 @@
           ticketsService.setTicketStatus(scope.projectId, scope.ticket.id, newStatus.code)
           .success(function (resp) {
             // scope.tickets is just a refference?? need to go deep in scope to acheive actual $apply
-            scope.$parent.$parent.tickets = _.map(scope.$parent.$parent.tickets, function (ticket) {
-              return (ticket.id === scope.ticket.id) ? resp : ticket;
+            // timeout for digest in progress error
+            $timeout(function () {
+              scope.$apply(function () {
+                scope.$parent.$parent.tickets = _.map(scope.$parent.$parent.tickets, function (ticket) {
+                  return (ticket.id === scope.ticket.id) ? resp : ticket;
+                });
+              });
             });
 
             scope.status = newStatus;

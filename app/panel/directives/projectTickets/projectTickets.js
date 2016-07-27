@@ -45,12 +45,11 @@
 
         $scope.loadRemainingTickets = function() {
           spinnerService.show('tickets-spinner');
+          console.log(ticketsPage);
           ticketsPage++;
           ticketsService.getTickets($stateParams.projectId, ticketsPage)
             .success(function(tickets) {
-              _.each(tickets.results, function(ticket) {
-                $scope.tickets.push(ticket);
-              });
+              $scope.tickets = _.concat($scope.tickets, tickets.results);
               $scope.ticketsLeft = tickets.count - $scope.tickets.length;
             })
             .finally(function() {
