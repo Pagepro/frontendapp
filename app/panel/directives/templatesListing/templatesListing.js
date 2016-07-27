@@ -21,15 +21,14 @@
           return appSettings.templatesSrc + projectId;
         };
 
-        templatesService.getTemplates($stateParams.projectId).success(function(templates) {
+        templatesService.getTemplates($stateParams.projectId).then(function(templates) {
           scope.projectsFetched = true;
           scope.templates = templates;
+          spinnerService.hide('templates-listing');
           order = _.map(scope.templates, function(template) {
             template.order = template.id;
             return template.id;
           });
-        }).finally(function() {
-          spinnerService.hide('templates-listing');
         });
 
         scope.dragControlListeners = {

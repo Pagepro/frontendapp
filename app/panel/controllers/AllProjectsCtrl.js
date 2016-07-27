@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   var AllProjectsCtrl = function($scope, allProjects) {
-    $scope.allProjects = allProjects.data.results;
+    $scope.allProjects = allProjects.results;
   };
 
   AllProjectsCtrl.$inject = ['$scope', 'allProjects'];

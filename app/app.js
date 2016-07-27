@@ -2,15 +2,19 @@
   'use strict';
 
   var frontendApp = angular.module('frontendApp', ['ui.router', 'ngAnimate', 'offClick', 'panelModule',
-    'dibari.angular-ellipsis', 'as.sortable', 'angularSpinners', 'toaster', 'ngFileUpload'
+    'dibari.angular-ellipsis', 'as.sortable', 'angularSpinners', 'toaster', 'ngFileUpload', 'angular-cache'
   ]);
   frontendApp
     .config(['$urlRouterProvider',
       '$httpProvider',
-      function($urlRouterProvider, $httpProvider) {
+      'CacheFactoryProvider',
+      function($urlRouterProvider, $httpProvider, CacheFactoryProvider) {
         $httpProvider.interceptors.push('authInterceptor');
         // $urlRouterProvider.otherwise('/auth/login');
         $urlRouterProvider.otherwise('/my-projects');
+
+        // 15 mins expiry time for cache
+        angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
       }
     ])
     .run(['$state',

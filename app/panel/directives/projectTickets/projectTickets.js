@@ -18,6 +18,7 @@
 
         ticketsPromise = ticketsService.getTickets($stateParams.projectId);
 
+
         ticketsPromise.success(function(tickets) {
             $scope.tickets = tickets.results;
             $scope.ticketsLeft = tickets.count - $scope.tickets.length;
@@ -45,7 +46,6 @@
 
         $scope.loadRemainingTickets = function() {
           spinnerService.show('tickets-spinner');
-          console.log(ticketsPage);
           ticketsPage++;
           ticketsService.getTickets($stateParams.projectId, ticketsPage)
             .success(function(tickets) {

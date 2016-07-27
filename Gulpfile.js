@@ -20,6 +20,7 @@ var jsFiles = [
   'libs/angular-ui-router/release/angular-ui-router.js',
   'libs/angular-animate/angular-animate.js',
   'libs/angular-off-click/offClick.js',
+  'libs/angular-cache/dist/angular-cache.js',
   'libs/angular-ellipsis/src/angular-ellipsis.js',
   'libs/ng-file-upload/ng-file-upload.js',
   'libs/AngularJS-Toaster/toaster.js',

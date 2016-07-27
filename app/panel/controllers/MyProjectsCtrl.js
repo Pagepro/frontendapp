@@ -2,7 +2,7 @@
   'use strict';
   var MyProjectsCtrl = function($scope, appSettings, projects) {
     $scope.screenshotRoot = appSettings.screenshotRoot(239, 242);
-    $scope.myProjects = projects.data.results;
+    $scope.myProjects = projects.results;
   };
 
   MyProjectsCtrl.$inject = ['$scope', 'appSettings', 'projects'];
