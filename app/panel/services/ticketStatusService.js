@@ -15,7 +15,7 @@
           break;
         case 2:
           ticketStatus.className = 'qa';
-          ticketStatus.labelContent = 'QA';
+          ticketStatus.labelContent = 'Q&A';
           break;
         case 3:
           ticketStatus.className = 'rejected';
