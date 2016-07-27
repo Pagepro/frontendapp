@@ -1,17 +1,17 @@
 <div class="files-list__item__inner">
     <div class="files-list__item__id">
-        <a ui-sref="ticketState({projectId: {{projectId}}, ticketId: {{ticket.id}}})" class="ticket-id-link">
+        <a ui-sref="ticketState({projectId: {{projectId}}, ticketId: {{ticket.id}}})" class="ticket-id-link" ng-class="{'active': linkActive}" >
             <span class="label">#<span class="ticket-id">{{ticket.id}}</span></span>
         </a>
     </div>
     <div class="files-list__item__content">
         <div class="file-data file-data--tickets">
             <div class="file-data__inner">
-                <div class="file-data__name">
+                <a class="file-data__name file-data__name--link" ui-sref="ticketState({projectId: {{projectId}}, ticketId: {{ticket.id}}})" ng-mouseenter="linkActive = true" ng-mouseleave="linkActive = false">
                     <div class="ticket-desc">
                         <p data-ellipsis data-ng-bind="ticket.description" data-ellipsis-symbol="...">{{ticket.description}}</p>
                     </div>
-                </div>
+                </a>
                 <div class="file-data__status">
                     <inline-toggler />
                 </div>

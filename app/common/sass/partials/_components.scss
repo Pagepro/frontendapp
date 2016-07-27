@@ -3977,6 +3977,14 @@ h1.breadcrumb {
                 text-overflow: ellipsis;
             }
         }
+        &--link {
+            &:hover {
+                text-decoration: none;
+            }
+            &:active {
+                outline: none;
+            }
+        }
     }
     &__template {
         width: 185px;
@@ -5489,7 +5497,8 @@ h1.breadcrumb {
                 color: $color_default;
 
                 @extend %helper--round--before--hover;
-                &:hover {
+                &:hover,
+                &.active  {
                     text-decoration: none;
 
                     color: $color_white;
@@ -5500,6 +5509,12 @@ h1.breadcrumb {
 
                         background: $color_red;
                     }
+                }
+                &.active {
+                    text-decoration: none;
+                    color: $color_white;
+                    background-color: $color_red;
+
                 }
             }
         }
