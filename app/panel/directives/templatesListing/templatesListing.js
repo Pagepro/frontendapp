@@ -5,10 +5,7 @@
       restrict: 'EA',
       templateUrl: 'app/panel/directives/templatesListing/templatesListing.html',
       link: function(scope) {
-        var order;
-        var templatesPromise;
         var order = [];
-
 
         scope.templates = null;
         scope.screenshotRoot = appSettings.screenshotRoot(239, 242);

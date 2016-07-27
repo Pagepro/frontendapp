@@ -227,6 +227,9 @@ object {
     .highlighted {
         font-weight: 700;
     }
+    a {
+        cursor: pointer;
+    }
 }
 h1.breadcrumb {
     letter-spacing: 1px;
@@ -821,6 +824,8 @@ h1.breadcrumb {
     line-height: 1.2;
     &__content {
         width: 100%;
+
+        cursor: pointer;
 
         @extend %helper--flex--center--center;
         .main-title {
@@ -1510,6 +1515,8 @@ h1.breadcrumb {
         padding: 0 $size_padding;
 
         background: $color_black;
+
+        cursor: pointer;
 
         @extend %helper--transition;
         @extend %helper--flex--center--center;
@@ -9403,6 +9410,9 @@ h1.breadcrumb {
         &.active {
             border-color: darken($color_red_dark, 12%);
         }
+    }
+    &__trigger {
+        cursor: pointer;
     }
     &__trigger,
     .tickets-filter-label  {
