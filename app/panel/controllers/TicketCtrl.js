@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var TicketCtrl = function($scope, $rootScope, $q, $state, $stateParams, commentsService, ticketsService, spinnerService, toaster, comments, ticket) {
+  var TicketCtrl = function($scope, $rootScope, $q, $state, $timeout, $stateParams, commentsService, ticketsService, spinnerService, toaster, comments, ticket) {
     var ticketPromise;
     var commentsPromise;
 
@@ -13,6 +13,7 @@
     $scope.projectId = $stateParams.projectId;
     $scope.ticketId = $stateParams.ticketId;
     $scope.processing = false;
+    $scope.submitted = false;
 
     angular.element('select').customSelect();
     /* to change link in trail(breadcrumbs link)
@@ -40,6 +41,13 @@
     };
 
     $scope.addComment = function(comment) {
+      if (!comment || !comment.content.length) {
+        $scope.submitted = true;
+        $timeout(function () {
+          $scope.submitted = false;
+        }, 5000);
+        return false;
+      }
       $scope.processing = true;
       commentsService.addComment(comment, $stateParams.projectId, $stateParams.ticketId)
         .success(function(newComment) {
@@ -54,6 +62,7 @@
         })
         .finally(function() {
           $scope.processing = false;
+          $scope.submitted = false;
         });
     };
 
@@ -78,7 +87,7 @@
     });
   };
 
-  TicketCtrl.$inject = ['$scope', '$rootScope', '$q', '$state', '$stateParams', 'commentsService', 'ticketsService', 'spinnerService', 'toaster', 'comments', 'ticket'];
+  TicketCtrl.$inject = ['$scope', '$rootScope', '$q', '$state', '$timeout', '$stateParams', 'commentsService', 'ticketsService', 'spinnerService', 'toaster', 'comments', 'ticket'];
   angular.module('panelModule').controller('TicketCtrl', TicketCtrl);
 
 }());
