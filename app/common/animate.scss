@@ -1,5 +1,8 @@
 .project-box__content--listing template-uploader {
     margin-right: 15px;
+    @include breakpoint($breakpoint_smartphone-medium) {
+        margin-bottom: 15px;
+    }
 }
 .dragover {
     background: #fcfcfc;
