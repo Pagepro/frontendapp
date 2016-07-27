@@ -2,7 +2,7 @@
   'use strict';
   var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, templatesService, appSettings, accountService, $rootScope, spinnerService, templates, template) {
     $scope.staticContent = {
-      title: 'Submit Bug',
+      title: 'Submit Ticket',
       button: 'Create Ticket'
     };
     var submitted = false;
