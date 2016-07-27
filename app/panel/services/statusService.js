@@ -27,7 +27,7 @@
           break;
         case 5:
           projectStatus.className = 'finished';
-          projectStatus.labelContent = 'Complete';
+          projectStatus.labelContent = 'Finished';
           break;
       }
       return projectStatus;
