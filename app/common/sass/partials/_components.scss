@@ -859,6 +859,10 @@ h1.breadcrumb {
                 }
             }
         }
+        &:active,
+        &:focus {
+            outline: none;
+        }
     }
     &__info {
         position: absolute;
