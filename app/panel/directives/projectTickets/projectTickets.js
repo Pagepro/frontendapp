@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  var projectTickets = function($window, $filter, $stateParams, ticketsService, toaster, spinnerService) {
+  var projectTickets = function($window, $stateParams, ticketsService, toaster, spinnerService) {
     return {
       isolate: false,
       restrict: 'EA',
@@ -90,7 +90,7 @@
     };
   };
 
-  projectTickets.$inject = ['$window', '$filter', '$stateParams', 'ticketsService', 'toaster', 'spinnerService'];
+  projectTickets.$inject = ['$window', '$stateParams', 'ticketsService', 'toaster', 'spinnerService'];
   angular.module('panelModule').directive('projectTickets', projectTickets);
 
 }());

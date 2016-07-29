@@ -68,16 +68,6 @@ gulp.task('watch', ['js'], function() {
 });
 
 
-
-gulp.task('movefiles', function() {
-  gulp.src('index.html')
-  .pipe(htmlreplace({
-    'js': 'dist/app.min.js',
-    tpl: '<body>My body</body>'
-  }))
-  .pipe(gulp.dest('index3.html'));
-});
-
 gulp.task('prod', ['movefiles', 'js'], function() {
   gulp.src(['app/common/img/*', 'app/common/img/**/*']).pipe(gulp.dest('dist/img'));
   gulp.src(['app/common/fonts/*']).pipe(gulp.dest('dist/fonts'));
@@ -97,7 +87,6 @@ gulp.task('prod', ['movefiles', 'js'], function() {
         'js': 'dist/app.min.js'
     }))
     .pipe(gulp.dest('./'))
-
 });
 
 gulp.task('sass', function() {

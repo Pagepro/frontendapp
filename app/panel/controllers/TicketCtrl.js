@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var TicketCtrl = function($scope, $rootScope, $q, $state, $timeout, $stateParams, commentsService, ticketsService, spinnerService, toaster, comments, ticket) {
+  var TicketCtrl = function($scope, $rootScope, $state, $timeout, $stateParams, commentsService, ticketsService, toaster, comments, ticket) {
     var ticketPromise;
     var commentsPromise;
 
@@ -87,7 +87,7 @@
     });
   };
 
-  TicketCtrl.$inject = ['$scope', '$rootScope', '$q', '$state', '$timeout', '$stateParams', 'commentsService', 'ticketsService', 'spinnerService', 'toaster', 'comments', 'ticket'];
+  TicketCtrl.$inject = ['$scope', '$rootScope', '$state', '$timeout', '$stateParams', 'commentsService', 'ticketsService', 'toaster', 'comments', 'ticket'];
   angular.module('panelModule').controller('TicketCtrl', TicketCtrl);
 
 }());
