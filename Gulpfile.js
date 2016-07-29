@@ -68,7 +68,7 @@ gulp.task('watch', ['js'], function() {
 });
 
 
-gulp.task('prod', ['movefiles', 'js'], function() {
+gulp.task('prod', ['js'], function() {
   gulp.src(['app/common/img/*', 'app/common/img/**/*']).pipe(gulp.dest('dist/img'));
   gulp.src(['app/common/fonts/*']).pipe(gulp.dest('dist/fonts'));
 
