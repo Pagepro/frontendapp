@@ -68,11 +68,38 @@ gulp.task('watch', ['js'], function() {
 });
 
 
-gulp.task('prod', ['js'], function() {
+gulp.task('test', function() {
   gulp.src(['app/common/img/*', 'app/common/img/**/*']).pipe(gulp.dest('dist/img'));
   gulp.src(['app/common/fonts/*']).pipe(gulp.dest('dist/fonts'));
 
-  gulp.src('dist/app.js')
+
+
+  gulp.src(jsFiles)
+    .pipe(sourcemaps.init())
+      .pipe(uglify())
+      .pipe(concat('app.min.js'))
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist'));
+
+
+  gulp.src('app/common/css/*.css')
+    .pipe(cssmin())
+    .pipe(gulp.dest('dist/css'));
+
+  gulp.src('./index.html')
+    .pipe(htmlreplace({
+        'js': 'dist/app.min.js'
+    }))
+    .pipe(gulp.dest('./'))
+});
+
+
+
+gulp.task('prod', function() {
+  gulp.src(['app/common/img/*', 'app/common/img/**/*']).pipe(gulp.dest('dist/img'));
+  gulp.src(['app/common/fonts/*']).pipe(gulp.dest('dist/fonts'));
+
+  gulp.src(jsFiles)
     .pipe(concat('app.min.js'))
     .pipe(uglify())
     .pipe(gulp.dest('dist'));
@@ -91,7 +118,6 @@ gulp.task('prod', ['js'], function() {
 
 gulp.task('sass', function() {
   gulp.src('./app/common/sass/**/*.scss')
-    .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./app/common/css'))
