@@ -9,6 +9,9 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var cssmin = require('gulp-cssmin');
 var run = require('gulp-run');
+var exec = require('child_process').exec;
+var htmlreplace = require('gulp-html-replace');
+
 
 var spawn = require('child_process').spawn;
 var node;
@@ -65,7 +68,17 @@ gulp.task('watch', ['js'], function() {
 });
 
 
-gulp.task('prod', ['js'], function() {
+
+gulp.task('movefiles', function() {
+  gulp.src('index.html')
+  .pipe(htmlreplace({
+    'js': 'dist/app.min.js',
+    tpl: '<body>My body</body>'
+  }))
+  .pipe(gulp.dest('index3.html'));
+});
+
+gulp.task('prod', ['movefiles', 'js'], function() {
   gulp.src(['app/common/img/*', 'app/common/img/**/*']).pipe(gulp.dest('dist/img'));
   gulp.src(['app/common/fonts/*']).pipe(gulp.dest('dist/fonts'));
 
@@ -78,6 +91,13 @@ gulp.task('prod', ['js'], function() {
   gulp.src('app/common/css/*.css')
     .pipe(cssmin())
     .pipe(gulp.dest('dist/css'));
+
+  gulp.src('./index.html')
+    .pipe(htmlreplace({
+        'js': 'dist/app.min.js'
+    }))
+    .pipe(gulp.dest('./'))
+
 });
 
 gulp.task('sass', function() {
