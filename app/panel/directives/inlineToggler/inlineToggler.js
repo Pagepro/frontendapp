@@ -43,7 +43,7 @@
             });
 
             scope.status = newStatus;
-            toaster.pop('success', 'Ticket\'s status successfully changed to ' + _.lowerCase(newStatus.labelContent));
+            toaster.pop('success', 'Ticket\'s status successfully changed to \"' + newStatus.labelContent + '\"');
           })
           .error(function() {
             toaster.pop('error', 'Couldn\'t update status.');

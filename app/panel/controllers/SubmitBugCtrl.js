@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var SubmitBugCtrl = function($scope, $state, $stateParams, toaster, Upload, appSettings, spinnerService, templates, template) {
+  var SubmitBugCtrl = function($scope, $rootScope, $state, $stateParams, toaster, Upload, appSettings, spinnerService, templates, template) {
     $scope.staticContent = {
       title: 'Submit Ticket',
       button: 'Create Ticket'
@@ -68,7 +68,7 @@
     };
   };
 
-  SubmitBugCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'appSettings', 'spinnerService', 'templates', 'template'];
+  SubmitBugCtrl.$inject = ['$scope', '$rootScope', '$state', '$stateParams', 'toaster', 'Upload', 'appSettings', 'spinnerService', 'templates', 'template'];
   angular.module('panelModule').controller('SubmitBugCtrl', SubmitBugCtrl);
 
 }());

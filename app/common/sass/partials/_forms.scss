@@ -51,7 +51,7 @@
             position: relative;
             z-index: 3;
 
-            width: $size_input_h;
+            width: 475px;
             height: $size_input_v;
             padding: 0 $size_acces-tool_h 0 $size_padding;
 
@@ -826,7 +826,8 @@
             .field {
                 position: relative;
                 &--select {
-                    width: $size_input_h;
+                    // width: $size_input_h;
+                    width: 475px;
 
                     font-size: 15px;
                     font-weight: 300;
