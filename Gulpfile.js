@@ -106,12 +106,14 @@ gulp.task('prod', function() {
 
 
   gulp.src('app/common/css/*.css')
+    .pipe(concat('main.min.css'))
     .pipe(cssmin())
     .pipe(gulp.dest('dist/css'));
 
   gulp.src('./index.html')
     .pipe(htmlreplace({
-        'js': 'dist/app.min.js'
+        'js': 'dist/app.min.js',
+        'css': 'dist/css/main.min.css'
     }))
     .pipe(gulp.dest('./'))
 });

@@ -38,9 +38,9 @@
           pageName: 'My Projects',
           module: 'panel',
           resolve: {
-            projects: function(projectsService) {
+            projects: ['projectsService', function(projectsService) {
               return projectsService.getProjects(null, 'active');
-            }
+            }]
           }
         })
         .state('allProjectsState', {
@@ -55,9 +55,9 @@
             link: '#/my-projects'
           }],
           resolve: {
-            allProjects: function (projectsService) {
+            allProjects: ['projectsService', function (projectsService) {
               return projectsService.getProjects(null, 'all');
-            }
+            }]
           }
         })
         .state('projectState', {
@@ -75,9 +75,9 @@
             link: '#/my-projects'
           }],
           resolve: {
-            project: function (projectsService, $stateParams) {
+            project: ['projectsService', '$stateParams', function (projectsService, $stateParams) {
               return projectsService.getProject($stateParams.projectId);
-            }
+            }]
           }
         })
           .state('projectState.submitBug', {
@@ -92,14 +92,14 @@
               'templateId': null
             },
             resolve: {
-              templates: function (templatesService, $stateParams) {
+              templates: ['templatesService', '$stateParams', function (templatesService, $stateParams) {
                 return templatesService.getTemplates($stateParams.projectId);
-              },
-              template: function (templates, $stateParams) {
+              }],
+              template: ['templates', '$stateParams', function (templates, $stateParams) {
                 return _.find(templates, function (template) {
                   return template.id === $stateParams.templateId;
                 });
-              }
+              }]
             }
           })
           .state('projectState.editTemplate', {
@@ -110,9 +110,9 @@
             pageName: 'Edit Template',
             module: 'panel',
             resolve: {
-              template: function (templatesService, $stateParams) {
+              template: ['templatesService', '$stateParams', function (templatesService, $stateParams) {
                 return templatesService.getTemplate($stateParams.projectId, $stateParams.templateId);
-              }
+              }]
             }
           })
         .state('ticketState', {
@@ -131,12 +131,12 @@
             link: '4'
           }],
           resolve: {
-            ticket: function (ticketsService, $stateParams) {
+            ticket: ['ticketsService', '$stateParams', function (ticketsService, $stateParams) {
               return ticketsService.getTicketDetails($stateParams.projectId, $stateParams.ticketId);
-            },
-            comments: function (commentsService, $stateParams) {
+            }],
+            comments: ['commentsService', '$stateParams', function (commentsService, $stateParams) {
               return commentsService.getComments($stateParams.projectId, $stateParams.ticketId);
-            }
+            }]
           }
         })
           .state('ticketState.editDetails', {
