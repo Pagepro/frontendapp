@@ -13,7 +13,7 @@
     $scope.isUploading = false;
     $scope.file = null;
 
-    $scope.templates = templates.data;
+    $scope.templates = templates;
     $scope.template = template;
 
     angular.element('.input--file').nicefileinput();

@@ -96,7 +96,7 @@
                 return templatesService.getTemplates($stateParams.projectId);
               },
               template: function (templates, $stateParams) {
-                return _.find(templates.data, function (template) {
+                return _.find(templates, function (template) {
                   return template.id === $stateParams.templateId;
                 });
               }
