@@ -68,7 +68,8 @@
           pageName: 'Project Details',
           module: 'panel',
           params: {
-            'projectId': null
+            'projectId': null,
+            'anchor': null
           },
           trails: [{
             name: 'My Projects',

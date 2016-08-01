@@ -5,7 +5,7 @@
     return {
       restrict: 'AE',
       templateUrl: 'app/panel/directives/inlineTicket/inlineTicket.html',
-      link: function (scope) {
+      link: function (scope, element) {
         scope.status = ticketStatusService.getStatus(scope.ticket.status);
         scope.location = $location.path();
 

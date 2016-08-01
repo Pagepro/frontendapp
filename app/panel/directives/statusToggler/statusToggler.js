@@ -8,7 +8,7 @@
       scope: false,
       templateUrl: 'app/panel/directives/statusToggler/statusToggler.html',
       link: function(scope) {
-        scope.currentStatus = 1;
+        scope.currentStatus = scope.ticket.status || 1;
         /*
 
         On the order of the status codes here,
@@ -27,6 +27,7 @@
         scope.getStatus = ticketStatusService.getStatus;
         scope.statusListVisible = false;
         scope.setTicketStatus = function(newStatus) {
+          console.log(newStatus);
           var statusHolder = scope.currentStatus;
           if (statusHolder !== newStatus) {
             ticketsService.setTicketStatus(scope.projectId, scope.ticketId, newStatus)
