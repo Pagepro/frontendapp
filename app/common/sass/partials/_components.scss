@@ -844,7 +844,7 @@ h1.breadcrumb {
                 background: $color_default;
 
                 @extend %helper--after--absolute;
-                @extend %helper--tansition;
+                @extend %helper--transition;
             }
         }
         .icon--open-big--left {
@@ -879,7 +879,7 @@ h1.breadcrumb {
 
         margin: 0 auto;
 
-        @extend %helper--tansition;
+        @extend %helper--transition;
         @extend %helper--flex--center--top;
         .tooltip {
             margin-top: $size_padding_medium;
