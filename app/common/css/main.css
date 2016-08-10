@@ -1813,7 +1813,8 @@ a {
     max-width: 48%; }
     .ticket-form .form__fieldset .NFI-wrapper .NFI-button .NFI-current {
       width: calc(100vw - 15px * 4); }
-  .ticket-form .form__fieldset .field--select {
+  .ticket-form .form__fieldset .field--select,
+  .ticket-form .form__fieldset .field--select select {
     width: 100%; } }
 
 @media (max-width: 400px) {
