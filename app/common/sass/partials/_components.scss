@@ -1507,6 +1507,27 @@ h1.breadcrumb {
     position: relative;
 
     display: inline-block;
+    [data-tickets] {
+        position: relative;
+        &:after {
+            background-color: $color_red_dark;
+            border: solid 2px $color_white;
+            content: attr(data-tickets);
+            width: 18px;
+            color: $color_white;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 800;
+            height: 18px;
+            text-align: center;
+            position: absolute;
+            top: 15%;
+            right: 15%;
+            line-height: 15px;
+            text-indent: 1px;
+        }
+    }
+
     &__content {
         position: relative;
         z-index: 1;

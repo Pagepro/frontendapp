@@ -40,7 +40,6 @@
           }).success(function() {
             toaster.pop('success', 'Success!', 'Your ticket has been added.');
             submitted = true;
-            $scope.returnToParent();
           })
           .error(function() {
             toaster.pop('error', 'Ooops!', 'Something went wrong. Please do not give up and try again! :)');
