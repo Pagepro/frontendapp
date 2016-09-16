@@ -131,6 +131,12 @@
                                     <span class="icon icon--pencil"></span>
                                 </span>
                             </a>
+                            <a ng-click="removeTicket(ticket.id)" class="action-btn action-btn--grey" ng-if="ticket.can_delete">
+                                <span class="action-btn__content">
+                                    <span class="label">Delete ticket</span>
+                                    <span class="icon icon--trash"></span>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>

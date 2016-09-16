@@ -13,6 +13,9 @@
     this.getTicketDetails = function(projectId, ticketId) {
       return $http.get(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + ticketId + '/');
     };
+    this.removeTicket = function(projectId, ticketId) {
+      return $http.delete(appSettings.apiRoot + 'projects/' + projectId + '/tickets/' + ticketId + '/')
+    }
   };
 
   ticketsService.$inject = ['$http', 'appSettings'];

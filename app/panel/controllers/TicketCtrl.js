@@ -40,6 +40,22 @@
       }
     };
 
+    $scope.removeTicket = function(ticketId) {
+      if (confirm('Are you sure you want to remove this ticket?')) {
+        ticketsService.removeTicket($stateParams.projectId, ticketId)
+        .success(function(response) {
+          toaster.pop('success', 'Ticket deleted successfully.');
+          $state.go('projectState', {
+            projectId: $stateParams.projectId
+          });
+        })
+        .error(function(response) {
+          toaster.pop('error', 'Couldn\'t remove the ticket.');
+        })
+      }
+
+    };
+
     $scope.addComment = function(comment) {
       if (!comment || !comment.content.length) {
         $scope.submitted = true;
