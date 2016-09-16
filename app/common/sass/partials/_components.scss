@@ -7499,8 +7499,10 @@ h1.breadcrumb {
         }
         &--display-mode {
             font-size: 45px;
+            line-height: 45px;
             &--alt {
-                font-size: 41px;
+                font-size: 42px;
+                line-height: 45px;
             }
         }
     }
