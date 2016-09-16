@@ -20,6 +20,10 @@
 
 
     $scope.uploadFiles = function(file) {
+      if (file && !$scope.template) {
+        toaster.pop('error', 'Cannot do that', 'You need to specify a template if you want to create a ticket with a screenshow.');
+        return false;;
+      }
       if ($scope.description.length) {
         spinnerService.show('ticket-spinner');
         var data = {
