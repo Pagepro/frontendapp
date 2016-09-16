@@ -22,9 +22,7 @@
                 <div class="ticket-box">
                     <div class="ticket-box__content">
                         <div class="ticket-description">
-                            <p>
-                                {{ticket.description}}
-                            </p>
+                            <p ng-bind-html="ticket.html_description"></p>
                         </div>
                     </div>
                 </div>

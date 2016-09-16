@@ -35,6 +35,7 @@
     "angular-bootstrap": "~0.14.3",
     "ng-sortable": "~1.3.2",
     "angular-images-loaded": "^0.2.0",
-    "angular-cache": "^4.6.0"
+    "angular-cache": "^4.6.0",
+    "angular-sanitize": "^1.5.8"
   }
 }

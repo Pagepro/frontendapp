@@ -27,7 +27,6 @@
         scope.getStatus = ticketStatusService.getStatus;
         scope.statusListVisible = false;
         scope.setTicketStatus = function(newStatus) {
-          console.log(newStatus);
           var statusHolder = scope.currentStatus;
           if (statusHolder !== newStatus) {
             ticketsService.setTicketStatus(scope.projectId, scope.ticketId, newStatus)

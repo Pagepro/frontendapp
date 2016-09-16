@@ -27,6 +27,7 @@ var jsFiles = [
   'libs/angular-ellipsis/src/angular-ellipsis.js',
   'libs/ng-file-upload/ng-file-upload.js',
   'libs/AngularJS-Toaster/toaster.js',
+  'libs/angular-sanitize/angular-sanitize.js',
   'libs/jquery.customSelect/jquery.customSelect.js',
   'libs/jquery-nicefileinput/jquery.nicefileinput.js',
   'libs/imagesloaded/imagesloaded.pkgd.js',
