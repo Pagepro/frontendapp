@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var EditTemplateCtrl = function($scope, $state, $stateParams, toaster, Upload, appSettings, $rootScope, template) {
+  var EditTemplateCtrl = function($scope, $state, $stateParams, toaster, Upload, appSettings, $rootScope, template, templatesService) {
     $scope.isUploading = false;
     $scope.file = null;
 
@@ -39,6 +39,7 @@
         }).success(function() {
           toaster.pop('success', 'Success!', 'You have successfully updated the template.');
           changed = true;
+          templatesService.removeCache(1);
           $scope.returnToProject();
         })
         .error(function() {
@@ -60,7 +61,7 @@
 
   };
 
-  EditTemplateCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'appSettings', '$rootScope', 'template'];
+  EditTemplateCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'appSettings', '$rootScope', 'template', 'templatesService'];
   angular.module('panelModule').controller('EditTemplateCtrl', EditTemplateCtrl);
 
 }());

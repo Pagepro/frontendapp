@@ -33,6 +33,12 @@
     this.updateOrder = function(sortedArray) {
       return $http.post(appSettings.apiRoot + 'projects/' + self.projectId + '/set_order/', sortedArray);
     };
+    this.removeCache = function(templateId) {
+      var templatesCache = CacheFactory.get('templatesCache');
+      if (templateId) {
+        templatesCache.remove(self.projectId, templateId)
+      } else { /* ...remove all */ }
+    }
   };
 
   templatesService.$inject = ['$http', '$q', 'appSettings', 'CacheFactory'];
