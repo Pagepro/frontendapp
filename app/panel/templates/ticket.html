@@ -174,9 +174,7 @@
                                             <time class="comment-date" datetime="{{comment.date}}">{{comment.date | date:'dd-MM-yyyy HH:mm'}}</time>
                                         </div>
                                         <div class="comment__info__content">
-                                            <p>
-                                                {{comment.content}}
-                                            </p>
+                                            <p ng-bind-html="comment.html_content">></p>
                                         </div>
                                     </div>
                                 </div>
