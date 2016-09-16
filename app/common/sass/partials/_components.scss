@@ -8970,6 +8970,11 @@ h1.breadcrumb {
 
                 font-size: 18px;
             }
+            &--attach {
+                font-size: 19px;
+                top: -1px;
+                position: relative;
+            }
         }
     }
     &__content {

@@ -609,6 +609,10 @@ The `sprites` mixin generates identical output to the CSS template
   content: '\e82b'; }
 
 /* '' */
+.icon--attach:before {
+  content: '\e82c'; }
+
+/* '' */
 /* Variables (colors, sizes, fonts)
    ========================================================================== */
 /* ==========================================================================
@@ -4026,6 +4030,10 @@ h1.breadcrumb {
   .ticket-details-info__head .icon--screen {
     padding-top: 2px;
     font-size: 18px; }
+  .ticket-details-info__head .icon--attach {
+    font-size: 19px;
+    top: -1px;
+    position: relative; }
 
 .ticket-details-info__content .details {
   margin: 0;
