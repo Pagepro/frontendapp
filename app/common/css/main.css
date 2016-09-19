@@ -466,7 +466,7 @@ The `sprites` mixin generates identical output to the CSS template
 
 /* '' */
 .icon--angle--right:before {
-  content: '\e803'; }
+  content: '\e804'; }
 
 /* '' */
 .icon--angle--up:before {
@@ -2078,7 +2078,7 @@ h1.breadcrumb {
     margin-left: calc(30px / 2);
     font-family: "fontello";
     font-size: 6px;
-    content: '\e803'; }
+    content: '\e804'; }
   .breadcrumbs__item:last-child {
     margin-right: 0; }
     .breadcrumbs__item:last-child:after {
