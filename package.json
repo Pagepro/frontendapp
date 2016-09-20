@@ -1,6 +1,6 @@
 {
   "name": "FrontendApp",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Based on AngularJS and Django Rest Framework web app is a tool for you to comunicate with your client. Then can upload files, see the progress and contact your team, and you can see whether they are happy with how the job is being done or not.",
   "authors": [
     "Kuba Wiszniewski <kuba.wiszniewski@pagepro.pl>",

@@ -20,7 +20,7 @@
 
   angular.module('frontendApp').value('appSettings', {
     title: 'Fronted App',
-    verion: '1.0.3',
+    verion: '1.0.4',
     apiRoot: environment.apiRoot,
 
     fileRoot: environment.baseUrl + 'projects/download/file/',
