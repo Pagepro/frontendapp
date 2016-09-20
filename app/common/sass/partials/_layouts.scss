@@ -261,13 +261,13 @@ body.blocked {
     min-height: 100%;
 
     background: rgba(0,0,0,.8);
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
 
-    @extend %helper--flex--stretch;
+    overflow: auto;
+
     &__inner {
-        @extend %helper--flex--center--center;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        display: block;
     }
 }
