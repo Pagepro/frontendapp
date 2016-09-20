@@ -1976,12 +1976,15 @@ body.blocked {
   height: 100vh;
   min-height: 100%;
   background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
   overflow: auto; }
   .sec--popup__inner {
-    display: block; }
+    min-height: 100vh;
+    padding-bottom: 20px;
+    display: block;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center; }
 
 /* Layout Components
    ========================================================================== */
