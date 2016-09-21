@@ -34,9 +34,9 @@
             method: 'PUT',
             data: {
               file: file,
-              browsers: $scope.browsers,
-              description: $scope.description,
-              screenshot_url: $scope.url,
+              browsers: $scope.browsers || '',
+              description: $scope.description || '',
+              screenshot_url: $scope.url || '',
               template: _.parseInt($scope.template.id)
             }
           }).success(function() {

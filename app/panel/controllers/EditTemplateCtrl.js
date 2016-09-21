@@ -30,6 +30,12 @@
       if (file) {
         data.files = tmpfile;
       }
+
+      // get rid of all the nulls
+      data = _.transform(data, function(result, value, key) {
+        result[key] = value || ''
+      });
+
       // workaround to avoid empty file submission
 
       tmpfile = Upload.upload({
