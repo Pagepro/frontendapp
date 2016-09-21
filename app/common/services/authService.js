@@ -17,13 +17,8 @@
       return $http.post(baseApiUrl + 'accounts/', user);
     };
     this.logout = function () {
-      var dfd = $q.defer();
-
-      $http.get(baseUrl + 'logout/').success(function (data) {
-        dfd.resolve(data);
-      });
-
-      return dfd.promise;
+      $window.localStorage.removeItem('token');
+      $window.location.href = appSettings.redirectionUrl + 'logout/';
     };
   };
 

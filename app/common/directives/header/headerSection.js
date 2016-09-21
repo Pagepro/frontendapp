@@ -18,10 +18,7 @@
         };
         scope.logout = function() {
           scope.hideMenu();
-          authService.logout().then(function() {
-            $window.localStorage.removeItem('token');
-            $window.location('http://frontendapp.com');
-          });
+          authService.logout();
         };
       }
     };
