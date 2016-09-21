@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var TicketCtrl = function($scope, $rootScope, $state, $timeout, $stateParams, commentsService, ticketsService, toaster, comments, ticket) {
+  var TicketCtrl = function($scope, $rootScope, $state, $timeout, $stateParams, commentsService, ticketsService, templatesService, toaster, comments, ticket) {
     var ticketPromise;
     var commentsPromise;
 
@@ -45,6 +45,7 @@
         ticketsService.removeTicket($stateParams.projectId, ticketId)
         .success(function(response) {
           toaster.pop('success', 'Ticket deleted successfully.');
+          templatesService.removeCache($stateParams.projectId);
           $state.go('projectState', {
             projectId: $stateParams.projectId
           });
@@ -103,7 +104,7 @@
     });
   };
 
-  TicketCtrl.$inject = ['$scope', '$rootScope', '$state', '$timeout', '$stateParams', 'commentsService', 'ticketsService', 'toaster', 'comments', 'ticket'];
+  TicketCtrl.$inject = ['$scope', '$rootScope', '$state', '$timeout', '$stateParams', 'commentsService', 'ticketsService', 'templatesService', 'toaster', 'comments', 'ticket'];
   angular.module('panelModule').controller('TicketCtrl', TicketCtrl);
 
 }());
