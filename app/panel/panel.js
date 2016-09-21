@@ -36,7 +36,12 @@
           controller: 'MyProjectsCtrl',
           controllerAs: 'MPC',
           pageName: 'My Projects',
-          module: 'panel'
+          module: 'panel',
+          resolve: {
+            projects: ['projectsService', function(projectsService) {
+              return projectsService.getProjects(null, 'active');
+            }]
+          }
         })
         .state('allProjectsState', {
           url: '/all-projects',
@@ -48,7 +53,12 @@
           trails: [{
             name: 'My Projects',
             link: '#/my-projects'
-          }]
+          }],
+          resolve: {
+            allProjects: ['projectsService', function (projectsService) {
+              return projectsService.getProjects(null, 'all');
+            }]
+          }
         })
         .state('projectState', {
           url: '/project/:projectId',
@@ -58,12 +68,18 @@
           pageName: 'Project Details',
           module: 'panel',
           params: {
-            'projectId': null
+            'projectId': null,
+            'anchor': null
           },
           trails: [{
             name: 'My Projects',
             link: '#/my-projects'
-          }]
+          }],
+          resolve: {
+            project: ['projectsService', '$stateParams', function (projectsService, $stateParams) {
+              return projectsService.getProject($stateParams.projectId);
+            }]
+          }
         })
           .state('projectState.submitBug', {
             url: '/new-ticket',
@@ -75,6 +91,16 @@
             params: {
               'projectId': null,
               'templateId': null
+            },
+            resolve: {
+              templates: ['templatesService', '$stateParams', function (templatesService, $stateParams) {
+                return templatesService.getTemplates($stateParams.projectId);
+              }],
+              template: ['templates', '$stateParams', function (templates, $stateParams) {
+                return _.find(templates, function (template) {
+                  return template.id === $stateParams.templateId;
+                });
+              }]
             }
           })
           .state('projectState.editTemplate', {
@@ -83,7 +109,12 @@
             controller: 'EditTemplateCtrl',
             controllerAs: 'ETC',
             pageName: 'Edit Template',
-            module: 'panel'
+            module: 'panel',
+            resolve: {
+              template: ['templatesService', '$stateParams', function (templatesService, $stateParams) {
+                return templatesService.getTemplate($stateParams.projectId, $stateParams.templateId);
+              }]
+            }
           })
         .state('ticketState', {
           url: '/project/:projectId/ticket/:ticketId',
@@ -99,11 +130,19 @@
           {
             name: 'Project Details',
             link: '4'
-          }]
+          }],
+          resolve: {
+            ticket: ['ticketsService', '$stateParams', function (ticketsService, $stateParams) {
+              return ticketsService.getTicketDetails($stateParams.projectId, $stateParams.ticketId);
+            }],
+            comments: ['commentsService', '$stateParams', function (commentsService, $stateParams) {
+              return commentsService.getComments($stateParams.projectId, $stateParams.ticketId);
+            }]
+          }
         })
           .state('ticketState.editDetails', {
             templateUrl: 'app/panel/templates/submitBug.html',
-            controller: 'EditDescriptionController',
+            controller: 'EditDescriptionCtrl',
             controllerAs: 'EDC',
             pageName: 'Edit Description',
             module: 'panel',

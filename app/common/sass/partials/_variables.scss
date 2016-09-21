@@ -20,6 +20,7 @@ $color_red:                 #e65962;
 $color_green:               #6dc729;
 $color_blue:                #4f7dc1;
 $color_purple:              #a96dbc;
+$color_teal:				#56CDE5;
 
 /* Sizes
 ========================================================================== */
@@ -73,7 +74,8 @@ $size_filename_id:							54px;
 
 /* Breakpoints
 ========================================================================== */
-$breakpoint_tablet:             				max-width 1100px;
+$breakpoint_tablet:                     max-width 1100px;
+$breakpoint_tablet-special-0:             				max-width 938px;
 $breakpoint_tablet-special:             		max-width 913px;
 $breakpoint_tablet-mini:        				max-width 860px;
 $breakpoint_smartphone-big:         			max-width 825px;

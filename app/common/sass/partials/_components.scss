@@ -227,6 +227,9 @@ object {
     .highlighted {
         font-weight: 700;
     }
+    a {
+        cursor: pointer;
+    }
 }
 h1.breadcrumb {
     letter-spacing: 1px;
@@ -247,7 +250,7 @@ h1.breadcrumb {
             font-family: $font_ico;
             font-size: 6px;
 
-            content: '\e803';
+            content: '\e804';
         }
         &:last-child {
             margin-right: 0;
@@ -405,8 +408,6 @@ h1.breadcrumb {
         width: 7px;
         height: 6px;
 
-        background: $color_white;
-
         @extend %helper--flex--center--center;
         .icon {
             color: $color_grey_3;
@@ -417,11 +418,30 @@ h1.breadcrumb {
                 height: 6px;
                 margin: 0;
                 padding-left: 1px;
+                z-index: 2;
+
 
                 font-size: 16px;
 
                 @extend %helper--flex--center--center;
             }
+            &:after {
+                position: absolute;
+                z-index: 1;
+                top: 4px;
+                left: -1px;
+
+                display: block;
+
+                width: 10px;
+                height: 10px;
+
+                content: '';
+                transform: rotate(45deg);
+
+                background: $color_white;
+            }
+
         }
     }
     &__content {
@@ -517,6 +537,8 @@ h1.breadcrumb {
     width: $size_acces-tool_v;
     height: $size_acces-tool_v;
 
+    text-transform: uppercase;
+
     border-radius: 50%;
     background: $color_red;
 
@@ -535,6 +557,7 @@ h1.breadcrumb {
         background: $color_black;
     }
 }
+
 
 // Action button - example 1
 //
@@ -802,6 +825,8 @@ h1.breadcrumb {
     &__content {
         width: 100%;
 
+        cursor: pointer;
+
         @extend %helper--flex--center--center;
         .main-title {
             position: relative;
@@ -819,7 +844,7 @@ h1.breadcrumb {
                 background: $color_default;
 
                 @extend %helper--after--absolute;
-                @extend %helper--tansition;
+                @extend %helper--transition;
             }
         }
         .icon--open-big--left {
@@ -839,6 +864,10 @@ h1.breadcrumb {
                 }
             }
         }
+        &:active,
+        &:focus {
+            outline: none;
+        }
     }
     &__info {
         position: absolute;
@@ -850,7 +879,7 @@ h1.breadcrumb {
 
         margin: 0 auto;
 
-        @extend %helper--tansition;
+        @extend %helper--transition;
         @extend %helper--flex--center--top;
         .tooltip {
             margin-top: $size_padding_medium;
@@ -926,6 +955,7 @@ h1.breadcrumb {
 // Styleguide 8.1
 
 .status-label {
+    position: relative;
     @extend %helper--label;
     &--new {
         background: $color_black;
@@ -942,6 +972,9 @@ h1.breadcrumb {
     }
     &--rejected {
         background: $color_red_dark;
+    }
+    &--resolved {
+        background: $color_teal;
     }
 }
 
@@ -1043,8 +1076,6 @@ h1.breadcrumb {
         cursor: pointer;
 
         opacity: 0;
-
-        @extend %helper--transition;
         .status-label {
             width: 100%;
             height: 100%;
@@ -1479,6 +1510,27 @@ h1.breadcrumb {
     position: relative;
 
     display: inline-block;
+    [data-tickets] {
+        position: relative;
+        &:after {
+            background-color: $color_red_dark;
+            border: solid 2px $color_white;
+            content: attr(data-tickets);
+            width: 18px;
+            color: $color_white;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 800;
+            height: 18px;
+            text-align: center;
+            position: absolute;
+            top: 15%;
+            right: 15%;
+            line-height: 15px;
+            text-indent: 1px;
+        }
+    }
+
     &__content {
         position: relative;
         z-index: 1;
@@ -1487,6 +1539,8 @@ h1.breadcrumb {
         padding: 0 $size_padding;
 
         background: $color_black;
+
+        cursor: pointer;
 
         @extend %helper--transition;
         @extend %helper--flex--center--center;
@@ -1609,6 +1663,7 @@ h1.breadcrumb {
     &__item {
         position: relative;
         .action-tool {
+            cursor: pointer;
             &__content {
                 position: relative;
                 &:before {
@@ -1733,7 +1788,8 @@ h1.breadcrumb {
                 background: $color_black;
             }
         }
-        &:focus {
+        &:focus,
+        &:active {
             outline: none;
         }
     }
@@ -2286,7 +2342,35 @@ h1.breadcrumb {
         }
     }
 }
+.dragover {
+    .teaser__inner {
+        .teaser {
+            &__head {
+                .icon {
+                    position: relative;
+                    z-index: 2;
 
+                    color: $color_white;
+                }
+                &:after {
+                    top: -25%;
+                        right: -25%;
+                        bottom: -25%;
+                        left: -25%;
+                        width: 150%;
+                        height: 150%;
+                    z-index: 1;
+
+                    background: $color_red;
+                }
+            }
+            &__content {
+                position: relative;
+                z-index: 3;
+            }
+        }
+    }
+}
 .action-teaser {
     overflow: hidden;
 
@@ -2305,7 +2389,7 @@ h1.breadcrumb {
     }
     .teaser {
         &__inner {
-            &:hover {
+            &:hover{
                 .teaser {
                     &__head {
                         .icon {
@@ -2423,9 +2507,10 @@ h1.breadcrumb {
 
             @extend %helper--flex--vertical-space-between;
             .project-title {
-                height: 40px;
+                height: auto;
+                max-height: 4rem;
 
-                @extend %helper--flex--center--center;
+                // @extend %helper--flex--center--center;
             }
         }
         &__inner {
@@ -3846,7 +3931,8 @@ h1.breadcrumb {
     &__create-date,
     &__finish-date,
     &__comments,
-    &__ticket-date {
+    &__ticket-date,
+    &__template {
         height: 100%;
 
         background-color: $color_white;
@@ -3869,7 +3955,8 @@ h1.breadcrumb {
     &__create-date,
     &__finish-date,
     &__comments,
-    &__ticket-date {
+    &__ticket-date,
+    &__template {
         padding: 0 $size_padding;
 
         border: 1px solid $color_grey_3;
@@ -3878,7 +3965,8 @@ h1.breadcrumb {
     &__size,
     &__uploaded-date,
     &__create-date,
-    &__comments {
+    &__comments,
+    &__template {
         border-right: none;
     }
     &__size,
@@ -3886,7 +3974,8 @@ h1.breadcrumb {
     &__create-date,
     &__finish-date,
     &__comments,
-    &__ticket-date {
+    &__ticket-date,
+    &__template {
         border-left: none;
     }
     &__status,
@@ -3920,6 +4009,19 @@ h1.breadcrumb {
                 text-overflow: ellipsis;
             }
         }
+        &--link {
+            cursor: pointer;
+            &:hover {
+                text-decoration: none;
+            }
+            &:active {
+                outline: none;
+            }
+        }
+    }
+    &__template {
+        width: 185px;
+        min-width: 185px;
     }
     &__extention {
         width: $size_filename_extention_h;
@@ -4076,7 +4178,7 @@ h1.breadcrumb {
                 padding: 10px $size_padding 13px;
             }
             &__name {
-                max-width: calc(100% - #{$size_filename_status_h} - #{$size_filename_status_h} - #{$size_filename_status_h});
+                max-width: calc(100% - #{$size_filename_status_h} - #{$size_filename_status_h} - #{$size_filename_status_h} - 185px);
             }
         }
     }
@@ -5355,6 +5457,7 @@ h1.breadcrumb {
 // Styleguide 16.14
 
 .ticket-id-link {
+    cursor: pointer;
     @extend %helper--flex--center--center;
 }
 
@@ -5428,7 +5531,8 @@ h1.breadcrumb {
                 color: $color_default;
 
                 @extend %helper--round--before--hover;
-                &:hover {
+                &:hover,
+                &.active  {
                     text-decoration: none;
 
                     color: $color_white;
@@ -5439,6 +5543,12 @@ h1.breadcrumb {
 
                         background: $color_red;
                     }
+                }
+                &.active {
+                    text-decoration: none;
+                    color: $color_white;
+                    background-color: $color_red;
+
                 }
             }
         }
@@ -5480,6 +5590,26 @@ h1.breadcrumb {
                 }
             }
         }
+        &--empty  {
+            justify-content: center;
+            height: 4rem;
+            line-height: 4rem;
+            font-size: 14px;
+            text-transform: uppercase;
+            display: table;
+            white-space: nowrap;
+            &:before,
+            &:after {
+              border-top: 1px solid $color_grey_1;
+              content: '';
+              display: table-cell;
+              position: relative;
+              width: 45%;
+            }
+
+            &:before { right: 1.5%; }
+            &:after { left: 1.5%; }
+        }
     }
     .drag-and-drop-placeholder,
     .as-sortable-placeholder {
@@ -5503,6 +5633,14 @@ h1.breadcrumb {
 
         @extend %helper--flex--left--center;
     }
+    &__info {
+    margin-top: 30px;
+    margin-bottom: -15px;
+
+    font-size: 11px;
+
+    text-align: right;
+    }
     &__name,
     &__extention,
     &__size,
@@ -5512,7 +5650,8 @@ h1.breadcrumb {
     &__create-date,
     &__finish-date,
     &__comments,
-    &__tickets-date {
+    &__tickets-date,
+    &__template {
         height: 100%;
 
         @extend %helper--flex--left--center;
@@ -5535,7 +5674,8 @@ h1.breadcrumb {
     &__finish-date,
     &__status,
     &__comments,
-    &__ticket-date {
+    &__ticket-date,
+    &__template {
         padding: 0 $size_padding;
     }
     &__extention,
@@ -5569,6 +5709,10 @@ h1.breadcrumb {
 
         flex-grow: 1;
     }
+    &__template {
+        min-width: 185px;
+        width: 185px;
+    }
     &__extention {
         width: $size_filename_extention_h;
     }
@@ -5585,6 +5729,9 @@ h1.breadcrumb {
     &__comments,
     &__ticket-date {
         width: $size_filename_status_h;
+    }
+    &__comments {
+        min-width: $size_filename_status_h;
     }
     &__uploaded-date {
         width: $size_filename_uploaded-date_h;
@@ -5666,7 +5813,7 @@ h1.breadcrumb {
             }
         }
     }
-    @include breakpoint($breakpoint_tablet-mini) {
+    @include breakpoint($breakpoint_tablet) {
         margin-bottom: -$size_padding;
         padding-bottom: $size_padding;
         &::-webkit-scrollbar {
@@ -5687,21 +5834,20 @@ h1.breadcrumb {
             background: linear-gradient(to bottom, #d9d9d9 0%,#e4e4e4 100%);
         }
     }
+    @include breakpoint($breakpoint_tablet-special-0) {
+        &--tickets {
+            overflow-x: scroll;
+        }
+    }
     @include breakpoint($breakpoint_smartphone-big) {
         overflow-x: scroll;
         &--projects,
-        &--templates,
-        &--tickets {
+        &--templates {
             overflow-x: hidden;
         }
     }
     @include breakpoint($breakpoint_smartphone-special) {
         &--projects {
-            overflow-x: scroll;
-        }
-    }
-    @include breakpoint($breakpoint_smartphone-special-alt-0) {
-        &--tickets {
             overflow-x: scroll;
         }
     }
@@ -7342,6 +7488,9 @@ h1.breadcrumb {
 
             color: $color_black;
         }
+        span {
+            cursor: pointer;
+        }
     }
     .icon {
         height: 35px;
@@ -7353,8 +7502,10 @@ h1.breadcrumb {
         }
         &--display-mode {
             font-size: 45px;
+            line-height: 45px;
             &--alt {
-                font-size: 41px;
+                font-size: 40px;
+                line-height: 45px;
             }
         }
     }
@@ -7657,11 +7808,16 @@ h1.breadcrumb {
         height: 100%;
 
         @extend %helper--flex--center--center;
+        &.hascomments .icon {
+            color: $color_red;
+        }
         .icon {
             position: relative;
             z-index: 1;
 
-            color: $color_red;
+            color: $color_grey_3;
+
+
 
             @extend %helper--transition;
             &--comment {
@@ -8790,7 +8946,6 @@ h1.breadcrumb {
 //
 // Styleguide 26.8
 .ticket-details-info {
-    @extend %helper--flex--stretch;
     &__head {
         @extend %helper--flex--left--center;
         .label {
@@ -8818,23 +8973,43 @@ h1.breadcrumb {
 
                 font-size: 18px;
             }
+            &--attach {
+                font-size: 19px;
+                top: -1px;
+                position: relative;
+            }
         }
     }
     &__content {
-        @extend %helper--flex--left--center;
         .details {
             margin: 0;
             padding-top: 5px;
 
             font-size: 15px;
             font-weight: 500;
+            display: inline-block;
+            white-space: normal;
+            word-wrap: break-word;
+            width: 100%;
             > a {
                 color: $color_blue;
             }
         }
+        .link {
+            color: $color_blue;
+            text-transform: uppercase;
+            &:visited {
+                color: darken($color_purple, 20%);
+                text-decoration: underline;
+                text-decoration-style: dashed;
+            }
+        }
     }
     &__head + &__content {
-        margin-left: $size_padding;
+        overflow: hidden;
+        padding-right: 30px;
+        white-space: nowrap;
+        margin-left: 35px;
     }
     &--alt {
         flex-wrap: wrap;
@@ -9000,10 +9175,17 @@ h1.breadcrumb {
     @extend %helper--flex--left--top;
     flex-wrap: wrap;
     &__item {
-        width: 100%;
+        width: 50%;
         margin-bottom: 20px;
         &--alt {
             margin-bottom: $size_padding_big;
+        }
+    }
+}
+.ticket-details-info-list {
+    @include breakpoint($breakpoint_smartphone) {
+        &__item {
+            width: 100%;
         }
     }
 }
@@ -9185,6 +9367,8 @@ h1.breadcrumb {
     width: $size_padding_big;
     height: $size_padding_big;
 
+    cursor: pointer;
+
     @extend %helper--flex--center--center;
     .icon {
         font-size: 16px;
@@ -9239,7 +9423,70 @@ h1.breadcrumb {
         }
     }
 }
+.tickets-filter-label {
+    padding: $size_padding_display-mode $size_padding_display-mode $size_padding_display-mode 0;
+    width: 58px;
+    float: left;
+}
+.tickets-filter {
+    width: calc(100% - 58px);
+    padding: 0;
+    margin: $size_padding_small 0 $size_padding_medium 0;
+    list-style: none;
+    display: flex;
+    &__option:not(:first-child) {
+        left: -1px;
+        position: relative;
+    }
+    &__option {
+        border: solid 1px $color_grey_3;
+        &:hover,
+        &.active {
+            border-color: darken($color_red_dark, 12%);
+        }
+    }
+    &__trigger {
+        cursor: pointer;
+    }
+    &__trigger,
+    .tickets-filter-label  {
+        padding: $size_padding_display-mode $size_padding_medium;
+        width: auto;
+        float: left;
+        &:after {
+            display:block;
+            content:attr(title);
+            font-weight:bold;
+            height:1px;
+            color:transparent;
+            overflow:hidden;
+            visibility:hidden;
+            margin-bottom:-1px;
+        }
+        .active &, &:hover {
+            font-weight: 700;
+            text-decoration: none;
+            background: $color_red_dark;
+            color: $color_white;
+        }
+    }
+}
 
+.statuses {
+    position: absolute;
+    left: 0;
 
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
 
-//
+    cursor: pointer;
+    text-indent: 1px;
+
+    opacity: 0;
+    border: none;
+    background: none;
+
+    -webkit-appearance: none;
+       -moz-appearance: none;
+}

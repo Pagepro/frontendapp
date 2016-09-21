@@ -38,6 +38,8 @@ video {
  * Apply a natural box layout model to all elements
  */
 *, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
 /**
@@ -127,6 +129,7 @@ dfn {
  * Address differences between Firefox and other browsers.
  */
 hr {
+  -moz-box-sizing: content-box;
   box-sizing: content-box;
   height: 0; }
 
@@ -311,6 +314,8 @@ input[type="radio"] {
 input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box; }
 
@@ -363,435 +368,6 @@ textarea {
 
 textarea {
   resize: none; }
-
-.project-box__content--listing template-uploader {
-  margin-right: 15px; }
-
-.dragover {
-  background: #FCFCFC; }
-
-.files-list__item__id .ticket-id-link:hover {
-  background-color: #e65962; }
-
-.btn--default[disabled], [disabled].btn--submit {
-  background: #B2B2B2; }
-  .btn--default[disabled]:hover, [disabled].btn--submit:hover {
-    background: #B2B2B2; }
-
-.files-list__item template-preview {
-  width: 100%; }
-
-.page-loader {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: rgba(255, 255, 255, 0.4);
-  z-index: 100;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  align-items: center; }
-  .page-loader--local {
-    position: absolute; }
-
-.sk-folding-cube {
-  margin: 20px auto;
-  margin: 50% auto;
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  position: relative;
-  -webkit-transform: rotateZ(45deg);
-  transform: rotateZ(45deg); }
-
-.sk-folding-cube .sk-cube {
-  float: left;
-  width: 50%;
-  height: 50%;
-  position: relative;
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1); }
-
-.sk-folding-cube .sk-cube:before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #333;
-  -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
-  animation: sk-foldCubeAngle 2.4s infinite linear both;
-  -webkit-transform-origin: 100% 100%;
-  transform-origin: 100% 100%; }
-
-.sk-folding-cube .sk-cube2 {
-  -webkit-transform: scale(1.1) rotateZ(90deg);
-  transform: scale(1.1) rotateZ(90deg); }
-
-.sk-folding-cube .sk-cube3 {
-  -webkit-transform: scale(1.1) rotateZ(180deg);
-  transform: scale(1.1) rotateZ(180deg); }
-
-.sk-folding-cube .sk-cube4 {
-  -webkit-transform: scale(1.1) rotateZ(270deg);
-  transform: scale(1.1) rotateZ(270deg); }
-
-.sk-folding-cube .sk-cube2:before {
-  -webkit-animation-delay: 0.3s;
-  animation-delay: 0.3s; }
-
-.sk-folding-cube .sk-cube3:before {
-  -webkit-animation-delay: 0.6s;
-  animation-delay: 0.6s; }
-
-.sk-folding-cube .sk-cube4:before {
-  -webkit-animation-delay: 0.9s;
-  animation-delay: 0.9s; }
-
-@-webkit-keyframes sk-foldCubeAngle {
-  0%, 10% {
-    -webkit-transform: perspective(140px) rotateX(-180deg);
-    transform: perspective(140px) rotateX(-180deg);
-    opacity: 0; }
-  25%, 75% {
-    -webkit-transform: perspective(140px) rotateX(0deg);
-    transform: perspective(140px) rotateX(0deg);
-    opacity: 1; }
-  90%, 100% {
-    -webkit-transform: perspective(140px) rotateY(180deg);
-    transform: perspective(140px) rotateY(180deg);
-    opacity: 0; } }
-
-@keyframes sk-foldCubeAngle {
-  0%, 10% {
-    -webkit-transform: perspective(140px) rotateX(-180deg);
-    transform: perspective(140px) rotateX(-180deg);
-    opacity: 0; }
-  25%, 75% {
-    -webkit-transform: perspective(140px) rotateX(0deg);
-    transform: perspective(140px) rotateX(0deg);
-    opacity: 1; }
-  90%, 100% {
-    -webkit-transform: perspective(140px) rotateY(180deg);
-    transform: perspective(140px) rotateY(180deg);
-    opacity: 0; } }
-
-/* ==========================================================================
-   NG animations temp
-   ========================================================================== */
-.opacity-animation.ng-enter, .slide-animation.ng-leave {
-  -webkit-transition: 1s all;
-  transition: 1s all; }
-
-.opacity-animation.ng-enter {
-  opacity: 0; }
-
-.opacity-animation.ng-enter-active {
-  opacity: 1; }
-
-.slide-animation.ng-enter, .slide-animation.ng-leave {
-  -webkit-transition: 0.5s linear all;
-  transition: 0.5s linear all;
-  position: relative;
-  height: 1000px; }
-
-.slide-animation.ng-enter {
-  z-index: 100;
-  left: 100px;
-  opacity: 0; }
-
-.slide-animation.ng-enter.ng-enter-active {
-  left: 0;
-  opacity: 1; }
-
-.slide-animation.ng-leave {
-  z-index: 101;
-  opacity: 1;
-  left: 0; }
-
-.slide-animation.ng-leave.ng-leave-active {
-  left: -100px;
-  opacity: 0; }
-
-.repeat-animation.ng-enter,
-.repeat-animation.ng-leave,
-.repeat-animation.ng-move {
-  -webkit-transition: .3s linear all;
-  transition: .3s linear all;
-  position: relative; }
-
-.repeat-animation.ng-enter {
-  left: -1000px;
-  opacity: 0; }
-
-.repeat-animation.ng-enter.ng-enter-active {
-  left: 0;
-  opacity: 1; }
-
-.repeat-animation.ng-leave {
-  left: 10px;
-  opacity: 1; }
-
-.repeat-animation.ng-leave.ng-leave-active {
-  left: -10px;
-  opacity: 0; }
-
-.repeat-animation.ng-move {
-  opacity: 0; }
-
-.repeat-animation.ng-move.ng-move-active {
-  opacity: 1; }
-
-.project-box__content {
-  display: block;
-  background: #fff; }
-
-.animate-switch.ng-animate {
-  opacity: 0;
-  -webkit-transition: all cubic-bezier(0.53, -0.37, 0, 1.19) 0.2s;
-  transition: all cubic-bezier(0.53, -0.37, 0, 1.19) 0.2s;
-  display: block;
-  position: relative;
-  z-index: 10; }
-
-.animate-switch.ng-leave.ng-leave-active,
-.animate-switch.ng-enter {
-  left: -100%;
-  opacity: 0; }
-
-.animate-switch.ng-leave,
-.animate-switch.ng-enter.ng-enter-active {
-  opacity: 1;
-  left: 0; }
-
-.slide-anything.ng-enter, .slide-anything.ng-leave {
-  -webkit-transition: 0.5s linear all;
-  transition: 0.5s linear all; }
-
-/* ==========================================================================
-   toaster
-   ========================================================================== */
-.toast-title {
-  font-weight: 700; }
-
-.toast-message {
-  -ms-word-wrap: break-word;
-  word-wrap: break-word; }
-
-.toast-message a,
-.toast-message label {
-  color: #fff; }
-
-.toast-message a:hover {
-  text-decoration: none;
-  color: #ccc; }
-
-.toast-close-button {
-  position: relative;
-  top: -.3em;
-  right: -.3em;
-  float: right;
-  font-size: 20px;
-  font-weight: 700;
-  opacity: .8;
-  color: #fff;
-  text-shadow: 0 1px 0 #fff;
-  -webkit-text-shadow: 0 1px 0 #fff;
-  filter: alpha(opacity=80); }
-
-.toast-close-button:focus,
-.toast-close-button:hover {
-  cursor: pointer;
-  text-decoration: none;
-  opacity: .4;
-  color: #000;
-  filter: alpha(opacity=40); }
-
-button.toast-close-button {
-  padding: 0;
-  cursor: pointer;
-  border: 0;
-  background: 0 0;
-  -webkit-appearance: none; }
-
-.toast-top-full-width {
-  top: 0;
-  right: 0;
-  width: 100%; }
-
-.toast-bottom-full-width {
-  right: 0;
-  bottom: 0;
-  width: 100%; }
-
-.toast-top-left {
-  top: 12px;
-  left: 12px; }
-
-.toast-top-center {
-  top: 12px; }
-
-.toast-top-right {
-  top: 12px;
-  right: 12px; }
-
-.toast-bottom-right {
-  right: 12px;
-  bottom: 12px; }
-
-.toast-bottom-center {
-  bottom: 12px; }
-
-.toast-bottom-left {
-  bottom: 12px;
-  left: 12px; }
-
-.toast-center {
-  top: 45%; }
-
-#toast-container {
-  position: fixed;
-  z-index: 999999; }
-
-#toast-container.toast-bottom-center,
-#toast-container.toast-center,
-#toast-container.toast-top-center {
-  width: 100%;
-  pointer-events: none; }
-
-#toast-container.toast-bottom-center > div,
-#toast-container.toast-center > div,
-#toast-container.toast-top-center > div {
-  margin: auto;
-  pointer-events: auto; }
-
-#toast-container.toast-bottom-center > button,
-#toast-container.toast-center > button,
-#toast-container.toast-top-cente > button {
-  pointer-events: auto; }
-
-#toast-container * {
-  box-sizing: border-box; }
-
-#toast-container > div {
-  width: 300px;
-  margin: 0 0 6px;
-  padding: 15px 15px 15px 50px;
-  opacity: 1;
-  color: #fff;
-  border-radius: 3px;
-  background-repeat: no-repeat;
-  background-position: 15px center;
-  filter: alpha(opacity=1); }
-
-#toast-container > :hover {
-  cursor: pointer;
-  opacity: 1;
-  filter: alpha(opacity=100); }
-
-#toast-container > .toast-info {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGwSURBVEhLtZa9SgNBEMc9sUxxRcoUKSzSWIhXpFMhhYWFhaBg4yPYiWCXZxBLERsLRS3EQkEfwCKdjWJAwSKCgoKCcudv4O5YLrt7EzgXhiU3/4+b2ckmwVjJSpKkQ6wAi4gwhT+z3wRBcEz0yjSseUTrcRyfsHsXmD0AmbHOC9Ii8VImnuXBPglHpQ5wwSVM7sNnTG7Za4JwDdCjxyAiH3nyA2mtaTJufiDZ5dCaqlItILh1NHatfN5skvjx9Z38m69CgzuXmZgVrPIGE763Jx9qKsRozWYw6xOHdER+nn2KkO+Bb+UV5CBN6WC6QtBgbRVozrahAbmm6HtUsgtPC19tFdxXZYBOfkbmFJ1VaHA1VAHjd0pp70oTZzvR+EVrx2Ygfdsq6eu55BHYR8hlcki+n+kERUFG8BrA0BwjeAv2M8WLQBtcy+SD6fNsmnB3AlBLrgTtVW1c2QN4bVWLATaIS60J2Du5y1TiJgjSBvFVZgTmwCU+dAZFoPxGEEs8nyHC9Bwe2GvEJv2WXZb0vjdyFT4Cxk3e/kIqlOGoVLwwPevpYHT+00T+hWwXDf4AJAOUqWcDhbwAAAAASUVORK5CYII=) !important; }
-
-#toast-container > .toast-wait {
-  background-image: url(data:image/gif;base64,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) !important; }
-
-#toast-container > .toast-error {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHOSURBVEhLrZa/SgNBEMZzh0WKCClSCKaIYOED+AAKeQQLG8HWztLCImBrYadgIdY+gIKNYkBFSwu7CAoqCgkkoGBI/E28PdbLZmeDLgzZzcx83/zZ2SSXC1j9fr+I1Hq93g2yxH4iwM1vkoBWAdxCmpzTxfkN2RcyZNaHFIkSo10+8kgxkXIURV5HGxTmFuc75B2RfQkpxHG8aAgaAFa0tAHqYFfQ7Iwe2yhODk8+J4C7yAoRTWI3w/4klGRgR4lO7Rpn9+gvMyWp+uxFh8+H+ARlgN1nJuJuQAYvNkEnwGFck18Er4q3egEc/oO+mhLdKgRyhdNFiacC0rlOCbhNVz4H9FnAYgDBvU3QIioZlJFLJtsoHYRDfiZoUyIxqCtRpVlANq0EU4dApjrtgezPFad5S19Wgjkc0hNVnuF4HjVA6C7QrSIbylB+oZe3aHgBsqlNqKYH48jXyJKMuAbiyVJ8KzaB3eRc0pg9VwQ4niFryI68qiOi3AbjwdsfnAtk0bCjTLJKr6mrD9g8iq/S/B81hguOMlQTnVyG40wAcjnmgsCNESDrjme7wfftP4P7SP4N3CJZdvzoNyGq2c/HWOXJGsvVg+RA/k2MC/wN6I2YA2Pt8GkAAAAASUVORK5CYII=) !important; }
-
-#toast-container > .toast-success {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhLY2AYBfQMgf///3P8+/evAIgvA/FsIF+BavYDDWMBGroaSMMBiE8VC7AZDrIFaMFnii3AZTjUgsUUWUDA8OdAH6iQbQEhw4HyGsPEcKBXBIC4ARhex4G4BsjmweU1soIFaGg/WtoFZRIZdEvIMhxkCCjXIVsATV6gFGACs4Rsw0EGgIIH3QJYJgHSARQZDrWAB+jawzgs+Q2UO49D7jnRSRGoEFRILcdmEMWGI0cm0JJ2QpYA1RDvcmzJEWhABhD/pqrL0S0CWuABKgnRki9lLseS7g2AlqwHWQSKH4oKLrILpRGhEQCw2LiRUIa4lwAAAABJRU5ErkJggg==) !important; }
-
-#toast-container > .toast-warning {
-  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGYSURBVEhL5ZSvTsNQFMbXZGICMYGYmJhAQIJAICYQPAACiSDB8AiICQQJT4CqQEwgJvYASAQCiZiYmJhAIBATCARJy+9rTsldd8sKu1M0+dLb057v6/lbq/2rK0mS/TRNj9cWNAKPYIJII7gIxCcQ51cvqID+GIEX8ASG4B1bK5gIZFeQfoJdEXOfgX4QAQg7kH2A65yQ87lyxb27sggkAzAuFhbbg1K2kgCkB1bVwyIR9m2L7PRPIhDUIXgGtyKw575yz3lTNs6X4JXnjV+LKM/m3MydnTbtOKIjtz6VhCBq4vSm3ncdrD2lk0VgUXSVKjVDJXJzijW1RQdsU7F77He8u68koNZTz8Oz5yGa6J3H3lZ0xYgXBK2QymlWWA+RWnYhskLBv2vmE+hBMCtbA7KX5drWyRT/2JsqZ2IvfB9Y4bWDNMFbJRFmC9E74SoS0CqulwjkC0+5bpcV1CZ8NMej4pjy0U+doDQsGyo1hzVJttIjhQ7GnBtRFN1UarUlH8F3xict+HY07rEzoUGPlWcjRFRr4/gChZgc3ZL2d8oAAAAASUVORK5CYII=) !important; }
-
-#toast-container.toast-bottom-full-width > div,
-#toast-container.toast-top-full-width > div {
-  width: 96%;
-  margin: auto; }
-
-.toast {
-  background-color: #030303; }
-
-.toast-success {
-  background-color: #51a351; }
-
-.toast-error {
-  background-color: #bd362f; }
-
-.toast-info,
-.toast-wait {
-  background-color: #2f96b4; }
-
-.toast-warning {
-  background-color: #f89406; }
-
-@media all and (max-width: 240px) {
-  #toast-container > div {
-    width: 11em;
-    padding: 8px 8px 8px 50px; }
-  #toast-container .toast-close-button {
-    top: -.2em;
-    right: -.2em; } }
-
-@media all and (min-width: 241px) and (max-width: 480px) {
-  #toast-container > div {
-    width: 18em;
-    padding: 8px 8px 8px 50px; }
-  #toast-container .toast-close-button {
-    top: -.2em;
-    right: -.2em; } }
-
-@media all and (min-width: 481px) and (max-width: 768px) {
-  #toast-container > div {
-    width: 25em;
-    padding: 15px 15px 15px 50px; } }
-
-:not(.no-enter)#toast-container > div.ng-enter,
-:not(.no-leave)#toast-container > div.ng-leave {
-  -webkit-transition: 1000ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
-  transition: 1000ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all; }
-
-:not(.no-enter)#toast-container > div.ng-enter.ng-enter-active,
-:not(.no-leave)#toast-container > div.ng-leave {
-  opacity: 1; }
-
-:not(.no-enter)#toast-container > div.ng-enter,
-:not(.no-leave)#toast-container > div.ng-leave.ng-leave-active {
-  opacity: 0; }
-
-/* ng-sortable css
-   ========================================================================== */
-/* ng-sortable css file */
-.as-sortable-item, .as-sortable-placeholder {
-  display: block; }
-
-.as-sortable-item {
-  touch-action: none; }
-
-.as-sortable-item-handle {
-  cursor: move;
-  cursor: -moz-grab; }
-
-.as-sortable-drag {
-  position: absolute;
-  pointer-events: none;
-  z-index: 9999; }
-
-.as-sortable-hidden {
-  display: none !important; }
-
-.as-sortable-un-selectable {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
 
 /*
 SCSS variables are information about icon's compiled state, stored under its original file name
@@ -890,7 +466,7 @@ The `sprites` mixin generates identical output to the CSS template
 
 /* '' */
 .icon--angle--right:before {
-  content: '\e803'; }
+  content: '\e804'; }
 
 /* '' */
 .icon--angle--up:before {
@@ -1033,6 +609,10 @@ The `sprites` mixin generates identical output to the CSS template
   content: '\e82b'; }
 
 /* '' */
+.icon--attach:before {
+  content: '\e82c'; }
+
+/* '' */
 /* Variables (colors, sizes, fonts)
    ========================================================================== */
 /* ==========================================================================
@@ -1046,6 +626,394 @@ The `sprites` mixin generates identical output to the CSS template
 ========================================================================== */
 /* Fonts
 ========================================================================== */
+.project-box__content--listing template-uploader {
+  margin-right: 15px; }
+  @media (max-width: 540px) {
+    .project-box__content--listing template-uploader {
+      margin-bottom: 15px; } }
+
+.dragover {
+  background: #fcfcfc; }
+  .dragover .teaser__head:after {
+    z-index: 1;
+    background: #e65962; }
+
+.files-list__item__id .ticket-id-link:hover {
+  background-color: #e65962; }
+
+.btn--default[disabled], [disabled].btn--submit {
+  background: #b2b2b2; }
+  .btn--default[disabled]:hover, [disabled].btn--submit:hover {
+    background: #b2b2b2; }
+
+.files-list__item template-preview {
+  width: 100%; }
+
+project-tickets {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center; }
+
+.page-loader {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.87);
+  justify-content: center;
+  align-items: center; }
+  .page-loader--local {
+    position: absolute; }
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg); } }
+
+@-webkit-keyframes spinner {
+  to {
+    -webkit-transform: rotate(360deg); } }
+
+.spinner {
+  min-width: 24px;
+  min-height: 24px; }
+
+.spinner:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  content: 'Loading…'; }
+
+.spinner:before {
+  content: '';
+  -webkit-animation: spinner .6s linear infinite;
+  animation: spinner .6s linear infinite;
+  border-top: 2px solid #404040;
+  border-right: 2px solid transparent;
+  border-radius: 50%; }
+
+/* ==========================================================================
+   NG animations temp
+   ========================================================================== */
+.hidden {
+  display: none !important; }
+
+.slide-animation.ng-enter {
+  z-index: 100;
+  left: 100px;
+  opacity: 0; }
+
+.slide-animation.ng-enter.ng-enter-active {
+  left: 0;
+  opacity: 9; }
+
+.slide-animation.ng-leave {
+  z-index: 101;
+  left: 0;
+  opacity: 1; }
+
+.slide-animation.ng-leave.ng-leave-active {
+  left: -100px;
+  opacity: 0; }
+
+.repeat-animation.ng-enter,
+.repeat-animation.ng-leave,
+.repeat-animation.ng-move {
+  position: relative;
+  transition: .3s linear all; }
+
+.repeat-animation.ng-enter {
+  left: -1000px;
+  opacity: 0; }
+
+.repeat-animation.ng-enter.ng-enter-active {
+  left: 0;
+  opacity: 1; }
+
+.repeat-animation.ng-leave {
+  left: 10px;
+  opacity: 1; }
+
+.repeat-animation.ng-leave.ng-leave-active {
+  left: -10px;
+  opacity: 0; }
+
+.repeat-animation.ng-move {
+  opacity: 0; }
+
+.repeat-animation.ng-move.ng-move-active {
+  opacity: 1; }
+
+.project-box__content {
+  display: block;
+  background: #fff; }
+
+.animate-switch.ng-animate {
+  position: relative;
+  z-index: 10;
+  display: block;
+  transition: all cubic-bezier(0.53, -0.37, 0, 1.19) 0.2s;
+  opacity: 0; }
+
+.animate-switch.ng-leave.ng-leave-active,
+.animate-switch.ng-enter {
+  left: -100%;
+  opacity: 0; }
+
+.animate-switch.ng-leave,
+.animate-switch.ng-enter.ng-enter-active {
+  left: 0;
+  opacity: 1; }
+
+.slide-anything.ng-enter,
+.slide-anything.ng-leave {
+  -webkit-transition: .5s linear all;
+  -moz-transition: .5s linear all;
+  -o-transition: .5s linear all;
+  transition: .5s linear all; }
+
+/* ==========================================================================
+   toaster
+   ========================================================================== */
+.toast-title {
+  font-weight: 700; }
+
+.toast-message {
+  -ms-word-wrap: break-word;
+  word-wrap: break-word; }
+
+.toast-message a,
+.toast-message label {
+  color: #fff; }
+
+.toast-message a:hover {
+  text-decoration: none;
+  color: #ccc; }
+
+.toast-close-button {
+  position: relative;
+  top: -.3em;
+  right: -.3em;
+  float: right;
+  font-size: 20px;
+  font-weight: 700;
+  opacity: .8;
+  color: #fff;
+  text-shadow: 0 1px 0 #fff;
+  -webkit-text-shadow: 0 1px 0 #fff;
+  filter: alpha(opacity=80); }
+
+.toast-close-button:focus,
+.toast-close-button:hover {
+  cursor: pointer;
+  text-decoration: none;
+  opacity: .4;
+  color: #000;
+  filter: alpha(opacity=40); }
+
+button.toast-close-button {
+  padding: 0;
+  cursor: pointer;
+  border: 0;
+  background: 0 0;
+  -webkit-appearance: none; }
+
+.toast-top-full-width {
+  top: 0;
+  right: 0;
+  width: 100%; }
+
+.toast-bottom-full-width {
+  right: 0;
+  bottom: 0;
+  width: 100%; }
+
+.toast-top-left {
+  top: 12px;
+  left: 12px; }
+
+.toast-top-center {
+  top: 12px; }
+
+.toast-top-right {
+  top: 12px;
+  right: 12px; }
+
+.toast-bottom-right {
+  right: 12px;
+  bottom: 12px; }
+
+.toast-bottom-center {
+  bottom: 12px; }
+
+.toast-bottom-left {
+  bottom: 12px;
+  left: 12px; }
+
+.toast-center {
+  top: 45%; }
+
+#toast-container {
+  position: fixed;
+  z-index: 999999; }
+
+#toast-container.toast-bottom-center,
+#toast-container.toast-center,
+#toast-container.toast-top-center {
+  width: 100%;
+  pointer-events: none; }
+
+#toast-container.toast-bottom-center > div,
+#toast-container.toast-center > div,
+#toast-container.toast-top-center > div {
+  margin: auto;
+  pointer-events: auto; }
+
+#toast-container.toast-bottom-center > button,
+#toast-container.toast-center > button,
+#toast-container.toast-top-cente > button {
+  pointer-events: auto; }
+
+#toast-container * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+#toast-container > div {
+  width: 300px;
+  margin: 0 0 6px;
+  padding: 15px 15px 15px 50px;
+  opacity: 1;
+  color: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  filter: alpha(opacity=1); }
+
+#toast-container > :hover {
+  cursor: pointer;
+  opacity: 1;
+  filter: alpha(opacity=100); }
+
+#toast-container > .toast-info {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGwSURBVEhLtZa9SgNBEMc9sUxxRcoUKSzSWIhXpFMhhYWFhaBg4yPYiWCXZxBLERsLRS3EQkEfwCKdjWJAwSKCgoKCcudv4O5YLrt7EzgXhiU3/4+b2ckmwVjJSpKkQ6wAi4gwhT+z3wRBcEz0yjSseUTrcRyfsHsXmD0AmbHOC9Ii8VImnuXBPglHpQ5wwSVM7sNnTG7Za4JwDdCjxyAiH3nyA2mtaTJufiDZ5dCaqlItILh1NHatfN5skvjx9Z38m69CgzuXmZgVrPIGE763Jx9qKsRozWYw6xOHdER+nn2KkO+Bb+UV5CBN6WC6QtBgbRVozrahAbmm6HtUsgtPC19tFdxXZYBOfkbmFJ1VaHA1VAHjd0pp70oTZzvR+EVrx2Ygfdsq6eu55BHYR8hlcki+n+kERUFG8BrA0BwjeAv2M8WLQBtcy+SD6fNsmnB3AlBLrgTtVW1c2QN4bVWLATaIS60J2Du5y1TiJgjSBvFVZgTmwCU+dAZFoPxGEEs8nyHC9Bwe2GvEJv2WXZb0vjdyFT4Cxk3e/kIqlOGoVLwwPevpYHT+00T+hWwXDf4AJAOUqWcDhbwAAAAASUVORK5CYII=) !important; }
+
+#toast-container > .toast-wait {
+  background-image: url(data:image/gif;base64,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) !important; }
+
+#toast-container > .toast-error {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHOSURBVEhLrZa/SgNBEMZzh0WKCClSCKaIYOED+AAKeQQLG8HWztLCImBrYadgIdY+gIKNYkBFSwu7CAoqCgkkoGBI/E28PdbLZmeDLgzZzcx83/zZ2SSXC1j9fr+I1Hq93g2yxH4iwM1vkoBWAdxCmpzTxfkN2RcyZNaHFIkSo10+8kgxkXIURV5HGxTmFuc75B2RfQkpxHG8aAgaAFa0tAHqYFfQ7Iwe2yhODk8+J4C7yAoRTWI3w/4klGRgR4lO7Rpn9+gvMyWp+uxFh8+H+ARlgN1nJuJuQAYvNkEnwGFck18Er4q3egEc/oO+mhLdKgRyhdNFiacC0rlOCbhNVz4H9FnAYgDBvU3QIioZlJFLJtsoHYRDfiZoUyIxqCtRpVlANq0EU4dApjrtgezPFad5S19Wgjkc0hNVnuF4HjVA6C7QrSIbylB+oZe3aHgBsqlNqKYH48jXyJKMuAbiyVJ8KzaB3eRc0pg9VwQ4niFryI68qiOi3AbjwdsfnAtk0bCjTLJKr6mrD9g8iq/S/B81hguOMlQTnVyG40wAcjnmgsCNESDrjme7wfftP4P7SP4N3CJZdvzoNyGq2c/HWOXJGsvVg+RA/k2MC/wN6I2YA2Pt8GkAAAAASUVORK5CYII=) !important; }
+
+#toast-container > .toast-success {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhLY2AYBfQMgf///3P8+/evAIgvA/FsIF+BavYDDWMBGroaSMMBiE8VC7AZDrIFaMFnii3AZTjUgsUUWUDA8OdAH6iQbQEhw4HyGsPEcKBXBIC4ARhex4G4BsjmweU1soIFaGg/WtoFZRIZdEvIMhxkCCjXIVsATV6gFGACs4Rsw0EGgIIH3QJYJgHSARQZDrWAB+jawzgs+Q2UO49D7jnRSRGoEFRILcdmEMWGI0cm0JJ2QpYA1RDvcmzJEWhABhD/pqrL0S0CWuABKgnRki9lLseS7g2AlqwHWQSKH4oKLrILpRGhEQCw2LiRUIa4lwAAAABJRU5ErkJggg==) !important; }
+
+#toast-container > .toast-warning {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGYSURBVEhL5ZSvTsNQFMbXZGICMYGYmJhAQIJAICYQPAACiSDB8AiICQQJT4CqQEwgJvYASAQCiZiYmJhAIBATCARJy+9rTsldd8sKu1M0+dLb057v6/lbq/2rK0mS/TRNj9cWNAKPYIJII7gIxCcQ51cvqID+GIEX8ASG4B1bK5gIZFeQfoJdEXOfgX4QAQg7kH2A65yQ87lyxb27sggkAzAuFhbbg1K2kgCkB1bVwyIR9m2L7PRPIhDUIXgGtyKw575yz3lTNs6X4JXnjV+LKM/m3MydnTbtOKIjtz6VhCBq4vSm3ncdrD2lk0VgUXSVKjVDJXJzijW1RQdsU7F77He8u68koNZTz8Oz5yGa6J3H3lZ0xYgXBK2QymlWWA+RWnYhskLBv2vmE+hBMCtbA7KX5drWyRT/2JsqZ2IvfB9Y4bWDNMFbJRFmC9E74SoS0CqulwjkC0+5bpcV1CZ8NMej4pjy0U+doDQsGyo1hzVJttIjhQ7GnBtRFN1UarUlH8F3xict+HY07rEzoUGPlWcjRFRr4/gChZgc3ZL2d8oAAAAASUVORK5CYII=) !important; }
+
+#toast-container.toast-bottom-full-width > div,
+#toast-container.toast-top-full-width > div {
+  width: 96%;
+  margin: auto; }
+
+.toast {
+  background-color: #030303; }
+
+.toast-success {
+  background-color: #51a351; }
+
+.toast-error {
+  background-color: #bd362f; }
+
+.toast-info,
+.toast-wait {
+  background-color: #2f96b4; }
+
+.toast-warning {
+  background-color: #f89406; }
+
+@media all and (max-width: 240px) {
+  #toast-container > div {
+    width: 11em;
+    padding: 8px 8px 8px 50px; }
+  #toast-container .toast-close-button {
+    top: -.2em;
+    right: -.2em; } }
+
+@media all and (min-width: 241px) and (max-width: 480px) {
+  #toast-container > div {
+    width: 18em;
+    padding: 8px 8px 8px 50px; }
+  #toast-container .toast-close-button {
+    top: -.2em;
+    right: -.2em; } }
+
+@media all and (min-width: 481px) and (max-width: 768px) {
+  #toast-container > div {
+    width: 25em;
+    padding: 15px 15px 15px 50px; } }
+
+:not(.no-enter)#toast-container > div.ng-enter,
+:not(.no-leave)#toast-container > div.ng-leave {
+  -webkit-transition: 1000ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -moz-transition: 1000ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -ms-transition: 1000ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  -o-transition: 1000ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+  transition: 1000ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all; }
+
+:not(.no-enter)#toast-container > div.ng-enter.ng-enter-active,
+:not(.no-leave)#toast-container > div.ng-leave {
+  opacity: 1; }
+
+:not(.no-enter)#toast-container > div.ng-enter,
+:not(.no-leave)#toast-container > div.ng-leave.ng-leave-active {
+  opacity: 0; }
+
+/* ng-sortable css
+   ========================================================================== */
+/* ng-sortable css file */
+.as-sortable-item,
+.as-sortable-placeholder {
+  display: block; }
+
+.as-sortable-item {
+  -ms-touch-action: none;
+  touch-action: none; }
+
+.as-sortable-item-handle {
+  cursor: move;
+  cursor: -webkit-grab;
+  cursor: -moz-grab; }
+
+.as-sortable-drag {
+  position: absolute;
+  z-index: 9999;
+  pointer-events: none; }
+
+.as-sortable-hidden {
+  display: none !important; }
+
+.as-sortable-un-selectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none; }
+
+.form__section--ticket {
+  position: relative; }
+  .form__section--ticket .form-info {
+    position: absolute; }
+
 /* Mixins
    ========================================================================== */
 /* ==========================================================================
@@ -1128,7 +1096,6 @@ The `sprites` mixin generates identical output to the CSS template
 .sec--main,
 .sec--popup,
 .subsec, .sec--main__head, .sec--main__content {
-  display: -webkit-box;
   display: flex;
   max-width: 100%;
   flex-wrap: wrap;
@@ -1200,9 +1167,8 @@ The `sprites` mixin generates identical output to the CSS template
   margin: auto; }
 
 .action-tool__info, .access-tool__info, .action-tool__info .tooltip, .access-tool__info .tooltip, .form-info, .icheckbox, .icheckbox:before, .access-form .form__content .field, .project-action-form .form__fieldset .NFI-wrapper, .project-action-form .form__fieldset .field .label,
-.project-action-form .form__fieldset .NFI-wrapper .label, .sec--head, .sec--head__inner, .icon--close:before, .icon--close:after, .cloud-tooltip-list__item > a, .btn, .user-btn, .action-btn, .labels-choice-list, .labels-choice-list__item, .action-tool__content, .action-tools-list__item .action-tool__content:before, .user-box__content .icon, .user-box__actions .cloud-tooltip, .teaser__content, .teaser__content .update-info, .template-teaser .teaser__head .action-tools-list, .template-teaser .teaser__content .project-title, .template-teaser .teaser__content .action-tools-list, .template-teaser .teaser__actions, .template-teaser .teaser__actions .action-tool, .file-data__name, .file-data__extention, .file-data__size, .file-data__uploaded-date, .file-data__actions, .file-data__status, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date, .files-list__item__inner, .files-list > li__inner, .pagination__content, .access-tool__content, .dispaly-mode__content, .upload-box__content__head .icon, .upload-box__content__head .icon-wrapper .qty, .comment-box__content .icon, .screenshot img, .screenshot-box__content .label,
+.project-action-form .form__fieldset .NFI-wrapper .label, .sec--head, .sec--head__inner, .icon--close:before, .icon--close:after, .cloud-tooltip-list__item > a, .btn, .user-btn, .action-btn, .page-back__content .main-title:before, .page-back__info, .labels-choice-list, .action-tool__content, .action-tools-list__item .action-tool__content:before, .user-box__content .icon, .user-box__actions .cloud-tooltip, .teaser__content, .teaser__content .update-info, .template-teaser .teaser__head .action-tools-list, .template-teaser .teaser__content .project-title, .template-teaser .teaser__content .action-tools-list, .template-teaser .teaser__actions, .template-teaser .teaser__actions .action-tool, .file-data__name, .file-data__extention, .file-data__size, .file-data__uploaded-date, .file-data__actions, .file-data__status, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date, .file-data__template, .files-list__item__inner, .files-list > li__inner, .pagination__content, .access-tool__content, .dispaly-mode__content, .upload-box__content__head .icon, .upload-box__content__head .icon-wrapper .qty, .comment-box__content .icon, .screenshot img, .screenshot-box__content .label,
 .screenshot-box__content .screenshot, .screenshots-list__item .screenshot-box__content .counter, .screenshots-list__item .screenshot-box__content .counter:before {
-  -webkit-transition: 170ms ease;
   transition: 170ms ease; }
 
 .project-action-form .form__fieldset .field .label:before,
@@ -1223,16 +1189,14 @@ The `sprites` mixin generates identical output to the CSS template
 .ticket-details-comment-form .field--select:before, .icheckbox:before, .customSelect:after, .project-action-form .form__fieldset .field .label,
 .project-action-form .form__fieldset .NFI-wrapper .label, .ticket-form .form__fieldset .NFI-wrapper .NFI-button,
 .ticket-details-comment-form .form__fieldset .NFI-wrapper .NFI-button, .ticket-form .form__fieldset .field .label--special,
-.ticket-details-comment-form .form__fieldset .field .label--special, .sec--main__inner, .sec--popup__inner, .icon:before, .tooltip .label, .tooltip:before, .cloud-tooltip__icon, .cloud-tooltip__icon .icon, .cloud-tooltip__icon .icon:before, .btn, .user-btn, .action-btn__content, .page-back__content, .labels-choice-list__item.active:after, .update-info .label, .update-info--alt .icon--clock, .action-tool__content, .user-box__content, .teaser__head, .teaser__content, .project-teaser .teaser__content .project-title, .template-teaser .teaser__content .project-title, .template-teaser .teaser__content .action-tools-list__item, .file-data--template-complexe .file-data__actions .icon, .ticket-id-link, .files-list__item__counter:before, .files-list > li__counter:before, .files-box__sortable.desc:before, .files-box__sortable.asc:before, .pagination__content, .pagination-list, .pagination-box, .project-time-list, .access-tool__content, .access-tools-list, .dispaly-mode__content, .dispaly-mode .icon, .upload-box__content__head .icon, .upload-box__content__head .icon--folder--alt, .upload-box__content__head .icon--box, .upload-box__content__head .icon--folder--alt:before, .upload-box__content__head .icon--box:before, .upload-box__content__head .icon-wrapper, .upload-box__content__head .icon-wrapper .qty, .comment-box__content, .comment-box__content .icon--comment, .comment-box__content .qty, .screenshots-list__item .screenshot-box__content .counter, .screenshots-list-box__no, .trigger-close-popup, .sec--head__inner, .subsec__head, .popup__head, .teasers-list, .display-mode-list, .comment, .comments, .ticket-data-box__head__row, .ticket-details-info-list, .ticket-box__details, .customSelect, .form-box, .checkboxes-list, .checkboxes-list .field, .ticket-form .form__actions,
-.ticket-details-comment-form .form__actions, .sec--head__box, .subsec__head__box, .breadcrumbs, .breadcrumbs__item, .page-back__content .icon--open-big--left:before, .action-tools-list, .file-data__inner, .file-data__name, .file-data__extention, .file-data__size, .file-data__uploaded-date, .file-data__actions, .file-data__status, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date, .files-list__item, .files-list > li, .files-list__item__inner, .files-list > li__inner, .files-box__head, .files-box__name, .files-box__extention, .files-box__size, .files-box__uploaded-date, .files-box__actions, .files-box__status, .files-box__create-date, .files-box__finish-date, .files-box__comments, .files-box__tickets-date, .screenshot-box__content, .screenshots-list-box__head, .screenshots-list-box__name, .ticket-details-info__head, .ticket-details-info__head .icon, .ticket-details-info__content, .access-form .form__actions .field--cta, .labels-choice, .teaser__actions, .screenshots-list-box__preview, .update-info__content, .file-data--tickets .file-data__status .status-label, .files-list__item__id, .files-list > li__id, .ticket-details-info, .project-teaser .teaser__content {
-  display: -webkit-box;
+.ticket-details-comment-form .form__fieldset .field .label--special, .sec--main__inner, .icon:before, .tooltip .label, .tooltip:before, .cloud-tooltip__icon, .cloud-tooltip__icon .icon, .cloud-tooltip__icon .icon:before, .btn, .user-btn, .action-btn__content, .page-back__content, .labels-choice-list__item.active:after, .update-info .label, .update-info--alt .icon--clock, .action-tool__content, .user-box__content, .teaser__head, .teaser__content, .template-teaser .teaser__content .project-title, .template-teaser .teaser__content .action-tools-list__item, .file-data--template-complexe .file-data__actions .icon, .ticket-id-link, .files-list__item__counter:before, .files-list > li__counter:before, .files-box__sortable.desc:before, .files-box__sortable.asc:before, .pagination__content, .pagination-list, .pagination-box, .project-time-list, .access-tool__content, .access-tools-list, .dispaly-mode__content, .dispaly-mode .icon, .upload-box__content__head .icon, .upload-box__content__head .icon--folder--alt, .upload-box__content__head .icon--box, .upload-box__content__head .icon--folder--alt:before, .upload-box__content__head .icon--box:before, .upload-box__content__head .icon-wrapper, .upload-box__content__head .icon-wrapper .qty, .comment-box__content, .comment-box__content .icon--comment, .comment-box__content .qty, .screenshots-list__item .screenshot-box__content .counter, .screenshots-list-box__no, .trigger-close-popup, .sec--head__inner, .subsec__head, .popup__head, .teasers-list, .display-mode-list, .comment, .comments, .ticket-data-box__head__row, .ticket-details-info-list, .ticket-box__details, .customSelect, .form-box, .checkboxes-list, .checkboxes-list .field, .ticket-form .form__actions,
+.ticket-details-comment-form .form__actions, .sec--head__box, .subsec__head__box, .breadcrumbs, .breadcrumbs__item, .page-back__content .icon--open-big--left:before, .action-tools-list, .file-data__inner, .file-data__name, .file-data__extention, .file-data__size, .file-data__uploaded-date, .file-data__actions, .file-data__status, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date, .file-data__template, .files-list__item, .files-list > li, .files-list__item__inner, .files-list > li__inner, .files-box__head, .files-box__name, .files-box__extention, .files-box__size, .files-box__uploaded-date, .files-box__actions, .files-box__status, .files-box__create-date, .files-box__finish-date, .files-box__comments, .files-box__tickets-date, .files-box__template, .screenshot-box__content, .screenshots-list-box__head, .screenshots-list-box__name, .ticket-details-info__head, .ticket-details-info__head .icon, .access-form .form__actions .field--cta, .labels-choice, .teaser__actions, .screenshots-list-box__preview, .update-info__content, .file-data--tickets .file-data__status .status-label, .files-list__item__id, .files-list > li__id, .project-teaser .teaser__content {
   display: flex; }
 
 .sec--head,
 .sec--main,
 .sec--popup,
 .subsec, .sec--main__head, .sec--main__content, body, .access-form .form__content, .access-form .form__actions, .subsec__content, .page-back__info, .labels-choice-list, .progress-bar-wrapper, .project-box__content, .project-box__actions, .access-box__head, .access-box__content, .dispaly-mode-box__info, .upload-box__content, .upload-box__content__head, .upload-box__content__info-add, .teasers-list, .display-mode-list, .comment, .comments, .ticket-data-box__head__row, .ticket-details-info-list, .ticket-box__details, .access-form .form__actions .field--cta, .labels-choice {
-  -webkit-box-align: start;
   align-items: flex-start;
   align-content: flex-start; }
 
@@ -1240,9 +1204,8 @@ The `sprites` mixin generates identical output to the CSS template
 .ticket-details-comment-form .field--select:before, .icheckbox:before, .customSelect:after, .project-action-form .form__fieldset .field .label,
 .project-action-form .form__fieldset .NFI-wrapper .label, .ticket-form .form__fieldset .NFI-wrapper .NFI-button,
 .ticket-details-comment-form .form__fieldset .NFI-wrapper .NFI-button, .ticket-form .form__fieldset .field .label--special,
-.ticket-details-comment-form .form__fieldset .field .label--special, .sec--main__inner, .sec--popup__inner, .icon:before, .tooltip .label, .tooltip:before, .cloud-tooltip__icon, .cloud-tooltip__icon .icon, .cloud-tooltip__icon .icon:before, .btn, .user-btn, .action-btn__content, .page-back__content, .labels-choice-list__item.active:after, .update-info .label, .update-info--alt .icon--clock, .action-tool__content, .user-box__content, .teaser__head, .teaser__content, .project-teaser .teaser__content .project-title, .template-teaser .teaser__content .project-title, .template-teaser .teaser__content .action-tools-list__item, .file-data--template-complexe .file-data__actions .icon, .ticket-id-link, .files-list__item__counter:before, .files-list > li__counter:before, .files-box__sortable.desc:before, .files-box__sortable.asc:before, .pagination__content, .pagination-list, .pagination-box, .project-time-list, .access-tool__content, .access-tools-list, .dispaly-mode__content, .dispaly-mode .icon, .upload-box__content__head .icon, .upload-box__content__head .icon--folder--alt, .upload-box__content__head .icon--box, .upload-box__content__head .icon--folder--alt:before, .upload-box__content__head .icon--box:before, .upload-box__content__head .icon-wrapper, .upload-box__content__head .icon-wrapper .qty, .comment-box__content, .comment-box__content .icon--comment, .comment-box__content .qty, .screenshots-list__item .screenshot-box__content .counter, .screenshots-list-box__no, .trigger-close-popup, .sec--head__inner, .subsec__head, .popup__head, .customSelect, .form-box, .checkboxes-list, .checkboxes-list .field, .ticket-form .form__actions,
-.ticket-details-comment-form .form__actions, .sec--head__box, .subsec__head__box, .breadcrumbs, .breadcrumbs__item, .page-back__content .icon--open-big--left:before, .action-tools-list, .file-data__inner, .file-data__name, .file-data__extention, .file-data__size, .file-data__uploaded-date, .file-data__actions, .file-data__status, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date, .files-list__item, .files-list > li, .files-list__item__inner, .files-list > li__inner, .files-box__head, .files-box__name, .files-box__extention, .files-box__size, .files-box__uploaded-date, .files-box__actions, .files-box__status, .files-box__create-date, .files-box__finish-date, .files-box__comments, .files-box__tickets-date, .screenshot-box__content, .screenshots-list-box__head, .screenshots-list-box__name, .ticket-details-info__head, .ticket-details-info__head .icon, .ticket-details-info__content, .teaser__actions, .screenshots-list-box__preview {
-  -webkit-box-align: center;
+.ticket-details-comment-form .form__fieldset .field .label--special, .sec--main__inner, .icon:before, .tooltip .label, .tooltip:before, .cloud-tooltip__icon, .cloud-tooltip__icon .icon, .cloud-tooltip__icon .icon:before, .btn, .user-btn, .action-btn__content, .page-back__content, .labels-choice-list__item.active:after, .update-info .label, .update-info--alt .icon--clock, .action-tool__content, .user-box__content, .teaser__head, .teaser__content, .template-teaser .teaser__content .project-title, .template-teaser .teaser__content .action-tools-list__item, .file-data--template-complexe .file-data__actions .icon, .ticket-id-link, .files-list__item__counter:before, .files-list > li__counter:before, .files-box__sortable.desc:before, .files-box__sortable.asc:before, .pagination__content, .pagination-list, .pagination-box, .project-time-list, .access-tool__content, .access-tools-list, .dispaly-mode__content, .dispaly-mode .icon, .upload-box__content__head .icon, .upload-box__content__head .icon--folder--alt, .upload-box__content__head .icon--box, .upload-box__content__head .icon--folder--alt:before, .upload-box__content__head .icon--box:before, .upload-box__content__head .icon-wrapper, .upload-box__content__head .icon-wrapper .qty, .comment-box__content, .comment-box__content .icon--comment, .comment-box__content .qty, .screenshots-list__item .screenshot-box__content .counter, .screenshots-list-box__no, .trigger-close-popup, .sec--head__inner, .subsec__head, .popup__head, .customSelect, .form-box, .checkboxes-list, .checkboxes-list .field, .ticket-form .form__actions,
+.ticket-details-comment-form .form__actions, .sec--head__box, .subsec__head__box, .breadcrumbs, .breadcrumbs__item, .page-back__content .icon--open-big--left:before, .action-tools-list, .file-data__inner, .file-data__name, .file-data__extention, .file-data__size, .file-data__uploaded-date, .file-data__actions, .file-data__status, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date, .file-data__template, .files-list__item, .files-list > li, .files-list__item__inner, .files-list > li__inner, .files-box__head, .files-box__name, .files-box__extention, .files-box__size, .files-box__uploaded-date, .files-box__actions, .files-box__status, .files-box__create-date, .files-box__finish-date, .files-box__comments, .files-box__tickets-date, .files-box__template, .screenshot-box__content, .screenshots-list-box__head, .screenshots-list-box__name, .ticket-details-info__head, .ticket-details-info__head .icon, .teaser__actions, .screenshots-list-box__preview {
   align-items: center;
   align-content: center; }
 
@@ -1253,26 +1216,21 @@ The `sprites` mixin generates identical output to the CSS template
 .ticket-details-comment-form .field--select:before, .icheckbox:before, .customSelect:after, .project-action-form .form__fieldset .field .label,
 .project-action-form .form__fieldset .NFI-wrapper .label, .ticket-form .form__fieldset .NFI-wrapper .NFI-button,
 .ticket-details-comment-form .form__fieldset .NFI-wrapper .NFI-button, .ticket-form .form__fieldset .field .label--special,
-.ticket-details-comment-form .form__fieldset .field .label--special, .sec--main__inner, .sec--popup__inner, .icon:before, .tooltip .label, .tooltip:before, .cloud-tooltip__icon, .cloud-tooltip__icon .icon, .cloud-tooltip__icon .icon:before, .btn, .user-btn, .action-btn__content, .page-back__content, .labels-choice-list__item.active:after, .update-info .label, .update-info--alt .icon--clock, .action-tool__content, .user-box__content, .teaser__head, .teaser__content, .project-teaser .teaser__content .project-title, .template-teaser .teaser__content .project-title, .template-teaser .teaser__content .action-tools-list__item, .file-data--template-complexe .file-data__actions .icon, .ticket-id-link, .files-list__item__counter:before, .files-list > li__counter:before, .files-box__sortable.desc:before, .files-box__sortable.asc:before, .pagination__content, .pagination-list, .pagination-box, .project-time-list, .access-tool__content, .access-tools-list, .dispaly-mode__content, .dispaly-mode .icon, .upload-box__content__head .icon, .upload-box__content__head .icon--folder--alt, .upload-box__content__head .icon--box, .upload-box__content__head .icon--folder--alt:before, .upload-box__content__head .icon--box:before, .upload-box__content__head .icon-wrapper, .upload-box__content__head .icon-wrapper .qty, .comment-box__content, .comment-box__content .icon--comment, .comment-box__content .qty, .screenshots-list__item .screenshot-box__content .counter, .screenshots-list-box__no, .trigger-close-popup {
-  -webkit-box-pack: center;
+.ticket-details-comment-form .form__fieldset .field .label--special, .sec--main__inner, .icon:before, .tooltip .label, .tooltip:before, .cloud-tooltip__icon, .cloud-tooltip__icon .icon, .cloud-tooltip__icon .icon:before, .btn, .user-btn, .action-btn__content, .page-back__content, .labels-choice-list__item.active:after, .update-info .label, .update-info--alt .icon--clock, .action-tool__content, .user-box__content, .teaser__head, .teaser__content, .template-teaser .teaser__content .project-title, .template-teaser .teaser__content .action-tools-list__item, .file-data--template-complexe .file-data__actions .icon, .ticket-id-link, .files-list__item__counter:before, .files-list > li__counter:before, .files-box__sortable.desc:before, .files-box__sortable.asc:before, .pagination__content, .pagination-list, .pagination-box, .project-time-list, .access-tool__content, .access-tools-list, .dispaly-mode__content, .dispaly-mode .icon, .upload-box__content__head .icon, .upload-box__content__head .icon--folder--alt, .upload-box__content__head .icon--box, .upload-box__content__head .icon--folder--alt:before, .upload-box__content__head .icon--box:before, .upload-box__content__head .icon-wrapper, .upload-box__content__head .icon-wrapper .qty, .comment-box__content, .comment-box__content .icon--comment, .comment-box__content .qty, .screenshots-list__item .screenshot-box__content .counter, .screenshots-list-box__no, .trigger-close-popup {
   justify-content: center; }
 
 .access-form .form__actions .field--cta, .labels-choice, .teaser__actions, .screenshots-list-box__preview {
-  -webkit-box-pack: end;
   justify-content: flex-end; }
 
 .sec--head__inner, .subsec__head, .popup__head {
-  -webkit-box-pack: justify;
   justify-content: space-between; }
 
-.sec--popup, .update-info__content, .file-data--tickets .file-data__status .status-label, .files-list__item__id, .files-list > li__id, .ticket-details-info {
+.update-info__content, .file-data--tickets .file-data__status .status-label, .files-list__item__id, .files-list > li__id {
   align-content: stretch;
-  -webkit-box-align: stretch;
   align-items: stretch; }
 
 .project-teaser .teaser__content {
   flex-wrap: wrap;
-  -webkit-box-align: stretch;
   align-items: stretch;
   align-content: space-between; }
 
@@ -1290,13 +1248,12 @@ The `sprites` mixin generates identical output to the CSS template
   .project-teaser .teaser__head:after, .files-list__item__id .ticket-id-link:after, .files-list > li__id .ticket-id-link:after, .files-list__item__counter:after, .files-list > li__counter:after, .pagination__content:after, .screenshots-list__item .screenshot-box__content .counter:after {
     width: 1px;
     height: 1px;
-    -webkit-transition: 200ms ease-in-out, border-radius 200ms linear;
     transition: 200ms ease-in-out, border-radius 200ms linear;
     border-radius: 50%;
     background: transparent; }
 
 .action-teaser .teaser__inner:hover .teaser__head:after,
-.project-teaser .teaser__inner:hover .teaser__head:after, .action-teaser.active .teaser__head:after, .files-list__item a.files-list__item__inner:hover .files-list__item__counter:after, .files-list > li a.files-list__item__inner:hover .files-list__item__counter:after, .files-list__item__id .ticket-id-link:hover:after, .files-list > li__id .ticket-id-link:hover:after, .pagination__content:hover:after, .screenshots-list__item .screenshot-box__content:hover .counter:after, .trigger-close-popup:hover:after {
+.project-teaser .teaser__inner:hover .teaser__head:after, .action-teaser.active .teaser__head:after, .files-list__item a.files-list__item__inner:hover .files-list__item__counter:after, .files-list > li a.files-list__item__inner:hover .files-list__item__counter:after, .files-list__item__id .ticket-id-link:hover:after, .files-list__item__id .ticket-id-link.active:after, .files-list > li__id .ticket-id-link:hover:after, .files-list > li__id .ticket-id-link.active:after, .pagination__content:hover:after, .screenshots-list__item .screenshot-box__content:hover .counter:after, .trigger-close-popup:hover:after {
   top: -25%;
   right: -25%;
   bottom: -25%;
@@ -1327,14 +1284,12 @@ The `sprites` mixin generates identical output to the CSS template
   height: 1px;
   opacity: 0;
   background: transparent;
-  -webkit-box-pack: center;
   justify-content: center; }
   .action-tool__info .tooltip, .access-tool__info .tooltip {
     margin-top: 15px;
     opacity: 0; }
 
 .action-tool:hover .action-tool__info, .access-tool:hover .access-tool__info {
-  display: -webkit-box;
   display: flex;
   opacity: 1; }
   .action-tool:hover .action-tool__info .tooltip, .access-tool:hover .access-tool__info .tooltip {
@@ -1412,7 +1367,7 @@ a {
   .ticket-details-comment-form .field--select select {
     position: relative;
     z-index: 3;
-    width: 330px;
+    width: 475px;
     height: 48px;
     padding: 0 40px 0 15px;
     font-family: "Roboto", Arial, sans-serif;
@@ -1491,7 +1446,6 @@ a {
   .icheckbox.checked {
     position: relative;
     border-color: #d64650;
-    background: -webkit-linear-gradient(top, #e32c49 0%, #d4213e 100%);
     background: linear-gradient(to bottom, #e32c49 0%, #d4213e 100%); }
     .icheckbox.checked:before {
       opacity: 1;
@@ -1522,7 +1476,6 @@ a {
 
 .customSelect {
   z-index: 1;
-  display: -webkit-box !important;
   display: flex !important;
   overflow: hidden;
   width: 100%;
@@ -1625,7 +1578,6 @@ a {
     background: #fff; }
     .project-action-form .form__fieldset .NFI-wrapper {
       z-index: -1;
-      display: -webkit-box !important;
       display: flex !important;
       overflow: hidden !important;
       box-sizing: border-box;
@@ -1633,10 +1585,8 @@ a {
       cursor: pointer;
       opacity: 0;
       flex-wrap: wrap;
-      -webkit-box-align: start;
       align-items: flex-start;
       align-content: flex-start;
-      -webkit-box-pack: center;
       justify-content: center; }
     .project-action-form .form__fieldset .NFI-filename {
       display: none !important; }
@@ -1653,7 +1603,6 @@ a {
       width: 100%;
       font-size: 20px;
       font-weight: 300;
-      -webkit-transition: 300ms ease;
       transition: 300ms ease;
       text-align: center;
       border: none; }
@@ -1691,13 +1640,11 @@ a {
 /* ticket-form
    ========================================================================== */
 .form-box__section {
-  -webkit-box-flex: 1;
   flex-grow: 1; }
   .form-box__section__head + .form-box__section__content {
     margin-top: 15px; }
 
 .form-box--double .form-box__section:first-of-type {
-  -webkit-box-flex: 0;
   flex-grow: 0; }
 
 .form-box--double .form-box__section:last-of-type {
@@ -1722,7 +1669,6 @@ a {
     margin-right: 15px; }
   .checkboxes-list .field .label {
     margin-right: 10px;
-    -webkit-box-ordinal-group: 0;
     order: -1; }
 
 .ticket-form .label,
@@ -1739,7 +1685,6 @@ a {
   width: 100%; }
   .ticket-form .form__fieldset .NFI-wrapper,
   .ticket-details-comment-form .form__fieldset .NFI-wrapper {
-    display: -webkit-box !important;
     display: flex !important; }
     .ticket-form .form__fieldset .NFI-wrapper .NFI-filename,
     .ticket-form .form__fieldset .NFI-wrapper .NFI-current,
@@ -1755,14 +1700,11 @@ a {
       border: none;
       border: 1px solid #e5e5e5;
       border-right: none;
-      -webkit-box-ordinal-group: 2;
       order: 1;
-      -webkit-box-flex: 1;
       flex-grow: 1; }
     .ticket-form .form__fieldset .NFI-wrapper .NFI-button,
     .ticket-details-comment-form .form__fieldset .NFI-wrapper .NFI-button {
       position: relative;
-      display: -webkit-box !important;
       display: flex !important;
       overflow: visible !important;
       width: calc(330px / 2);
@@ -1773,7 +1715,6 @@ a {
       color: #fff;
       background: #e65962;
       flex-shrink: 0;
-      -webkit-box-ordinal-group: 3;
       order: 2; }
       .ticket-form .form__fieldset .NFI-wrapper .NFI-button .NFI-current,
       .ticket-details-comment-form .form__fieldset .NFI-wrapper .NFI-button .NFI-current {
@@ -1784,7 +1725,7 @@ a {
     position: relative; }
     .ticket-form .form__fieldset .field--select,
     .ticket-details-comment-form .form__fieldset .field--select {
-      width: 330px;
+      width: 475px;
       font-size: 15px;
       font-weight: 300;
       color: #404040; }
@@ -1836,7 +1777,6 @@ a {
   margin-top: 25px; }
 
 .ticket-form .form-box {
-  -webkit-box-align: start;
   align-items: flex-start; }
 
 .ticket-details-comment-form .form__fieldset .field .textarea {
@@ -1877,7 +1817,8 @@ a {
     max-width: 48%; }
     .ticket-form .form__fieldset .NFI-wrapper .NFI-button .NFI-current {
       width: calc(100vw - 15px * 4); }
-  .ticket-form .form__fieldset .field--select {
+  .ticket-form .form__fieldset .field--select,
+  .ticket-form .form__fieldset .field--select select {
     width: 100%; } }
 
 @media (max-width: 400px) {
@@ -1923,16 +1864,15 @@ body.blocked {
     padding-top: 0;
     padding-bottom: 0; }
   .sec--head__box {
-    -webkit-box-flex: 1;
     flex-grow: 1; }
     .sec--head__box + .sec--head__box {
-      -webkit-box-pack: end;
       justify-content: flex-end; }
   .sec--head.small {
     height: 50px;
     border-bottom: 1px solid #e5e5e5;
     background: rgba(255, 255, 255, 0.9); }
     .sec--head.small.hidden {
+      visibility: hidden;
       opacity: 0; }
       .sec--head.small.hidden .sec--head__inner {
         margin-top: -50px; }
@@ -1966,7 +1906,6 @@ body.blocked {
 
 .subsec__head .subtitle,
 .subsec__head .main-title {
-  -webkit-box-flex: 1;
   flex-grow: 1; }
 
 .subsec__head .main-title {
@@ -2000,7 +1939,6 @@ body.blocked {
 @media (max-width: 1100px) {
   .subsec__head {
     flex-wrap: wrap;
-    -webkit-box-pack: center;
     justify-content: center; }
     .subsec__head .main-title {
       margin-bottom: 34px; }
@@ -2008,7 +1946,6 @@ body.blocked {
     .subsec__head .display-mode-list {
       width: 100%; }
     .subsec__head .display-mode-list {
-      -webkit-box-pack: center;
       justify-content: center; }
       .subsec__head .display-mode-list__item:last-child .dispaly-mode-box__info {
         right: -50%;
@@ -2030,7 +1967,7 @@ body.blocked {
     margin-top: 15px; } }
 
 .sec--popup {
-  position: absolute;
+  position: fixed;
   z-index: 30;
   top: 0;
   right: 0;
@@ -2038,37 +1975,30 @@ body.blocked {
   width: 100%;
   height: 100vh;
   min-height: 100%;
-  background: rgba(0, 0, 0, 0.8); }
+  background: rgba(0, 0, 0, 0.8);
+  overflow: auto; }
   .sec--popup__inner {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%); }
+    min-height: 100vh;
+    padding-bottom: 20px;
+    display: block;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center; }
 
 /* Layout Components
    ========================================================================== */
 /* ==========================================================================
    Components
    ========================================================================== */
-@-webkit-keyframes rotating {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg); }
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg); } }
 @keyframes rotating {
   from {
-    -webkit-transform: rotate(0deg);
     transform: rotate(0deg); }
   to {
-    -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 
 .rotate {
   -webkit-animation: rotating 1s linear infinite;
-  -webkit-animation-fill-mode: both;
   animation-fill-mode: both; }
 
 /* Icons
@@ -2081,13 +2011,10 @@ body.blocked {
   font-family: "fontello"; }
 
 .icon--resize {
-  -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg); }
 
 .icon--comment {
-  -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-  -webkit-filter: FlipH;
   filter: FlipH; }
 
 .icon--close {
@@ -2104,10 +2031,8 @@ body.blocked {
     margin: auto;
     background: #e65962; }
   .icon--close:before {
-    -webkit-transform: rotate(45deg);
     transform: rotate(45deg); }
   .icon--close:after {
-    -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg); }
 
 .icon--add:before {
@@ -2144,6 +2069,8 @@ object svg {
   line-height: 1; }
   .breadcrumb .highlighted {
     font-weight: 700; }
+  .breadcrumb a {
+    cursor: pointer; }
 
 h1.breadcrumb {
   letter-spacing: 1px; }
@@ -2155,7 +2082,7 @@ h1.breadcrumb {
     margin-left: calc(30px / 2);
     font-family: "fontello";
     font-size: 6px;
-    content: '\e803'; }
+    content: '\e804'; }
   .breadcrumbs__item:last-child {
     margin-right: 0; }
     .breadcrumbs__item:last-child:after {
@@ -2223,8 +2150,7 @@ h1.breadcrumb {
     right: 15px;
     overflow: hidden;
     width: 7px;
-    height: 6px;
-    background: #fff; }
+    height: 6px; }
     .cloud-tooltip__icon .icon {
       color: #b2b2b2; }
       .cloud-tooltip__icon .icon:before {
@@ -2232,7 +2158,19 @@ h1.breadcrumb {
         height: 6px;
         margin: 0;
         padding-left: 1px;
+        z-index: 2;
         font-size: 16px; }
+      .cloud-tooltip__icon .icon:after {
+        position: absolute;
+        z-index: 1;
+        top: 4px;
+        left: -1px;
+        display: block;
+        width: 10px;
+        height: 10px;
+        content: '';
+        transform: rotate(45deg);
+        background: #fff; }
   .cloud-tooltip__content {
     width: 135px;
     padding: 12px 0; }
@@ -2266,6 +2204,7 @@ h1.breadcrumb {
 .user-btn {
   width: 35px;
   height: 35px;
+  text-transform: uppercase;
   border-radius: 50%;
   background: #e65962; }
   .user-btn .label {
@@ -2372,7 +2311,8 @@ h1.breadcrumb {
   margin: 0;
   line-height: 1.2; }
   .page-back__content {
-    width: 100%; }
+    width: 100%;
+    cursor: pointer; }
     .page-back__content .main-title {
       position: relative;
       color: #000; }
@@ -2388,12 +2328,13 @@ h1.breadcrumb {
       color: #7f7f7f; }
       .page-back__content .icon--open-big--left:before {
         margin: 0;
-        -webkit-box-pack: start;
         justify-content: flex-start; }
     .page-back__content:hover {
       text-decoration: none; }
       .page-back__content:hover .main-title:before {
         opacity: 1; }
+    .page-back__content:active, .page-back__content:focus {
+      outline: none; }
   .page-back__info {
     position: absolute;
     z-index: 15;
@@ -2404,7 +2345,6 @@ h1.breadcrumb {
     .page-back__info .tooltip {
       margin-top: 25px; }
   .page-back:hover .page-back__info {
-    display: -webkit-box;
     display: flex; }
 
 @media (max-width: 1100px) {
@@ -2421,20 +2361,20 @@ h1.breadcrumb {
 
 /* Labels
    ========================================================================== */
-.status-label--new {
-  background: #000; }
-
-.status-label--in-progress {
-  background: #a96dbc; }
-
-.status-label--qa {
-  background: #4f7dc1; }
-
-.status-label--finished, .status-label--done {
-  background: #6dc729; }
-
-.status-label--rejected {
-  background: #d64650; }
+.status-label {
+  position: relative; }
+  .status-label--new {
+    background: #000; }
+  .status-label--in-progress {
+    background: #a96dbc; }
+  .status-label--qa {
+    background: #4f7dc1; }
+  .status-label--finished, .status-label--done {
+    background: #6dc729; }
+  .status-label--rejected {
+    background: #d64650; }
+  .status-label--resolved {
+    background: #56CDE5; }
 
 .extention-label--psd {
   background: #4f7dc1; }
@@ -2478,7 +2418,6 @@ h1.breadcrumb {
     .labels-choice-list__item.active {
       position: relative;
       opacity: 1;
-      -webkit-box-ordinal-group: 0;
       order: -1; }
       .labels-choice-list__item.active:after {
         position: absolute;
@@ -2543,21 +2482,17 @@ h1.breadcrumb {
 .progress-bar[value]::-webkit-progress-value {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  background: -webkit-linear-gradient(top, #d64650 0%, #c33b44 100%);
   background: linear-gradient(to bottom, #d64650 0%, #c33b44 100%); }
 
 .progress-bar[value='100']::-webkit-progress-value {
-  background: -webkit-linear-gradient(top, #87fb32 0%, #78c33b 100%);
   background: linear-gradient(to bottom, #87fb32 0%, #78c33b 100%); }
 
 .progress-bar--alt[value] {
   height: 12px;
   border-bottom: none;
-  background: -webkit-linear-gradient(top, #d9d9d9 0%, #e4e4e4 100%);
   background: linear-gradient(to bottom, #d9d9d9 0%, #e4e4e4 100%); }
 
 .progress-bar--alt[value]::-webkit-progress-bar {
-  background: -webkit-linear-gradient(top, #d9d9d9 0%, #e4e4e4 100%);
   background: linear-gradient(to bottom, #d9d9d9 0%, #e4e4e4 100%); }
 
 .progress-bar--alt[value]::-webkit-progress-value {
@@ -2585,7 +2520,6 @@ h1.breadcrumb {
   .progress-bar-wrapper .progress-bar + .progress-bar-value {
     margin-top: 15px; }
   .progress-bar-wrapper--alt {
-    -webkit-box-pack: end;
     justify-content: flex-end; }
     .progress-bar-wrapper--alt .progress-bar-value,
     .progress-bar-wrapper--alt .progress-bar-file-size {
@@ -2611,7 +2545,6 @@ h1.breadcrumb {
 .update-info {
   display: inline-block; }
   .update-info__content {
-    -webkit-box-pack: center;
     justify-content: center; }
   .update-info .label {
     margin: 0;
@@ -2666,12 +2599,31 @@ h1.breadcrumb {
 .action-tool {
   position: relative;
   display: inline-block; }
+  .action-tool [data-tickets] {
+    position: relative; }
+    .action-tool [data-tickets]:after {
+      background-color: #d64650;
+      border: solid 2px #fff;
+      content: attr(data-tickets);
+      width: 18px;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 800;
+      height: 18px;
+      text-align: center;
+      position: absolute;
+      top: 15%;
+      right: 15%;
+      line-height: 15px;
+      text-indent: 1px; }
   .action-tool__content {
     position: relative;
     z-index: 1;
     height: 52px;
     padding: 0 15px;
-    background: #000; }
+    background: #000;
+    cursor: pointer; }
     .action-tool__content:hover {
       text-decoration: none; }
   .action-tool .icon {
@@ -2708,18 +2660,20 @@ h1.breadcrumb {
 
 .action-tools-list__item {
   position: relative; }
-  .action-tools-list__item .action-tool__content {
-    position: relative; }
-    .action-tools-list__item .action-tool__content:before {
-      top: -2px;
-      right: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      margin: 0 auto;
-      background: transparent; }
-    .action-tools-list__item .action-tool__content:hover:before {
-      background: #fff; }
+  .action-tools-list__item .action-tool {
+    cursor: pointer; }
+    .action-tools-list__item .action-tool__content {
+      position: relative; }
+      .action-tools-list__item .action-tool__content:before {
+        top: -2px;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        margin: 0 auto;
+        background: transparent; }
+      .action-tools-list__item .action-tool__content:hover:before {
+        background: #fff; }
 
 .action-tools-list .action-tools-list__item + .action-tools-list__item .action-tool {
   border-left: 1px solid #1a1a1a; }
@@ -2740,7 +2694,7 @@ h1.breadcrumb {
       outline: none; }
       .user-box__content:hover .user-btn {
         background: #000; }
-    .user-box__content:focus {
+    .user-box__content:focus, .user-box__content:active {
       outline: none; }
   .user-box__actions {
     position: absolute;
@@ -2814,8 +2768,26 @@ h1.breadcrumb {
 
 .action-teaser .teaser__head:after,
 .project-teaser .teaser__head:after {
-  -webkit-transition: 400ms ease-in-out, border-radius 400ms linear;
   transition: 400ms ease-in-out, border-radius 400ms linear; }
+
+.dragover .teaser__inner .teaser__head .icon {
+  position: relative;
+  z-index: 2;
+  color: #fff; }
+
+.dragover .teaser__inner .teaser__head:after {
+  top: -25%;
+  right: -25%;
+  bottom: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  z-index: 1;
+  background: #e65962; }
+
+.dragover .teaser__inner .teaser__content {
+  position: relative;
+  z-index: 3; }
 
 .action-teaser {
   overflow: hidden;
@@ -2845,7 +2817,6 @@ h1.breadcrumb {
     overflow: visible;
     padding: 0;
     background: #fff;
-    -webkit-box-align: start;
     align-items: flex-start;
     align-content: flex-start; }
     .action-teaser .teaser__content .project-action-form {
@@ -2872,7 +2843,6 @@ h1.breadcrumb {
       position: relative;
       z-index: 3;
       padding: calc(15px + 7px) 15px 15px;
-      -webkit-box-align: stretch;
       align-items: stretch;
       align-content: space-between; }
     .action-teaser--in-progress .progress-bar-wrapper {
@@ -2896,7 +2866,8 @@ h1.breadcrumb {
     height: calc(378px - 3px - 245px + 35px);
     margin: 0 auto; }
     .project-teaser .teaser__content .project-title {
-      height: 40px; }
+      height: auto;
+      max-height: 4rem; }
   .project-teaser .teaser__inner:hover .teaser__head:after {
     background: rgba(255, 0, 0, 0.4); }
   .project-teaser .teaser__inner:hover .teaser__content {
@@ -2940,7 +2911,6 @@ h1.breadcrumb {
       width: 100%;
       margin: auto 0;
       opacity: 0;
-      -webkit-box-pack: center;
       justify-content: center; }
   .template-teaser .teaser__content {
     height: calc(378px - 6px - 245px + 52px);
@@ -2955,11 +2925,9 @@ h1.breadcrumb {
       opacity: 0; }
       .template-teaser .teaser__content .action-tools-list__item {
         width: 25%;
-        -webkit-box-flex: 1;
         flex-grow: 1; }
         .template-teaser .teaser__content .action-tools-list__item .action-tool {
           width: 100%;
-          -webkit-box-flex: 1;
           flex-grow: 1; }
           .template-teaser .teaser__content .action-tools-list__item .action-tool__info {
             top: 0;
@@ -2987,7 +2955,6 @@ h1.breadcrumb {
     margin-bottom: calc(-40px - 15px);
     margin-left: -44px;
     padding-bottom: calc(40px + 15px);
-    -webkit-box-pack: end;
     justify-content: flex-end; }
     .template-teaser .teaser__actions .action-tool {
       opacity: 0; }
@@ -3049,7 +3016,6 @@ h1.breadcrumb {
     border: 3px dotted #d64650;
     background: rgba(214, 70, 80, 0.5); }
   .teasers-list--alt {
-    -webkit-box-pack: center;
     justify-content: center; }
 
 @media (max-width: 1100px) {
@@ -3073,12 +3039,10 @@ h1.breadcrumb {
   font-weight: 300; }
 
 .ticket-desc > p {
-  display: -webkit-box;
   display: flex;
   height: 40px;
   line-height: 20px;
   flex-flow: column nowrap;
-  -webkit-box-pack: center;
   justify-content: center; }
 
 .kss-modifier-example .file-data {
@@ -3091,17 +3055,17 @@ h1.breadcrumb {
     height: 44px; }
     .file-data__inner:hover {
       text-decoration: none; }
-  .file-data__name, .file-data__extention, .file-data__size, .file-data__uploaded-date, .file-data__actions, .file-data__status, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date {
+  .file-data__name, .file-data__extention, .file-data__size, .file-data__uploaded-date, .file-data__actions, .file-data__status, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date, .file-data__template {
     height: 100%;
     background-color: #fff; }
   .file-data__extention, .file-data__size, .file-data__uploaded-date, .file-data__actions, .file-data__status, .file-data__create-date, .file-data__finish-date {
     flex-shrink: 0; }
-  .file-data__name, .file-data__size, .file-data__uploaded-date, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date {
+  .file-data__name, .file-data__size, .file-data__uploaded-date, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date, .file-data__template {
     padding: 0 15px;
     border: 1px solid #b2b2b2; }
-  .file-data__name, .file-data__size, .file-data__uploaded-date, .file-data__create-date, .file-data__comments {
+  .file-data__name, .file-data__size, .file-data__uploaded-date, .file-data__create-date, .file-data__comments, .file-data__template {
     border-right: none; }
-  .file-data__size, .file-data__uploaded-date, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date {
+  .file-data__size, .file-data__uploaded-date, .file-data__create-date, .file-data__finish-date, .file-data__comments, .file-data__ticket-date, .file-data__template {
     border-left: none; }
   .file-data__status, .file-data__comments, .file-data__ticket-date {
     width: 120px; }
@@ -3110,7 +3074,6 @@ h1.breadcrumb {
   .file-data__name {
     min-width: 265px;
     max-width: calc(100% - 80px - 135px - 140px - 101px);
-    -webkit-box-flex: 1;
     flex-grow: 1; }
     .file-data__name .project-title {
       overflow: hidden;
@@ -3124,6 +3087,15 @@ h1.breadcrumb {
         text-align: left;
         white-space: nowrap;
         text-overflow: ellipsis; }
+    .file-data__name--link {
+      cursor: pointer; }
+      .file-data__name--link:hover {
+        text-decoration: none; }
+      .file-data__name--link:active {
+        outline: none; }
+  .file-data__template {
+    width: 185px;
+    min-width: 185px; }
   .file-data__extention {
     width: 80px; }
     .file-data__extention .extention-label {
@@ -3135,7 +3107,6 @@ h1.breadcrumb {
   .file-data__uploaded-date {
     width: 140px; }
   .file-data__comments {
-    -webkit-box-pack: center;
     justify-content: center; }
   .file-data__actions {
     width: 101px; }
@@ -3184,7 +3155,6 @@ h1.breadcrumb {
   .file-data--tickets .file-data__inner {
     height: 65px; }
   .file-data--tickets .file-data__status {
-    -webkit-box-align: stretch;
     align-items: stretch;
     align-content: stretch; }
     .file-data--tickets .file-data__status .status-label .label {
@@ -3192,7 +3162,7 @@ h1.breadcrumb {
   .file-data--tickets .file-data__comments {
     padding: 10px 15px 13px; }
   .file-data--tickets .file-data__name {
-    max-width: calc(100% - 120px - 120px - 120px); }
+    max-width: calc(100% - 120px - 120px - 120px - 185px); }
   .file-data__ticket-date {
     position: relative; }
     .file-data__ticket-date .tooltip {
@@ -3211,6 +3181,9 @@ h1.breadcrumb {
     display: none; }
   .file-data__ticket-date:hover .tooltip {
     display: none; } }
+
+.ticket-id-link {
+  cursor: pointer; }
 
 .files-list {
   margin-bottom: -15px;
@@ -3240,18 +3213,21 @@ h1.breadcrumb {
     .files-list__item__id, .files-list > li__id {
       width: 54px;
       height: 65px;
-      -webkit-box-pack: center;
       justify-content: center; }
       .files-list__item__id .ticket-id-link, .files-list > li__id .ticket-id-link {
         position: relative;
         width: 100%;
         color: #404040; }
-        .files-list__item__id .ticket-id-link:hover, .files-list > li__id .ticket-id-link:hover {
+        .files-list__item__id .ticket-id-link:hover, .files-list__item__id .ticket-id-link.active, .files-list > li__id .ticket-id-link:hover, .files-list > li__id .ticket-id-link.active {
           text-decoration: none;
           color: #fff; }
-          .files-list__item__id .ticket-id-link:hover:after, .files-list > li__id .ticket-id-link:hover:after {
+          .files-list__item__id .ticket-id-link:hover:after, .files-list__item__id .ticket-id-link.active:after, .files-list > li__id .ticket-id-link:hover:after, .files-list > li__id .ticket-id-link.active:after {
             z-index: -1;
             background: #e65962; }
+        .files-list__item__id .ticket-id-link.active, .files-list > li__id .ticket-id-link.active {
+          text-decoration: none;
+          color: #fff;
+          background-color: #e65962; }
     .files-list__item__counter, .files-list > li__counter {
       position: relative;
       width: 44px;
@@ -3265,7 +3241,6 @@ h1.breadcrumb {
         font-weight: 300;
         content: counter(li);
         counter-increment: li;
-        -webkit-transition: 200ms ease-in-out, border-radius 200ms linear;
         transition: 200ms ease-in-out, border-radius 200ms linear;
         color: #404040; }
     .files-list__item__content, .files-list > li__content {
@@ -3275,6 +3250,24 @@ h1.breadcrumb {
         width: 100%; }
         .files-list__item__content .file-data__name, .files-list > li__content .file-data__name {
           border-left: none; }
+    .files-list__item--empty, .files-list > li--empty {
+      justify-content: center;
+      height: 4rem;
+      line-height: 4rem;
+      font-size: 14px;
+      text-transform: uppercase;
+      display: table;
+      white-space: nowrap; }
+      .files-list__item--empty:before, .files-list__item--empty:after, .files-list > li--empty:before, .files-list > li--empty:after {
+        border-top: 1px solid #d5d5d5;
+        content: '';
+        display: table-cell;
+        position: relative;
+        width: 45%; }
+      .files-list__item--empty:before, .files-list > li--empty:before {
+        right: 1.5%; }
+      .files-list__item--empty:after, .files-list > li--empty:after {
+        left: 1.5%; }
   .files-list .drag-and-drop-placeholder,
   .files-list .as-sortable-placeholder {
     width: 100%;
@@ -3290,14 +3283,18 @@ h1.breadcrumb {
   padding-bottom: calc(40px + 15px); }
   .files-box__head {
     height: 44px; }
-  .files-box__name, .files-box__extention, .files-box__size, .files-box__uploaded-date, .files-box__actions, .files-box__status, .files-box__create-date, .files-box__finish-date, .files-box__comments, .files-box__tickets-date {
+  .files-box__info {
+    margin-top: 30px;
+    margin-bottom: -15px;
+    font-size: 11px;
+    text-align: right; }
+  .files-box__name, .files-box__extention, .files-box__size, .files-box__uploaded-date, .files-box__actions, .files-box__status, .files-box__create-date, .files-box__finish-date, .files-box__comments, .files-box__tickets-date, .files-box__template {
     height: 100%; }
   .files-box__extention, .files-box__size, .files-box__uploaded-date, .files-box__actions, .files-box__status, .files-box__create-date, .files-box__finish-date {
     flex-shrink: 0; }
-  .files-box__extention, .files-box__name, .files-box__size, .files-box__uploaded-date, .files-box__actions, .files-box__create-date, .files-box__finish-date, .files-box__status, .files-box__comments, .files-box__ticket-date {
+  .files-box__extention, .files-box__name, .files-box__size, .files-box__uploaded-date, .files-box__actions, .files-box__create-date, .files-box__finish-date, .files-box__status, .files-box__comments, .files-box__ticket-date, .files-box__template {
     padding: 0 15px; }
   .files-box__extention, .files-box__status, .files-box__actions, .files-box__comments {
-    -webkit-box-pack: center;
     justify-content: center; }
     .files-box__extention .filebox-title, .files-box__status .filebox-title, .files-box__actions .filebox-title, .files-box__comments .filebox-title {
       text-align: center; }
@@ -3314,8 +3311,10 @@ h1.breadcrumb {
     min-width: 265px;
     max-width: calc(100% - 44px - 80px - 135px - 140px - 101px);
     padding: 0 15px;
-    -webkit-box-flex: 1;
     flex-grow: 1; }
+  .files-box__template {
+    min-width: 185px;
+    width: 185px; }
   .files-box__extention {
     width: 80px; }
   .files-box__size, .files-box__create-date, .files-box__finish-date {
@@ -3324,6 +3323,8 @@ h1.breadcrumb {
     padding-left: 40px; }
   .files-box__status, .files-box__comments, .files-box__ticket-date {
     width: 120px; }
+  .files-box__comments {
+    min-width: 120px; }
   .files-box__uploaded-date {
     width: 140px; }
   .files-box__actions {
@@ -3331,7 +3332,6 @@ h1.breadcrumb {
     padding: 0; }
     .files-box__actions .filebox-title {
       padding: 0 15px;
-      -webkit-box-flex: 1;
       flex-grow: 1; }
   .files-box--projects .files-box__name {
     max-width: calc(100% - 44px - 120px - 135px - 135px); }
@@ -3359,14 +3359,12 @@ h1.breadcrumb {
       display: none; }
     .files-box--templates-complexe::-webkit-scrollbar-thumb {
       border-radius: 5px;
-      background: -webkit-linear-gradient(top, #3f3f3f 0%, #0e0e0e 100%);
       background: linear-gradient(to bottom, #3f3f3f 0%, #0e0e0e 100%); }
     .files-box--templates-complexe::-webkit-scrollbar-track {
       border-radius: 5px;
-      background: -webkit-linear-gradient(top, #d9d9d9 0%, #e4e4e4 100%);
       background: linear-gradient(to bottom, #d9d9d9 0%, #e4e4e4 100%); } }
 
-@media (max-width: 860px) {
+@media (max-width: 1100px) {
   .files-box {
     margin-bottom: -15px;
     padding-bottom: 15px; }
@@ -3378,25 +3376,23 @@ h1.breadcrumb {
       display: none; }
     .files-box::-webkit-scrollbar-thumb {
       border-radius: 5px;
-      background: -webkit-linear-gradient(top, #3f3f3f 0%, #0e0e0e 100%);
       background: linear-gradient(to bottom, #3f3f3f 0%, #0e0e0e 100%); }
     .files-box::-webkit-scrollbar-track {
       border-radius: 5px;
-      background: -webkit-linear-gradient(top, #d9d9d9 0%, #e4e4e4 100%);
       background: linear-gradient(to bottom, #d9d9d9 0%, #e4e4e4 100%); } }
+
+@media (max-width: 938px) {
+  .files-box--tickets {
+    overflow-x: scroll; } }
 
 @media (max-width: 825px) {
   .files-box {
     overflow-x: scroll; }
-    .files-box--projects, .files-box--templates, .files-box--tickets {
+    .files-box--projects, .files-box--templates {
       overflow-x: hidden; } }
 
 @media (max-width: 728px) {
   .files-box--projects {
-    overflow-x: scroll; } }
-
-@media (max-width: 708px) {
-  .files-box--tickets {
     overflow-x: scroll; } }
 
 @media (max-width: 700px) {
@@ -3543,9 +3539,7 @@ h1.breadcrumb {
 /* Project-box
    ========================================================================== */
 .project-box--empty {
-  display: -webkit-box;
   display: flex;
-  -webkit-box-pack: center;
   justify-content: center; }
 
 .project-box__content {
@@ -3556,7 +3550,6 @@ h1.breadcrumb {
     margin-top: 10px; }
 
 .project-box__actions {
-  -webkit-box-pack: start;
   justify-content: flex-start; }
   .project-box__actions .pagination-box {
     margin-right: auto;
@@ -3567,7 +3560,6 @@ h1.breadcrumb {
 
 @media (max-width: 1100px) {
   .project-box__content, .project-box__actions {
-    -webkit-box-pack: center;
     justify-content: center; } }
 
 @media (max-width: 767px) {
@@ -3639,15 +3631,19 @@ h1.breadcrumb {
     .dispaly-mode__content:hover {
       text-decoration: none;
       color: #000; }
+    .dispaly-mode__content span {
+      cursor: pointer; }
   .dispaly-mode .icon {
     height: 35px; }
     .dispaly-mode .icon:before {
       width: auto;
       margin: 0; }
     .dispaly-mode .icon--display-mode {
-      font-size: 45px; }
+      font-size: 45px;
+      line-height: 45px; }
       .dispaly-mode .icon--display-mode--alt {
-        font-size: 41px; }
+        font-size: 40px;
+        line-height: 45px; }
 
 @media (max-width: 1100px) {
   .dispaly-mode .icon--display-mode {
@@ -3669,7 +3665,6 @@ h1.breadcrumb {
     .dispaly-mode-box__info .tooltip {
       margin-top: 15px; }
   .dispaly-mode-box:hover .dispaly-mode-box__info {
-    display: -webkit-box;
     display: flex;
     opacity: 1; }
 
@@ -3734,10 +3729,12 @@ h1.breadcrumb {
     position: relative;
     width: 100%;
     height: 100%; }
+    .comment-box__content.hascomments .icon {
+      color: #e65962; }
     .comment-box__content .icon {
       position: relative;
       z-index: 1;
-      color: #e65962; }
+      color: #b2b2b2; }
       .comment-box__content .icon--comment {
         width: 100%;
         height: 100%;
@@ -3770,7 +3767,6 @@ h1.breadcrumb {
     color: #d5d5d5; }
 
 .comment__info {
-  -webkit-box-flex: 1;
   flex-grow: 1; }
   .comment__info__data {
     font-size: 14px;
@@ -3815,10 +3811,8 @@ h1.breadcrumb {
       .comment__ico .icon--comment {
         font-size: 18px; }
     .comment__info__data {
-      display: -webkit-box;
       display: flex;
       flex-wrap: wrap;
-      -webkit-box-align: start;
       align-items: flex-start;
       align-content: flex-start; }
       .comment__info__data .comment-author {
@@ -4042,22 +4036,40 @@ h1.breadcrumb {
   .ticket-details-info__head .icon--screen {
     padding-top: 2px;
     font-size: 18px; }
+  .ticket-details-info__head .icon--attach {
+    font-size: 19px;
+    top: -1px;
+    position: relative; }
 
 .ticket-details-info__content .details {
   margin: 0;
   padding-top: 5px;
   font-size: 15px;
-  font-weight: 500; }
+  font-weight: 500;
+  display: inline-block;
+  white-space: normal;
+  word-wrap: break-word;
+  width: 100%; }
   .ticket-details-info__content .details > a {
     color: #4f7dc1; }
 
+.ticket-details-info__content .link {
+  color: #4f7dc1;
+  text-transform: uppercase; }
+  .ticket-details-info__content .link:visited {
+    color: #743d86;
+    text-decoration: underline;
+    text-decoration-style: dashed; }
+
 .ticket-details-info__head + .ticket-details-info__content {
-  margin-left: 15px; }
+  overflow: hidden;
+  padding-right: 30px;
+  white-space: nowrap;
+  margin-left: 35px; }
 
 .ticket-details-info--alt {
   flex-wrap: wrap;
   align-content: flex-start;
-  -webkit-box-align: start;
   align-items: flex-start; }
   .ticket-details-info--alt .ticket-details-info__content {
     display: block;
@@ -4096,10 +4108,14 @@ h1.breadcrumb {
   margin-bottom: -20px;
   flex-wrap: wrap; }
   .ticket-details-info-list__item {
-    width: 100%;
+    width: 50%;
     margin-bottom: 20px; }
     .ticket-details-info-list__item--alt {
       margin-bottom: 30px; }
+
+@media (max-width: 767px) {
+  .ticket-details-info-list__item {
+    width: 100%; } }
 
 .ticket-box__details .ticket-details-info-list {
   width: 100%; }
@@ -4112,9 +4128,7 @@ h1.breadcrumb {
   .ticket-box .ticket-description {
     margin-top: 8px; }
   .ticket-box__actions {
-    -webkit-box-pack: center;
     justify-content: center;
-    -webkit-box-align: start;
     align-items: flex-start;
     align-content: flex-start; }
   .ticket-box .ticket-box__content + .ticket-box__details {
@@ -4136,7 +4150,8 @@ h1.breadcrumb {
 .trigger-close-popup {
   overflow: hidden;
   width: 30px;
-  height: 30px; }
+  height: 30px;
+  cursor: pointer; }
   .trigger-close-popup .icon {
     font-size: 16px;
     color: #d64650; }
@@ -4166,6 +4181,63 @@ h1.breadcrumb {
     max-width: calc(100vw - 2 * 15px); }
     .popup .popup__inner {
       padding: calc(15px * 1.2) 15px; } }
+
+.tickets-filter-label {
+  padding: 8px 8px 8px 0;
+  width: 58px;
+  float: left; }
+
+.tickets-filter {
+  width: calc(100% - 58px);
+  padding: 0;
+  margin: 12px 0 25px 0;
+  list-style: none;
+  display: flex; }
+  .tickets-filter__option:not(:first-child) {
+    left: -1px;
+    position: relative; }
+  .tickets-filter__option {
+    border: solid 1px #b2b2b2; }
+    .tickets-filter__option:hover, .tickets-filter__option.active {
+      border-color: #b62832; }
+  .tickets-filter__trigger {
+    cursor: pointer; }
+  .tickets-filter__trigger,
+  .tickets-filter .tickets-filter-label {
+    padding: 8px 25px;
+    width: auto;
+    float: left; }
+    .tickets-filter__trigger:after,
+    .tickets-filter .tickets-filter-label:after {
+      display: block;
+      content: attr(title);
+      font-weight: bold;
+      height: 1px;
+      color: transparent;
+      overflow: hidden;
+      visibility: hidden;
+      margin-bottom: -1px; }
+    .active .tickets-filter__trigger, .tickets-filter__trigger:hover, .active
+    .tickets-filter .tickets-filter-label,
+    .tickets-filter .tickets-filter-label:hover {
+      font-weight: 700;
+      text-decoration: none;
+      background: #d64650;
+      color: #fff; }
+
+.statuses {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+  text-indent: 1px;
+  opacity: 0;
+  border: none;
+  background: none;
+  -webkit-appearance: none;
+  -moz-appearance: none; }
 
 /* Vendor CSS
    ========================================================================== */

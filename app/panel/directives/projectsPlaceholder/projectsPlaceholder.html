@@ -2,24 +2,12 @@
     <div class="upload-box__content">
         <div class="upload-box__content__head">
             <div class="icon-wrapper">
-                <span class="icon icon--folder--alt"></span>
-                <span class="qty">0</span>
+                <span class="icon icon--{{icon}}"></span>
+                <span class="qty" ng-if="icon === 'folder--alt'">0</span>
             </div>
         </div>
         <div class="upload-box__content__info-add">
-            <p><span class="qty">No</span> {{ thing }} uploaded to this project</p>
+            <p><span class="qty">No</span> {{ thing }} {{ verb || 'added' }} to this project</p>
         </div>
     </div>
 </div>
-<!-- <div class="upload-box">
-    <div class="upload-box__content">
-        <div class="upload-box__content__head">
-            <div class="icon-wrapper">
-                <span class="icon icon--box"></span>
-            </div>
-        </div>
-        <div class="upload-box__content__info-add">
-            <p><span class="qty">No</span> {{ thing }} uploaded to this project</p>
-        </div>
-    </div>
-</div> -->

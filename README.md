@@ -4,7 +4,7 @@ Based on AngularJS and Django Rest Framework web app is a tool for you to comuni
 Then can upload files, see the progress and contact your team, and you can see whether they are happy with how the job is being done or not.
 
 ### Version
-0.0.2
+1.0.4
 
 ### Tech
 

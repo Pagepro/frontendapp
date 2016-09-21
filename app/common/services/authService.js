@@ -1,7 +1,8 @@
 (function() {
   'use strict';
-  var authService = function($http, $window, appSettings) {
+  var authService = function($http, $q, $window, appSettings) {
     var baseApiUrl = appSettings.apiRoot;
+    var baseUrl = appSettings.redirectionUrl;
 
     this.loginUser = function(username, password) {
       return $http.post(baseApiUrl + 'auth/', {
@@ -17,10 +18,11 @@
     };
     this.logout = function () {
       $window.localStorage.removeItem('token');
+      $window.location.href = appSettings.redirectionUrl + 'logout/';
     };
   };
 
-  authService.$inject = ['$http', '$window', 'appSettings'];
+  authService.$inject = ['$http', '$q', '$window', 'appSettings'];
   angular.module('frontendApp').service('authService', authService);
 
 }());

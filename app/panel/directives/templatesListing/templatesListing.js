@@ -5,30 +5,30 @@
       restrict: 'EA',
       templateUrl: 'app/panel/directives/templatesListing/templatesListing.html',
       link: function(scope) {
-        var order;
-        var templatesPromise;
         var order = [];
 
         scope.templates = null;
         scope.screenshotRoot = appSettings.screenshotRoot(239, 242);
         scope.activeInput = false;
+        scope.projectsFetched = false;
+
+        spinnerService.show('templates-listing');
 
         scope.displayType = $window.localStorage.getItem('displayType') || 'grid';
 
-        spinnerService.show('templates-listing');
 
         scope.downloadAllLink = function(projectId) {
           return appSettings.templatesSrc + projectId;
         };
 
-        templatesService.getTemplates($stateParams.projectId).success(function(templates) {
+        templatesService.getTemplates($stateParams.projectId).then(function(templates) {
+          scope.projectsFetched = true;
           scope.templates = templates;
+          spinnerService.hide('templates-listing');
           order = _.map(scope.templates, function(template) {
             template.order = template.id;
             return template.id;
           });
-        }).finally(function() {
-          spinnerService.hide('templates-listing');
         });
 
         scope.dragControlListeners = {

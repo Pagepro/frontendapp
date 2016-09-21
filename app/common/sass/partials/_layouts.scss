@@ -73,6 +73,7 @@ body.blocked {
         border-bottom: 1px solid $color_grey_0;
         background: rgba(255,255,255,.9);
         &.hidden {
+            visibility: hidden;
             opacity: 0;
             .sec--head {
                 &__inner {
@@ -249,7 +250,7 @@ body.blocked {
 }
 
 .sec--popup {
-    position: absolute;
+    position: fixed;
     z-index: 30;
     top: 0;
     right: 0;
@@ -261,12 +262,16 @@ body.blocked {
 
     background: rgba(0,0,0,.8);
 
-    @extend %helper--flex--stretch;
+    overflow: auto;
+
     &__inner {
-        @extend %helper--flex--center--center;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        min-height: 100vh;
+        padding-bottom: 20px;
+        display: block;
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+
     }
 }

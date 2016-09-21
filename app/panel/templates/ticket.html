@@ -1,8 +1,7 @@
-<spinner name="project-details" group="full-page" on-loaded="init()"></spinner>
 <div class="sec--main__head">
     <div class="sec--main__inner">
         <h2 class="page-back">
-            <a ui-sref="projectState({projectId: {{projectId}}})" class="page-back__content">
+            <a ui-sref="projectState({projectId: {{projectId}}, anchor: 'tickets'})" class="page-back__content">
                 <span class="icon icon--open-big--left"></span>
                 <span class="main-title">
                     <span class="label">Ticket #<span class="ticket-id">{{ticketId}}</span></span>
@@ -23,9 +22,7 @@
                 <div class="ticket-box">
                     <div class="ticket-box__content">
                         <div class="ticket-description">
-                            <p>
-                                {{ticket.description}}
-                            </p>
+                            <p ng-bind-html="ticket.html_description"></p>
                         </div>
                     </div>
                 </div>
@@ -60,11 +57,21 @@
                                 <div class="ticket-details-info">
                                     <div class="ticket-details-info__head">
                                         <span class="icon icon--file--code"></span>
-                                        <p class="label">Templates:</p>
+                                        <p class="label">Template:</p>
                                     </div>
                                     <div class="ticket-details-info__content">
-                                        <p class="details" ng-if="ticket.template" ng-repeat="template in ticket.templates"><a ui-sref="projectState({projectId: {{template.template_id}}})" target="_blank">{{template.template}}</a></p>
-                                        <p class="details" ng-if="!ticket.template">none</p>
+                                        <!-- <p class="details" ng-if="ticket.template" ng-repeat="template in ticket.templates"><a ui-sref="projectState({projectId: {{template.template_id}}})" target="_blank">{{template.template.}}</a></p> -->
+                                        <a class="details" ng-if="ticket.related_template.name && ticket.related_template.html_url" target="_blank" href="{{ticket.related_template.html_url}}">
+                                            {{ticket.related_template.name}}
+                                        </a>
+                                        <p class="details" ng-if="ticket.related_template.name && !ticket.related_template.html_url">{{ticket.related_template.name}}</p>
+                                        <p class="details" ng-if="!ticket.related_template">none</p>
+                                        <div>
+                                            <a ng-show="ticket.related_template.fullimage_url" href="{{ticket.related_template.fullimage_url}}" class="link" target="_blank">Design</a>
+                                            <span ng-show="ticket.related_template.html_url && ticket.related_template.fullimage_url">|</span>
+                                            <a ng-show="ticket.related_template.html_url" href="{{ticket.related_template.html_url}}" class="link" target="_blank">HTML</a>
+                                        </div>
+
                                     </div>
                                 </div>
                             </li>
@@ -86,7 +93,7 @@
                                         <p class="label">Screenshot:</p>
                                     </div>
                                     <div class="ticket-details-info__content">
-                                        <a class="details" ng-if="ticket.screenshot_url" target="_blank" href="{{ticket.screenshot_url}}">{{ticket.screenshot_url}}</a></p>
+                                        <a class="details" ng-if="ticket.screenshot_url" target="_blank" href="{{ticket.screenshot_url}}">{{ticket.screenshot_url}}</a>
                                         <p class="details" ng-if="!ticket.screenshot_url">none</p>
                                     </div>
                                 </div>
@@ -94,11 +101,12 @@
                             <li class="ticket-details-info-list__item">
                                 <div class="ticket-details-info">
                                     <div class="ticket-details-info__head">
-                                        <span class="icon icon--screen"></span>
+                                        <span class="icon icon--attach"></span>
                                         <p class="label">Attachment:</p>
                                     </div>
                                     <div class="ticket-details-info__content">
-                                        <p class="details">{{ticket.attachment || 'none'}}</p>
+                                        <a class="details" ng-if="ticket.attachment" target="_blank" href="{{ticket.attachment}}">{{ticket.attachment}}</a></p>
+                                        <p class="details" ng-if="!ticket.attachment">none</p>
                                     </div>
                                 </div>
                             </li>
@@ -121,18 +129,16 @@
                                     <span class="icon icon--pencil"></span>
                                 </span>
                             </a>
+                            <a ng-click="removeTicket(ticket.id)" class="action-btn action-btn--grey" ng-if="ticket.can_delete">
+                                <span class="action-btn__content">
+                                    <span class="label">Delete ticket</span>
+                                    <span class="icon icon--trash"></span>
+                                </span>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-    <section class="subsec">
-        <div class="subsec__inner">
-            <div class="subsec__content">
-                <div class="ticket-box">
-                </div>
             </div>
         </div>
     </section>
@@ -144,7 +150,7 @@
                         <span class="label">Comments</span>
                     </h3>
                     <div class="comment-box">
-                        <div class="comment-box__content">
+                        <div class="comment-box__content" ng-class="{hascomments: comments.length}">
                             <span class="icon icon--comment"></span>
                             <span class="qty">{{comments.length || 0}}</span>
                         </div>
@@ -168,9 +174,7 @@
                                             <time class="comment-date" datetime="{{comment.date}}">{{comment.date | date:'dd-MM-yyyy HH:mm'}}</time>
                                         </div>
                                         <div class="comment__info__content">
-                                            <p>
-                                                {{comment.content}}
-                                            </p>
+                                            <p ng-bind-html="comment.html_content">></p>
                                         </div>
                                     </div>
                                 </div>
@@ -184,12 +188,15 @@
                                     <div class="form-box">
                                         <div class="form-box__section">
                                             <div class="form-box__section__head">
-                                                <label class="label" for="popup-description">New comment</label>
+                                                <label class="label" for="popup-description">Add comment</label>
                                             </div>
                                             <div class="form-box__section__content">
-                                                <div class="form__section">
+                                                <div class="form__section form__section--ticket" ng-class="{'error-message': submitted && (!comment || !comment.content.length)}">
                                                     <div class="field field--textarea">
-                                                        <textarea class="textarea" id="popup-description" ng-model="comment.content" ng-required></textarea>
+                                                        <textarea class="textarea" id="popup-description" ng-model="comment.content" required ng-required></textarea>
+                                                    </div>
+                                                    <div class="form-info required" ng-class="{'hidden': !submitted || (comment && comment.content.length)}">
+                                                        <p>This field is required</p>
                                                     </div>
                                                 </div>
                                             </div>

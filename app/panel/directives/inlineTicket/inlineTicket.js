@@ -5,9 +5,20 @@
     return {
       restrict: 'AE',
       templateUrl: 'app/panel/directives/inlineTicket/inlineTicket.html',
-      link: function (scope) {
+      link: function (scope, element) {
         scope.status = ticketStatusService.getStatus(scope.ticket.status);
         scope.location = $location.path();
+
+        scope.linkActive = false;
+
+        // Data-ellipsis hack, can't set else in html template,
+        // data is being read from a model
+        if (!scope.ticket.related_template) {
+          scope.ticket.related_template = {
+            name: 'Not assigned'
+          }
+        }
+
       }
     };
   };

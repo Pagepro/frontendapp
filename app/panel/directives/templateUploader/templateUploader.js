@@ -40,7 +40,7 @@
 
               $q.all(filesDfd).then(function() {
                 var whatWasUploaded = (imageUploaded && !fileUploaded) ? 'images' : 'files';
-                toaster.pop('success', whatWasUploaded + ' uploaded!', 'You have successfully added ' + whatWasUploaded + ' to your project.');
+                toaster.pop('success', _.upperFirst(whatWasUploaded) + ' uploaded!', 'You have successfully added ' + whatWasUploaded + ' to your project.');
                 $rootScope.$broadcast('templateUploader:updated', $stateParams.projectId);
                 if (imageUploaded && scope.bulk) {
                   $rootScope.$broadcast('images:added', $stateParams.projectId);
@@ -68,7 +68,7 @@
               url: appSettings.apiRoot + 'projects/' + $stateParams.projectId + '/' + directory + '/',
               data: {
                 files: file,
-                name: file.name
+                name: file.name.replace(/\.[^/.]+$/, '')
               }
             })
             .progress(function(event) {

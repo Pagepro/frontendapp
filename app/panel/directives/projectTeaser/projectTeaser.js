@@ -4,7 +4,7 @@
     return {
       restrict: 'E',
       templateUrl: 'app/panel/directives/projectTeaser/projectTeaser.html',
-      link: function (scope) {
+      link: function (scope, element) {
         // get thumbnail or place a temp template
         scope.thumbnail = (scope.project.thumbnail && scope.project.thumbnail.filename) ? (scope.screenshotRoot + scope.project.thumbnail.filename) : 'dist/img/pic_project-1.jpg';
       }

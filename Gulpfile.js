@@ -9,6 +9,9 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var cssmin = require('gulp-cssmin');
 var run = require('gulp-run');
+var exec = require('child_process').exec;
+var htmlreplace = require('gulp-html-replace');
+
 
 var spawn = require('child_process').spawn;
 var node;
@@ -20,11 +23,14 @@ var jsFiles = [
   'libs/angular-ui-router/release/angular-ui-router.js',
   'libs/angular-animate/angular-animate.js',
   'libs/angular-off-click/offClick.js',
+  'libs/angular-cache/dist/angular-cache.js',
   'libs/angular-ellipsis/src/angular-ellipsis.js',
   'libs/ng-file-upload/ng-file-upload.js',
   'libs/AngularJS-Toaster/toaster.js',
+  'libs/angular-sanitize/angular-sanitize.js',
   'libs/jquery.customSelect/jquery.customSelect.js',
   'libs/jquery-nicefileinput/jquery.nicefileinput.js',
+  'libs/imagesloaded/imagesloaded.pkgd.js',
   'libs/lodash/lodash.js',
   'app/**/*.js'
 ];
@@ -63,24 +69,58 @@ gulp.task('watch', ['js'], function() {
 });
 
 
-gulp.task('prod', ['js'], function() {
+gulp.task('test', function() {
   gulp.src(['app/common/img/*', 'app/common/img/**/*']).pipe(gulp.dest('dist/img'));
   gulp.src(['app/common/fonts/*']).pipe(gulp.dest('dist/fonts'));
 
-  gulp.src('dist/app.js')
-    .pipe(concat('app.min.js'))
-    .pipe(uglify())
+
+
+  gulp.src(jsFiles)
+    .pipe(sourcemaps.init())
+      .pipe(uglify())
+      .pipe(concat('app.min.js'))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist'));
 
 
   gulp.src('app/common/css/*.css')
     .pipe(cssmin())
     .pipe(gulp.dest('dist/css'));
+
+  gulp.src('./index.html')
+    .pipe(htmlreplace({
+        'js': 'dist/app.min.js'
+    }))
+    .pipe(gulp.dest('./'))
+});
+
+
+
+gulp.task('prod', function() {
+  gulp.src(['app/common/img/*', 'app/common/img/**/*']).pipe(gulp.dest('dist/img'));
+  gulp.src(['app/common/fonts/*']).pipe(gulp.dest('dist/fonts'));
+
+  gulp.src(jsFiles)
+    .pipe(concat('app.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist'));
+
+
+  gulp.src('app/common/css/*.css')
+    .pipe(concat('main.min.css'))
+    .pipe(cssmin())
+    .pipe(gulp.dest('dist/css'));
+
+  gulp.src('./index.html')
+    .pipe(htmlreplace({
+        'js': 'dist/app.min.js',
+        'css': 'dist/css/main.min.css'
+    }))
+    .pipe(gulp.dest('./'))
 });
 
 gulp.task('sass', function() {
   gulp.src('./app/common/sass/**/*.scss')
-    .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('./app/common/css'))

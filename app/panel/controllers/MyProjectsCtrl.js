@@ -1,25 +1,11 @@
 (function() {
   'use strict';
-  var MyProjectsCtrl = function($scope, projectsService, spinnerService, appSettings) {
-    $scope.myProjects = null;
-    $scope.finishedFetching = false;
+  var MyProjectsCtrl = function($scope, appSettings, projects) {
     $scope.screenshotRoot = appSettings.screenshotRoot(239, 242);
-
-    $scope.init = function() {
-      spinnerService.show('my-projects');
-      projectsService.getProjects(null, 'active')
-        .success(function(resp) {
-          $scope.myProjects = resp.results;
-        })
-        .error(function() {})
-        .finally(function() {
-          $scope.finishedFetching = true;
-          spinnerService.hide('my-projects');
-        });
-    };
+    $scope.myProjects = projects.results;
   };
 
-  MyProjectsCtrl.$inject = ['$scope', 'projectsService', 'spinnerService', 'appSettings'];
+  MyProjectsCtrl.$inject = ['$scope', 'appSettings', 'projects'];
   angular.module('panelModule').controller('MyProjectsCtrl', MyProjectsCtrl);
 
 }());

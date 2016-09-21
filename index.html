@@ -5,7 +5,9 @@
         <title ng-bind="'FrontendApp - ' + pageName">FrontendApp</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+        <!-- build:css -->
         <link rel="stylesheet" href="app/common/css/main.css">
+        <!-- endbuild -->
         <link rel="stylesheet" href="app/common/css/sprites.css">
         <link rel="icon" type="image/x-icon" href="app/common/img/favicon.png">
     </head>
@@ -13,9 +15,21 @@
         <header-section></header-section>
         <ui-view class="sec--main opacity-animation"></ui-view>
         <toaster-container></toaster-container>
+        <spinner name="global" group="full-page" on-loaded="global()"></spinner>
         <confirmation-popup-container></confirmation-popup-container>
 
+        <noscript>
+            <div>
+                <center><h1>Please, enable javascript.</h1></center>
+            </div>
+            <div>
+                <center><h4>This page will not work with javascript disabled.</h4></center>
+            </div>
+        </noscript>
+
         <!--  App -->
+        <!-- build:js -->
         <script type="text/javascript" src="dist/app.js"></script>
+        <!-- endbuild -->
     </body>
 </html>

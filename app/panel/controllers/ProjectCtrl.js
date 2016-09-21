@@ -1,16 +1,19 @@
 (function() {
   'use strict';
-  var ProjectCtrl = function($scope, $q, $stateParams, projectsService,
-    ticketsService, statusService, spinnerService, toaster, $window, $rootScope) {
-    var projectPromise;
-    var ticketsPromise;
-    var ticketsPage = 1;
+  var ProjectCtrl = function($scope, $stateParams, statusService, $rootScope, project, $window, $uiViewScroll) {
 
-    $scope.project = null;
+    var projectPromise;
+    var updatedTpl;
+
+    $rootScope.pageName = project.data.name;
+
+    $scope.project = project.data;
     $scope.tickets = [];
-    $scope.finishedFetching = false;
     $scope.projectId = $stateParams.projectId;
 
+    if ($stateParams.anchor) {
+      $uiViewScroll(angular.element('#' + $stateParams.anchor));
+    }
     $scope.getStatus = function(code) {
       return statusService.getStatus(code);
     };
@@ -19,56 +22,24 @@
       $scope.displayType = type;
     };
 
-    $scope.init = function() {
-      projectPromise = projectsService.getProject($stateParams.projectId);
-      projectPromise.success(function(project) {
-        $scope.project = project;
-        $rootScope.pageName = project.name;
+    $scope.alterTicketCount = function(templateId, type) {
+      updatedTpl = _.find($scope.templates, function(tpl) {
+        return tpl.id === templateId
       });
 
-      ticketsPromise = ticketsService.getTickets($stateParams.projectId);
-      ticketsPromise.success(function(tickets) {
-        $scope.tickets = tickets.results;
-        $scope.ticketsLeft = tickets.count - $scope.tickets.length;
-      });
-
-      $q.all([projectPromise, ticketsPromise]).then(function() {
-        $scope.finishedFetching = true;
-        // spinnerService.hide('project-details');
-      });
+      updatedTpl.tickets_count += (type === 'increase') ? 1 : (-1);
     };
-
-    $scope.loadRemainingTickets = function() {
-      ticketsPage++;
-      ticketsService.getTickets($stateParams.projectId, ticketsPage)
-        .success(function(tickets) {
-          _.each(tickets.results, function (ticket) {
-            $scope.tickets.push(ticket);
-          });
-          $scope.ticketsLeft = tickets.count - $scope.tickets.length;
-        });
-    };
-
-    $scope.init();
 
     $scope.$on('ticket:submitted', function(params, data) {
       if (data.submitted) {
-        ticketsPage = 1;
-        ticketsService.getTickets($stateParams.projectId)
-          .success(function(tickets) {
-            $scope.tickets = tickets.results;
-            $scope.ticketsLeft = tickets.count - $scope.tickets.length;
-          })
-          .error(function() {
-            toaster.pop('error', 'Couldn\'t get the updated tickets list.', 'Please try refreshing the page, if the error occurs again, let us know!');
-          });
+        $scope.ticketSubmitted(data.id);
+        $scope.alterTicketCount(data.id, 'increase');
       }
     });
+
   };
 
-  ProjectCtrl.$inject = ['$scope', '$q', '$stateParams', 'projectsService',
-    'ticketsService', 'statusService', 'spinnerService', 'toaster', '$window', '$rootScope'
-  ];
+  ProjectCtrl.$inject = ['$scope', '$stateParams', 'statusService', '$rootScope', 'project', '$window', '$uiViewScroll'];
   angular.module('panelModule').controller('ProjectCtrl', ProjectCtrl);
 
 }());

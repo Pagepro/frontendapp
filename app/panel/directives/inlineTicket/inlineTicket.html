@@ -1,28 +1,32 @@
 <div class="files-list__item__inner">
     <div class="files-list__item__id">
-        <a ui-sref="ticketState({projectId: {{projectId}}, ticketId: {{ticket.id}}})" class="ticket-id-link">
+        <a ui-sref="ticketState({projectId: {{projectId}}, ticketId: {{ticket.id}}})" class="ticket-id-link" ng-class="{'active': linkActive}" >
             <span class="label">#<span class="ticket-id">{{ticket.id}}</span></span>
         </a>
     </div>
     <div class="files-list__item__content">
         <div class="file-data file-data--tickets">
             <div class="file-data__inner">
-                <div class="file-data__name">
+                <a class="file-data__name file-data__name--link" ui-sref="ticketState({projectId: {{projectId}}, ticketId: {{ticket.id}}})" ng-mouseenter="linkActive = true" ng-mouseleave="linkActive = false">
                     <div class="ticket-desc">
-                        <p data-ellipsis data-ng-bind="ticket.description" data-ellipsis-symbol="...">{{ticket.description}}</p>
+                        <p data-ellipsis data-ng-bind="ticket.description" data-ellipsis-symbol="...">{{ticket.html_description}}</p>
                     </div>
-                </div>
+                </a>
                 <div class="file-data__status">
-                    <div class="status-label status-label--{{status.className}}">
-                        <p class="label">{{status.labelContent}}</p>
-                    </div>
+                    <inline-toggler />
                 </div>
                 <div class="file-data__comments">
                     <div class="comment-box">
-                        <div class="comment-box__content">
+                        <div class="comment-box__content" ng-class="{hascomments: ticket.comments_count}">
                             <span class="icon icon--comment"></span>
                             <span class="qty">{{ticket.comments_count || 0}}</span>
                         </div>
+                    </div>
+                </div>
+                <div class="file-data__template">
+                    <div class="ticket-desc">
+                        <p ng-if="!ticket.related_template.html_url" data-ellipsis data-ng-bind="ticket.related_template.name" data-ellipsis-symbol="..."></p>
+                        <a ng-if="ticket.related_template.name && ticket.related_template.html_url" data-ellipsis data-ng-bind="ticket.related_template.name" data-ellipsis-symbol="..." target="_blank" href="{{ticket.related_template.html_url}}"></a>
                     </div>
                 </div>
                 <div class="file-data__ticket-date">

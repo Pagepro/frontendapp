@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var EditDescriptionController = function($scope, $state, $stateParams, toaster, Upload, appSettings, $rootScope, spinnerService) {
+  var EditDescriptionCtrl = function($scope, $state, $stateParams, toaster, Upload, appSettings, $rootScope, spinnerService) {
     var updated = false;
 
     $scope.staticContent = {
@@ -10,17 +10,20 @@
 
     $scope.description = $scope.$parent.ticket.description;
     $scope.url = $scope.$parent.ticket.screenshot_url;
-    $scope.templates = $scope.$parent.ticket.templates;
+    $scope.ticketId = _.parseInt($scope.$parent.ticketId);
     $scope.filename = $scope.$parent.attachment;
-    $scope.templates = $scope.$parent.templates;
     $scope.browsers = $scope.$parent.ticket.browsers;
+    $scope.template = $scope.$parent.ticket.related_template || null;
 
     $scope.submitted = false;
     $scope.isUploading = false;
     $scope.file = null;
 
-    angular.element('.input--file').nicefileinput();
 
+    $scope.updateNameValue = function(filename) {
+      // fixme? Not sure, brute force value changing, since I can't access the element being created by nicefileinput
+      angular.element('.NFI-filename').attr('value', filename);
+    };
     $scope.uploadFiles = function(file) {
       if ($scope.description.length) {
         spinnerService.show('ticket-spinner');
@@ -31,8 +34,10 @@
             method: 'PUT',
             data: {
               file: file,
-              browsers: $scope.browsers,
-              description: $scope.description
+              browsers: $scope.browsers || '',
+              description: $scope.description || '',
+              screenshot_url: $scope.url || '',
+              template: _.parseInt($scope.template.id)
             }
           }).success(function() {
             toaster.pop('success', 'Success!', 'Your ticket has been added.');
@@ -56,9 +61,16 @@
         updated: updated
       });
     };
+
+    var init = function () {
+      angular.element('.input--file').nicefileinput();
+      $scope.updateNameValue($scope.$parent.ticket.attachment);
+      $scope.templates = $scope.$parent.ticket.available_templates;
+    };
+    init();
   };
 
-  EditDescriptionController.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'appSettings', '$rootScope', 'spinnerService'];
-  angular.module('panelModule').controller('EditDescriptionController', EditDescriptionController);
+  EditDescriptionCtrl.$inject = ['$scope', '$state', '$stateParams', 'toaster', 'Upload', 'appSettings', '$rootScope', 'spinnerService'];
+  angular.module('panelModule').controller('EditDescriptionCtrl', EditDescriptionCtrl);
 
 }());
