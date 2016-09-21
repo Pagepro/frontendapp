@@ -29,6 +29,10 @@
           ticketStatus.className = 'in-progress';
           ticketStatus.labelContent = 'In Progress';
           break;
+        case 6:
+          ticketStatus.className = 'resolved';
+          ticketStatus.labelContent = 'Resolved';
+          break;
       }
       return ticketStatus;
     };

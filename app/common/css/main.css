@@ -2373,6 +2373,8 @@ h1.breadcrumb {
     background: #6dc729; }
   .status-label--rejected {
     background: #d64650; }
+  .status-label--resolved {
+    background: #56CDE5; }
 
 .extention-label--psd {
   background: #4f7dc1; }

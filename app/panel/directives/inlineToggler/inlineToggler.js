@@ -19,10 +19,11 @@
         *  3 - REJECTED
         *  4 - FINISHED
         *  5 - IN PROGRESS
+        *  6 - RESOLVED
 
         */
 
-        var codes = [1, 5, 2, 4, 3];
+        var codes = [1, 5, 6, 2, 4, 3];
 
         scope.statuses = _.map(codes, function (code) {
           return ticketStatusService.getStatus(code);

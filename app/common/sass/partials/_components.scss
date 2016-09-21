@@ -973,6 +973,9 @@ h1.breadcrumb {
     &--rejected {
         background: $color_red_dark;
     }
+    &--resolved {
+        background: $color_teal;
+    }
 }
 
 // Extention label
