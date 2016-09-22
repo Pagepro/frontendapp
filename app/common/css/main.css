@@ -2599,9 +2599,9 @@ h1.breadcrumb {
 .action-tool {
   position: relative;
   display: inline-block; }
-  .action-tool [data-tickets] {
+  .action-tool [data-tickets]:not([data-tickets="0"]) {
     position: relative; }
-    .action-tool [data-tickets]:after {
+    .action-tool [data-tickets]:not([data-tickets="0"]):after {
       background-color: #d64650;
       border: solid 2px #fff;
       content: attr(data-tickets);

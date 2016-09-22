@@ -1510,7 +1510,7 @@ h1.breadcrumb {
     position: relative;
 
     display: inline-block;
-    [data-tickets] {
+    [data-tickets]:not([data-tickets="0"]) {
         position: relative;
         &:after {
             background-color: $color_red_dark;
