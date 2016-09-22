@@ -23,7 +23,7 @@
         *  6 - RESOLVED
 
         */
-        scope.availableStatuses = [1, 5, 2, 4, 3, 6];
+        scope.availableStatuses = [1, 5, 2, 3, 6, 4];
 
         scope.getStatus = ticketStatusService.getStatus;
         scope.statusListVisible = false;
