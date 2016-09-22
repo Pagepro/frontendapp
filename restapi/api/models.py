@@ -25,15 +25,16 @@ class Project(models.Model):
 	suggested_delivery_date = models.DateTimeField(blank=True)
 	finished = models.PositiveSmallIntegerField(default=0)
 	status = models.PositiveSmallIntegerField(default=1)
+	connected_users = models.ManyToManyField(User, through='ProjectUsers')
 
 	user = models.ForeignKey(User, related_name='author')
 	client = models.ForeignKey(User, related_name='client', blank=True, null=True)
 
 	def get_thumbnail(self):
-		return ProjectTemplate.objects.filter(project=self.pk).order_by('uploaded_date').first()
+		return ProjectTemplate.objects.filter(project=self.pk).exclude(status=2).order_by('order').first()
 
 	def get_templates_count(self):
-		return ProjectTemplate.objects.filter(project=self.pk).count()
+		return ProjectTemplate.objects.filter(project=self.pk).exclude(status=2).count()
 
 	def get_progress(self):
 		active_templates = ProjectTemplate.objects.filter(project=self.pk).filter(status=1).count()
@@ -48,6 +49,14 @@ class Project(models.Model):
 				templates_progress += 1
 
 		return round((templates_progress / active_templates) * 100)
+
+class ProjectUsers(models.Model):
+	class Meta:
+		db_table = 'pfo_projects_users'
+	
+	project = models.ForeignKey(Project, db_column='pfo_project_id')
+	person = models.ForeignKey(User, db_column='person_id')
+
 
 # Pliki uploadowane do projektu
 class ProjectFile(models.Model):
@@ -99,6 +108,9 @@ class ProjectTemplate(models.Model):
 	status = models.PositiveSmallIntegerField(default=1)
 	uploaded_date = models.DateTimeField(auto_now_add=True)
 
+	def get_tickets_count(self, user):
+		return ProjectTicket.objects.filter(template=self.pk).filter(user=user).exclude(status=4).count()
+
 	def get_fullimage_url(self):
 		return 'http://frontendapp.com/uploads/' + self.filename
 
@@ -118,6 +130,9 @@ class ProjectTemplate(models.Model):
 				destination.write(chunk)
 
 		self.save()
+
+	def __str__(self):
+		return self.name
 
 class ProjectTemplateWork(models.Model):
 	class Meta:
@@ -157,7 +172,7 @@ class ProjectTicket(models.Model):
 		db_table = 'pfo_project_template_tickets'
 
 	project = models.ForeignKey(Project)
-	template = models.ForeignKey(ProjectTemplate, default=-1)
+	template = models.ForeignKey(ProjectTemplate, blank=True,null=True)
 	user = models.ForeignKey(User, related_name='ticket_author')
 	person = models.ForeignKey(User, related_name='ticket_assignee', blank=True, null=True)
 	#browsers = models.ManyToManyField(ProjectTicketBrowser, through='BrowserTicket')
@@ -175,7 +190,7 @@ class ProjectTicket(models.Model):
  			magic.from_buffer(uploaded_file.read(), mime=True)
 		][0]
 
-		self.attachment = filename + extension
+		self.attachment = 'http://frontendapp.com/uploads/ticket/' + str(self.pk) + '/' + filename + extension
 
 		dir = os.path.dirname('/var/www/frontendapp/uploads/ticket/' + str(self.pk) + '/')
 		if not os.path.exists(dir):

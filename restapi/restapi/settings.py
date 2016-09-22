@@ -26,7 +26,7 @@ SECRET_KEY = 'mv=^a9yvlzh2kcuk_skos=dpwo-jcj_#*_2^$&2zlkc0pe_&(w'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-ADMINS = [('Radosław Kamiński', 'radoslaw.kaminski@pagepro.pl'), ('Krzysztof Łojniewski', 'kontakt@pagepro.pl')]
+ADMINS = [('Radoslaw Kaminski', 'radoslaw.kaminski@pagepro.pl'), ('Krzysztof Lojniewski', 'kontakt@pagepro.pl')]
 
 # Application definition
 

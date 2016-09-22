@@ -65,10 +65,16 @@ class ProjectViewSet(viewsets.ModelViewSet):
     	except FieldDoesNotExist:
     		order = 'name'
 
-    	if not self.request.user.is_superuser or (self.request.user.is_superuser and filter == 'active'):
-    		queryset = Project.objects.filter(Q(user=self.request.user) | Q(client=self.request.user))
-    	else:
+    	if (self.request.user.is_superuser or self.request.user.is_staff) and filter == 'active':
+    		queryset = Project.objects.filter(connected_users__id=self.request.user.id)
+    	elif self.request.user.is_superuser or self.request.user.is_staff:
     		queryset = Project.objects.all()
+    	else:
+    		queryset = Project.objects.filter(Q(user=self.request.user) | Q(client=self.request.user))
+    	#if not self.request.user.is_superuser or (self.request.user.is_superuser and filter == 'active'):
+    	#	queryset = Project.objects.filter(Q(user=self.request.user) | Q(client=self.request.user))
+    	#else:
+    	#	queryset = Project.objects.all()
 
     	if filter == 'active':
     		return queryset.exclude(status=4).order_by(order)
@@ -124,7 +130,7 @@ class ProjectTemplateViewSet(viewsets.ModelViewSet):
 	parser_classes = (FormParser, MultiPartParser,)
 
 	def list(self, request, project_pk=None):
-		queryset = ProjectTemplate.objects.filter(project=project_pk).order_by('order')
+		queryset = ProjectTemplate.objects.filter(project=project_pk).exclude(status=2).order_by('order')
 		serializer = ProjectTemplateSerializer(queryset, many=True, context={'request': request})
  		return Response(serializer.data)
 
@@ -159,7 +165,9 @@ class ProjectTemplateViewSet(viewsets.ModelViewSet):
  		comment = self.request.data.get('comments', False)
  		if comment:
  			template.work.comments = comment
- 			template.work.save()
+ 		else:
+ 			template.work.comments = None
+ 		template.work.save()
 
  		serializer.save()
 
@@ -184,7 +192,7 @@ class ProjectTicketViewSet(viewsets.ModelViewSet):
 			raise NotFound()
 
 	def perform_create(self, serializer):
- 		uploaded_file = self.request.FILES.get('files', False)
+ 		uploaded_file = self.request.FILES.get('file', False)
 		project = get_object_or_404(Project, pk=self.kwargs['project_pk'])
 		serializer.save(user=self.request.user, person=self.request.user, project=project)
 
@@ -192,12 +200,17 @@ class ProjectTicketViewSet(viewsets.ModelViewSet):
  			serializer.instance.upload_file(uploaded_file)
 
   	def perform_update(self, serializer):
-		uploaded_file = self.request.FILES.get('files', False)
+		uploaded_file = self.request.FILES.get('file', False)
 
  		if uploaded_file:
  			serializer.instance.upload_file(uploaded_file)
 
  		serializer.save()
+
+ 	def get_permissions(self):
+ 		if self.request.method == 'PUT' or self.request.method == 'DELETE':
+ 			return IsStaffOrOwner(),
+ 		return IsAuthenticated(),
 
 # Komentarze do ticketow
 class ProjectTicketCommentViewSet(viewsets.ModelViewSet):
