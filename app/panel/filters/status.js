@@ -9,9 +9,10 @@
       *  3 - REJECTED
       *  4 - FINISHED
       *  5 - IN PROGRESS
+      *  6 - RESOLVED
       */
       var statusMap = {
-        active: [1, 2, 3, 5],
+        active: [1, 2, 3, 5, 6],
         finished: [4]
       };
 
