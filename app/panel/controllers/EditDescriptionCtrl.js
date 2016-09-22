@@ -53,6 +53,7 @@
             $scope.returnToParent();
           });
       }
+      return false;
     };
 
     $scope.returnToParent = function() {
