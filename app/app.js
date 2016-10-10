@@ -26,7 +26,9 @@
         $rootScope.$on('$stateChangeStart', function (data, data2, data3) {
           // no "global" spinner registered hack
           $timeout(function () {
-            spinnerService.show('global');
+            try {
+              spinnerService.show('global');
+            } catch (e) {}
           }, 0);
         });
         $rootScope.$on('$stateChangeSuccess', function(event, data) {
