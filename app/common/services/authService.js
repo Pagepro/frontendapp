@@ -17,8 +17,11 @@
       return $http.post(baseApiUrl + 'accounts/', user);
     };
     this.logout = function () {
-      $window.localStorage.removeItem('token');
-      $window.location.href = appSettings.redirectionUrl + 'logout/';
+      $http.delete(baseApiUrl + 'auth/').then(function(response) {
+        console.log(response);
+        $window.localStorage.removeItem('token');
+        $window.location.href = appSettings.redirectionUrl + 'logout/';
+      });
     };
   };
 
