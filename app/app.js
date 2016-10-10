@@ -45,7 +45,9 @@
           $rootScope.isAuth = (data.module === 'auth');
 
           $rootScope.displayTitle = data.displayTitle;
-          spinnerService.hide('global');
+          try {
+            spinnerService.hide('global');
+          } catch (e) {}
 
         });
       }
